@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_create_health_professional" model="ir.ui.view">
+            <field name="name">create.health.professional.form</field>
+            <field name="model">create.health.professional</field>
+            <field name="arch" type="xml">
+            <form string="Create Health Professional">
+               	<group name="main_info">
+               		<group>
+               			<field name="profession_type" required="1"/>
+                        <field name="firstname" required="1"/>
+                        <field name="lastname"  required="1"/>      
+                        <field name="middlename"/>                      
+                        <field name="surname"/>
+               		</group>
+               		<group>
+               			<field name="email"/>
+                       	<field name="phone"/>
+               		</group>
+                   </group>
+                   <notebook >
+                    <page string="My procedures">
+                        <field name="professional_product_ids" nolabel="1" context="{'search_default_health_procedure': 1}"/>
+                    </page>
+                </notebook>
+                <footer>
+                	<button name="action_create_health_professional" type="object" 
+                     	string="Create" class="oe_highlight"/>
+                     <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        	</field>
+        </record>
+        
+        <record id="action_create_health_professional" model="ir.actions.act_window">
+            <field name="name">Create Health Professional</field>
+            <field name="res_model">create.health.professional</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_create_health_professional"/>
+           <field name="target">new</field>
+        </record>
+        
+    </data>
+</odoo>

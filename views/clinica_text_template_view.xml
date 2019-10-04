@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="clinica_text_template_form" model="ir.ui.view">
+         <field name="name">clinica.text.template.form</field>
+         <field name="model">clinica.text.template</field>
+         <field name="arch" type="xml">
+         <form string="Template Form">
+         	<sheet>
+         		<group name='main_group'>
+	         		<group name='sub_group1'>
+	         			<field name="name" required="1"/>
+	         			<field name="type" required="1"/>
+	         		</group>
+	         		<group name='sub_group2'>
+	         			<field name="user_id" required="1"/>
+	         		</group>
+         		</group>
+         		
+         		<group name="text">
+         			<field name='template_text' string="Text"/>
+         		</group>
+         		
+         	</sheet>
+         </form>
+         </field>
+     </record>
+     
+     <record id="clinica_text_template_tree" model="ir.ui.view">
+          <field name="name">clinica.text.template.tree</field>
+          <field name="model">clinica.text.template</field>
+          <field name="arch" type="xml">
+              <tree string="Template Tree">
+                  <field name="name"/>
+                  <field name="type"/>
+                  <field name="user_id"/>
+              </tree>
+          </field>
+      </record>
+      
+      
+      <record id="action_clinica_text_template" model="ir.actions.act_window">
+          <field name="name">Template</field>
+          <field name="res_model">clinica.text.template</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="view_id" ref="clinica_text_template_tree"/>
+      </record> 
+      
+      <menuitem id="menu_clinica_text_template"
+          name="Template"
+          parent="menu_doctor_config_details"
+          action="clinica_digital_consultorio.action_clinica_text_template"
+          sequence="7"/>
+
+</odoo>

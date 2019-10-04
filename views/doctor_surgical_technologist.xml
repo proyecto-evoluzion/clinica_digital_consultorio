@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="doctor_surgical_technologist_form" model="ir.ui.view">
+         <field name="name">doctor.surgical.technologist.form</field>
+         <field name="model">doctor.surgical.technologist</field>
+         <field name="arch" type="xml">
+         <form string="Surgical Technologist Form">
+         	<sheet>
+	         	<div >
+                <label for="patient_id" string="Patient"/>
+                <h1><field name="patient_id" placeholder="Patient"/></h1>
+            </div>
+	         	<group>
+              <group>
+		         	<field name="room_id"/>
+		         	<field name="surgeon_id"/>
+             </group>
+             <group>
+             </group>
+	         	</group>
+	         	<group>
+              <group>
+		         	<field name="recount_ids" nolabel="1">
+		         		<tree editable="bottom">
+		         			<field name="recount"/>
+		         			<field name="start"/>
+							    <field name="end"/>
+		         		</tree>
+		         	</field>
+            </group>
+            <group>
+            </group>
+	         	</group>
+         	</sheet>
+         </form>
+         </field>
+     </record>
+     
+     <record id="doctor_surgical_technologist_tree" model="ir.ui.view">
+          <field name="name">doctor.surgical.technologist.tree</field>
+          <field name="model">doctor.surgical.technologist</field>
+          <field name="arch" type="xml">
+              <tree string="Surgical Technologist Tree">
+                 <field name="patient_id"/>
+                 <field name="surgeon_id"/>
+                 <field name="room_id"/>
+              </tree>
+          </field>
+      </record>
+      
+      <record id="action_doctor_surgical_technologist" model="ir.actions.act_window">
+          <field name="name">Recount View</field>
+          <field name="res_model">doctor.surgical.technologist</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="view_id" ref="doctor_surgical_technologist_tree"/>
+      </record> 
+      
+      <menuitem id="menu_doctor_surgical_technologist"
+          name="Surgical Tech."
+          parent="menu_doctor_process"
+          action="clinica_digital_consultorio.action_doctor_surgical_technologist"
+          groups="base.group_system,clinica_digital_consultorio.surgical_technologist"
+          sequence="15"/>
+
+</odoo>

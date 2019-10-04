@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<odoo>
+        
+        <record id="clinica_plastic_surgery_form" model="ir.ui.view">
+            <field name="name">clinica.plastic.surgery.form</field>
+            <field name="model">clinica.plastic.surgery</field>
+            <field name="arch" type="xml">
+            <form string="Plastic Surgery Form">
+            	<header>
+	                <button name="action_view_clinica_record_history" string="View History" 
+	                	type="object" class="oe_highlight"/>
+	            </header>
+            	<sheet>
+            		<group name="main_group">
+            			<group name="main_sub_group1" >
+                            <field name='date_attention' required="1"/>
+            				<!-- <field name='attention_code_id' required="1"/> -->
+                            <field name='type_id'/>
+            			</group>
+            			<group name="main_sub_group2" >
+            				<field name='number' readonly="1"/>
+            			</group>
+            		</group>
+            		<group name="attention_details">
+            			<field name='patient_id' required="1"/>
+                        <field name="gender" invisible="1" />
+            		</group>
+            		<group name="consultation_reason" colspan="2" col='1'>
+                         <label for="consultation_reason" string="Reason for Consultation"/>
+                         <field name="consultation_reason" nolabel="1"/>
+                     </group>
+            				
+            		<notebook>
+            			<page name="background" string="Patient Background">
+
+		       				<group name="pathological" colspan="2" col='1'>
+		       					<label for="pathological" string="Pathological"/>
+		       					<field name="pathological" nolabel="1"/>
+		       				</group>
+                            <group name="surgical" colspan="2" col='1'>
+                                <label for="surgical" string="Surgical"/>
+                                <field name="surgical" nolabel="1"/>
+                            </group>
+                            <group name="toxic" colspan="2" col='1'>
+                                <label for="toxic" string="Toxic"/>
+                                <field name="toxic" nolabel="1"/>
+                            </group>
+                            <group name="allergic" colspan="2" col='1'>
+                                <label for="allergic" string="Allergic"/>
+                                <field name="allergic" nolabel="1"/>
+                            </group>
+                            <group name="pharmacological" colspan="2" col='1'>
+                                <label for="pharmacological" string="Pharmacological"/>
+                                <field name="pharmacological" nolabel="1"/>
+                            </group>
+                            <group name="gyneco_obst" colspan="2" col='1'>
+                                <label for="gyneco_obst" string="Gyneco-Obstetricians"/>
+                                <field name="gyneco_obst" nolabel="1"/>
+                            </group>
+
+                            <group name="patient_female_backgorund_main" attrs="{'invisible':[('gender','=','male')]}">
+                                
+                                <div>
+                                    <label for="gestations" string="G" />
+                                    <field name="gestations" class="oe_inline" width="20"/>
+                                    <label for="births" string="P" />
+                                    <field name="births" class="oe_inline" style="width:20%%"/>
+                                    <label for="cesarean" string="C" />
+                                    <field name="cesarean"  class="oe_inline" style="width:20%%"/>
+                                    <label for="abortion_number" string="A" />
+                                    <field name="abortion_number" class="oe_inline" style="width:20%%"/>
+                                    <label for="last_menstruation_date" string="FUR" />
+                                    <field name="last_menstruation_date" class="oe_inline" style="width:20%%"/>
+                                    <label for="last_birth_date" string="FUP" />
+                                    <field name="last_birth_date" class="oe_inline" style="width:20%%"/>
+                                    <label for="mature_promoting_factor" string="MPF" />
+                                    <field name="mature_promoting_factor" class="oe_inline" style="width:20%%"/>
+                                   
+                                </div>   
+
+                            </group >
+
+		       				<group name="relatives" colspan="2" col='1'>
+                                <label for="relatives" string="Relatives"/>
+                                <field name="relatives" nolabel="1"/>
+                            </group>
+                            <group name="others" colspan="2" col='1'>
+                                <label for="others" string="Others"/>
+                                <field name="others" nolabel="1"/>
+                            </group>
+                            
+		      			</page>
+            			<page name="physical_exam" string="Physical Exam">
+            				<group name="physical_exam" colspan="2" col='1'>
+            					<label for="physical_exam" string="Physical Exam"/>
+            					<field name="physical_exam" nolabel="1"/>
+            				</group>
+            			</page>
+            		 	<page name="paraclinical_exam" string="Dx and Treatment">
+
+                        <group name="disease_details" string="Main Disease">
+                            <group>
+                            <field name='disease_id'/>
+                            </group>
+                            <group>
+                            <!-- <field name='disease_type' /> -->
+                            <!-- <field name='disease_state' attrs="{'invisible':[('disease_type','=','related')]}" string="Kind"/> -->
+                            <field name='disease_state'/>
+                            </group>  
+                        </group>
+                        
+                        <group name="treatment" colspan="2" col='1'>
+                            <label for="treatment" string="Treatment"/>
+                            <field name="treatment" nolabel="1"/>
+                        </group>
+                        <group name="template">
+		         			<group name="template_sub1">
+		         				<field name='medical_recipe_template_id' options="{'no_create_edit': True}"
+		         					domain="[('user_id','=',uid),('type','=','medical_recipe')]"/>
+		         			</group>
+		         			<group></group>
+		         		</group>
+                        <group name="medical_recipe" colspan="2" col='1'>
+                            <label for="medical_recipe" string="Medical Orders and Recipe"/>
+                            <field name="medical_recipe" nolabel="1"/>
+                        </group>
+            			</page>  
+            		</notebook>
+            	</sheet>
+            </form>
+            </field>
+        </record>
+        
+        <record id="clinica_plastic_surgery_tree" model="ir.ui.view">
+            <field name="name">clinica.plastic.surgery.tree</field>
+            <field name="model">clinica.plastic.surgery</field>
+            <field name="arch" type="xml">
+                <tree string="Presurgical Tree">
+                    <field name="number"/>
+            	    <!-- <field name='attention_code_id'/> -->
+       				<field name="date_attention"/>
+       				<field name="patient_id"/>
+       				<field name="document_type"/>
+       				<field name="numberid"/>
+                </tree>
+            </field>
+        </record>
+        
+        
+        <record id="clinica_plastic_surgery_filter" model="ir.ui.view">
+            <field name="name">clinica.plastic.surgery.search</field>
+            <field name="model">clinica.plastic.surgery</field>
+            <field name="arch" type="xml">
+                <search string="Search Plastic Surgery">
+                    <field name="number"  />
+                    <field name='attention_code_id'/>
+                    <field name="patient_id" />
+                    <group expand="0" string="Group By">
+                    	<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
+                    </group>
+                </search>
+            </field>
+       </record>
+        
+        <record id="action_clinica_plastic_surgery" model="ir.actions.act_window">
+            <field name="name">Plastic Surgery Sheet</field>
+            <field name="res_model">clinica.plastic.surgery</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="clinica_presurgical_record_tree"/>
+            <field name="search_view_id" ref="clinica_presurgical_record_filter"/>
+        </record> 
+        
+        <menuitem id="menu_clinica_plastic_surgery"
+            name="Plastic Surgery Sheet"
+            parent="menu_doctor_process"
+            action="clinica_digital_consultorio.action_clinica_plastic_surgery"
+            sequence="9"
+            groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.clinical_auditor"
+            />
+        
+ </odoo>
+ 

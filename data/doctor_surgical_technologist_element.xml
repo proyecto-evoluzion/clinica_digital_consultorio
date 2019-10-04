@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record model="doctor.surgical.technologist.element" id="data_gaze">
+          <field name="name">Gasas</field>
+          <field name="active" eval="True"/>
+        </record>
+        <record model="doctor.surgical.technologist.element" id="data_needle">
+          <field name="name">Agujas</field>
+          <field name="active" eval="True"/>
+        </record>
+        <record model="doctor.surgical.technologist.element" id="data_instrumental">
+          <field name="name">Instrumental</field>
+          <field name="active" eval="True"/>
+        </record>
+    </data>
+</odoo>

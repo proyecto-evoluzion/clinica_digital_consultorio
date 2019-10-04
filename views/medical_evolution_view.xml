@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="clinica_medical_evolution_form" model="ir.ui.view">
+         <field name="name">clinica.medical.evolution.form</field>
+         <field name="model">clinica.medical.evolution</field>
+         <field name="arch" type="xml">
+         <form string="Evolutions Sheet Form">
+         	<header>
+                <button name="action_view_clinica_record_history" string="View History" 
+                	type="object" class="oe_highlight"/>
+            </header>
+         	<sheet>
+         		<div class="oe_title">
+                    <h1>
+                        <field name="name" readonly="1"/>
+                    </h1>
+                </div>
+         		<group name="main_group">
+         			<group name="main_sub_group1" >
+         				<field name='procedure_date' required="1"/>
+         			</group>
+         			<group name="main_sub_group2" >
+		             
+		         	</group>
+		        </group>
+            <group name="patient">
+              <field name='patient_id' required="1"/>
+            </group>
+         	    <notebook>
+         	    	<page name="description" string="Description">
+         	    		<field name="evolution_note_ids" colspan="4" nolabel="1" >
+      					<tree editable="top">
+      						<field name="date_hour"/>
+      						<field name="note"/>
+      					</tree>
+      					</field>
+         	    	</page>
+         	    </notebook>
+         	</sheet>
+         </form>
+         </field>
+     </record>
+     
+     <record id="clinica_medical_evolution_tree" model="ir.ui.view">
+          <field name="name">clinica.medical.evolution.tree</field>
+          <field name="model">clinica.medical.evolution</field>
+          <field name="arch" type="xml">
+              <tree string="Evolutions Sheet Tree">
+                  <field name="name"/>
+     				<field name="procedure_date"/>
+     				<field name="patient_id"/>
+     				<field name="tdoc"/>
+     				<field name="numberid"/>
+              </tree>
+          </field>
+      </record>
+      
+	<record id="clinica_medical_evolution_filter" model="ir.ui.view">
+            <field name="name">clinica.medical.evolution.search</field>
+            <field name="model">clinica.medical.evolution</field>
+            <field name="arch" type="xml">
+                <search string="Search Evolutions">
+                    <field name="numberid" />
+                    <field name="patient_id" />
+                    <field name="surgeon_id" />
+                    <field name="anesthesiologist_id" />
+                    <group expand="0" string="Group By">
+                    	<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
+                    	<filter string="Surgeon" name="groupby_surgeon_id" domain="[]" context="{'group_by':'surgeon_id'}"/>
+                    	<filter string="Anesthesiologist" name="groupby_anesthesiologist_id" domain="[]" context="{'group_by':'anesthesiologist_id'}"/>
+                    </group>
+                </search>
+            </field>
+       </record>
+      
+      <record id="action_clinica_medical_evolution" model="ir.actions.act_window">
+          <field name="name">Evolutions Sheet</field>
+          <field name="res_model">clinica.medical.evolution</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="view_id" ref="clinica_medical_evolution_tree"/>
+          <field name="search_view_id" ref="clinica_medical_evolution_filter"/>
+      </record> 
+      
+      <menuitem id="menu_clinica_medical_evolution"
+          name="Med. Order and Evolution"
+          parent="menu_doctor_process"
+          action="clinica_digital_consultorio.action_clinica_medical_evolution"
+          sequence="10"/>
+
+</odoo>

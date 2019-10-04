@@ -1,0 +1,468 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="clinica_anhestesic_registry_form" model="ir.ui.view">
+         <field name="name">clinica.anhestesic.registry.form</field>
+         <field name="model">clinica.anhestesic.registry</field>
+         <field name="arch" type="xml">
+         <form string="Anhestesic Registry Form">
+         	<header>
+                <button name="action_view_clinica_record_history" string="View History" 
+                	type="object" class="oe_highlight"/>
+            </header>
+         	<sheet>
+         		<div class="oe_title">
+                    <h1>
+                        <field name="name" readonly="1"/>
+                    </h1>
+                </div>
+         		<group name="main_group">
+         			<group name="main_sub_group1" >
+         				<field name='intervention_date' required="1"/>
+         			</group>
+         			<group name="main_sub_group2" >
+                <!-- <field name='room_id'/> -->
+         			</group>
+         		</group>
+            <group name="patient">
+                <field name='patient_id' required="1"/>
+                <field name='gender' invisible="1"/>
+            </group>
+         	    <group name="professional_info_group">
+         	    	<group name="professional_info_sub1">
+         	    		<field name="product_id" />
+		                <field name="surgeon_id" domain="[('profession_type','=','plastic_surgeon')]"/>
+		                <field name="anesthesiologist_id" domain="[('profession_type','=','anesthesiologist')]"/>
+		                <field name="anesthesia_type"/>
+         	    	</group>
+         	    	<group name="professional_info_sub2">
+         	    		<field name="preoperative_note" />
+         	    	</group>
+         	    </group>
+         	    <group name="eventos_transoperatorios" string="Eventos Transoperatorios" colspan="4">
+                  <field name="anesthesia_start_time" widget="float_time"/>
+         	    		<field name="intubation_time" widget="float_time" />         	  
+         	    		<field name="start_time" widget="float_time" />
+         	    		<field name="end_time" widget="float_time" />
+                  <field name="extubation_time" widget="float_time" />
+         	    		<field name="anesthesia_end_time" widget="float_time" />
+         	    		<field name="recovery_transfer_time" widget="float_time" />
+         	    </group>
+         	    <notebook>
+         	    	<page name="background" string="Patient Background">
+	      				<group name="pathological_background" >
+	       					<group name="pathological_background_sub1">
+	       						<field name="diabetes"/>
+	       						<field name="hypertension"/>
+	       					</group>
+	       					<group name="pathological_background_sub2">
+	       						<field name="arthritis"/>
+	       						<field name="thyroid_disease"/>
+	       					</group>
+       					</group>
+	       				<group name="pathological" colspan="2" col='1'>
+	       					<label for="pathological" string="Pathological"/>
+	       					<field name="pathological" nolabel="1"/>
+	       				</group>
+	       				<group name="surgical" colspan="2" col='1'>
+	       					<label for="surgical" string="Surgical"/>
+	       					<field name="surgical" nolabel="1"/>
+	       				</group>
+	       				<group name="patient_backgorund_main" >
+	       					<group name="patient_backgorund_sub1" >
+	       						<field name="smoke" />
+	       						<label for="cigarate_daily" string="Cigarettes"/>
+	                            <div>
+	                                <div>
+	                                    <field name="cigarate_daily" nolabel="1" class="oe_inline" />
+	                                    <field name="smoke_uom" nolabel="1" class="oe_inline" style="padding-left:4px;"/>
+	                                </div>
+	                            </div>
+	       						<field name="is_alcoholic" />
+	       						<label for="alcohol_frequency" string="Frequency"/>
+	                            <div>
+	                                <div>
+	                                    <field name="alcohol_frequency"  nolabel="1" class="oe_inline"/>
+	                                    <field name="alcohol_frequency_uom" nolabel="1" class="oe_inline" style="padding-left:4px;"/>
+	                                </div>
+	                            </div>
+	       						<field name="marijuana" />
+	       						<field name="cocaine" />
+	       						<field name="ecstasy" />
+	       						
+	       					</group>
+	       					<group name="patient_backgorund_sub2" >
+	       						<field name="body_background_others" string="Others"/>
+	       						<field name="pharmacological" />
+	       						<field name="allergic" />
+	       					</group>
+	       				</group>
+	       				<group name="patient_female_backgorund_main" attrs="{'invisible':[('gender','=','male')]}">
+	       					<group name="patient_female_backgorund_sub1" >
+	       						<field name="pregnancy_number" />
+	       						<field name="child_number" />
+	       						<field name="abortion_number" />
+	       					</group>
+	       					<group name="patient_female_backgorund_sub2" >
+	       						<field name="last_birth_date" />
+	       						<field name="last_menstruation_date" />
+	       						<field name="contrtaceptive_methods" />
+	       					</group>
+	       				</group>
+	      			</page>
+         	    	<page name="paraclinical_exam" string="Paraclinical Exam">
+         	    		<group name="paraclinical_exam_date" >
+           					<group>
+           						<field name="paraclinical_exam_date" string="Date of Exam"/>
+           					</group>
+           					<group>
+           					</group>
+           				</group>
+           				<group name="paraclinical_blood_count" string="Blood Count">
+           					<group name="paraclinical_blood_count_sub1">
+           						<label for="paraclinical_hb" string="HB"/>
+	           					<div>
+	           						<field name="paraclinical_hb" nolabel="1" class="oe_inline"/>
+	          						 g/dl
+	           					</div>
+	           					<label for="paraclinical_hto" string="Hto (Hematocrit)"/>
+	           					<div>
+	           						<field name="paraclinical_hto" nolabel="1" class="oe_inline"/>
+	          						 Vol %
+	           					</div>
+	           					<label for="paraclinical_leukocytes" string="Leukocytes"/>
+	           					<div>
+	           						<field name="paraclinical_leukocytes" nolabel="1" class="oe_inline"/>
+	          						 x 10^3/ul
+	           					</div>
+           					</group>
+           					<group name="paraclinical_blood_count_sub2">
+           						<field name="paraclinical_differential" />
+           						<label for="paraclinical_vsg" string="VSG"/>
+	           					<div>
+	           						<field name="paraclinical_vsg" nolabel="1" class="oe_inline"/>
+	          						 mm/H
+	          				    </div> 
+           					</group>
+           				</group>
+           				<group name="pruebas_coogulacian" string="Pruebas Coogulacian">
+           					<group name="pruebas_coogulacian_sub1">
+           						<label for="paraclinical_pt" string="PT"/>
+	           					<div>
+	           						<field name="paraclinical_pt" nolabel="1" class="oe_inline"/>
+	          						 S (seconds)
+	           					</div>
+	           					<label for="paraclinical_ptt" string="PTT"/>
+	           					<div>
+	           						<field name="paraclinical_ptt" nolabel="1" class="oe_inline"/>
+	          						 S (seconds)
+	           					</div>
+           					</group>
+           					<group name="pruebas_coogulacian_sub2">
+           						<label for="paraclinical_platelets" string="Platelets"/>
+	           					<div>
+	           						<field name="paraclinical_platelets" nolabel="1" class="oe_inline"/>
+	          						 x 10^3/ul
+	           					</div>
+	           					<label for="paraclinical_tc" string="TC"/>
+	           					<div>
+	           						<field name="paraclinical_tc" nolabel="1" class="oe_inline"/>
+	          						 m (Minutes)
+	           					</div>
+           					</group>
+           				</group>
+           				<group name="quimico_sanguinea" string="Quimico Sanguinea">
+           					<group name="quimico_sanguinea_sub1">
+           						<label for="paraclinical_glycemia" string="Glycemia"/>
+	           					<div>
+	           						<field name="paraclinical_glycemia" nolabel="1" class="oe_inline"/>
+	          						 mg/dl
+	           					</div>
+	           					<label for="paraclinical_creatinine" string="Creatinine"/>
+	           					<div>
+	           						<field name="paraclinical_creatinine" nolabel="1" class="oe_inline"/>
+	          						 mg/dl
+	           					</div>
+           					</group>
+           					<group name="quimico_sanguinea_sub2">
+           						<label for="paraclinical_albumin" string="Albumin"/>
+	           					<div>
+	           						<field name="paraclinical_albumin" nolabel="1" class="oe_inline"/>
+	          						 g/dl
+	           					</div>
+           						<field name="paraclinical_glob" />
+           					</group>
+           				</group>
+           				<group name="ecg" colspan="2" col='1'>
+           					<label for="paraclinical_ecg" string="Electrocardiogram"/>
+           					<field name="paraclinical_ecg" nolabel="1"/>
+           				</group>
+           				<group name="paraclinical_rx_chest" colspan="2" col='1'>
+           					<label for="paraclinical_rx_chest" string="Rx. Chest"/>
+           					<field name="paraclinical_rx_chest" nolabel="1"/>
+           				</group>
+           				<group name="paraclinical_others" colspan="2" col='1'>
+           					<label for="paraclinical_others" string="Others"/>
+           					<field name="paraclinical_others" nolabel="1"/>
+           				</group>
+           				<group name="paraclinic_details">
+           					<group>
+         						<field name="paraclinical_asa" />
+         						<field name="mallampati_scale" />
+         					</group>
+          					<group>
+         						<field name="paraclinical_goldman" />
+         						<field name="dental_prostheses" />
+         					</group>
+           				</group>
+           				<group name="disease_details" string="Main Disease">
+                            <group>
+                            	<field name='disease_id' required="True"/>
+                            </group>
+                            <group>
+                            	<field name='disease_state'/>
+                            </group>  
+                        </group>
+                        <group name="other_diseases" string="Other Diseases">
+                            <group>
+                            	<field name='disease2_id'/>
+                            </group>
+                            <group>
+                            	<field name='disease_state2'/>
+                            </group>
+                            <group>
+                            	<field name='disease3_id'/>
+                            </group>
+                            <group>
+                            	<field name='disease_state3'/>
+                            </group>  
+                        </group>
+           				<group name="plan_analysis" colspan="2" col='1'>
+                            <label for="plan_analysis" string="Plan, Analysis and Conduct"/>
+                            <field name="plan_analysis" nolabel="1"/>
+                        </group>
+                        <group name="template">
+		         			<group name="template_sub1">
+		         				<field name='medical_recipe_template_id' options="{'no_create_edit': True}"
+		         					domain="[('user_id','=',uid),('type','=','medical_recipe')]"/>
+		         			</group>
+		         			<group></group>
+		         		</group>
+                        <group name="medical_recipe" colspan="2" col='1'>
+                            <label for="medical_recipe" string="Medical Orders and Recipe"/>
+                            <field name="medical_recipe" nolabel="1"/>
+                        </group>
+         	    	</page>
+         	    	<page name="monitor" string="Monitor">
+         	    		<field name="monitor_ids" colspan="4" nolabel="1" >
+      					<tree editable="top">
+      						<field name="date_hour"/>
+      						<field name="monitor"/>
+      					</tree>
+      					</field>
+                <group>
+                  <group name="checklist_sub1">
+                    <field name="heart_noises"/>
+                    <field name="ind_blood_pressure"/>
+                    <field name="dir_blood_pressure"/>
+                    <field name="ekg"/>
+                    <field name="oxymetry"/>
+                    <field name="capnometry"/>
+                    <field name="capnography"/>
+                  </group>
+                  <group name="checklist_sub2">
+                    <field name="respirometer" />
+                    <field name="spirometry" />
+                    <field name="cent_venous_pressure" />
+                    <field name="intermitt_venous_pressure" />
+                    <field name="diuresis_bool" />
+                    <field name="temperature" />
+                    <field name="other_monitor" />
+                  </group>
+                </group>
+
+                <group string="Protección Ocular">
+                   <group>
+                    <field name="occlusion_protection" />
+                  </group>
+                  <group>
+                    <field name="gel_protection" />
+                  </group>
+                </group>
+
+                <group string="Máscara Laríngea">
+                  <group>
+                  <field name="number_mask" />
+                  <field name="air_mask" />
+                  </group>
+                  <group>
+                  <field name="difficulty_mask" />
+                </group>
+                </group>
+
+                 <group >
+                  <group>
+                  <field name="facial_mask" />
+                  <field name="venturi" />
+                  <field name="nasal_cannula" />
+                </group>
+                <group>
+                  <field name="other_facial_mask" />
+                  <field name="percentage" />
+                  
+                </group>
+                </group>
+
+                <group name="induction_main" string="Intubation">
+                  <group name="intubation_sub1">
+                    <field name="tube_type" />
+                    <field name="tube_number" />
+                    <separator/>
+                    <field name="orotracheal"/>
+                    <field name="nasotracheal" />
+                    <field name="tracheostomy"/>
+                  </group>
+                  <group name="intubation_sub2">
+                    <field name="distance" />
+                    <field name="pneumotapon" />
+                    <separator/>
+                    <field name="attemps" />
+                    <field name="used_laryngoscope"/>
+                    <field name="intubation"/>
+                  </group>
+                </group>
+      					<group name="induction_main" string="Inducción">
+      						<group name="induction_sub1">
+      							<field name="intravenous"/>
+      							<field name="inhalation" />
+      							<field name="sellick"/>
+      						</group>
+      						<group name="induction_sub2">
+      							<field name="fast_sequence" />
+      							<field name="mixed"/>
+      						</group>
+      					</group>
+      					<group name="medicines_main" string="Medicines">
+      						<group name="medicines_sub1">
+      							<field name="pre_induction"/>
+      							<field name="induction"/>
+      							<field name="maintenance"/>
+      						</group>
+      						<group name="medicines_sub2">
+      							<field name="reversion"/>
+      							<field name="analgesics"/>
+      							<field name="antiemetics"/>
+      						</group>
+      					</group>
+         	    	</page>
+         	    	<page name="liquidos" string="Detalles Liquidos">
+         	    		<group name="liquidos_group" >
+           					<group name="liquidos_administrados" string="Liquidos Administrados">
+           						<label for="crystalloids" string="Crystalloids"/>
+	           					<div>
+	           						<field name="crystalloids" nolabel="1" class="oe_inline"/>
+	          						 ml
+	           					</div>
+	           					<label for="blood" string="Blood"/>
+	           					<div>
+	           						<field name="blood" nolabel="1" class="oe_inline"/>
+	          						 ml
+	           					</div>
+	           					<label for="colloids" string="Colloids"/>
+	           					<div>
+	           						<field name="colloids" nolabel="1" class="oe_inline"/>
+	          						 ml
+	           					</div>
+	           					<label for="infiltrated" string="Infiltrated"/>
+	           					<div>
+	           						<field name="infiltrated" nolabel="1" class="oe_inline"/>
+	          						 ml
+	           					</div>
+         					</group>
+          					<group name="liquidos_eliminados" string="Liquidos Eliminados">
+	           					<label for="bleeding" string="Bleeding"/>
+	           					<div>
+	           						<field name="bleeding" nolabel="1" class="oe_inline"/>
+	          						 ml
+	           					</div>
+	           					<label for="diuresis" string="Diuresis"/>
+	           					<div>
+	           						<field name="diuresis" nolabel="1" class="oe_inline"/>
+	          						 ml
+	           					</div>
+	           					<label for="liposuction" string="Liposuction"/>
+	           					<div>
+	           						<field name="liposuction" nolabel="1" class="oe_inline"/>
+	          						 ml
+	          				    </div>
+         					</group>
+           				</group>
+           				<group name="final_state" string="Final State">
+           					<group name="final_state_sub1">
+           						<field name="motor_lock"/>
+           						<field name="awake"/>
+           					</group>
+           					<group name="final_state_sub2">
+           						<field name="reagent"/>
+           						<field name="recovery"/>
+           					</group>
+           				</group>
+         	    	</page>
+         	    </notebook>
+         	</sheet>
+         </form>
+         </field>
+     </record>
+     
+     <record id="clinica_anhestesic_registry_tree" model="ir.ui.view">
+          <field name="name">clinica.anhestesic.registry.tree</field>
+          <field name="model">clinica.anhestesic.registry</field>
+          <field name="arch" type="xml">
+              <tree string="Anhestesic Registry Tree">
+                  <field name="name"/>
+     				<field name="intervention_date"/>
+     				<field name="patient_id"/>
+     				<field name="document_type"/>
+     				<field name="numberid"/>
+              </tree>
+          </field>
+      </record>
+      
+	<record id="clinica_anhestesic_registry_filter" model="ir.ui.view">
+            <field name="name">clinica.anhestesic.registry.search</field>
+            <field name="model">clinica.anhestesic.registry</field>
+            <field name="arch" type="xml">
+                <search string="Search Anhestesic Registry">
+                    <field name="numberid" />
+                    <field name="patient_id" />
+                    <field name="surgeon_id" />
+                    <field name="anesthesiologist_id" />
+                    <group expand="0" string="Group By">
+                    	<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
+                    	<filter string="Surgeon" name="groupby_surgeon_id" domain="[]" context="{'group_by':'surgeon_id'}"/>
+                    	<filter string="Anesthesiologist" name="groupby_anesthesiologist_id" domain="[]" context="{'group_by':'anesthesiologist_id'}"/>
+                    </group>
+                </search>
+            </field>
+       </record>
+      
+      <record id="action_clinica_anhestesic_registry" model="ir.actions.act_window">
+          <field name="name">Anhestesic Registry</field>
+          <field name="res_model">clinica.anhestesic.registry</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="view_id" ref="clinica_anhestesic_registry_tree"/>
+          <field name="search_view_id" ref="clinica_anhestesic_registry_filter"/>
+      </record> 
+      
+      <menuitem id="menu_clinica_anhestesic_registry"
+          name="Anhestesic Registry"
+          parent="menu_doctor_process"
+          action="clinica_digital_consultorio.action_clinica_anhestesic_registry"
+          groups="base.group_system,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management"
+          sequence="7"/>
+
+</odoo>
+
+
+

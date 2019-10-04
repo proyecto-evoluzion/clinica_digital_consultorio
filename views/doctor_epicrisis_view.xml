@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="clinica_doctor_epicrisis_form" model="ir.ui.view">
+         <field name="name">doctor.epicrisis.form</field>
+         <field name="model">doctor.epicrisis</field>
+         <field name="arch" type="xml">
+         <form string="Epicrisis Form">
+         	<header>
+                <button name="action_view_clinica_record_history" string="View History" 
+                	type="object" class="oe_highlight"/>
+            </header>
+         	<sheet>
+         		<div class="oe_title">
+                    <h1>
+                        <field name="name" readonly="1"/>
+                    </h1>
+                </div>
+         		<group name="main_group">
+         			<group name="main_sub_group1" >
+         				<field name='patient_in_date' required="1"/>
+         			</group>
+         			<group name="main_sub_group2" >
+                    <field name='patient_out_date' />
+         			</group>
+         		</group>
+            <group name="patient_group">
+            <group name="patient">
+              <field name='patient_id' required="1"/>
+            </group>
+            <group>
+              
+                  <label for="age" string="Age"/>
+                  <div>
+                    <field name="age" required="1" nolabel="1" class="oe_inline" readonly="1"/>
+                    <field name="age_meassure_unit" nolabel="1" class="oe_inline" />
+                  </div>
+                  
+            </group>
+            <group>
+
+            </group>
+            </group>
+         	    <group name="professional_info_group">
+         	    	<group name="professional_info_sub1">
+         	    		<field name="disease_id" />
+		                <field name="procedure_id"/>
+         	    	</group>
+         	    	<group name="professional_info_sub2">
+                  <field name="end_time" widget="float_time"/>
+                  <field name="treatment" />
+         	    		<!-- <field name="sign_stamp"/>
+         	    		<field name="user_id" /> -->
+         	    	</group>
+         	    </group>
+         	    
+         		<group name="template">
+         			<group name="template_sub1">
+         				<field name='epicrisis_template_id' options="{'no_create_edit': True}"
+         					domain="[('user_id','=',uid),('type','=','epicrisis')]"/>
+         			</group>
+         			<group></group>
+         		</group>
+         		<group name="epicrisis_note">
+         			<field name='epicrisis_note' />
+         		</group>
+         	</sheet>
+         </form>
+         </field>
+     </record>
+     
+     <record id="clinica_doctor_epicrisis_tree" model="ir.ui.view">
+          <field name="name">doctor.epicrisis.tree</field>
+          <field name="model">doctor.epicrisis</field>
+          <field name="arch" type="xml">
+              <tree string="Epicrisis Tree">
+                    <field name="name"/>
+	   				<field name="patient_in_date"/>
+	   				<field name="patient_out_date"/>
+	   				<field name="patient_id"/>
+	   				<field name="tdoc"/>
+	   				<field name="numberid"/>
+              </tree>
+          </field>
+      </record>
+      
+	<record id="clinica_doctor_epicrisis_filter" model="ir.ui.view">
+            <field name="name">doctor.epicrisis.search</field>
+            <field name="model">doctor.epicrisis</field>
+            <field name="arch" type="xml">
+                <search string="Search Epicrisis">
+                    <field name="name" />
+                    <field name="patient_id" />
+                    <group expand="0" string="Group By">
+                    	<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
+                    </group>
+                </search>
+            </field>
+       </record>
+      
+      <record id="action_clinica_doctor_epicrisis" model="ir.actions.act_window">
+          <field name="name">Epicrisis</field>
+          <field name="res_model">doctor.epicrisis</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="view_id" ref="clinica_doctor_epicrisis_tree"/>
+          <field name="search_view_id" ref="clinica_doctor_epicrisis_filter"/>
+      </record> 
+      
+      <menuitem id="menu_clinica_doctor_epicrisis"
+          name="Epicrisis"
+          parent="menu_doctor_process"
+          action="clinica_digital_consultorio.action_clinica_doctor_epicrisis"
+          groups="base.group_system,clinica_digital_consultorio.surgeon"
+          sequence="11"/>
+
+</odoo>

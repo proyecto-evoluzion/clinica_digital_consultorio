@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+<!--
+        Herencia al reporte generico - Modalidad Standard. 
+-->
+
+        <template id="inherit_l10n_report_external_layout_standar" name="inherit_l10n_report_external_layout_standar" inherit_id="l10n_co_tax_extension.external_layout_standard_inherit">
+            <!--header Mod.-->
+            <div name="company_address" position="replace">
+                <!-- <attribute name="invisble">1</attribute> -->
+            </div>
+        </template>
+
+        <template id="inherit_report_external_layout_standar" name="inherit_report_external_layout_standar" inherit_id="web.external_layout_standard">
+        	<!--header Mod.-->
+        	<div class="col-xs-3 mb4" position="replace">
+                <div class="col-xs-12">
+                    <div class="col-xs-6" style="margin-top:15px;">
+                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="max-height: 45px;"/>
+                    </div>
+                    <div class="col-xs-6" style="margin-top:25px;">
+                        <!-- <span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/> -->
+                        <span style="padding-right:2px;" t-field="company.name"/>-
+                        <span t-if="company.street"><span style="padding-left:1px;" t-field="company.street"/></span>
+                        <span t-if="company.state_id"><span style="padding-left:2px;" t-field="company.state_id.name"/></span>
+                        <span t-if="company.zip"><span style="padding-left:2px;" t-field="company.zip"/></span>
+                        <span t-if="company.country_id"><span style="padding-left:2px;" t-field="company.country_id.name"/></span>
+                        <span t-if="company.partner_id.formatedNit" style="border-bottom: 1px solid black; display:inline-block;">NIT / DI: <span t-field="company.partner_id.formatedNit"/></span>
+                    </div>
+                </div>
+        	</div>
+        </template>
+
+        <!--
+        	Herencia al reporte generico - Modalidad Background.
+		-->
+
+        <!-- <template id="inherit_report_external_layout_bk" name="inherit_report_external_layout_bk" inherit_id="web.external_layout_background">
+        	
+        </template> -->
+
+        <!--
+        	Herencia al reporte generico - Modalidad Boxed.
+		-->
+
+        <!-- <template id="inherit_report_external_layout_boxed" name="inherit_report_external_layout_boxed" inherit_id="web.external_layout_boxed"> 
+        	
+        </template>-->
+
+        <!--
+        	Herencia al reporte generico - Modalidad Clean.
+		-->
+
+        <!-- <template id="inherit_report_external_layout_clean" name="inherit_report_external_layout_clean" inherit_id="web.external_layout_clean">
+        	
+        </template> -->
+    </data>
+</odoo>

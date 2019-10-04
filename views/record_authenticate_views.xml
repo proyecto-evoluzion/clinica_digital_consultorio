@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="record_authenticate_view_tree" model="ir.ui.view">
+        <field name="name">record.authenticate.view.tree</field>
+        <field name="model">record.authenticate</field>
+        <field name="arch" type="xml">
+            <tree string="Authenticated Models" editable="top">
+                <field name="model_id"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="record_authenticate_action" model="ir.actions.act_window">
+        <field name="name">Authenticated Forms</field>
+        <field name="res_model">record.authenticate</field>
+        <field name="view_type">form</field>
+        <field name='view_mode'>tree</field>
+        <field name="view_id" ref="record_authenticate_view_tree"/>
+    </record>
+
+    <menuitem
+        id="record_authenticate_menu"
+        name="Clinica Authenticated Forms"
+        action="record_authenticate_action"
+        parent="menu_doctor_config_details"
+        groups="base.group_system"
+        sequence="11"/>
+    
+</odoo>

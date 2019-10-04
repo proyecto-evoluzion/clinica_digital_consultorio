@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="clinica_record_list_visualizer_form" model="ir.ui.view">
+         <field name="name">clinica.record.list.visualizer.form</field>
+         <field name="model">clinica.record.list.visualizer</field>
+         <field name="arch" type="xml">
+         <form string="Clinica Record Visualizer Form">
+         	<header>
+         		<button name="action_print_clinica_record_history" string="Print Details" class="btn-primary" type="object"/>
+         	</header>
+         	<sheet>
+         		<group name="main_group">
+         			<group name="main_sub_group1" >
+         				<field name='patient_id' required="1"/>
+         				<field name='doctor_id' domain="[('profession_type','=','plastic_surgeon')]"/>
+         				<field name='start_period'/>
+         				<field name='end_period'/>
+         			</group>
+         			<group name="main_sub_group2" >
+         				<field name='view_model' force_save="1" invisible="1"/>
+         			</group>
+         		</group>
+         		
+   				<separator string="Nurse Sheets" attrs="{'invisible':[('view_model','not in',['nurse_sheet','all'])]}"/>
+   				<field name="nurse_sheet_ids" nolabel="1" force_save="1" readonly="1"  
+   					attrs="{'invisible':[('view_model','not in',['nurse_sheet','all'])]}">
+   					<tree string="Nurse Sheets">
+   						<field name="name"/>
+   						<field name="room_id" />
+   						<field name="patient_id"/>
+   						<field name="document_type"/>
+   						<field name="numberid"/>
+   						<field name="procedure_date"/>
+   					</tree>
+   				</field>
+   				<separator string="Quirurgic Sheets"  attrs="{'invisible':[('view_model','not in',['quirurgic_sheet','all'])]}"/>
+   				<field name="quirurgic_sheet_ids" nolabel="1" force_save="1" readonly="1"
+   					attrs="{'invisible':[('view_model','not in',['quirurgic_sheet','all'])]}">
+   					<tree string="Quirurgic Sheets">
+   						<field name="name"/>
+   						<field name="patient_id" />
+   						<field name="invoice_id"/>
+   						<field name="procedure_date"/>
+   						<field name="disease_id"/>
+   					</tree>
+   				</field>
+   				<separator string="Surgery Room Procedures" attrs="{'invisible':[('view_model','not in',['surgery_room','all'])]}"/>
+   				<field name="surgery_room_ids" nolabel="1" force_save="1" readonly="1"
+   					 attrs="{'invisible':[('view_model','not in',['surgery_room','all'])]}">
+   					<tree string="Surgery Room Procedures">
+   						<field name="name"/>
+   						<field name="surgery_room_id"/>
+              			<field name="schedule_id"/>
+      	    			<field name='patient_id'/>
+		 				<field name="surgeon_id"/>
+		 				<field name="anesthesiologist_id"/>
+		 				<field name="procedure_date"/>
+		 				<field name="procedure_end_date"/>
+   					</tree>
+   				</field>
+   				<separator string="Waiting Rooms"  attrs="{'invisible':[('view_model','not in',['waiting_room','all'])]}"/>
+   				<field name="waiting_room_ids" nolabel="1" force_save="1" readonly="1"
+   					 attrs="{'invisible':[('view_model','not in',['waiting_room','all'])]}">
+ 					<tree string="Waiting Room">
+ 						<field name="name"/>
+ 						<field name="schedule_id"/>
+		     	    	<field name='patient_id'/>
+						<field name="surgeon_id"/>
+						<field name="anesthesiologist_id"/>
+						<field name="procedure_date"/>
+						<field name="procedure_end_date"/>
+ 					</tree>
+   				</field>
+   				<separator string="Pre-surgical Records"  attrs="{'invisible':[('view_model','not in',['presurgical','all'])]}"/>
+   				<field name="presurgical_record_ids" nolabel="1" force_save="1" readonly="1"
+   					attrs="{'invisible':[('view_model','not in',['presurgical','all'])]}">
+   					<tree string="Pre-surgical Records">
+   						<field name="number"/>
+		         	    <field name='attention_code_id'/>
+	    				<field name="date_attention"/>
+	    				<field name="patient_id"/>
+	    				<field name="document_type"/>
+	    				<field name="numberid"/>
+   					</tree>
+   				</field>
+   				<separator string="Anhestesic Registry" attrs="{'invisible':[('view_model','not in',['anhestesic_registry','all'])]}"/>
+   				<field name="anhestesic_registry_ids" nolabel="1" force_save="1" readonly="1"
+   					attrs="{'invisible':[('view_model','not in',['anhestesic_registry','all'])]}">
+   					<tree string="Anhestesic Registry">
+   						<field name="name"/>
+		  				<field name="intervention_date"/>
+		  				<field name="patient_id"/>
+		  				<field name="document_type"/>
+		  				<field name="numberid"/>
+   					</tree>
+   				</field>
+   				<separator string="Plastic Surgery Sheet" attrs="{'invisible':[('view_model','not in',['plastic_surgery','all'])]}"/>
+   				<field name="plastic_surgery_ids" nolabel="1" force_save="1" readonly="1"
+   					attrs="{'invisible':[('view_model','not in',['plastic_surgery','all'])]}">
+   					<tree string="Plastic Surgery Sheet">
+   						<field name="number"/>
+		         	    <field name='attention_code_id'/>
+	    				<field name="date_attention"/>
+	    				<field name="patient_id"/>
+	    				<field name="document_type"/>
+	    				<field name="numberid"/>
+   					</tree>
+   				</field>
+   				<separator string="Medical Orders and Evolution" attrs="{'invisible':[('view_model','not in',['medical_evolution','all'])]}"/>
+   				<field name="medical_evolution_ids" nolabel="1" force_save="1" readonly="1"
+   					attrs="{'invisible':[('view_model','not in',['medical_evolution','all'])]}">
+   					<tree string="Medical Orders and Evolution">
+   						<field name="name"/>
+		  				<field name="procedure_date"/>
+		  				<field name="patient_id"/>
+		  				<field name="tdoc"/>
+		  				<field name="numberid"/>
+   					</tree>
+   				</field>
+   				<separator string="Epicrisis" attrs="{'invisible':[('view_model','not in',['epicrisis','all'])]}"/>
+   				<field name="epicrisis_ids" nolabel="1" force_save="1" readonly="1" 
+   					attrs="{'invisible':[('view_model','not in',['epicrisis','all'])]}">
+   					<tree string="Epicrisis">
+   						<field name="name"/>
+		 				<field name="patient_in_date"/>
+		 				<field name="patient_out_date"/>
+		 				<field name="patient_id"/>
+		 				<field name="tdoc"/>
+		 				<field name="numberid"/>
+   					</tree>
+   				</field>
+         	</sheet>
+         </form>
+         </field>
+     </record>
+     
+      <record id="action_clinica_record_list_visualizer" model="ir.actions.act_window">
+          <field name="name">Clinica Record Visualizer</field>
+          <field name="res_model">clinica.record.list.visualizer</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">form</field>
+          <field name="view_id" ref="clinica_record_list_visualizer_form"/>
+      </record> 
+      
+      <menuitem id="menu_clinica_record_list_visualizer"
+          name="Clinica Record Visualizer"
+          parent="menu_doctor_process"
+          action="clinica_digital_consultorio.action_clinica_record_list_visualizer"
+	        groups="base.group_system,clinica_digital_consultorio.programmer_assistant"
+          sequence="20"/>
+
+</odoo>

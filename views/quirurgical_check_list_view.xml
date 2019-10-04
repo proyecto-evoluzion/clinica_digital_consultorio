@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<!-- quirurgical_check_list form -->
+	<record id="clinica_quirurgical_check_list_form" model="ir.ui.view">
+         <field name="name">clinica.quirurgical.check.list.form</field>
+         <field name="model">clinica.quirurgical.check.list</field>
+         <field name="arch" type="xml">
+         <form string="Quirurgical Check List Form">
+         	<header>
+<!--                 <button name="action_view_clinica_record_history" string="View History"  -->
+<!--                 	type="object" class="oe_highlight"/> -->
+            </header>
+         	<sheet>
+         		<group name='main_group'>
+	            	<group name='sub_group1'>
+		                <field name="patient_id" required="1"/>
+	            	</group>
+	            	<group name='sub_group2'>
+		                <field name="procedure_datetime" required="1" />
+	            	</group>
+	            </group>
+            
+	            <group name='patient_info'>
+	            	<group name='patient_info_sub1'>
+	            		<field name="document_type" />
+	            		<field name="numberid"  attrs="{'invisible':[('document_type','in',['cc','ti'])]}"/>
+		                <field name="numberid_integer" string="Number ID"  attrs="{'invisible':[('document_type','not in',['cc','ti'])]}" />
+	            		<field name="gender" invisible="1" force_save="1"/>
+	            		<field name="birth_date" />
+		                <label for="age" string="Age"/>
+	       				<div>
+	       					<div>
+	       						<field name="age" required="1" nolabel="1" class="oe_inline" readonly="1"/>
+	      						<field name="age_meassure_unit" nolabel="1" class="oe_inline" />
+	       					</div>
+	       				</div>
+	            	</group>
+	            	<group name='patient_info_sub2'>
+		                  <field name='lastname' />
+		                  <field name='surname' />
+		                  <field name='firstname'/>
+		                  <field name='middlename'/>     
+	            	</group>
+	            </group>
+	            <group name="health_professionals">
+         			<group name="health_professionals_sub1" >
+         				<field name="procedure_id"/>
+         				<field name='surgeon_id' domain="[('profession_type','=','plastic_surgeon')]"/>
+         				<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]"/>
+         				<field name='anesthesia_type' />
+         			</group>
+         			<group name="health_professionals_sub2" >
+         				<field name='technologist_id' domain="[('profession_type','=','technologists')]"/>
+         				<field name='nurse_id' domain="[('profession_type','=','nurse')]"/>
+         				<field name="recovery" />
+         			</group>
+         		</group>
+         		<notebook>
+	         		<page name="pre_operatory" string="PRE-OPERATORY">
+	         			<group colspan="4">
+	         				<label for="confirm_patient_name" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="confirm_patient_name" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="confirm_bracelet_data" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="confirm_bracelet_data" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="confirm_procedure" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="confirm_procedure" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="surgical_concent_filled" style="width:550px !important;" options="{'horizontal': true}"/>
+	         				<div>
+	         					<field name="surgical_concent_filled" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="pre_anesthetic_assessment_complete" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="pre_anesthetic_assessment_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="removed_dental_aceesories" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="removed_dental_aceesories" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="pre_surgical_lab_exams" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="pre_surgical_lab_exams" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="patient_belongins_locked" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="patient_belongins_locked" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="fasting_time_greater" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="fasting_time_greater" nolabel="1" class="oe_inline" widget="radio"  options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="flu_symptoms_enquired" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="flu_symptoms_enquired" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="allergic_enquired" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="allergic_enquired" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         			</group>
+	         			<group name="allergic_text" colspan="4" col='2' attrs="{'invisible':[('allergic_enquired','!=','yes')]}">
+	       					<field name="allergic_text" attrs="{'invisible':[('allergic_enquired','!=','yes')]}"/>
+	       				</group>
+	       				<group colspan="4">
+	         				<label for="enquired_proc_medication" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="enquired_proc_medication" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="investigated_drug_consumption" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="investigated_drug_consumption" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="antiembolicas_stockings" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="antiembolicas_stockings" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="operational_site_marking" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="operational_site_marking" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="special_preparation" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="special_preparation" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	       				</group>
+	         			<group name="special_preparation" colspan="4" col="2" attrs="{'invisible':[('special_preparation','!=','yes')]}">
+	       					<field name="special_preparations_text" />
+	       				</group>
+	         		</page>
+	         		<page name="intra-operatory" string="INTRA-OPERATORY">
+	         			<group colspan="4">
+	         				<label for="recording_vital_signs" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="recording_vital_signs" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="antibiotic_prophylaxis" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="antibiotic_prophylaxis" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="full_staff_in_room" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="full_staff_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="monitoring_induction_complete" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="monitoring_induction_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="monitor_indu_anesthesiologist_id" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="monitor_indu_anesthesiologist_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','anesthesiologist')]"/>
+	         				</div>
+	         				<label for="is_scheduled" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="is_scheduled" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="scheduled_surgeon_id" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="scheduled_surgeon_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','plastic_surgeon')]"/>
+	         				</div>
+	         				<label for="scheduled_patient_id" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="scheduled_patient_id" nolabel="1" class="oe_inline"/>
+	         				</div>
+	         				<label for="equipments_in_room" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="equipments_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="equipments_room_surgeon_id" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="equipments_room_surgeon_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','plastic_surgeon')]"/>
+	         				</div>
+	         				<label for="materials_in_room" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="materials_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="equipments_in_order" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="equipments_in_order" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="venous_pressure_working" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="venous_pressure_working" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="supplies_delivered" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="supplies_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="pay" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="pay" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="proc_bill_pay" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="proc_bill_pay" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="scheduled_nurse_id" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="scheduled_nurse_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','nurse')]"/>
+	         				</div>
+	         			</group>
+	         		</page>
+	         		<page name="post_operatory" string="POST OPERATORY">
+	         			<group colspan="4">
+	         				<label for="doctor_done_additionaly" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="doctor_done_additionaly" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="sample_delivered" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="sample_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         			</group>
+	         			<group name="sample_delivered_text" colspan="4" col="2" attrs="{'invisible':[('sample_delivered','!=','yes')]}">
+	       					<field name="sample_delivered_text" />
+	       				</group>
+	       				<group colspan="4">
+	         				<label for="sample_delivered_pay" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="sample_delivered_pay" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="delivered_recovery_exam" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="delivered_recovery_exam" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="reported_disfunction_equip" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="reported_disfunction_equip" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="blood_returned" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="blood_returned" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="add_items_delivered" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="add_items_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         			</group>
+	         			<group name="add_items_delivered_text" colspan="4" col="2" attrs="{'invisible':[('add_items_delivered','!=','yes')]}">
+	       					<field name="add_items_delivered_text" />
+	       				</group>
+	       				<group colspan="4">
+	         				<label for="pay_add_items_delivered" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="pay_add_items_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="history_complete" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="history_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="delivered_nurse_id" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="delivered_nurse_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','nurse')]"/>
+	         				</div>
+	         				<label for="received_nurse_id" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="received_nurse_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','nurse')]"/>
+	         				</div>
+	         				<label for="deliver_receive_time" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="deliver_receive_time" nolabel="1" class="oe_inline"/>
+	         				</div>
+	         			</group>
+	         		</page>
+	         		<page name="recovery" string="RECOVERY">
+	         			<group colspan="4">
+	         				<label for="history_received" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="history_received" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="equipment_working" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="equipment_working" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="informed_family" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="informed_family" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="patient_out_with" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="patient_out_with" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         				<label for="add_supplies" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="add_supplies" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
+	         			</group>
+	         			<group name="add_supplies_text" colspan="4" col="2" attrs="{'invisible':[('add_supplies','!=','yes')]}">
+	       					<field name="add_supplies_text" />
+	       				</group>
+	         		</page>
+	         	</notebook>
+	         	<group string="Observaciones">
+	         		<field name="observations" nolabel="1"/>
+	         	</group>
+         	</sheet>
+         </form>
+         </field>
+    </record>
+    
+    <record id="clinica_quirurgical_check_list_tree" model="ir.ui.view">
+       <field name="name">clinica.quirurgical.check.list.tree</field>
+       <field name="model">clinica.quirurgical.check.list</field>
+       <field name="arch" type="xml">
+       <tree string="Quirurgical Check List Tree">
+       		<field name="name"/>
+            <field name="patient_id"/>
+			<field name="procedure_datetime"/>
+       </tree>
+       </field>
+   </record>
+   
+   <record id="clinica_quirurgical_check_list_filter" model="ir.ui.view">
+        <field name="name">clinica.quirurgical.check.list.search</field>
+        <field name="model">clinica.quirurgical.check.list</field>
+        <field name="arch" type="xml">
+            <search string="Search Quirurgical Check List">
+            	<field name="name" />
+                <field name="surgeon_id"  />
+                <field name='anesthesiologist_id'/>
+                <field name='technologist_id'/>
+         		<field name='nurse_id'/>
+                <field name="patient_id" />
+                <group expand="0" string="Group By">
+                	<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
+                	<filter string="Surgeon" name="groupby_surgeon_id" domain="[]" context="{'group_by':'surgeon_id'}"/>
+                	<filter string="Anesthesiologist" name="groupby_anesthesiologist_id" domain="[]" context="{'group_by':'anesthesiologist_id'}"/>
+  					<filter string="Auxiliary Nurse" name="groupby_nurse_id" domain="[]" context="{'group_by':'nurse_id'}"/>
+                </group>
+            </search>
+        </field>
+   </record>
+        
+   <record id="action_clinica_quirurgical_check_list" model="ir.actions.act_window">
+       <field name="name">Quirurgical Check List</field>
+       <field name="res_model">clinica.quirurgical.check.list</field>
+       <field name="view_type">form</field>
+       <field name="view_mode">tree,form</field>
+       <field name="view_id" ref="clinica_quirurgical_check_list_tree"/>
+<!--        <field name="search_view_id" ref="clinica_quirurgical_check_list_filter"/> -->
+   </record> 
+   
+   <menuitem id="menu_clinica_quirurgical_check_list"
+       name="Quirurgical Check List"
+       parent="menu_doctor_process"
+       action="clinica_digital_consultorio.action_clinica_quirurgical_check_list"
+       groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.clinical_auditor"
+       sequence="8"/>
+
+</odoo>

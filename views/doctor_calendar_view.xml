@@ -1,0 +1,576 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<!-- Surgery Room Form -->
+	<record id="clinica_surgery_room_form" model="ir.ui.view">
+		<field name="name">clinica.surgery.room.form</field>
+		<field name="model">clinica.surgery.room</field>
+		<field name="arch" type="xml">
+		<form string="Schedule Form">
+			<sheet>
+				<group name="main_group">
+					<group name="main_sub_group1" >
+						<field name='name' required="1"/>
+					</group>
+					<group name="main_sub_group2" >
+					</group>
+				</group>
+			</sheet>
+		</form>
+		</field>
+	</record>
+	
+	<!-- Surgery Room Tree -->
+	<record id="clinica_surgery_room_tree" model="ir.ui.view">
+		<field name="name">clinica.surgery.room.tree</field>
+		<field name="model">clinica.surgery.room</field>
+		<field name="arch" type="xml">
+			<tree string="Surgery Room Tree">
+				<field name="name"/>
+			</tree>
+		</field>
+	</record>
+	
+	<!-- Surgery Room Action -->
+	<record id="action_clinica_surgery_room" model="ir.actions.act_window">
+		<field name="name">Surgery Rooms</field>
+		<field name="res_model">clinica.surgery.room</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_id" ref="clinica_surgery_room_tree"/>
+	</record> 
+
+	<record id="doctor_schedule_filter_01" model="ir.ui.view">
+		<field name="name">doctor.schedule.filter</field>
+		<field name="model">doctor.schedule</field>
+		<field name="arch" type="xml">
+			<search string="Search Schedules">
+				<group expand="0" string="Group By">
+					<filter string="Professional" 
+					name="filtering_professional_id" 
+					domain="[('professional_id.res_user_id', '=', uid)]"/>
+				</group>
+			</search>
+		</field>
+   </record>
+
+	<!-- Schedule Form -->
+	<record id="clinica_doctor_schedule_form" model="ir.ui.view">
+		<field name="name">doctor.schedule.form</field>
+		<field name="model">doctor.schedule</field>
+		<field name="arch" type="xml">
+		<form string="Schedule Form">
+			<header>
+				<button name="action_create_appointment" string="Create Appointment" 
+					class="btn-primary" type="object" />
+			</header>
+			<sheet>
+				<group name="main_group">
+					<group name="main_sub_group1" >
+						<field name='professional_id' required="1" domain="[('profession_type','=','plastic_surgeon')]"/>
+						<field name='start_date' required="1"/>
+						<field name='duration' required="1" widget="float_time"/>
+						<field name='end_date' required="1"/>
+					</group>
+					<group name="main_sub_group2" >
+					</group>
+				</group>
+				<notebook>
+					<page name="rooms" string="Waiting Rooms/Appointments">
+						 <field name="room_ids" colspan="4" nolabel="1" readonly="1">
+						 </field>
+					</page>
+					<page name="time_allocation" string="Time Allocation">
+						 <field name="time_allocation_ids" colspan="4" nolabel="1" readonly="1" force_save="1">
+						 	<tree string='Schedule Time Allocation' decoration-success="state == 'not_assigned'" decoration-danger="state == 'assigned'">
+						 		<field name='patient_id'/>
+						 		<field name='start_time'/>
+						 		<field name='end_time'/>
+						 		<field name='state'/>
+						 	</tree>
+						 	<form string='Schedule Time Allocation'>
+						 		<header>
+						 			<field name="state" widget="statusbar" statusbar_visible="not_assigned,assigned"/>
+						 		</header>
+						 			<group>
+							 			<group>
+							 				<field name='start_time'/>
+						 					<field name='end_time'/>
+							 			</group>
+							 			<group>
+							 				<field name='patient_id'/>
+							 			</group>
+						 			</group>
+						 	</form>
+						 </field>
+					</page>
+				</notebook>
+			</sheet>
+		</form>
+		</field>
+	</record>
+	
+	<!-- Schedule Tree -->
+	<record id="clinica_doctor_schedule_tree" model="ir.ui.view">
+		<field name="name">doctor.schedule.tree</field>
+		<field name="model">doctor.schedule</field>
+		<field name="arch" type="xml">
+			<tree string="Schedule Tree">
+				<field name="professional_id"/>
+				<field name='start_date'/>
+				<field name="end_date"/>
+			</tree>
+		</field>
+	</record>
+	
+	<!-- schedule Calendar View -->
+	<record id="view_doctor_schedule_calendar" model="ir.ui.view">
+		<field name="name">doctor.schedule.calendar</field>
+		<field name="model">doctor.schedule</field>
+		<field name="arch" type="xml">
+			<calendar color="professional_id" date_start="start_date" date_stop="end_date" string="Schedule">
+				<field name="professional_id"/>
+				<field name="start_date"/>
+				<field name="end_date"/>
+			</calendar>
+		</field>
+	</record>
+	
+	<!-- Schedule Action -->
+	<record id="action_clinica_doctor_schedule" model="ir.actions.act_window">
+		<field name="name">Schedule</field>
+		<field name="res_model">doctor.schedule</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">calendar,tree,form</field>
+		<field name="view_id" ref="view_doctor_schedule_calendar"/>
+		<field name="search_view_id" ref="doctor_schedule_filter_01"/>
+		<field name="context">{'search_default_filtering_professional_id': 1}</field>
+	</record> 
+	
+	<!-- Waitin room form -->
+	<record id="clinica_waiting_room_form" model="ir.ui.view">
+		 <field name="name">doctor.waiting.room.form</field>
+		 <field name="model">doctor.waiting.room</field>
+		 <field name="arch" type="xml">
+		 <form string="Waiting Room Form">
+			<header>
+				<button name="action_confirm" string="Confirm Appointment" class="btn-primary" 
+					type="object"  attrs="{'invisible':['|',('state','!=','new'),('room_type','=','surgery')]}"/>
+				<button name="action_confirm" string="Confirm Room Procedure" class="btn-primary"
+				 type="object" attrs="{'invisible':['|',('state','!=','new'),('room_type','=','waiting')]}"/>
+				 <button name="action_view_anhestesic_registry" string="Create Anhestesic Registry" 
+					class="btn-primary" type="object" attrs="{'invisible': ['|',('anhestesic_registry_created','=',True),('state','!=','ordered')]}"
+					groups="base.group_system,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management"/>
+				<button name="action_view_nurse_sheet" string="Create Nurse Sheet" 
+					class="btn-primary" type="object" attrs="{'invisible': ['|',('nurse_sheet_created','=',True),('state','!=','ordered')]}"
+					groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor"/>
+				<button name="action_create_so" string="Create Sales Order" 
+					class="btn-primary" type="object" states="confirmed"/>
+				<!-- <button name="action_view_clinica_record_history" string="View History" 
+					type="object" class="oe_highlight"/> -->
+				<field name="state" widget="statusbar" statusbar_visible="new,confirmed,ordered"/>
+			</header>
+			<sheet>
+				<div class="oe_button_box" name="button_box">
+					<button name="action_view_sale_order" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						states="ordered" string="Quotation">
+					</button>
+					<button name="action_view_anhestesic_registry" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						attrs="{'invisible': [('anhestesic_registry_created', '=', False)]}" string="Anhestesic Registry"
+						groups="base.group_system,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+					</button>
+					<button name="action_view_nurse_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						attrs="{'invisible': [('nurse_sheet_created', '=', False)]}" string="Nurse Sheets"
+						groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor">
+					</button>
+					<button name="action_view_presurgical_record" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Pre-Surgical Records"
+						groups="clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+					</button>
+					<button name="action_view_quirurgic_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Quirurgic Sheet"
+						groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+					</button>
+					<button name="action_view_quirurgical_check_list" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Quirurgical Check List"
+						groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor">
+					</button>
+					<button name="action_view_post_anhestesic_care" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Cuidado Post-Anestésico"
+						groups="clinica_digital_consultorio.management,clinica_digital_consultorio.anesthesiologist">
+					</button>
+					<button name="action_view_plastic_surgery" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Plastic Surgery Sheet"
+						groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor">
+					</button>
+					<button name="action_view_medical_evolution" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Med. Order and Evolution"
+						groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+					</button>
+					<button name="action_view_epicrisis" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Epicrisis"
+						groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+					</button>
+				</div>
+				<div class="oe_title">
+					<h1>
+						<field name="name" readonly="1"/>
+					</h1>
+				</div>
+				<group name="main_group">
+					<group name="main_sub_group1" >
+						<field name='room_type' invisible="1" force_save="1"/>
+						<field name='surgery_room_id' 
+						attrs="{'readonly':[('state','!=','new')], 'invisible':[('room_type','=','waiting')], 'required': [('room_type','=','surgery')]}"/>
+						<field name='schedule_id' attrs="{'readonly':[('state','!=','new')]}"
+							domain="[('start_date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('start_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)))]" />
+						<field name='patient_id' required="1" attrs="{'readonly':[('state','!=','new')]}"/>
+						<field name='user_type' attrs="{'readonly':[('state','!=','new')]}"/>
+						<field name='appointment_type_id' attrs="{'readonly':[('state','!=','new')]}"/>
+						<field name='procedure_date' required="1" attrs="{'readonly':[('state','!=','new')]}"/>
+						<field name='procedure_end_date' required="1" attrs="{'readonly':[('state','!=','new')]}"/>
+						
+					</group>
+					<group name="main_sub_group2" >
+						<field name='document_type' attrs="{'readonly':[('state','!=','new')]}"/>
+						<field name='numberid' 
+							attrs="{'invisible':[('document_type','in',['cc','ti'])],'readonly':[('state','!=','new')]}"/>
+						<field name='numberid_integer' string="Number ID" 
+							attrs="{'invisible':[('document_type','not in',['cc','ti'])],'readonly':[('state','!=','new')]}"/>
+						<field name='phone' attrs="{'readonly':[('state','!=','new')]}"/>
+						<field name='gender' attrs="{'readonly':[('state','!=','new')]}"/>
+						<field name='birth_date' attrs="{'readonly':[('state','!=','new')]}"/>
+						<label for="age" string="Age" attrs="{'readonly':[('state','!=','new')]}"/>
+						<div>
+							<div>
+								<field name="age" required="1" nolabel="1" class="oe_inline" readonly="1"/>
+								<field name="age_meassure_unit" nolabel="1" class="oe_inline" />
+							</div>
+						</div>
+						<field name='insurer_id' attrs="{'readonly':[('state','!=','new')]}" domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
+						<field name='assurance_plan_id' attrs="{'readonly':[('state','!=','new')]}" domain="[('insurer_id','=',insurer_id)]"/>
+						<field name='nurse_sheet_created' invisible="1"/>
+						<field name='anhestesic_registry_created' invisible="1"/>
+					</group>
+				</group>
+				
+				<group name="assigned_professionals">
+					<field name="assigned_professional_ids" readonly="1" widget="many2many_tags"/>
+					<field name="from_surgery_procedure" readonly="1" force_save="1" invisible="1"/>
+				</group>
+				
+				<group name="profession_details">
+					<group name="profession_details_sub1" >
+						<field name='surgeon_id' domain="[('profession_type','=','plastic_surgeon')]" 
+							attrs="{'readonly':[('state','!=','new')]}"/>
+						<field name='programmer_id'  attrs="{'readonly':[('state','!=','new')]}"/>
+					</group>
+					<group name="profession_details_sub2" >
+						<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]"  
+							attrs="{'readonly':[('state','!=','new'),('state','!=','confirmed')],'required':[('state','!=','new')]}"/>
+						<field name='anesthesia_type'  attrs="{'readonly':[('state','!=','new'),('state','!=','confirmed')],'required':[('state','!=','new')]}"/>
+					</group>
+				</group>
+				<group name="professionald_group">
+					<group>
+						<field name='circulating_id' domain="[('profession_type','=','nurse')]" />
+						<field name='nurse_boss_id' domain="[('profession_type','=','nurse')]"/>
+					</group>
+					<group>
+						<field name='technologist_id' domain="[('profession_type','=','technologists')]"/>   
+					</group>
+				</group>
+				<group name="procedure">
+					<field name='procedure'  attrs="{'readonly':[('state','!=','new')]}"/>
+				</group>
+				<group name="procedure">
+					<field name='notes' />
+				</group>
+				<group name="patient_personal_info_group1" invisible="1">
+					<group name="patient_personal_info_sub1" invisible="1">
+						<field name='firstname'  attrs="{'readonly':[('state','!=','new')]}" force_save="1" />
+						<field name='lastname' attrs="{'readonly':[('state','!=','new')]}" force_save="1"/>
+						<field name='middlename' attrs="{'readonly':[('state','!=','new')]}" force_save="1"/>
+						<field name='surname' attrs="{'readonly':[('state','!=','new')]}" force_save="1"/>
+					</group>
+					<group name="patient_personal_info_sub2" >
+					</group>
+				</group>
+				<notebook>
+					<page name="procedures" string="Health Procedures">
+						 <field name="procedure_ids" colspan="4" nolabel="1" attrs="{'readonly':[('state','!=','new'),('state','!=','confirmed')]}"
+							context="{'default_surgeon_id':surgeon_id,'default_anesthesiologist_id':anesthesiologist_id}">
+							<tree editable="bottom">
+								<field name="product_id" domain="[('is_health_procedure','=',True)]"/>
+								<field name="quantity"  invisible="1" force_save="1"/>
+								<field name="surgeon_id" invisible="1" force_save="1"/>
+								<field name="anesthesiologist_id" invisible="1" force_save="1"/>
+							</tree>
+						 </field>
+					</page>
+					<!-- <page name="background" string="Patient Background">
+						<group name="pathological_background" >
+							<group name="pathological_background_sub1">
+								<field name="diabetes"/>
+								<field name="hypertension"/>
+							</group>
+							<group name="pathological_background_sub2">
+								<field name="arthritis"/>
+								<field name="thyroid_disease"/>
+							</group>
+						</group>
+						<group name="pathological" colspan="2" col='1'>
+							<label for="pathological" string="Pathological"/>
+							<field name="pathological" nolabel="1"/>
+						</group>
+						<group name="surgical" colspan="2" col='1'>
+							<label for="surgical" string="Surgical"/>
+							<field name="surgical" nolabel="1"/>
+						</group>
+						<group name="patient_backgorund_main" >
+							<group name="patient_backgorund_sub1" >
+								<field name="smoke" />
+								<label for="cigarate_daily" string="Cigarettes"/>
+								<div>
+									<div>
+										<field name="cigarate_daily" nolabel="1" class="oe_inline" />
+										<field name="smoke_uom" nolabel="1" class="oe_inline" style="padding-left:4px;"/>
+									</div>
+								</div>
+								<field name="is_alcoholic" />
+								<label for="alcohol_frequency" string="Frequency"/>
+								<div>
+									<div>
+										<field name="alcohol_frequency"  nolabel="1" class="oe_inline"/>
+										<field name="alcohol_frequency_uom" nolabel="1" class="oe_inline" style="padding-left:4px;"/>
+									</div>
+								</div>
+								<field name="marijuana" />
+								<field name="cocaine" />
+								<field name="ecstasy" />
+								
+							</group>
+							<group name="patient_backgorund_sub2" >
+								<field name="body_background_others" string="Others"/>
+								<field name="pharmacological" />
+								<field name="allergic" />
+							</group>
+						</group>
+						<group name="patient_female_backgorund_main" attrs="{'invisible':[('gender','=','male')]}">
+							<group name="patient_female_backgorund_sub1" >
+								<field name="pregnancy_number" />
+								<field name="child_number" />
+								<field name="abortion_number" />
+							</group>
+							<group name="patient_female_backgorund_sub2" >
+								<field name="last_birth_date" />
+								<field name="last_menstruation_date" />
+								<field name="contrtaceptive_methods" />
+							</group>
+						</group>
+					</page> -->
+				</notebook>
+			</sheet>
+		 </form>
+		 </field>
+	 </record>
+	 
+	<!-- Waiting room tree -->
+	<record id="clinica_waiting_room_tree" model="ir.ui.view">
+		<field name="name">doctor.waiting.room.tree</field>
+		<field name="model">doctor.waiting.room</field>
+		<field name="arch" type="xml">
+			<tree string="Waiting Room Tree">
+				<field name="schedule_id"/>
+				<field name='patient_id'/>
+				<field name="surgeon_id"/>
+				<field name="anesthesiologist_id"/>
+				<field name="procedure_date"/>
+				<field name="procedure_end_date"/>
+			</tree>
+		</field>
+	</record>
+	
+	<!--  Waiting room View -->
+	<record id="view_waiting_room_calendar" model="ir.ui.view">
+		<field name="name">doctor.waiting.room</field>
+		<field name="model">doctor.waiting.room</field>
+		<field name="arch" type="xml">
+			<calendar color="surgeon_id" date_start="procedure_date" date_stop="procedure_end_date" string="Waiting Room" quick_add="False" mode="week">
+				<field name="surgeon_id"/>
+				<field name="anesthesiologist_id"/>
+				<field name="patient_id"/>
+				<field name="procedure_date"/>
+				<field name="procedure_end_date"/>
+			</calendar>
+		</field>
+	</record>
+		
+   <record id="clinica_waiting_room_filter" model="ir.ui.view">
+		<field name="name">doctor.waiting.room.search</field>
+		<field name="model">doctor.waiting.room</field>
+		<field name="arch" type="xml">
+			<search string="Search Appointments">
+				<field name="surgeon_id"  />
+				<field name='anesthesiologist_id'/>
+				<field name="patient_id" />
+				<field name="schedule_id" />
+				<filter string="Today's Confirmed/Ordered Appointments" name="confirmed_today" domain="[('state','in', ['confirmed','ordered']),
+				   ('procedure_date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('procedure_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)))]"/>
+				<filter string="Confirmed" name="confirmed" domain="[('state','=', 'confirmed')]"/>
+				<filter string="Ordered" name="ordered" domain="[('state','=','ordered')]"/>
+				<filter string="Today's Appointments" name="today_appointement"
+					domain="[('procedure_date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('procedure_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)))]" />
+				<group expand="0" string="Group By">
+					<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
+					<filter string="Surgeon" name="groupby_surgeon_id" domain="[]" context="{'group_by':'surgeon_id'}"/>
+					<filter string="Anesthesiologist" name="groupby_anesthesiologist_id" domain="[]" context="{'group_by':'anesthesiologist_id'}"/>
+				</group>
+			</search>
+		</field>
+   </record>
+		
+		
+	<!-- Waiting room search -->
+	<record id="action_clinica_waiting_room" model="ir.actions.act_window">
+		<field name="name">Appointment</field>
+		<field name="res_model">doctor.waiting.room</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">calendar,tree,form</field>
+		<field name="domain"></field>
+		<field name="context">{'default_room_type': 'waiting', 'search_default_confirmed_today':1}</field>
+		<field name="view_id" ref="view_waiting_room_calendar"/>
+		<field name="search_view_id" ref="clinica_waiting_room_filter"/>
+	</record> 
+	
+	<record id="action_clinica_waiting_room_view1" model="ir.actions.act_window.view">
+		<field eval="2" name="sequence"/>
+		<field name="view_mode">tree</field>
+		<field name="view_id" ref="clinica_waiting_room_tree"/>
+		<field name="act_window_id" ref="action_clinica_waiting_room"/>
+	</record>
+	
+	<record id="action_clinica_waiting_room_view2" model="ir.actions.act_window.view">
+		<field eval="1" name="sequence"/>
+		<field name="view_mode">calendar</field>
+		<field name="view_id" ref="view_waiting_room_calendar"/>
+		<field name="act_window_id" ref="action_clinica_waiting_room"/>
+	</record>
+	
+	
+	<!-- surgery room tree -->
+	<record id="clinica_surgery_room_procedures_tree" model="ir.ui.view">
+		<field name="name">doctor.waiting.room.tree</field>
+		<field name="model">doctor.waiting.room</field>
+		<field name="arch" type="xml">
+			<tree string="Surgery Room Tree">
+				<field name="surgery_room_id"/>
+				<field name="schedule_id"/>
+				<field name='patient_id'/>
+				<field name="surgeon_id"/>
+				<field name="anesthesiologist_id"/>
+				<field name="procedure_date"/>
+				<field name="procedure_end_date"/>
+			</tree>
+		</field>
+	</record>
+	
+	<!--  surgery room calendar View -->
+	<record id="view_surgery_room_procedures_calendar" model="ir.ui.view">
+		<field name="name">doctor.waiting.room</field>
+		<field name="model">doctor.waiting.room</field>
+		<field name="arch" type="xml">
+			<calendar color="surgery_room_id" date_start="procedure_date" date_stop="procedure_end_date" string="Surgery Room">
+				<field name="surgery_room_id"/>
+				<field name="surgeon_id"/>
+				<field name="anesthesiologist_id"/>
+				<field name="patient_id"/>
+				<field name="procedure_date"/>
+				<field name="procedure_end_date"/>
+			</calendar>
+		</field>
+	</record>
+   
+   <!--  surgery room search -->
+   <record id="clinica_surgery_room_procedures_filter" model="ir.ui.view">
+		<field name="name">doctor.waiting.room.search</field>
+		<field name="model">doctor.waiting.room</field>
+		<field name="arch" type="xml">
+			<search string="Search Surgery room procedures">
+				<field name="surgery_room_id"  />
+				<field name="surgeon_id"  />
+				<field name='anesthesiologist_id'/>
+				<field name="patient_id" />
+				<field name="schedule_id" />
+				<filter string="Today's Confirmed/Ordered Procedures" name="confirmed_today" domain="[('state','in', ['confirmed','ordered']),
+				   ('procedure_date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('procedure_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)))]"/>
+				<filter string="Confirmed" name="confirmed" domain="[('state','=', 'confirmed')]"/>
+				<filter string="Ordered" name="ordered" domain="[('state','=', 'ordered')]"/>
+				<filter string="Today's Procedures" name="today_appointement"
+					domain="[('procedure_date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('procedure_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)))]" />
+				<group expand="0" string="Group By">
+					<filter string="Surgery Room" name="groupby_surgery_room_id" domain="[]" context="{'group_by':'surgery_room_id'}"/>
+					<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
+					<filter string="Surgeon" name="groupby_surgeon_id" domain="[]" context="{'group_by':'surgeon_id'}"/>
+					<filter string="Anesthesiologist" name="groupby_anesthesiologist_id" domain="[]" context="{'group_by':'anesthesiologist_id'}"/>
+				</group>
+			</search>
+		</field>
+   </record>
+		
+		
+	<!-- surgery room action -->
+	<record id="action_clinica_surgery_room_procedures" model="ir.actions.act_window">
+		<field name="name">Surgery Room Procedures</field>
+		<field name="res_model">doctor.waiting.room</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">calendar,tree,form</field>
+		<field name="domain">[('room_type','=','surgery')]</field>
+		<field name="context">{'default_room_type': 'surgery', 'default_from_surgery_procedure': True, 'search_default_confirmed_today':1}</field>
+		<field name="view_id" ref="view_surgery_room_procedures_calendar"/>
+		<field name="search_view_id" ref="clinica_surgery_room_procedures_filter"/>
+	</record> 
+	
+	<record id="action_clinica_surgery_room_procedures_view1" model="ir.actions.act_window.view">
+		<field eval="2" name="sequence"/>
+		<field name="view_mode">tree</field>
+		<field name="view_id" ref="clinica_surgery_room_procedures_tree"/>
+		<field name="act_window_id" ref="action_clinica_surgery_room_procedures"/>
+	</record>
+	
+	<record id="action_clinica_surgery_room_procedures_view2" model="ir.actions.act_window.view">
+		<field eval="1" name="sequence"/>
+		<field name="view_mode">calendar</field>
+		<field name="view_id" ref="view_surgery_room_procedures_calendar"/>
+		<field name="act_window_id" ref="action_clinica_surgery_room_procedures"/>
+	</record>
+			
+   <!-- Waiting room menu -->
+   <menuitem id="menu_clinica_waiting_room"
+	   name="Waiting Room "
+	   parent="menu_doctor_process"
+	   action="clinica_digital_consultorio.action_clinica_waiting_room"
+	   groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.pharmacist,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.anesthesiologist" sequence="3"/>
+	   
+  <!-- Surgery room menu -->
+   <menuitem id="menu_clinica_surgery_room_procedures"
+	   name="Surgery Room Procedures"
+	   parent="menu_doctor_process"
+	   action="clinica_digital_consultorio.action_clinica_surgery_room_procedures"
+	   groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.pharmacist,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management,clinica_digital_consultorio.accounting_assistant"
+	   sequence="2"/>
+	
+	
+	<!-- Schedule menu -->
+	<menuitem id="menu_clinica_doctor_schedule"
+		name="Schedule"
+		parent="menu_doctor_process"
+		action="clinica_digital_consultorio.action_clinica_doctor_schedule"
+		sequence="4"/>
+		
+   <menuitem id="menu_clinica_surgery_room"
+			name="Surgery Rooms"
+			parent="menu_doctor_config_details"
+			action="action_clinica_surgery_room"
+			sequence="2"/>
+</odoo>

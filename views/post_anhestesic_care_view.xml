@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!-- Form View -->
+    <record model="ir.ui.view" id="view_clinica_post_anhestesic_care_form">
+        <field name="name">clinica.post.anhestesic.care.form</field>
+        <field name="model">clinica.post.anhestesic.care</field>
+        <field name="arch" type="xml">
+        <form string="Post anhestesic care">
+            <sheet>
+            <group name="basic_details" col="4">
+              <field name="patient_id"/>
+              <field name="date"/>
+            </group>
+            <group>
+            <group>
+              <field name="medical_record"/>
+              <field name="procedure"/>
+              <field name="surgeon_id"/>
+              <field name="nurse_id"/>
+            </group>
+            <group>
+              <field name="bed"/>
+              <field name="duration"/>
+              <field name="anesthesiologist_id"/>
+            </group>
+            </group>
+
+            <group col="4">
+              <field name="anhestesia"/>
+              <field name="airway"/>
+            </group>
+
+            <group>
+              <group string="Drenajes">
+                <label for="chest_tube" string="Tubo Tórax"/>
+                <div>
+                  <field name="chest_tube" nolabel="1" class="oe_inline"/> cc
+                </div>
+                <label for="hemovac" string="Hemovac"/>
+                <div>
+                  <field name="hemovac" nolabel="1" class="oe_inline"/> cc
+                </div>
+                <label for="others" string="Otros"/>
+                <div>
+                  <field name="others" nolabel="1" class="oe_inline"/> cc
+                </div>
+
+                <field name="total"/>
+            </group>
+            <group string="Líquidos">
+                <field name="liquids_ids" nolabel="1">
+                  <tree editable="bottom">
+                    <field name="liquid_via"/>
+                    <field name="liquid_site"/>
+                    <field name="liquid_type"/>
+                    <field name="liquid_initial_amount" sum="Total"/>
+                    <field name="liquid_amount_recovery" sum="Total"/>
+                  </tree>
+                </field>
+            </group>
+            </group>
+
+            <group string="Escala Aldrete">
+                <field name="aldrete_ids" nolabel="1">
+                  <tree editable="bottom">
+                    <field name="moment"/>
+                    <field name="conscience"/>
+                    <field name="saturation"/>
+                    <field name="breathing"/>
+                    <field name="circulation"/>
+                    <field name="activity"/>
+                    <field name="aldrete_score"/>
+                  </tree>
+                </field>
+              </group>
+            
+              <group string="Drogas">
+                <field name="drugs_ids" nolabel="1">
+                  <tree editable="bottom">
+                    <field name="drug_time"/>
+                    <field name="drug_name" />
+                    <field name="drug_quantity"/>
+                    <field name="drug_via"/>
+                    <field name="drug_dr"/>
+                  </tree>
+                </field>
+              </group>
+              <group string="Observaciones">
+                <field name="observations_ids" nolabel="1">
+                  <tree editable="bottom">
+                    <field name="observation_time"/>
+                    <field name="observation" />
+                  </tree>
+                </field>
+              </group>
+           
+            <group string="Signos Vitales">
+      				<field name="vital_sign_ids" colspan="4" nolabel="1" >
+      					<tree editable="top">
+      						<field name="vital_signs_date_hour"/>
+                  <field name="vital_signs_tas"/>
+                  <field name="vital_signs_tad"/>
+                  <field name="vital_signs_fc"/>
+                  <field name="vital_signs_fr"/>
+                  <field name="vital_signs_sao2"/>
+                  <field name="vital_signs_pain"/>
+                  <field name="vital_signs_queasiness"/>
+                  <field name="vital_signs_vomit"/>
+      					</tree>
+      				</field>
+            </group>      		
+      		</sheet>
+        </form>
+        </field>
+    </record>
+	
+    
+    <!--  Tree View -->
+    <record model="ir.ui.view" id="view_clinica_post_anhestesic_care_tree">
+        <field name="name">clinica.post.anhestesic.care.tree</field>
+        <field name="model">clinica.post.anhestesic.care</field>
+        <field name="arch" type="xml">
+            <tree string="Post-Anhestesic care">
+              <field name="date"/>
+              <field name="patient_id"/>
+              <field name="surgeon_id"/>
+              <field name="anesthesiologist_id"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="clinica_post_anhestesic_care_filter" model="ir.ui.view">
+        <field name="name">clinica.post.anhestesic.care.search</field>
+        <field name="model">clinica.post.anhestesic.care</field>
+        <field name="arch" type="xml">
+            <search string="Search Post-Anhestesic care">
+                <field name="patient_id" />
+                <group expand="0" string="Group By">
+                	<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+   </record>
+	    
+    <!--  Action -->
+    <record id="action_clinica_post_anhestesic_care" model="ir.actions.act_window">
+        <field name="name">Cuidado Post-Anestésico</field>
+        <field name="res_model">clinica.post.anhestesic.care</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_clinica_post_anhestesic_care_tree"/>
+       <field name="search_view_id" ref="clinica_post_anhestesic_care_filter"/>
+    </record> 
+    
+    
+    <menuitem id="menu_clinica_post_anhestesic_care"
+            name="Cuidado Post-Anestésico"
+            parent="menu_doctor_process"
+            action="action_clinica_post_anhestesic_care"
+            sequence="8"/>
+           
+        
+</odoo>         
+            

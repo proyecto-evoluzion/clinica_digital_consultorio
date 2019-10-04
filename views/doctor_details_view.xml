@@ -1,0 +1,614 @@
+<?xml version="1.0"?>
+<odoo>
+        
+        <record id="assurance_plan_form" model="ir.ui.view">
+            <field name="name">doctor.insurer.plan.form</field>
+            <field name="model">doctor.insurer.plan</field>
+            <field name="arch" type="xml">
+            <form string="Assurance Plan Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name='name' required="1"/>
+                            <field name='code' required="1"/>
+                            <field name='insurer_id' required="1" domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+        
+        <record id="assurance_plan_tree" model="ir.ui.view">
+            <field name="name">doctor.insurer.plan.tree</field>
+            <field name="model">doctor.insurer.plan</field>
+            <field name="arch" type="xml">
+                <tree string="Assurance Plan Tree">
+                    <field name="name"/>
+                    <field name='code'/>
+                    <field name="insurer_id"/>
+                </tree>
+            </field>
+        </record>
+        
+        
+        <record id="view_assurance_plan_filter" model="ir.ui.view">
+            <field name="name">doctor.insurer.plan.search</field>
+            <field name="model">doctor.insurer.plan</field>
+            <field name="arch" type="xml">
+                <search string="Search Assurancen Plans">
+                    <field name="name" string="Plans" />
+                    <field name='code' string="Plan Code" />
+                    <field name="insurer_id" string="Assurance Company"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Assurance Company" name="groupby_assurance_partner_id" domain="[]" context="{'group_by':'insurer_id'}"/>
+                    </group>
+                </search>
+            </field>
+       </record>
+        
+        <record id="action_assurance_plan" model="ir.actions.act_window">
+            <field name="name">Assurance Plans</field>
+            <field name="res_model">doctor.insurer.plan</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="assurance_plan_tree"/>
+            <field name="search_view_id" ref="view_assurance_plan_filter"/>
+        </record>    
+        
+        
+	    <!-- doctor diseases Form View -->
+	    <record model="ir.ui.view" id="view_doctor_diseases_form">
+	        <field name="name">doctor.diseases.form</field>
+	        <field name="model">doctor.diseases</field>
+	        <field name="arch" type="xml">
+	            <form string="Diseases">
+	                <group>
+	                    <field name="code"/>
+	                    <field name="name"/>
+	                </group>
+	            </form>
+	        </field>
+	    </record>
+	
+	    <!-- doctor diseases Tree View -->
+	    <record model="ir.ui.view" id="view_doctor_diseases_tree">
+	        <field name="name">doctor.diseases.tree</field>
+	        <field name="model">doctor.diseases</field>
+	        <field name="arch" type="xml">
+	            <tree string="Diseases">
+	                <field name="code"/>
+	                <field name="name"/>
+	            </tree>
+	        </field>
+	    </record>
+	    
+	    <!-- Doctor diseases Action -->
+        <record id="action_doctor_diseases" model="ir.actions.act_window">
+            <field name="name">Diseases</field>
+            <field name="res_model">doctor.diseases</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_doctor_diseases_tree"/>
+        </record> 
+        
+        <!-- appointment type Form View -->
+	    <record model="ir.ui.view" id="view_doctor_appointment_type_form">
+	        <field name="name">clinica.appointment.type.form</field>
+	        <field name="model">clinica.appointment.type</field>
+	        <field name="arch" type="xml">
+	            <form string="Diseases">
+	                <group>
+	                    <field name="name" required="1"/>
+	                    <field name="duration" required="1" widget="float_time"/>
+	                </group>
+	            </form>
+	        </field>
+	    </record>
+	
+	    <!-- appointment type Tree View -->
+	    <record model="ir.ui.view" id="view_doctor_appointment_type_tree">
+	        <field name="name">clinica.appointment.type.tree</field>
+	        <field name="model">clinica.appointment.type</field>
+	        <field name="arch" type="xml">
+	            <tree string="Diseases">
+	                <field name="name"/>
+	                <field name="duration" />
+	            </tree>
+	        </field>
+	    </record>
+	    
+	    <!-- appointment type Action -->
+        <record id="action_appointment_type" model="ir.actions.act_window">
+            <field name="name">Appointment Type</field>
+            <field name="res_model">clinica.appointment.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_doctor_appointment_type_tree"/>
+        </record> 
+        
+        <!-- Doctor form -->
+        <record id="doctor_doctor_form" model="ir.ui.view">
+            <field name="name">doctor.professional.form</field>
+            <field name="model">doctor.professional</field>
+            <field name="arch" type="xml">
+            <form string="doctor Form">
+                <sheet>
+                    <group name="main_info" >
+                    	<group>
+                    		<field name="profession_type" required="1"/>
+	                        <field name="email"/>
+	                        <field name="phone"/> 
+                    	</group>
+                    	<group>
+	                        <field name="lastname"  required="1"/> 
+	                        <field name="surname"/>
+                            <field name="firstname" required="1"/>
+                            <field name="middlename"/>
+                    	</group>
+                    </group>
+                    <notebook colspan="4">
+	                    <page string="My procedures">
+	                        <field name="product_ids" nolabel="1" 
+	                        	context="{'search_default_health_procedure': 1}"/>
+	                    </page>
+	                </notebook>
+                </sheet>
+            </form>
+            </field>
+        </record>
+        <!-- Doctor Tree -->
+        <record id="doctor_doctor_tree" model="ir.ui.view">
+            <field name="name">doctor.professional.tree</field>
+            <field name="model">doctor.professional</field>
+            <field name="arch" type="xml">
+                <tree string="Doctor Tree">
+                    <field name="lastname"/>                            
+                        <field name="surname"/>
+                        <field name="firstname"/>
+                        <field name="middlename"/>
+                        <field name="email"/>
+                        <field name="phone"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Doctor filter -->
+        <record id="view_doctor_doctor_filter" model="ir.ui.view">
+            <field name="name">doctor.professional.search</field>
+            <field name="model">doctor.professional</field>
+            <field name="arch" type="xml">
+                <search string="Search Doctor">
+                    <field name="firstname" />
+                    <group expand="0" string="Group By">
+                        <filter string="Profession" context="{'group_by': 'profession_type'}"/>
+                    </group>
+                </search>
+            </field>
+       </record>
+       
+        <!-- Doctor Action -->
+        <record id="action_doctor_details" model="ir.actions.act_window">
+            <field name="name">Doctor</field>
+            <field name="res_model">doctor.professional</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="doctor_doctor_tree"/>
+            <field name="search_view_id" ref="view_doctor_doctor_filter"/>
+        </record> 
+        
+        <record id="doctor_administrative_data_form" model="ir.ui.view">
+            <field name="name">doctor.patient.form</field>
+            <field name="model">doctor.patient</field>
+            <field name="arch" type="xml">
+            <form string="Administrative Data Form">
+                <sheet>
+                	<div class="oe_button_box" name="button_box">
+                		<button name="action_view_surgery_room_procedures" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Surgery Room Procedures"
+							groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.pharmacist,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management,clinica_digital_consultorio.accounting_assistant">
+						</button>
+                		<button name="action_view_appointments" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Appointments"
+							groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.pharmacist,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management,clinica_digital_consultorio.accounting_assistant">
+						</button>
+                		<button name="action_view_nurse_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Nurse Sheets"
+							groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor">
+						</button>
+						<button name="action_view_presurgical_record" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Pre-Surgical Records"
+							groups="clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+						</button>
+						<button name="action_view_anhestesic_registry" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Anhestesic Registry"
+							groups="base.group_system,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+						</button>
+						<button name="action_view_quirurgic_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Quirurgic Sheet"
+							groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+						</button>
+						<button name="action_view_quirurgical_check_list" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Quirurgical Check List"
+							groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor">
+						</button>
+						<button name="action_view_post_anhestesic_care" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Cuidado Post-Anestésico"
+							groups="clinica_digital_consultorio.management,clinica_digital_consultorio.anesthesiologist">
+						</button>
+						<button name="action_view_plastic_surgery" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Plastic Surgery Sheet"
+							groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor">
+						</button>
+						<button name="action_view_medical_evolution" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Med. Order and Evolution"
+							groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+						</button>
+						<button name="action_view_epicrisis" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Epicrisis"
+							groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+						</button>
+                	</div>
+                	
+                	
+                    <field name="photo" widget='image' class="oe_avatar" options='{"preview_image":"image_medium"}'/>
+                    <div class="oe_title">
+                        <div>
+                            <div>
+                                <label for="tdoc" string="Type of Document"/>
+                                <field name="tdoc" placeholder="Type of Document" required="1"/>
+                            </div>
+                            <div attrs="{'invisible':[('tdoc','in',['cc','ti'])]}">
+                                <label  for="name" string="Number ID"/>
+                                <field name="name" placeholder="Number ID" required="1"/>
+                            </div>
+                            <div attrs="{'invisible':[('tdoc','not in',['cc','ti'])]}">
+                                <label  for="ref" string="Number ID"/>
+                                <field name="ref" placeholder="Number ID" attrs="{'required': [('tdoc','in',['cc','ti'])]}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <group name='group_personal_info'>
+                        <group name='group_personal_info_sub1'>
+                            <field name="lastname" required="1" placeholder="First Last Name"/>
+                            <field name="surname" placeholder="Second Last Name"/>
+                            <field name="firstname" required="1" placeholder="First Name"/>
+                            <field name="middlename" placeholder="Second Name"/>
+                            <field name="partner_id" string="Related Contact" readonly="1" invisible="1"/>
+                        </group>
+                        <group name='group_personal_info_sub2'>
+                            <field name="sex" />
+<!--                            <field name="blood_type"/> -->
+                            <label for="blood_type" string="Blood Type"/>
+                            <div>
+                                 <field name="blood_type" class="left-margin" style="width: 20%"/>
+                                 <field name="blood_rh" style="width: 25%"/>
+                            </div>
+                            <field name="birth_date" required="1"/>
+                            <label for="age" string="Age"/>
+                            <div>
+                                <div>
+                                    <field name="age" required="1" nolabel="1" class="oe_inline" readonly="1"/>
+                                    <field name="age_unit" nolabel="1" class="oe_inline" />
+                                </div>
+                            </div>
+                        </group>
+                    </group>
+
+                    <group>
+                    <group name='group_insurer_info_sub1'>
+                            <field name="user_type"/>
+<!--                            <field name="primary_payer"/> -->
+                            <field name="phone"/>
+                            <field name="link_type"/>
+                        </group>
+                        <group name='group_insurer_info_sub2'>
+                            <field name="insurer_id"
+                                domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
+                            <field name="email"/>
+                            <field name="residence_address" string="Address" placeholder="Address"/>
+                        </group>
+                    </group>
+                    <group string='Place of Birth' name='group_birth_place' col="4">
+                                         
+                            <field name="birth_country_id" string="Country" placeholder="Country" options="{'no_create_edit': True}"/>
+                        
+                            <field name="provenance_country_id" string="Provenance" placeholder="Provenance Country" options="{'no_create_edit': True}"/>
+                    </group> 
+<!--                    <group name='group_birth_address'> -->
+<!--                        <field name="birth_address" string="Address" placeholder="Address"/> -->
+<!--                    </group> -->
+                    <group string='Place of Residence' name='group_residence_place'>
+                        <group>
+                            <field name="residence_country_id" string="Country" placeholder="Country" options="{'no_create_edit': True}"/>
+                            <field name="residence_city_id" string="Location/City/Town" placeholder="Location/City/Town" 
+                                    options="{'no_create_edit': True}"  domain="[('state_id','=',residence_department_id),('country_id','=',residence_country_id)]"/>
+                        </group>
+                        <group>
+                            <field name="residence_department_id" string="Department" placeholder="Department" options="{'no_create_edit': True}"
+                                context="{'country_id': residence_country_id,'default_country_id':residence_country_id}"  domain="[('country_id','=',residence_country_id)]"/>
+                            
+                            <field name="residence_district" string="Districts/Localties/Areas" placeholder="Districts/Localties/Areas"/>
+                        </group>
+<!--                            <field name="residence_neighborhood" string="Neighborhood" placeholder="Neighborhood"/> -->
+                    </group>
+                    <!-- <group name='group_residence_address'>
+                        <field name="residence_address" string="Address" placeholder="Address"/>
+                    </group> -->
+                    <group name='group_other_personal_info' string="Other Personal Information" col="4">
+                        <!-- <group name='group_other_personal_info_sub1'  > -->
+                            <field name="civil_state"/>
+                            <field name="occupation" /> <!--options="{'no_create_edit': True}"-->
+                        <!-- </group> -->
+                        <!-- <group name='group_other_personal_info_sub2'>
+                            <field name="beliefs"/>
+                        </group> -->
+                    </group>
+
+                    <group name='group_accompany_responsible_personal_info' >
+                        <group name='group_accompany_personal_info' string="Accompany Person's Details">
+                            <field name="accompany_name" />
+                            <label for="accompany_relationship" string="Relationship"/>
+                            <div>
+                                <div>
+                                    <field name="accompany_relationship" nolabel="1" class="oe_inline"/>
+                                    <field name="other_accompany_relationship" nolabel="1" class="oe_inline" 
+                                        placeholder="Other Relationship" attrs="{'invisible':[('accompany_relationship','!=','other')]}"/>
+                                </div>
+                            </div>
+                            <field name="accompany_phone"/>
+                            <field name="copy_responsible_info"/>
+                        </group>
+                        <group name='group_responsible_personal_info' string="Responsible Person's Details">
+                            <field name="responsible_name"/>
+                            <label for="responsible_relationship" string="Relationship"/>
+                            <div>
+                                <div>
+                                    <field name="responsible_relationship" nolabel="1" class="oe_inline" />
+                                    <field name="other_responsible_relationship" nolabel="1" class="oe_inline" 
+                                        placeholder="Other Relationship" attrs="{'invisible':[('responsible_relationship','!=','other')]}"/>
+                                </div>
+                            </div>
+                            <field name="responsible_phone" />
+                        </group>
+                    </group>
+<!--                    <group name='group_parent_info' > -->
+<!--                        <group name='group_father_info' string="Father's Details"> -->
+<!--                            <field name="father_name"/> -->
+<!--                            <field name="father_occupation" string="Occupation"/> -->
+<!--                            <field name="father_address" string="Address"/> -->
+<!--                            <field name="father_phone" string="Phone"/> -->
+<!--                        </group> -->
+<!--                        <group name='group_mother_info' string="Mother's Details"> -->
+<!--                            <field name="mother_name"/> -->
+<!--                            <field name="mother_occupation" string="Occupation"/> -->
+<!--                            <field name="mother_address" string="Address"/> -->
+<!--                            <field name="mother_phone" string="Phone"/> -->
+<!--                        </group> -->
+<!--                    </group> -->
+ <!--                    <group name='group_insurer_info' string="Assurance Details" >
+                        <group name='group_insurer_info_sub1'>
+                            <field name="user_type"/>
+                        </group>
+                        <group name='group_insurer_info_sub2'>
+                            <field name="insurer_id"
+                                domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
+                        </group>
+                    </group> -->
+                    <group name='reason_consultation' string="Reason For Consultation" >
+                            <field name="consultation_reason" nolabel="1"/>
+                    </group>
+                    <group name='group_doctor' string="Doctor Details" >
+                        <group name='group_doctor_info_sub1'>
+                            <field name="doctor_id"/>
+                        </group>
+                        <group name='group_doctor_info_sub2'>
+                        </group>
+                    </group>
+                    
+                </sheet>
+            </form>
+            </field>
+        </record>
+
+        <record id="doctor_administrative_data_tree" model="ir.ui.view">
+            <field name="name">doctor.patient.tree</field>
+            <field name="model">doctor.patient</field>
+            <field name="arch" type="xml">
+                <tree string="Doctor Administrative Data Tree">
+                    <field name="name"/>
+                    <field name="tdoc"/>
+                    <field name="firstname"/>
+                    <field name="lastname"/>
+                    <field name="middlename" placeholder="Second Name"/>
+                    <field name="surname" placeholder="Second Last Name"/>
+                    <field name="birth_date" required="1"/>
+                    <field name="age" required="1"/>
+                    <field name="age_unit"/>
+                    <field name="sex" />
+                    <field name="blood_type"/>
+                    <field name="blood_rh"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="doctor_administrative_data_kanban_view">
+            <field name="name">doctor.patient.kanban</field>
+            <field name="model">doctor.patient</field>
+            <field name="arch" type="xml">
+                <kanban class="o_res_partner_kanban">
+                    <field name="patient_name"/>
+                    <field name="name"/>
+                    <field name="firstname"/>
+                    <field name="lastname"/>
+                    <field name="middlename"/>
+                    <field name="surname"/>
+                    <field name="tdoc"/>
+                    <field name="sex"/>
+                    <field name="blood_type"/>
+                    <field name="blood_rh"/>
+                    <field name="birth_date"/>
+                    <field name="age"/>
+                    <field name="id"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                        	<div t-attf-class="oe_kanban_global_click">
+                                <div class="o_dropdown_kanban dropdown">
+                                    <a class="dropdown-toggle btn" data-toggle="dropdown" href="#" >
+                                        <span class="fa fa-ellipsis-v"/>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <t t-if="widget.editable"><li><a type="edit">Edit</a></li></t>
+                                        <li groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.pharmacist,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management,clinica_digital_consultorio.accounting_assistant">
+                                        	<a name="action_view_surgery_room_procedures" type="object">Surgery Room Procedures</a>
+                                        </li>
+                                        <li groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.pharmacist,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management,clinica_digital_consultorio.accounting_assistant">
+                                        	<a name="action_view_appointments" type="object">Appointments</a>
+                                        </li>
+                                        <li groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor">
+                                        	<a name="action_view_nurse_sheet" type="object">Nurse Sheet</a>
+                                        </li>
+                                        <li groups="clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+                                        	<a name="action_view_presurgical_record" type="object">Pre-Surgical Records</a>
+                                        </li>
+                                        <li groups="base.group_system,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+                                        	<a name="action_view_anhestesic_registry" type="object">Anhestesic Registry</a>
+                                        </li>
+                                        <li groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+                                        	<a name="action_view_quirurgic_sheet" type="object">Quirurgic Sheet</a>
+                                        </li>
+                                        <li groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor">
+                                        	<a name="action_view_quirurgical_check_list" type="object">Quirurgical Check List</a>
+                                        </li>
+                                        <li groups="clinica_digital_consultorio.management,clinica_digital_consultorio.anesthesiologist">
+                                        	<a name="action_view_post_anhestesic_care" type="object">Cuidado Post-Anestésico</a>
+                                        </li>
+                                        <li groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor">
+                                        	<a name="action_view_plastic_surgery" type="object">Plastic Surgery Sheet</a>
+                                        </li>
+                                        <li groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+                                        	<a name="action_view_medical_evolution" type="object">Med. Order and Evolution</a>
+                                        </li>
+                                        <li groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+                                        	<a name="action_view_epicrisis" type="object">Epicrisis</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="oe_kanban_content">
+                                	<div class="o_kanban_image">
+		                                    <img t-att-src="kanban_image('doctor.patient', 'image_medium', record.id.raw_value)"/>
+		                                </div>
+                                	<div class="oe_kanban_details">
+                                    <strong class="oe_partner_heading"><field name="patient_name"/></strong>
+                                    <ul>
+                                        <li t-if="record.tdoc.raw_value" class="o_text_overflow"><field name="tdoc"/></li>
+                                    	<li t-if="record.tdoc.raw_value" class="o_text_overflow"><field name="name"/></li>
+                                        <li t-if="record.firstname.raw_value"><field name="firstname"/></li>
+                                        <li t-if="record.sex.raw_value" class="o_text_overflow">Gender: <field name="sex"/></li>
+                                        <li t-if="record.blood_type.raw_value">Blood Type: <field name="blood_type"/><field name="blood_rh"/></li>
+                                        <li t-if="record.birth_date.raw_value">Birth Date: <field name="birth_date"/>
+                                            <t t-if="record.age.raw_value">, Age: <field name="age"/></t>
+                                        </li>
+                                    </ul>
+                                    <div class="oe_kanban_partner_links"/>
+                                </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        
+        <record id="view_doctor_administrative_data_filter" model="ir.ui.view">
+            <field name="name">doctor.patient.search</field>
+            <field name="model">doctor.patient</field>
+            <field name="arch" type="xml">
+                <search string="Search Administrative Data">
+                    <field name="name" string="Number ID" />
+                    <field name="tdoc" string="Type of Document"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Type of Document" name="groupby_tdoc" domain="[]" context="{'group_by':'tdoc'}"/>
+                    </group>
+                </search>
+            </field>
+       </record>
+        
+        <record id="action_doctor_administrative_data" model="ir.actions.act_window">
+            <field name="name">Patients</field>
+            <field name="res_model">doctor.patient</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_id" ref="doctor_administrative_data_kanban_view"/>
+            <field name="search_view_id" ref="view_doctor_administrative_data_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create doctor datas.
+              </p>
+            </field>
+        </record>
+        
+        <menuitem id="menu_doctor_details"
+            name="Doctor"
+            sequence="5"
+            groups="base.group_system,clinica_digital_consultorio.management,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.pharmacist,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.nursing_assistant"
+            />
+            
+        <menuitem id="menu_doctor_process"
+            name="Clinical Management"
+            parent="menu_doctor_details"
+            groups="base.group_system,clinica_digital_consultorio.management,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant"
+            sequence="1"/>
+
+        <menuitem id="menu_doctor_config_details"
+            name="Doctor Configuration"
+            parent="menu_doctor_details"
+            groups="base.group_system,clinica_digital_consultorio.management,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant"
+            sequence="5"/>
+            
+        
+        <menuitem id="menu_doctor_administrative_data"
+            name="Patients"
+            parent="menu_doctor_config_details"
+            action="clinica_digital_consultorio.action_doctor_administrative_data"
+            sequence="1"/>
+            
+        
+        <menuitem id="menu_assurance_plan"
+            name="Assurance Plan"
+            parent="menu_doctor_config_details"
+            action="action_assurance_plan"
+            sequence="6"/>  
+        
+        <!-- <menuitem id="menu_patient_profession"
+            name="Patient Occupation"
+            parent="menu_doctor_config_details"
+            action="action_doctor_patient_occupation"
+            sequence="7"/> -->
+            
+        <menuitem id="menu_doctor"
+            name="Doctors"
+            parent="menu_doctor_config_details"
+            action="action_doctor_details"
+            groups="base.group_system,clinica_digital_consultorio.management"
+            sequence="1"/>
+            
+        <menuitem id="menu_doctor_diseases"
+            name="Diseases"
+            parent="menu_doctor_config_details"
+            action="action_doctor_diseases"
+            groups="base.group_system,clinica_digital_consultorio.management"
+            sequence="3"/>
+            
+        <menuitem id="menu_appointment_type"
+            name="Appointment Type"
+            parent="menu_doctor_config_details"
+            action="action_appointment_type"
+            sequence="4"/>
+            
+ </odoo>
+
+ 
+ 

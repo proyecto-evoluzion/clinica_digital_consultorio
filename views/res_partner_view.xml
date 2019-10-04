@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<odoo>
+
+	
+	<record id="view_partner_form_inherit" model="ir.ui.view">
+         <field name="name">res.partner.inherit</field>
+         <field name="model">res.partner</field>
+         <field name="inherit_id" ref="base.view_partner_form"/>
+         <field name="arch" type="xml">
+              <xpath expr="//sheet" position="before">
+                  <header>
+                      <button name="%(action_create_health_professional)d" type="action"  string="Create Health Professional"
+                      	 class="oe_highlight" attrs="{'invisible':[('professional_created','=',True)]}"/>
+                  </header>
+              </xpath>
+              <xpath expr="//group/group/field[@name='type']" position="after">
+              		<field name="professional_created" invisible="1"/>
+              </xpath>
+              <xpath expr="//group/group/field[@name='lang']" position="after">
+              		<field name='insurer_id' domain="[('is_company','=',True)]" 
+              			options="{'no_create_edit': True}"/>
+              </xpath>
+         </field>
+    </record>
+    
+</odoo>
+
+

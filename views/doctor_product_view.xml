@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<odoo>
+	
+	<!-- health procedures form -->
+	<record id="product_normal_form_view_inherit_health_procedures" model="ir.ui.view">
+         <field name="name">Health Procedures</field>
+         <field name="model">product.product</field>
+         <field name="inherit_id" ref="product.product_normal_form_view"/>
+         <field name="arch" type="xml">
+             <field name="name" position="after">
+                 <div>
+                 <field name="is_health_procedure"/>
+                 <label for="is_health_procedure" string="Is Health Procedure?"/>
+                 </div>
+             </field>
+
+             <notebook>
+                 <page string="Health Procedure" attrs="{'invisible':[('is_health_procedure', '!=', True)]}">
+                     <group>
+                         <field name="procedure_code" attrs="{'required':[('is_health_procedure', '=', True)]}"/>
+                         <field name="procedure_type" attrs="{'required':[('is_health_procedure', '=', True)]}"/>
+                     </group>
+                 </page>
+             </notebook>
+         </field>
+     </record>
+     
+     <record id="product_search_form_view_inherit" model="ir.ui.view">
+            <field name="name">product.product.search</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_search_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='activities_overdue']" position="before">
+                    <filter string="Health Procedures" name="health_procedure" 
+                    	domain="[('is_health_procedure', '=', True)]" />
+                </xpath>
+            </field>
+        </record>
+        
+    <!-- health procedures Action -->
+    <record model="ir.actions.act_window" id="action_doctor_health_procedures">
+        <field name="name">Health Procedures</field>
+        <field name="res_model">product.product</field>
+        <field name="view_type">form</field>
+        <field name="domain">[]</field>
+        <field name="context">{'search_default_health_procedure':1}</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <!-- doctor cups code Form View -->
+    <record model="ir.ui.view" id="view_doctor_cups_code_form">
+        <field name="name">doctor.cups.code.form</field>
+        <field name="model">doctor.cups.code</field>
+        <field name="arch" type="xml">
+            <form string="Diseases">
+                <group>
+                    <field name="product_id" required="1" domain="[('is_health_procedure','=',True)]"
+                    	/>
+                    <field name="code" required="1" />
+                </group>
+            </form>
+        </field>
+    </record>
+	
+    
+    <!-- doctor cups code Tree View -->
+    <record model="ir.ui.view" id="view_doctor_cups_code_tree">
+        <field name="name">doctor.cups.code.tree</field>
+        <field name="model">doctor.cups.code</field>
+        <field name="arch" type="xml">
+            <tree string="Diseases">
+                <field name="code"/>
+                <field name="product_id"/>
+            </tree>
+        </field>
+    </record>
+	    
+    <!-- Doctor cups code Action -->
+    <record id="action_doctor_cups_code" model="ir.actions.act_window">
+        <field name="name">CUPS Code</field>
+        <field name="res_model">doctor.cups.code</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_doctor_cups_code_tree"/>
+    </record> 
+    
+    
+    <menuitem id="menu_doctor_health_procedures"
+            name="Health Procedures"
+            parent="menu_doctor_config_details"
+            action="action_doctor_health_procedures"
+            sequence="4"/>
+            
+    <menuitem id="menu_doctor_cups_code"
+            name="CUPS Code"
+            parent="menu_doctor_config_details"
+            action="action_doctor_cups_code"
+            sequence="5"/>
+        
+        
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <report id="clinica_digital_consultorio.clinica_visualizer_report"
+            string="Clinica Record History"
+            model="clinica.record.list.visualizer"
+            report_type="qweb-html"
+            file="clinica_digital_consultorio.visualizer_report" 
+            name="clinica_digital_consultorio.visualizer_report" 
+            print_report_name="'Clinica Record History' "
+            menu="False"/>
+            
+            
+     </data>
+</odoo>

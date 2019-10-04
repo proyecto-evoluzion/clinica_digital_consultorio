@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<odoo>
+
+	
+	<record id="invoice_form_clinica_inherit" model="ir.ui.view">
+         <field name="name">account.invoice.inherit</field>
+         <field name="model">account.invoice</field>
+         <field name="inherit_id" ref="account.invoice_form"/>
+         <field name="arch" type="xml">
+              <xpath expr="//notebook/page/field[@name='invoice_line_ids']" position="before">
+              		<group>
+               			<div class="oe_button_box" name="button_box">
+               				<button name="action_compute_procedure_time" string='Load Procedure Time'
+       						type="object" icon="fa-refresh"/>
+               			</div>
+               		</group>
+              </xpath>
+         </field>
+    </record>
+    
+</odoo>
+
+

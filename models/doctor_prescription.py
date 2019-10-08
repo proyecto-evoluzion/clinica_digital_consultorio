@@ -31,7 +31,7 @@ class DoctorPrescription(models.Model):
 	doctor_id = fields.Many2one('doctor.professional', string='Professional')
 	profession_type = fields.Selection([('plastic_surgeon','Plastic Surgeon'),('anesthesiologist','Anesthesiologist'),
 										('technologists','Surgical Technologists'),('helpers','Surgical Helpers'),
-										('nurse','Nurse')], 
+										('nurse','Nurse'),('otorhino','Otorhinolaryngologist')], 
 										string='Profession Type', default='plastic_surgeon', related="doctor_id.profession_type")
 	order = fields.Text(string="Order", required="1")
 	template_id = fields.Many2one('doctor.prescription.template', string='Template')

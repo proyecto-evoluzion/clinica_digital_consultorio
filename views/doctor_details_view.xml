@@ -553,19 +553,19 @@
         <menuitem id="menu_doctor_details"
             name="Doctor"
             sequence="5"
-            groups="base.group_system,clinica_digital_consultorio.management,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.pharmacist,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.nursing_assistant"
+            groups="base.group_system,clinica_digital_consultorio.management,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.pharmacist,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.otorhino"
             />
             
         <menuitem id="menu_doctor_process"
             name="Clinical Management"
             parent="menu_doctor_details"
-            groups="base.group_system,clinica_digital_consultorio.management,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant"
+            groups="base.group_system,clinica_digital_consultorio.management,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.otorhino"
             sequence="1"/>
 
         <menuitem id="menu_doctor_config_details"
             name="Doctor Configuration"
             parent="menu_doctor_details"
-            groups="base.group_system,clinica_digital_consultorio.management,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant"
+            groups="base.group_system,clinica_digital_consultorio.management,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.otorhino"
             sequence="5"/>
             
         

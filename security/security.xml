@@ -9,6 +9,10 @@
             <field name="name">Doctor / Surgeon</field>
         </record>
 
+        <record id="otorhino" model="res.groups">
+            <field name="name">Doctor / Otorhinolaryngologist</field>
+        </record>
+
         <record id="nursing_assistant" model="res.groups">
             <field name="name">Doctor / Nursing Assistant</field>
         </record>

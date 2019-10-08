@@ -82,7 +82,7 @@ class Doctor(models.Model):
                                     help='User-related data of doctor ')
     profession_type = fields.Selection([('plastic_surgeon','Plastic Surgeon'),('anesthesiologist','Anesthesiologist'),
                                         ('technologists','Surgical Technologists'),('helpers','Surgical Helpers'),
-                                        ('nurse','Nurse')], 
+                                        ('nurse','Nurse'),('otorhino','Otorhinolaryngologist')], 
                                        string='Profession Type', default='plastic_surgeon')
     product_ids = fields.Many2many('product.product', 'product_professional_rel', 'doctor_id', 'product_id', 
                                    string="Health Procedures", copy=False)

@@ -7,7 +7,7 @@
          <form string="Physical Examination Elements">
          	<group col="2">
                 <field name="name"/>
-                <field name="professional_id"/>
+                <field name="professional_id" />
                 <field name="active"/>
             </group>
          </form>

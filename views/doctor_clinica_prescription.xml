@@ -52,7 +52,7 @@
           name="Prescription"
           parent="menu_doctor_process"
           action="clinica_digital_consultorio.action_doctor_prescription"
-          groups="base.group_system,clinica_digital_consultorio.surgeon"
+          groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.otorhino"
           sequence="15"/>
 
 </odoo>

@@ -550,7 +550,7 @@
 	   name="Waiting Room "
 	   parent="menu_doctor_process"
 	   action="clinica_digital_consultorio.action_clinica_waiting_room"
-	   groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.pharmacist,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.anesthesiologist" sequence="3"/>
+	   groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.pharmacist,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.otorhino" sequence="3"/>
 	   
   <!-- Surgery room menu -->
    <menuitem id="menu_clinica_surgery_room_procedures"

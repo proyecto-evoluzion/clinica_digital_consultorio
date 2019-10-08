@@ -111,7 +111,7 @@
           name="Epicrisis"
           parent="menu_doctor_process"
           action="clinica_digital_consultorio.action_clinica_doctor_epicrisis"
-          groups="base.group_system,clinica_digital_consultorio.surgeon"
+          groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.otorhino"
           sequence="11"/>
 
 </odoo>

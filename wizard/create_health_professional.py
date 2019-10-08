@@ -33,7 +33,7 @@ class CreateHealthProfessional(models.TransientModel):
     email = fields.Char(string='Email')
     phone = fields.Char(string='Phone Number')
     profession_type = fields.Selection([('plastic_surgeon','Plastic Surgeon'),('anesthesiologist','Anesthesiologist'),
-                                        ('technologists','Surgical Technologists'),('helpers','Surgical Helpers')], 
+                                        ('technologists','Surgical Technologists'),('helpers','Surgical Helpers'),('otorhino','Otorhinolaryngologist')], 
                                        string='Profession Type', default='doctor')
     professional_product_ids = fields.Many2many('product.product', string='Products')
     

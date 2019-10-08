@@ -909,6 +909,8 @@ msgstr "Auxiliar Enfermería"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.doctor_schedule_filter_01
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_physical_item_professional_id
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_prescription_doctor_id
 msgid "Professional"
 msgstr "Profesional Salud"
 
@@ -2036,6 +2038,17 @@ msgstr "Doctor / Asistente Programación"
 #: model:res.groups,name:clinica_digital_consultorio.surgeon
 msgid "Doctor / Surgeon"
 msgstr "Doctor / Cirujano"
+
+#. module: clinica_digital_consultorio
+#: model:res.groups,name:clinica_digital_consultorio.otorhino
+msgid "Doctor / Otorhinolaryngologist"
+msgstr "Doctor / Otorrinolaringólo"
+
+#. module: clinica_digital_consultorio
+#: selection:create.health.professional,profession_type:0
+#: selection:doctor.professional,profession_type:0
+msgid "Otorhinolaryngologist"
+msgstr "Otorrinolaringólogo"
 
 #. module: clinica_digital_consultorio
 #: model:res.groups,name:clinica_digital_consultorio.surgical_technologist

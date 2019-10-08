@@ -62,7 +62,8 @@
         'views/doctor_surgical_technologist.xml',
         'views/doctor_clinica_prescription.xml',
         'views/assets.xml',
-        'views/record_authenticate_views.xml'
+        'views/record_authenticate_views.xml',
+        'views/clinica_physical_item.xml'
     ],
     'demo': [
     ],

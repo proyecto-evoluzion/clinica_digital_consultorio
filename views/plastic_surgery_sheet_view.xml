@@ -91,6 +91,14 @@
                             
 		      			</page>
             			<page name="physical_exam" string="Physical Exam">
+                            <group string="Physical Examination">
+                                <field name="physical_examination_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="element" domain="['|',('professional_id','=',uid),('professional_id','=',False)]"/>
+                                        <field name="physical_examination"/>        
+                                    </tree>
+                                </field>
+                            </group>
             				<group name="physical_exam" colspan="2" col='1'>
             					<label for="physical_exam" string="Physical Exam"/>
             					<field name="physical_exam" nolabel="1"/>
@@ -176,7 +184,7 @@
             parent="menu_doctor_process"
             action="clinica_digital_consultorio.action_clinica_plastic_surgery"
             sequence="9"
-            groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.clinical_auditor"
+            groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.clinical_auditor"
             />
         
  </odoo>

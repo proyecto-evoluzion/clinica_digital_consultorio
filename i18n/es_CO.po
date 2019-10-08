@@ -3421,6 +3421,9 @@ msgstr "Máscara Laríngea"
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_epicrisis_name
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_quirurgic_sheet_name
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_waiting_room_name
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_physical_item_name
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_prescription_template_name
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_surgical_technologist_element_name
 msgid "Name"
 msgstr "Nombre"
 
@@ -3493,6 +3496,30 @@ msgstr "No Responde"
 #: selection:clinica.anhestesic.registry,tube_type:0
 msgid "Normal"
 msgstr "Normal"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_physical_examination_physical_examination
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_plastic_surgery_physical_examination_ids
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
+msgid "Physical Examination"
+msgstr "Exámen Físico"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_physical_item_form
+msgid "Physical Examination Elements"
+msgstr "Elementos de Exámen Físico"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_physical_examination_element
+msgid "Physical Examination Type"
+msgstr "Tipo de Exámen Físico"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_physical_item_active
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_prescription_template_active
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_surgical_technologist_element_active
+msgid "Active"
+msgstr "Activo"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_anhestesic_registry_numberid

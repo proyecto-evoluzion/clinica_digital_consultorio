@@ -120,6 +120,7 @@ class PlasticSurgerySheet(models.Model):
     medical_recipe = fields.Text(string="Medical Orders and Recipe")
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
+    physical_examination_ids = fields.One2many('clinica.physical.examination', 'plastic_surgery_id', string="Physical Examination")
     
     @api.onchange('room_id')
     def onchange_room_id(self):
@@ -278,7 +279,20 @@ class PlasticSurgerySheet(models.Model):
                 'context': context,
                 'target': 'new'
             }
-    
+
+class PhysicalExamination(models.Model):
+    _name = "clinica.physical.examination"
+
+    plastic_surgery_id = fields.Many2one('clinica.plastic.surgery', string='Plastic Surgery')
+    element = fields.Many2one('clinica.physical.item', string='Physical Examination Type')
+    physical_examination = fields.Char(string="Physical Examination")
+
+class PhysicalExaminationType(models.Model):
+    _name = "clinica.physical.item"
+
+    name = fields.Char(string="Name", required=True)
+    professional_id = fields.Many2one('doctor.professional', string='Professional')
+    active = fields.Boolean(string="Active", default="True")
     
     
     

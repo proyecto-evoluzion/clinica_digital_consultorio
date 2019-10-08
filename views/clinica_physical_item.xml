@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+	<record id="clinica_physical_item_form" model="ir.ui.view">
+         <field name="name">clinica.physical.item.form</field>
+         <field name="model">clinica.physical.item</field>
+         <field name="arch" type="xml">
+         <form string="Physical Examination Elements">
+         	<group col="2">
+                <field name="name"/>
+                <field name="professional_id"/>
+                <field name="active"/>
+            </group>
+         </form>
+         </field>
+     </record>
+</odoo>

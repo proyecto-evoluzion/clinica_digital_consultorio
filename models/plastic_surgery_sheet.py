@@ -100,7 +100,7 @@ class PlasticSurgerySheet(models.Model):
     physical_weight = fields.Float(string="Weight")
     physical_size = fields.Float(string="Size")
     physical_body_mass_index = fields.Float(string="IMC (Body Mass Index)")
-    physical_exam = fields.Text(string="Physical Exam")
+    physical_exam = fields.Text(string="Physical Exam Observations")
     
     disease_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
     disease2_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')

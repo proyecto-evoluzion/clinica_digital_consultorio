@@ -100,7 +100,7 @@
                                 </field>
                             </group>
             				<group name="physical_exam" colspan="2" col='1'>
-            					<label for="physical_exam" string="Physical Exam"/>
+            					<label for="physical_exam" string="Physical Exam Observations"/>
             					<field name="physical_exam" nolabel="1"/>
             				</group>
             			</page>

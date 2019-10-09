@@ -330,7 +330,7 @@
                             <field name="residence_department_id" string="Department" placeholder="Department" options="{'no_create_edit': True}"
                                 context="{'country_id': residence_country_id,'default_country_id':residence_country_id}"  domain="[('country_id','=',residence_country_id)]"/>
                             
-                            <field name="residence_district" string="Districts/Localties/Areas" placeholder="Districts/Localties/Areas"/>
+                            <field name="residence_address"/>
                         </group>
 <!--                            <field name="residence_neighborhood" string="Neighborhood" placeholder="Neighborhood"/> -->
                     </group>

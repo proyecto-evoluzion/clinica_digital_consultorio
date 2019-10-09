@@ -4649,7 +4649,7 @@ msgstr "Retiro de: Prótesis dentales, joyas, lentes, esmalte, tampones, etc."
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_residence_address
 msgid "Residence Address"
-msgstr "Dirección de residencia"
+msgstr "Dirección Residencia"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_residence_country_id

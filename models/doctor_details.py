@@ -214,7 +214,7 @@ class DoctorAdministrativeData(models.Model):
     residence_country_id = fields.Many2one('res.country', string='Residence Country', required=True)
     residence_department_id = fields.Many2one('res.country.state', string='Residence Department/City', required=True)
     residence_city_id = fields.Many2one('res.country.state.city', string='Residence Location/City/Town', required=True)
-    residence_district = fields.Char(string='Residence Districts/localties/areas', required=True)
+#    residence_district = fields.Char(string='Residence Districts/localties/areas', required=True)
 #     residence_neighborhood = fields.Char(string='Residence Neighborhood')
     residence_address = fields.Text(string="Residence Address")
     civil_state = fields.Selection([('separated','Separada/o'),('single','Soltera/o'),('married','Casada/o'),

@@ -94,7 +94,7 @@
                             <group string="Physical Examination">
                                 <field name="physical_examination_ids" nolabel="1" >
                                     <tree editable="bottom">
-                                        <field name="element" domain="['|',('professional_id','=',uid),('professional_id','=',False)]"/>
+                                        <field name="element" domain="['|',('professional_id.res_user_id','=',uid),('professional_id','=',False)]"/>
                                         <field name="physical_examination"/>        
                                     </tree>
                                 </field>

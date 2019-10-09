@@ -4086,6 +4086,7 @@ msgstr "Códigos CUPS"
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_presurgical_record_physical_exam
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
 msgid "Physical Exam"
 msgstr "Examen Físico"
 

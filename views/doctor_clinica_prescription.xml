@@ -6,13 +6,19 @@
          <field name="model">doctor.prescription</field>
          <field name="arch" type="xml">
          <form string="Doctor Prescription Form">
+          <header>
+              <button name="action_view_clinica_record_history" string="View History" type="object" class="oe_highlight"/>
+          </header>
          	<sheet>
             <group col="4">
   	         	<field name="name"/>
               <field name="prescription_date"/>
             </group>
-            <group col="6">
+            <group col="4">
               <field name="patient_id"/>
+              <field name="numberid" required="1"/>
+            </group>
+            <group col="4">
               <field name="doctor_id"/>
               <field name="profession_type"/>
             </group>
@@ -34,11 +40,22 @@
               <tree string="Doctor Prescription Tree">
                 <field name="name"/>
                 <field name="patient_id"/>
+                <field name="numberid"/>
                 <field name="prescription_date"/>
                 <field name="doctor_id"/>
               </tree>
           </field>
       </record>
+
+      <record id="doctor_prescription_filter" model="ir.ui.view">
+            <field name="name">doctor.prescription.filter</field>
+            <field name="model">doctor.prescription</field>
+            <field name="arch" type="xml">
+                <search string="Search Anhestesic Registry">
+                    <field name="numberid" />
+                </search>
+            </field>
+       </record>
       
       <record id="action_doctor_prescription" model="ir.actions.act_window">
           <field name="name">Prescription Format</field>
@@ -52,7 +69,7 @@
           name="Prescription"
           parent="menu_doctor_process"
           action="clinica_digital_consultorio.action_doctor_prescription"
-          groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.otorhino"
+          groups="base.group_system"
           sequence="15"/>
 
 </odoo>

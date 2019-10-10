@@ -977,6 +977,47 @@
        		</t>
        		</div>
        	</template>
+
+    <template id="clinica_digital_consultorio.prescription_visualizer_template">
+      <div class="page">
+        <div class="oe_structure"/>
+          <t t-foreach="clinica_records['prescription']" t-as="prescription">
+            <t t-set="prescription" t-value="prescription.with_context({'lang':prescription.patient_id.partner_id.lang})" />
+            <table style="width:100%;">
+              <tr>
+                <td style="width:25%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Date: <span t-field="prescription.prescription_date" style="padding-left:2px;"/></strong></td>
+                <td style="width:40%; text-align:center; font-size: 15px;"><strong>Prescription Type: <span t-field="prescription.name" style="padding-left:2px;"/></strong></td>
+              </tr>
+            </table>
+            <table class="table table-bordered" style=" width:100%;">
+              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
+              <tr>
+                <td style="width:50%; "><t t-if="prescription.patient_id.ref">Number ID: <span style="padding-left:2px;" t-field="prescription.patient_id.ref"/></t></td>
+                <td style="width:50%; ">
+                  Patient Name: <span style="padding-left:2px;" t-field="prescription.patient_id.firstname"/> <span style="padding-left:2px;" t-field="prescription.patient_id.lastname"/><br/>
+                  <t t-if="prescription.patient_id.age">Age: <span style="padding-left:2px;" t-field="prescription.patient_id.age"/><br/></t>
+                  <t t-if="prescription.patient_id.insurer_id and flag == 0">
+                    Insurer: <span style="padding-left:2px;" t-field="prescription.patient_id.insurer_id.name"/><br/>
+                  </t>
+                </td>
+              </tr>
+              <tr t-if="prescription.order">
+                <td colspan="2" style="text-align:center; "><strong>PRESCRIPTION</strong></td>
+              </tr>
+              <tr t-if="prescription.order">
+                <td colspan="2"><strong><span t-field="prescription.order"/></strong></td>
+              </tr>
+              <tr t-if="prescription.sign_stamp"><td colspan="2" style="text-align:center; "><strong>SIGN AND MÉDICAL STAMP</strong></td></tr>
+            <tr t-if="prescription.sign_stamp">
+                <td colspan="2" style="width:50%; ">
+                  <span style="padding-left:2px;" t-field="prescription.sign_stamp"/>
+                </td>
+              </tr>
+            </table>
+            <p style="page-break-after: always;"/>
+          </t>
+          </div>
+        </template>
     
     
         <template id="visualizer_report_template">
@@ -1010,6 +1051,9 @@
                     <t t-if="record == 'epicrisis'">
                       <t t-call="clinica_digital_consultorio.epicrisis_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                     </t>
+                    <t t-if="record == 'prescription'">
+                      <t t-call="clinica_digital_consultorio.prescription_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+                    </t>
                     <t t-if="record == 'nurse_sheets'">
                       <t t-call="clinica_digital_consultorio.nurse_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                     </t>
@@ -1035,6 +1079,9 @@
                 </t>
                 <t t-if="record == 'epicrisis'">
                   <t t-call="clinica_digital_consultorio.epicrisis_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+                </t>
+                <t t-if="record == 'prescription'">
+                  <t t-call="clinica_digital_consultorio.prescription_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                 </t>
                 <t t-if="record == 'nurse_sheets'">
                   <t t-call="clinica_digital_consultorio.nurse_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>

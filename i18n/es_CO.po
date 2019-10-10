@@ -301,6 +301,7 @@ msgstr "<strong>ANTECEDENTES</strong>"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.presurgical_record_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.quirurgic_sheet_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.prescription_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.room_visualizer_template
 msgid "<strong>PATIENT DATA</strong>"
 msgstr "<strong>DATOS DEL PACIENTE</strong>"
@@ -385,6 +386,7 @@ msgstr "<strong>RX. TORAX</strong>"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.epicrisis_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.medical_evolution_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.quirurgic_sheet_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.prescription_visualizer_template
 msgid "<strong>SIGN AND MÉDICAL STAMP</strong>"
 msgstr "<strong>FIRMA Y SELLO MÉDICO</strong>"
 
@@ -1726,6 +1728,7 @@ msgstr "Departamento"
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_surgery_room_name
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_medical_evolution_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.medical_evolution_visualizer_template
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_prescription_template_description
 msgid "Description"
 msgstr "Descripción"
 
@@ -2862,6 +2865,7 @@ msgstr "Instrumentadora los materiales, medicamentos e insumos especiales solici
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.presurgical_record_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.quirurgic_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.room_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.prescription_visualizer_template
 msgid "Insurer:"
 msgstr "Aseguradora:"
 
@@ -3437,6 +3441,7 @@ msgstr "Máscara Laríngea"
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_physical_item_name
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_prescription_template_name
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_surgical_technologist_element_name
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_prescription_template_name
 msgid "Name"
 msgstr "Nombre"
 
@@ -3556,6 +3561,7 @@ msgstr "Activo"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.view_doctor_administrative_data_filter
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_prescription_numberid
 msgid "Number ID"
 msgstr "Número de Identificación"
 
@@ -3581,6 +3587,7 @@ msgstr "Number ID for TI or CC Documents"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.presurgical_record_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.quirurgic_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.room_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.prescription_visualizer_template
 msgid "Number ID:"
 msgstr "Número de Identificación:"
 
@@ -3991,6 +3998,7 @@ msgstr "Patológicos"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_surgery_room_procedures_filter
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_waiting_room_filter
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.doctor_surgical_technologist_form
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_prescription_patient_id
 msgid "Patient"
 msgstr "Paciente"
 
@@ -4026,6 +4034,7 @@ msgstr "Patient Name"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.presurgical_record_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.quirurgic_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.room_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.prescription_visualizer_template
 msgid "Patient Name:"
 msgstr "Nombres:"
 
@@ -4408,6 +4417,7 @@ msgstr "Profesión"
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_create_health_professional_profession_type
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_professional_profession_type
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_prescription_profession_type
 msgid "Profession Type"
 msgstr "Profesión"
 
@@ -5729,6 +5739,7 @@ msgstr "Víctima - Subsidiado"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_presurgical_record_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_quirurgic_sheet_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.view_clinica_nurse_sheet_form
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.doctor_prescription_form
 msgid "View History"
 msgstr "Ver Historia"
 
@@ -6300,3 +6311,64 @@ msgstr "Instrumentador(a)"
 #: model:ir.ui.menu,name:clinica_digital_consultorio.menu_doctor_surgical_technologist
 msgid "Surgical Tech."
 msgstr "Ins. Quirúrgico"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.menu,name:clinica_digital_consultorio.menu_doctor_prescription
+msgid "Prescription"
+msgstr "Prescripciones"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_prescription_name
+msgid "Order Type"
+msgstr "N° Orden"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_prescription_prescription_date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_prescription_doctor_id
+msgid "Professional"
+msgstr "Doctor"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_prescription_template_id
+msgid "Template"
+msgstr "Plantilla"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.doctor_prescription_form
+msgid "Prescribe"
+msgstr "Prescripción"
+
+#. module: clinica_digital_consultorio
+#: model:ir.actions.act_window,name:clinica_digital_consultorio.action_doctor_prescription
+msgid "Prescription Format"
+msgstr "Formato de prescripción"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_prescription_template_active
+msgid "Active"
+msgstr "Activo"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.prescription_visualizer_template
+msgid "Date:"
+msgstr "Fecha:"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.prescription_visualizer_template
+msgid "Prescription Type:"
+msgstr "Prescipción N°:"
+
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.prescription_visualizer_template
+msgid "<strong>PRESCRIPTION</strong>"
+msgstr "<strong>PRESCRIPCIÓN</strong>"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.prescription_visualizer_template
+msgid "Age:"
+msgstr "Edad:"

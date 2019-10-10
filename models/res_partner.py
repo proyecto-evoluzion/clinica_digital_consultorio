@@ -27,6 +27,7 @@ class Partner(models.Model):
     _inherit = "res.partner"
     
     professional_created = fields.Boolean(string="Professional Created", copy=False)
+    is_assurance = fields.Boolean(string="Is it an Assurance Company?", copy=False)
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')
         
         

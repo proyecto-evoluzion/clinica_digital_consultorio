@@ -130,6 +130,18 @@
 		 				<field name="numberid"/>
    					</tree>
    				</field>
+          <separator string="Prescription" attrs="{'invisible':[('view_model','not in',['epicrisis','all'])]}"/>
+          <field name="prescription_ids" nolabel="1" force_save="1" readonly="1" 
+            attrs="{'invisible':[('view_model','not in',['prescription','all'])]}">
+            <tree string="Prescription">
+              <field name="name"/>
+            <!-- <field name="patient_in_date"/>
+            <field name="patient_out_date"/> -->
+            <field name="patient_id"/>
+            <!-- <field name="tdoc"/> -->
+            <field name="doctor_id"/>
+            </tree>
+          </field>
          	</sheet>
          </form>
          </field>
@@ -147,7 +159,7 @@
           name="Clinica Record Visualizer"
           parent="menu_doctor_process"
           action="clinica_digital_consultorio.action_clinica_record_list_visualizer"
-	        groups="base.group_system,clinica_digital_consultorio.programmer_assistant"
+	  groups="base.group_system"
           sequence="20"/>
 
 </odoo>

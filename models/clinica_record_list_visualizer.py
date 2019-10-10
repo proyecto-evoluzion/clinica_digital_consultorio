@@ -54,11 +54,13 @@ class ClinicaRecordVisualizer(models.Model):
                                    string="Medical Orders and Evolution", copy=False)
     epicrisis_ids = fields.Many2many('doctor.epicrisis', 'epicrisis_visualizer_rel', 'visualizer_id', 'epicrisis_id', 
                                    string="Epicrisis", copy=False)
+    prescription_ids = fields.Many2many('doctor.prescription', 'prescription_visualizer_rel', 'visualizer_id', 'prescription_id', 
+                                   string="Prescription", copy=False)
     view_model = fields.Selection([('nurse_sheet','Nurse Sheet'),('quirurgic_sheet','Quirurgic Sheet'),
                                    ('surgery_room','Surgery Room Procedures'),('waiting_room','Waiting Room'),
                                    ('presurgical','Presurgical Record'),('anhestesic_registry','Anhestesic Registry'),
                                    ('plastic_surgery','Plastic Surgery'),('medical_evolution','Medical Evolution'),
-                                   ('epicrisis','Epicrisis'),('all','All')], string='View from model', default='all')
+                                   ('epicrisis','Epicrisis'),('prescription','Prescription'),('all','All')], string='View from model', default='all')
     
     
     def _get_nurse_sheet_ids(self, search_domain, doctor, start_period, end_period):
@@ -201,6 +203,24 @@ class ClinicaRecordVisualizer(models.Model):
         if epicrisis_objs:
             epicrisis_ids = epicrisis_objs.ids
         return epicrisis_ids
+
+    def _get_prescription_ids(self, search_domain, doctor, start_period, end_period):
+        prescription_ids = []
+        prescription_search_domain = []
+        prescription_search_domain.extend(search_domain)
+        if doctor:
+            medical_evolution_search_domain.append(('doctor_id','=',doctor.id))
+        if start_period:
+            prescription_search_domain.append(('prescription_date','=',start_period))
+            # prescription_search_domain.append(('patient_out_date','>=',start_period))
+        # if end_period:
+        #     prescription_search_domain.append(('patient_in_date','<=',end_period))
+        #     prescription_search_domain.append(('patient_out_date','<=',end_period))
+            
+        prescription_objs = self.env['doctor.prescription'].search(prescription_search_domain)
+        if prescription_objs:
+            prescription_ids = prescription_objs.ids
+        return prescription_ids
     
     @api.onchange('patient_id','start_period','end_period','doctor_id','view_model')
     def onchange_visualizer_filter(self):
@@ -214,6 +234,7 @@ class ClinicaRecordVisualizer(models.Model):
         plastic_surgery_ids = []
         medical_evolution_ids = []
         epicrisis_ids = []
+        prescription_ids = []
         if self.patient_id:
             search_domain.append(('patient_id','=',self.patient_id.id))
         if self.patient_id or self.doctor_id or self.start_period or self.end_period:
@@ -233,6 +254,8 @@ class ClinicaRecordVisualizer(models.Model):
                 medical_evolution_ids = self._get_medical_evolution_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
             if self.view_model in ['epicrisis','all']:
                 epicrisis_ids = self._get_epicrisis_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
+            if self.view_model in ['prescription','all']:
+                prescription_ids = self._get_prescription_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
             
         self.nurse_sheet_ids = nurse_sheet_ids
         self.quirurgic_sheet_ids = quirurgic_sheet_ids
@@ -243,6 +266,7 @@ class ClinicaRecordVisualizer(models.Model):
         self.plastic_surgery_ids = plastic_surgery_ids
         self.medical_evolution_ids = medical_evolution_ids
         self.epicrisis_ids = epicrisis_ids
+        self.prescription_ids = prescription_ids
         
     @api.multi
     def action_print_clinica_record_history(self):

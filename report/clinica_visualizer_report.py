@@ -30,7 +30,8 @@ class ClinicaVisualizerReport(models.AbstractModel):
     def get_report_values(self, docids, data=None):
         visualizer_objs = self.env['clinica.record.list.visualizer'].browse(docids)
         clinica_record_dict = {'nurse_sheets': [], 'quirgic_sheets': [], 'surgery_rooms': [], 'waiting_rooms': [],
-            'presurgical_records': [], 'anhestesic_registry': [], 'plastic_surgery': [], 'medical_evolution': [], 'epicrisis': []
+            'presurgical_records': [], 'anhestesic_registry': [], 'plastic_surgery': [], 'medical_evolution': [], 'epicrisis': [], 
+            'prescription': []
             }
         for visualizer in visualizer_objs:
             clinica_record_dict.update({
@@ -42,7 +43,8 @@ class ClinicaVisualizerReport(models.AbstractModel):
                                     'anhestesic_registry': visualizer.anhestesic_registry_ids, 
                                     'plastic_surgery': visualizer.plastic_surgery_ids, 
                                     'medical_evolution': visualizer.medical_evolution_ids, 
-                                    'epicrisis': visualizer.epicrisis_ids})
+                                    'epicrisis': visualizer.epicrisis_ids,
+                                    'prescription': visualizer.prescription_ids})
         
         report_vals =  {
             'doc_ids': docids,

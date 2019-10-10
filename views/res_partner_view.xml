@@ -17,8 +17,12 @@
               		<field name="professional_created" invisible="1"/>
               </xpath>
               <xpath expr="//group/group/field[@name='lang']" position="after">
-              		<field name='insurer_id' domain="[('is_company','=',True)]" 
+              		<field name='insurer_id' domain="['&amp;',('is_company','=',True), ('is_assurance', '=', True)]" 
               			options="{'no_create_edit': True}"/>
+              </xpath>
+              <xpath expr="//div/h1" position="after">
+                  <field name='is_assurance' attrs="{'invisible': [('is_company','=', False)]}"/>
+                  <label for="is_company" string="Is it an Assurance Company?" attrs="{'invisible': [('is_company','=', False)]}"/>
               </xpath>
          </field>
     </record>

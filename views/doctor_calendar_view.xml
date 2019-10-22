@@ -173,11 +173,12 @@
 			<sheet>
 				<div class="oe_button_box" name="button_box">
 					<button name="action_view_sale_order" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
-						states="ordered" string="Quotation">
+						states="ordered" string="Quotation" 
+						groups="base.group_system,clinica_digital_consultorio.programmer_assistant">
 					</button>
 					<button name="action_view_anhestesic_registry" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						attrs="{'invisible': [('anhestesic_registry_created', '=', False)]}" string="Anhestesic Registry"
-						groups="base.group_system,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+						groups="base.group_system,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
 					</button>
 					<button name="action_view_nurse_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						attrs="{'invisible': [('nurse_sheet_created', '=', False)]}" string="Nurse Sheets"
@@ -185,11 +186,11 @@
 					</button>
 					<button name="action_view_presurgical_record" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Pre-Surgical Records"
-						groups="clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+						groups="clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
 					</button>
 					<button name="action_view_quirurgic_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Quirurgic Sheet"
-						groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+						groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
 					</button>
 					<button name="action_view_quirurgical_check_list" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Quirurgical Check List"
@@ -201,15 +202,15 @@
 					</button>
 					<button name="action_view_plastic_surgery" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Plastic Surgery Sheet"
-						groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor">
+						groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor">
 					</button>
 					<button name="action_view_medical_evolution" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Med. Order and Evolution"
-						groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+						groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
 					</button>
 					<button name="action_view_epicrisis" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Epicrisis"
-						groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
+						groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
 					</button>
 				</div>
 				<div class="oe_title">
@@ -566,7 +567,8 @@
 		name="Schedule"
 		parent="menu_doctor_process"
 		action="clinica_digital_consultorio.action_clinica_doctor_schedule"
-		sequence="4"/>
+		sequence="4"
+		groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.anesthesiologist"/>
 		
    <menuitem id="menu_clinica_surgery_room"
 			name="Surgery Rooms"

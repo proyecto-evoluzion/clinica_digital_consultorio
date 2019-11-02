@@ -45,6 +45,7 @@ class ClinicaVisualizerReport(models.AbstractModel):
                                     'medical_evolution': visualizer.medical_evolution_ids, 
                                     'epicrisis': visualizer.epicrisis_ids,
                                     'prescription': visualizer.prescription_ids})
+
         
         report_vals =  {
             'doc_ids': docids,

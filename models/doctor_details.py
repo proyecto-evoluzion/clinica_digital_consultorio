@@ -86,6 +86,14 @@ class Doctor(models.Model):
                                        string='Profession Type', default='plastic_surgeon')
     product_ids = fields.Many2many('product.product', 'product_professional_rel', 'doctor_id', 'product_id', 
                                    string="Health Procedures", copy=False)
+    medical_record = fields.Char(string='Medical record', required=True)
+
+    @api.onchange('medical_record')
+    def onchange_medical_record(self):
+        if self.medical_record:
+            is_mr = self.env['doctor.professional'].search([('medical_record','=',self.medical_record)])
+            if is_mr:
+                raise ValidationError(_('This medical record already exists in the system.'))    
     
     def _check_email(self, email):
         if not tools.single_email_re.match(email):

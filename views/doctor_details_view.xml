@@ -140,7 +140,8 @@
                     	<group>
                     		<field name="profession_type" required="1"/>
 	                        <field name="email"/>
-	                        <field name="phone"/> 
+	                        <field name="phone"/>
+                            <field name="medical_record"/>
                     	</group>
                     	<group>
 	                        <field name="lastname"  required="1"/> 

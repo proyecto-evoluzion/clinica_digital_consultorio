@@ -121,6 +121,7 @@ class PlasticSurgerySheet(models.Model):
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
     physical_examination_ids = fields.One2many('clinica.physical.examination', 'plastic_surgery_id', string="Physical Examination")
+    doctor_id = fields.Many2one('doctor.professional', string='Professional')
     
     @api.onchange('room_id')
     def onchange_room_id(self):
@@ -229,6 +230,13 @@ class PlasticSurgerySheet(models.Model):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
                 raise ValidationError(warn_msg)
+
+        ctx = self._context
+        if ctx.get('uid'):
+            create_uid = self.env['res.users'].search([('id','=',ctx.get('uid'))])
+            professional_obj = self.env['doctor.professional'].search([('res_user_id','=',create_uid.id)])
+            if professional_obj:
+                vals['doctor_id'] = professional_obj.id
         
         res = super(PlasticSurgerySheet, self).create(vals)
         res._check_document_types()

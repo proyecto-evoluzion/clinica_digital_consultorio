@@ -55,6 +55,18 @@ class DoctorPrescription(models.Model):
 		if self.patient_id:
 			self.numberid = self.patient_id.ref
 
+	@api.model
+	def create(self, vals):
+		ctx = self._context
+		if ctx.get('uid'):
+			create_uid = self.env['res.users'].search([('id','=',ctx.get('uid'))])
+			professional_obj = self.env['doctor.professional'].search([('res_user_id','=',create_uid.id)])
+			if professional_obj:
+				vals['doctor_id'] = professional_obj.id
+
+		res = super(DoctorPrescription, self).create(vals)
+		return res 			
+
 	@api.multi
 	def _set_visualizer_default_values(self):
 		vals = {
@@ -75,7 +87,7 @@ class DoctorPrescription(models.Model):
                 'type': 'ir.actions.act_window',
                 'context': context,
                 'target': 'new'
-            }
+            }           
 
 class DoctorPrescription(models.Model):
 	_name = "doctor.prescription.template"

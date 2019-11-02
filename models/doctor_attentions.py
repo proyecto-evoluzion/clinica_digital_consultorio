@@ -144,6 +144,7 @@ class PresurgicalRecord(models.Model):
     mallampati_scale = fields.Selection([('class1', 'Clase I'),('class2', 'Clase II'),
                                        ('class3', 'Clase III'),('class4','Clase IV')], string='Mallampati Scale')
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
+    doctor_id = fields.Many2one('doctor.professional', string='Professional')    
     
     @api.onchange('room_id')
     def onchange_room_id(self):
@@ -187,6 +188,12 @@ class PresurgicalRecord(models.Model):
     @api.model
     def create(self, vals):
         vals['number'] = self.env['ir.sequence'].next_by_code('doctor.presurgical.record') or '/'
+        ctx = self._context
+        if ctx.get('uid'):
+            create_uid = self.env['res.users'].search([('id','=',ctx.get('uid'))])
+            professional_obj = self.env['doctor.professional'].search([('res_user_id','=',create_uid.id)])
+            if professional_obj:
+                vals['doctor_id'] = professional_obj.id        
         res = super(PresurgicalRecord, self).create(vals)
 #         res._check_document_types()
         return res

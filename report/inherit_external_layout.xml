@@ -30,6 +30,10 @@
                     </div>
                 </div>
         	</div>
+            <!--footer Mod.-->
+            <xpath expr="//div[@class='footer']/div[@class='text-center']" position="attributes">
+                <attribute name="style">border-top: none;</attribute>
+            </xpath>
         </template>
 
         <!--

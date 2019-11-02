@@ -199,6 +199,13 @@ class MedicalOrderEvolution(models.Model):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
                 raise ValidationError(warn_msg)
+
+        ctx = self._context
+        if ctx.get('uid'):
+            create_uid = self.env['res.users'].search([('id','=',ctx.get('uid'))])
+            professional_obj = self.env['doctor.professional'].search([('res_user_id','=',create_uid.id)])
+            if professional_obj:
+                vals['surgeon_id'] = professional_obj.id                
         res = super(MedicalOrderEvolution, self).create(vals)
         res._check_tdocs()
         return res

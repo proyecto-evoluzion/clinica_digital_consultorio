@@ -796,10 +796,13 @@
        						<t t-if="plastic_surgery.physical_body_mass_index">IMC (Body Mass Index): <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.physical_body_mass_index"/>kg/m² </t>
        					</td>
        				</tr>
-   					<tr t-if="plastic_surgery.physical_exam"><td colspan="2" style="text-align:center; font-size: 12px;"><strong>PHYSICAL EXAM</strong></td></tr>
-   					<tr t-if="plastic_surgery.physical_exam">
+   					<tr t-if="plastic_surgery.physical_exam or plastic_surgery.physical_examination_ids"><td colspan="2" style="text-align:center; font-size: 12px;"><strong>PHYSICAL EXAM</strong></td></tr>
+   					<tr t-if="plastic_surgery.physical_exam or plastic_surgery.physical_examination_ids">
        					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="plastic_surgery.physical_exam"/>
+                  <t style="border-bottom: 1px solid gray;" t-foreach="plastic_surgery.physical_examination_ids" t-as="pe">
+       						<span style="padding-left:2px;" t-field="pe.element"/>: <span style="padding-left:2px;" t-field="pe.physical_examination"/><br/>
+                  </t>
+                  <span style="padding-left:2px;" t-field="plastic_surgery.physical_exam"/>
        					</td>
        				</tr>
        				<tr t-if="plastic_surgery.disease_id or plastic_surgery.disease_state">

@@ -15,7 +15,7 @@
             			<group name="main_sub_group1" >
                             <field name='date_attention' required="1"/>
             				<!-- <field name='attention_code_id' required="1"/> -->
-                            <field name='type_id'/>
+                            <field name='type_id' invisible="1"/>
             			</group>
             			<group name="main_sub_group2" >
             				<field name='number' readonly="1"/>

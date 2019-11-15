@@ -53,19 +53,7 @@ class DoctorPrescription(models.Model):
 	@api.onchange('patient_id')
 	def onchange_number(self):
 		if self.patient_id:
-			self.numberid = self.patient_id.ref
-
-	@api.model
-	def create(self, vals):
-		ctx = self._context
-		if ctx.get('uid'):
-			create_uid = self.env['res.users'].search([('id','=',ctx.get('uid'))])
-			professional_obj = self.env['doctor.professional'].search([('res_user_id','=',create_uid.id)])
-			if professional_obj:
-				vals['doctor_id'] = professional_obj.id
-
-		res = super(DoctorPrescription, self).create(vals)
-		return res 			
+			self.numberid = self.patient_id.ref			
 
 	@api.multi
 	def _set_visualizer_default_values(self):

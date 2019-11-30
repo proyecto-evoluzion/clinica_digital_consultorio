@@ -34,7 +34,7 @@
       name="Municipalities" 
       id="base_municipalities_menu" 
       parent="contacts.menu_localisation"
-      action="clinica_doctor_data.action_country_state_city" 
+      action="clinica_digital_consultorio.action_country_state_city" 
       sequence="30"
       groups="base.group_system"/>
 

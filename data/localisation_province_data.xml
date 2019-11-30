@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record model="res.country.state.city" id="res_country_state_city_co_03001">
+          <field name="name">USAQUÉN</field>
+          <field name="code">05001</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03002">
+          <field name="name">CHAPINERO</field>
+          <field name="code">05002</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03003">
+          <field name="name">SANTA FE</field>
+          <field name="code">05003</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03004">
+          <field name="name">SAN CRISTÓBAL</field>
+          <field name="code">05004</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03005">
+          <field name="name">USME</field>
+          <field name="code">05005</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03006">
+          <field name="name">TUNJUELITO</field>
+          <field name="code">05006</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03007">
+          <field name="name">BOSA</field>
+          <field name="code">05007</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03008">
+          <field name="name">KENNEDY</field>
+          <field name="code">05008</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03009">
+          <field name="name">FONTIBÓN</field>
+          <field name="code">05009</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03010">
+          <field name="name">ENGATIVÁ</field>
+          <field name="code">05010</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03011">
+          <field name="name">SUBA</field>
+          <field name="code">05011</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03012">
+          <field name="name">BARRIOS UNIDOS</field>
+          <field name="code">05012</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03013">
+          <field name="name">TEUSAQUILLO</field>
+          <field name="code">05013</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03014">
+          <field name="name">LOS MÁRTIRES</field>
+          <field name="code">05014</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03015">
+          <field name="name">ANTONIO NAROÑO</field>
+          <field name="code">05015</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03016">
+          <field name="name">PUENTE ARANDA</field>
+          <field name="code">05016</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03017">
+          <field name="name">LA CANDELARIA</field>
+          <field name="code">05017</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03018">
+          <field name="name">RAFAEL URIBE URIBE</field>
+          <field name="code">05018</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03019">
+          <field name="name">CIUDAD BOLÍVAR</field>
+          <field name="code">05019</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+        <record model="res.country.state.city" id="res_country_state_city_co_03020">
+          <field name="name">SUMAPÁZ</field>
+          <field name="code">05020</field>
+          <field name="state_id" ref="base.state_co_03"/>
+          <field name="country_id" ref="base.co"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<odoo>
+  <data>
+    
+
+    <!-- <menuitem 
+      name="Localization" 
+      id="base_localisation_menu" 
+      parent="clinica_doctor_data.menu_doctor_config_details"
+      sequence="20" 
+      groups="base.group_system"/> -->
+
+    <menuitem 
+      id="contacts.menu_country_partner"  
+      parent="contacts.menu_localisation" 
+      sequence="10" 
+      groups="base.group_system"/>
+
+    <menuitem 
+      id="contacts.menu_country_state_partner"  
+      parent="contacts.menu_localisation" 
+      sequence="20"
+      groups="base.group_system"/>
+
+    <record id="action_country_state_city" model="ir.actions.act_window">
+        <field name="name">Municipalities action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.country.state.city</field>
+        <field name="view_type">form</field>
+        <field name="help">Add Municipalities depending of states.</field>
+    </record>
+
+    <menuitem 
+      name="Municipalities" 
+      id="base_municipalities_menu" 
+      parent="contacts.menu_localisation"
+      action="clinica_doctor_data.action_country_state_city" 
+      sequence="30"
+      groups="base.group_system"/>
+
+    <menuitem 
+      id="contacts.menu_country_group"  
+      parent="contacts.menu_localisation" 
+      sequence="40"
+      groups="base.group_system"/>
+
+
+  </data>
+</odoo>
+
+

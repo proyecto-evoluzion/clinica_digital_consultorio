@@ -38,6 +38,7 @@
         'security/ir.model.access.csv',
         'data/doctor_sequence.xml',
         'data/doctor_surgical_technologist_element.xml',
+        'data/localisation_province_data.xml',
         'wizard/create_health_professional_view.xml',
         'report/clinica_visualizer_report_template.xml',
         'report/clinica_visualizer_report.xml',
@@ -64,6 +65,7 @@
         'views/assets.xml',
         'views/record_authenticate_views.xml',
         'views/clinica_physical_item.xml',
+        'views/base_localization_menu.xml',
         'data/l10n_diseases_co_data.xml'
     ],
     'demo': [

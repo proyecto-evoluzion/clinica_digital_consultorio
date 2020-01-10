@@ -29,6 +29,7 @@ from . import doctor_surgical_technologist
 from . import quirurgic_sheet
 from . import nurse_sheet
 from . import plastic_surgery_sheet
+from . import complete_plastic_surgery_sheet
 from . import doctor_calendar
 from . import anhestesic_registry
 from . import medical_evolution

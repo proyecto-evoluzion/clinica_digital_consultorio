@@ -49,7 +49,7 @@
                             <notebook>
                                 <page name="system_review" string="Systems Reviews">
                                     <group string="Systems Reviews">
-                                        <field name="physical_examination_ids" nolabel="1" >
+                                        <field name="system_review_ids" nolabel="1" >
                                             <tree editable="bottom">
                                                 <field name="type_review"/>
                                                 <field name="system_review"/>      

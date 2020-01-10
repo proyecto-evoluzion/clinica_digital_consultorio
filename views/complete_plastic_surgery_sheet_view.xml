@@ -52,7 +52,7 @@
                                         <field name="physical_examination_ids" nolabel="1" >
                                             <tree editable="bottom">
                                                 <field name="type_review"/>
-                                                <field name="system_review"/>        
+                                                <field name="system_review"/>      
                                             </tree>
                                         </field>
                                     </group>

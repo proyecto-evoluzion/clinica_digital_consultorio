@@ -3546,6 +3546,7 @@ msgstr "Activo"
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_medical_evolution_numberid
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_nurse_sheet_numberid
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_plastic_surgery_numberid
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_numberid
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_quirurgical_check_list_numberid
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_epicrisis_numberid
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_name
@@ -4187,7 +4188,7 @@ msgstr "Plastic Surgery Form"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.doctor_administrative_data_kanban_view
 msgid "Plastic Surgery Sheet"
-msgstr "Formato Clínico Medio"
+msgstr "Formato Clínico Mínimo"
 
 #. module: clinica_digital_consultorio
 #: model:ir.actions.act_window,name:clinica_digital_consultorio.complete_action_clinica_plastic_surgery
@@ -5580,6 +5581,7 @@ msgstr "Tipo de anestesia:"
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_medical_evolution_tdoc
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_nurse_sheet_document_type
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_plastic_surgery_document_type
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_document_type
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_quirurgical_check_list_document_type
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_epicrisis_tdoc
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_tdoc

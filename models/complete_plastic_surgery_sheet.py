@@ -122,6 +122,7 @@ class PlasticSurgerySheet(models.Model):
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
     physical_examination_ids = fields.One2many('clinica.physical.examination', 'plastic_surgery_id', string="Physical Examination")
+    system_review_ids = fields.One2many('clinica.system.review', 'plastic_surgery_id', string="Systems Reviews")
     doctor_id = fields.Many2one('doctor.professional', string='Professional')
     
     @api.onchange('room_id')

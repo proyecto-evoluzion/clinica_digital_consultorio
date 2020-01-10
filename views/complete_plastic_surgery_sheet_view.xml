@@ -45,47 +45,20 @@
                                 </page>
                             </notebook>
 		      			</page>
-            			<!-- <page name="physical_exam" string="Physical Exam">
-                            <group string="Physical Examination">
-                                <field name="physical_examination_ids" nolabel="1" >
-                                    <tree editable="bottom">
-                                        <field name="element" domain="['|',('professional_id.res_user_id','=',uid),('professional_id','=',False)]"/>
-                                        <field name="physical_examination"/>        
-                                    </tree>
-                                </field>
-                            </group>
-            				<group name="physical_exam" colspan="2" col='1'>
-            					<label for="physical_exam" string="Physical Exam Observations"/>
-            					<field name="physical_exam" nolabel="1"/>
-            				</group>
-            			</page>
-            		 	<page name="paraclinical_exam" string="Dx and Treatment">
-
-                        <group name="disease_details" string="Main Disease">
-                            <group>
-                            <field name='disease_id'/>
-                            </group>
-                            <group>
-                            <field name='disease_state'/>
-                            </group>  
-                        </group>
-                        
-                        <group name="treatment" colspan="2" col='1'>
-                            <label for="treatment" string="Treatment"/>
-                            <field name="treatment" nolabel="1"/>
-                        </group>
-                        <group name="template">
-		         			<group name="template_sub1">
-		         				<field name='medical_recipe_template_id' options="{'no_create_edit': True}"
-		         					domain="[('user_id','=',uid),('type','=','medical_recipe')]"/>
-		         			</group>
-		         			<group></group>
-		         		</group>
-                        <group name="medical_recipe" colspan="2" col='1'>
-                            <label for="medical_recipe" string="Medical Orders and Recipe"/>
-                            <field name="medical_recipe" nolabel="1"/>
-                        </group>
-            			</page>   -->
+                        <page name="system_review" string="Systems Reviews">
+                            <notebook>
+                                <page name="system_review" string="Systems Reviews">
+                                    <group string="Systems Reviews">
+                                        <field name="physical_examination_ids" nolabel="1" >
+                                            <tree editable="bottom">
+                                                <field name="type_review"/>
+                                                <field name="system_review"/>        
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </page>
+                            </notebook>
+		      			</page>
             		</notebook>
             	</sheet>
             </form>

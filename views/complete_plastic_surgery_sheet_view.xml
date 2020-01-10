@@ -124,7 +124,7 @@
        </record>
         
         <record id="complete_action_clinica_plastic_surgery" model="ir.actions.act_window">
-            <field name="name">FCC</field>
+            <field name="name">Plastic Surgery Sheet</field>
             <field name="res_model">complete.clinica.plastic.surgery</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>

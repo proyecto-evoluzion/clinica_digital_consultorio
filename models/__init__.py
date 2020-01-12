@@ -40,6 +40,7 @@ from . import post_anhestesic_care
 from . import invoice
 from . import doctor_prescription
 from . import record_authenticate
+from . import clinica_patient_background
 
 
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:

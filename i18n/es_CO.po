@@ -4109,6 +4109,87 @@ msgid "Reason for Consultation"
 msgstr "Motivo de Consulta"
 
 #. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Clinical Registry"
+msgstr "Registro Clínico"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Confidential Notes"
+msgstr "Notas confidenciales"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Systems Reviews"
+msgstr "Revisión por Sistemas"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Patient Background"
+msgstr "Antecedentes"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Fisical Exam"
+msgstr "Exámen físico"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Vital Signs"
+msgstr "Signos vitales"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "vital S"
+msgstr "Constantes vitales"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Size"
+msgstr "Talla"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Weight"
+msgstr "Peso"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Heart rate"
+msgstr "Frecuencia cardiaca"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Breathing frequency"
+msgstr "Frecuencia Respiratoria"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Systolic blood pressure"
+msgstr "Tensión arterial Sistólica"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Diastolic blood pressure"
+msgstr "Tensión arterial diastólica"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Size and weight"
+msgstr "Talla y peso"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Size and weight"
+msgstr "Talla y peso"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Blood pressure"
+msgstr "Presión sanguínea"
+
+
+#. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_plastic_surgery_physical_exam
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
 msgid "Physical Exam Observations"
@@ -4603,6 +4684,31 @@ msgstr "Motivo de Consulta"
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_consultation_reason
 msgid "Paraclinical"
 msgstr "Paraclínicos"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_confidential_notes
+msgid "Confidential Notes"
+msgstr "Notas confidenciales"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_patient_background_background_type
+msgid "Background Type"
+msgstr "Tipo de antecedente"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_patient_background_background
+msgid "Background"
+msgstr "Antecedente"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_system_review_type_review
+msgid "Type Review"
+msgstr "Tipo revisión por sistemas"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_system_review_system_review
+msgid "System Review"
+msgstr "Revisión por sistemas"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_quirurgical_check_list_received_nurse_id

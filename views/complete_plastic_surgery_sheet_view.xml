@@ -29,7 +29,7 @@
                          <label for="consultation_reason" string="Reason for Consultation"/>
                          <field name="consultation_reason" nolabel="1"/>
                      </group> -->
-            				
+            		<h2>Clinical Registry</h2>
             		<notebook>
             			<page name="anamnesis" string="Anamnesis">
                             <notebook>
@@ -38,17 +38,17 @@
                                         <label for="consultation_reason" string="Reason for Consultation"/>
                                         <field name="consultation_reason" nolabel="1"/>
                                     </group>
+                                    <group name="confidential_notes" colspan="2" col='1'>
+                                        <label for="confidential_notes" string="Confidential Notes"/>
+                                        <field name="confidential_notes" nolabel="1"/>
+                                    </group>
                                     <group name="paraclinical" colspan="2" col='1'>
                                         <label for="paraclinical" string="Paraclinical"/>
                                         <field name="paraclinical" nolabel="1"/>
                                     </group>
                                 </page>
-                            </notebook>
-		      			</page>
-                        <page name="system_review" string="Systems Reviews">
-                            <notebook>
                                 <page name="system_review" string="Systems Reviews">
-                                    <group string="Systems Reviews">
+                                    <group name="system_review">
                                         <field name="system_review_ids" nolabel="1" >
                                             <tree editable="bottom">
                                                 <field name="type_review"/>
@@ -57,8 +57,60 @@
                                         </field>
                                     </group>
                                 </page>
+                                <page name="patient_background" string="Patient Background">
+                                    <group>
+                                        <field name="background_ids" nolabel="1" context="{'default_patient_id': patient_id}">
+                                            <tree editable="bottom">
+                                                <field name="patient_id" invisible="1"/>
+                                                <field name="background_type"/>      
+                                                <field name="background"/>      
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </page>
                             </notebook>
 		      			</page>
+                        <page name="fisical_exam" string="Fisical Exam">
+                            <notebook>
+                                <page name="vital_signs" string="Vital Signs">
+                                    <div class="col-md-12">
+                                        <div name="paraclinical" class="col-md-4" string="Size and weight">
+                                            <h3>Size and weight</h3>
+                                            <label for="size" string="Size"/>
+                                            <field name="size" nolabel="1"/>
+                                            <label for="weight" string="Weight"/>
+                                            <field name="weight" nolabel="1"/>
+                                            <label for="imc" string="IMC"/>
+                                            <field name="imc" nolabel="1"/>
+                                        </div>
+                                        <div name="vital_s" class="col-md-4" string="vital S">
+                                            <h3>vital S</h3>
+                                            <label for="heart_rate" string="Heart rate"/>
+                                            <field name="heart_rate" nolabel="1"/>
+                                            <label for="breathing_frequency" string="Breathing frequency"/>
+                                            <field name="breathing_frequency" nolabel="1"/>
+                                        </div>
+                                        <div name="blood_pressure" class="col-md-4" string="Blood pressure">
+                                            <h3>Blood pressure</h3>
+                                            <label for="systolic_blood_pressure" string="Systolic blood pressure"/>
+                                            <field name="systolic_blood_pressure" nolabel="1"/>
+                                            <label for="diastolic_blood_pressure" string="Diastolic blood pressure"/>
+                                            <field name="diastolic_blood_pressure" nolabel="1"/>
+                                        </div>
+                                    </div>
+                                </page>
+                                <page name="fisical_exam" string="Fisical Exam">
+                                    <group>
+                                        <field name="physical_examination_ids" nolabel="1" >
+                                            <tree editable="bottom">
+                                                <field name="element" domain="['|',('professional_id.res_user_id','=',uid),('professional_id','=',False)]"/>
+                                                <field name="physical_examination"/>        
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </page>
+                            </notebook>
+                        </page>
             		</notebook>
             	</sheet>
             </form>

@@ -32,6 +32,12 @@ from odoo.exceptions import ValidationError
 class PlasticSurgerySheet(models.Model):
     _name = "complete.clinica.plastic.surgery"
     _rec_name = 'number'
+
+    @api.depends('size','weight')
+    def _comp_imc(self):
+        if self.size != 0:
+            for calc_imc in self:
+                self.imc = self.weight / pow(self.size,2)
     
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict')
@@ -118,12 +124,22 @@ class PlasticSurgerySheet(models.Model):
                                        ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status')
     process_id = fields.Many2one('product.product', string='Process', ondelete='restrict')
     treatment = fields.Text(string="Treatment")
+    confidential_notes = fields.Text(string="Confidential Notes")
     medical_recipe = fields.Text(string="Medical Orders and Recipe")
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
     physical_examination_ids = fields.One2many('clinica.physical.examination', 'plastic_surgery_id', string="Physical Examination")
     system_review_ids = fields.One2many('clinica.system.review', 'plastic_surgery_id', string="Systems Reviews")
+    background_ids = fields.One2many('clinica.patient.background', 'complete_format_id', string="Background")
     doctor_id = fields.Many2one('doctor.professional', string='Professional')
+    systolic_blood_pressure = fields.Float(string="Systolic blood pressure")
+    diastolic_blood_pressure = fields.Float(string="Diastolic blood pressure")
+    heart_rate = fields.Integer(string="Heart rate")
+    breathing_frequency = fields.Integer(string="Breathing frequency")
+    size = fields.Float(string="Size")
+    weight = fields.Float(string="Weight")
+    imc = fields.Float(string="IMC", compute=_comp_imc)
+
     
     @api.onchange('room_id')
     def onchange_room_id(self):
@@ -134,6 +150,15 @@ class PlasticSurgerySheet(models.Model):
     def onchange_consultation_reason(self):
         if self.patient_id:
             self.consultation_reason = self.patient_id.consultation_reason
+            patient_background_obj = self.env['clinica.patient.background'].search([('patient_id','=',self.patient_id.id)])
+            if patient_background_obj:
+                patient_background_upd = []
+                for patient_bk in patient_background_obj:
+                    patient_background_upd.append({'patient_id': patient_bk.patient_id.id,
+                                            'background_type': patient_bk.background_type,
+                                            'background': patient_bk.background})
+                if patient_background_upd:
+                    self.update({'background_ids':patient_background_upd})
 
     @api.multi
     @api.depends('birth_date')

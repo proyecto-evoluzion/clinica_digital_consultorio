@@ -68,6 +68,8 @@ class PlasticSurgerySheet(models.Model):
     relatives = fields.Text(string="Relatives")
     others = fields.Text(string="Others")
     paraclinical = fields.Text(string="Paraclinical")
+    therapies = fields.Text(string="Therapies")
+    surgery = fields.Text(string="Surgery")
 
     smoke = fields.Boolean(string="Smoke", related='patient_id.smoke')
     cigarate_daily = fields.Integer(string="Cigarettes / Day", related='patient_id.cigarate_daily')
@@ -131,6 +133,7 @@ class PlasticSurgerySheet(models.Model):
     physical_examination_ids = fields.One2many('clinica.physical.examination', 'plastic_surgery_id', string="Physical Examination")
     system_review_ids = fields.One2many('clinica.system.review', 'plastic_surgery_id', string="Systems Reviews")
     background_ids = fields.One2many('clinica.patient.background', 'complete_format_id', string="Background")
+    diagnosis_ids = fields.One2many('doctor.diseases', 'complete_format_id', string="Diseases")
     doctor_id = fields.Many2one('doctor.professional', string='Professional')
     systolic_blood_pressure = fields.Float(string="Systolic blood pressure")
     diastolic_blood_pressure = fields.Float(string="Diastolic blood pressure")
@@ -139,6 +142,9 @@ class PlasticSurgerySheet(models.Model):
     size = fields.Float(string="Size")
     weight = fields.Float(string="Weight")
     imc = fields.Float(string="IMC", compute=_comp_imc)
+    analysis = fields.Text(string="Analysis")
+    template_id = fields.Many2one('attention.quick.template', string='Template')
+    prescription_id = fields.Many2one('doctor.prescription', string='Prescription')
 
     
     @api.onchange('room_id')

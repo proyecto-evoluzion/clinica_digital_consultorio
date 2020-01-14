@@ -4135,6 +4135,46 @@ msgstr "Exámen físico"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Dx and Treatment"
+msgstr "Diagnóstico y Tratamiento"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Analysis"
+msgstr "Análisis"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Template"
+msgstr "Plantilla"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Treatment"
+msgstr "Tratamiento"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Paraclinical"
+msgstr "Exámenes paraclínicos"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Surgery"
+msgstr "Cirugías"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Therapies"
+msgstr "Terapias"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Prescription"
+msgstr "Prescripción"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
 msgid "Vital Signs"
 msgstr "Signos vitales"
 
@@ -5952,6 +5992,21 @@ msgstr "Salas de Espera"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_doctor_schedule_form
 msgid "Waiting Rooms/Appointments"
 msgstr "Salas de Espera/Citas"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_diseases_type_diagnosis
+msgid "Type Diagnosis"
+msgstr "Tipo"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_diseases_state_diagnosis
+msgid "State Diagnosis"
+msgstr "Estado"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_diseases_diseases_id
+msgid "Code"
+msgstr "Diagnóstico"
 
 #. module: clinica_digital_consultorio
 #: code:addons/clinica_digital_consultorio/models/doctor_attentions.py:204

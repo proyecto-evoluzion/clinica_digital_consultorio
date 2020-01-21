@@ -50,10 +50,23 @@ class AssurancePlan(models.Model):
 class DoctorDiseases(models.Model):
     _name = "doctor.diseases"
 
-    code = fields.Char('Code', size=4, required=True)
-    name = fields.Char('Disease', size=256, required=True)
+    code = fields.Char('Code', size=4, required=False)
+    name = fields.Char('Disease', size=256, required=False)
+    type_diagnosis = fields.Selection([('principal','Principal'),
+                             ('ralated','Relacionado')],default='principal', string='Type Diagnosis')
+    state_diagnosis = fields.Selection([('diagnostic_impression','Impresión diagnóstica'),
+                             ('confirm','Confirmado'),
+                             ('recurrent','Recurrente')],default='diagnostic_impression', string='State Diagnosis')
+    complete_format_id = fields.Many2one('complete.clinica.plastic.surgery', string='FCC')
+    diseases_id = fields.Many2one('doctor.diseases', string='Code')
 
     _sql_constraints = [('code_uniq', 'unique (code)', 'The Medical Diseases code must be unique')]
+
+    # @api.onchange('diseases_id')
+    # def onchange_diseases_id(self):
+    #     if self.diseases_id:
+    #         self.code = self.diseases_id.code
+    #         self.name = self.diseases_id.name
     
 class AppointmentType(models.Model):
     _name = "clinica.appointment.type"

@@ -321,13 +321,6 @@ class PlasticSurgerySheet(models.Model):
                 'target': 'new'
             }
 
-class PhysicalExamination(models.Model):
-    _name = "clinica.physical.examination"
-
-    plastic_surgery_id = fields.Many2one('complete.clinica.plastic.surgery', string='FCC')
-    element = fields.Many2one('clinica.physical.item', string='Physical Examination Type')
-    physical_examination = fields.Char(string="Physical Examination")
-
 class SystemsReviews(models.Model):
     _name = "clinica.system.review"
 

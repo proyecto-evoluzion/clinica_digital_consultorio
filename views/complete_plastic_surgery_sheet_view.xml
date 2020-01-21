@@ -22,7 +22,7 @@
             			</group>
             		</group>
             		<group name="attention_details">
-            			<field name='patient_id' required="1"/>
+            			<field name='patient_id' required="1" style="width:40%;"/>
                         <field name="gender" invisible="1" />
             		</group>
             		<!-- <group name="consultation_reason" colspan="2" col='1'>

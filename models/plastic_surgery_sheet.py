@@ -122,6 +122,7 @@ class PlasticSurgerySheet(models.Model):
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
     physical_examination_ids = fields.One2many('clinica.physical.examination', 'plastic_surgery_id', string="Physical Examination")
     doctor_id = fields.Many2one('doctor.professional', string='Professional')
+    prescription_id = fields.Many2one('doctor.prescription', string='Prescription')
     
     @api.onchange('room_id')
     def onchange_room_id(self):

@@ -69,7 +69,7 @@
           name="Prescription"
           parent="menu_doctor_process"
           action="clinica_digital_consultorio.action_doctor_prescription"
-          groups="base.group_system"
+          groups="base.group_system,clinica_digital_consultorio.surgeon"
           sequence="15"/>
 
 </odoo>

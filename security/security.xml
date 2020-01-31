@@ -48,6 +48,14 @@
         <record id="surgical_technologist" model="res.groups">
             <field name="name">Doctor / Surgical Technologist</field>
         </record>
+
+        <record id="simple_format" model="res.groups">
+            <field name="name">Doctor / Formato Clínico Simple</field>
+        </record>
+
+        <record id="complete_format" model="res.groups">
+            <field name="name">Doctor / Formato Clínico Completo</field>
+        </record>
     </data>
         
 </odoo>

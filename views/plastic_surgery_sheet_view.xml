@@ -128,9 +128,13 @@
 		         			</group>
 		         			<group></group>
 		         		</group>
-                        <group name="medical_recipe" colspan="2" col='1'>
+                        <!-- <group name="medical_recipe" colspan="2" col='1'>
                             <label for="medical_recipe" string="Medical Orders and Recipe"/>
                             <field name="medical_recipe" nolabel="1"/>
+                        </group> -->
+                        <group name="prescription" colspan="2" col='1'>
+                            <label for="prescription_id" string="Prescription"/>
+                            <field name="prescription_id" nolabel="1"/>
                         </group>
             			</page>  
             		</notebook>
@@ -184,7 +188,7 @@
             parent="menu_doctor_process"
             action="clinica_digital_consultorio.action_clinica_plastic_surgery"
             sequence="9"
-            groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.otorhino"
+            groups="base.group_system,clinica_digital_consultorio.simple_format"
             />
         
  </odoo>

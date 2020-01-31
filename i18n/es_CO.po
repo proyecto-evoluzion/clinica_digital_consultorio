@@ -2042,7 +2042,7 @@ msgstr "Doctor / Asistente Programación"
 #. module: clinica_digital_consultorio
 #: model:res.groups,name:clinica_digital_consultorio.surgeon
 msgid "Doctor / Surgeon"
-msgstr "Doctor / Cirujano"
+msgstr "Doctor / Médico"
 
 #. module: clinica_digital_consultorio
 #: model:res.groups,name:clinica_digital_consultorio.otorhino
@@ -4309,7 +4309,7 @@ msgstr "Plastic Surgery Form"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.doctor_administrative_data_kanban_view
 msgid "Plastic Surgery Sheet"
-msgstr "Formato Clínico Mínimo"
+msgstr "Formato Clínico Simple"
 
 #. module: clinica_digital_consultorio
 #: model:ir.actions.act_window,name:clinica_digital_consultorio.complete_action_clinica_plastic_surgery

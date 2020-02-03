@@ -188,30 +188,30 @@
 						string="Pre-Surgical Records"
 						groups="clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
 					</button>
-					<button name="action_view_quirurgic_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+					<!-- <button name="action_view_quirurgic_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Quirurgic Sheet"
 						groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
-					</button>
-					<button name="action_view_quirurgical_check_list" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+					</button> -->
+					<!-- <button name="action_view_quirurgical_check_list" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Quirurgical Check List"
 						groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor">
-					</button>
-					<button name="action_view_post_anhestesic_care" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+					</button> -->
+					<!-- <button name="action_view_post_anhestesic_care" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Cuidado Post-Anestésico"
 						groups="clinica_digital_consultorio.management,clinica_digital_consultorio.anesthesiologist">
-					</button>
+					</button> -->
 					<button name="action_view_plastic_surgery" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Plastic Surgery Sheet"
 						groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor">
 					</button>
-					<button name="action_view_medical_evolution" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+					<!-- <button name="action_view_medical_evolution" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Med. Order and Evolution"
 						groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
-					</button>
-					<button name="action_view_epicrisis" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+					</button> -->
+					<!-- <button name="action_view_epicrisis" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Epicrisis"
 						groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
-					</button>
+					</button> -->
 				</div>
 				<div class="oe_title">
 					<h1>
@@ -223,8 +223,8 @@
 						<field name='room_type' invisible="1" force_save="1"/>
 						<field name='surgery_room_id' 
 						attrs="{'readonly':[('state','!=','new')], 'invisible':[('room_type','=','waiting')], 'required': [('room_type','=','surgery')]}"/>
-						<field name='schedule_id' attrs="{'readonly':[('state','!=','new')]}"
-							domain="[('start_date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('start_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)))]" />
+						<!-- <field name='schedule_id' attrs="{'readonly':[('state','!=','new')]}"
+							domain="[('start_date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('start_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)))]" /> -->
 						<field name='patient_id' required="1" attrs="{'readonly':[('state','!=','new')]}"/>
 						<field name='user_type' attrs="{'readonly':[('state','!=','new')]}"/>
 						<field name='appointment_type_id' attrs="{'readonly':[('state','!=','new')]}"/>
@@ -434,7 +434,7 @@
 		
 	<!-- Waiting room search -->
 	<record id="action_clinica_waiting_room" model="ir.actions.act_window">
-		<field name="name">Appointment</field>
+		<field name="name">Agenda</field>
 		<field name="res_model">doctor.waiting.room</field>
 		<field name="view_type">form</field>
 		<field name="view_mode">calendar,tree,form</field>
@@ -522,7 +522,7 @@
 		
 	<!-- surgery room action -->
 	<record id="action_clinica_surgery_room_procedures" model="ir.actions.act_window">
-		<field name="name">Surgery Room Procedures</field>
+		<field name="name">Agenda</field>
 		<field name="res_model">doctor.waiting.room</field>
 		<field name="view_type">form</field>
 		<field name="view_mode">calendar,tree,form</field>
@@ -555,7 +555,7 @@
 	   
   <!-- Surgery room menu -->
    <menuitem id="menu_clinica_surgery_room_procedures"
-	   name="Surgery Room Procedures"
+	   name="Agenda"
 	   parent="menu_doctor_process"
 	   action="clinica_digital_consultorio.action_clinica_surgery_room_procedures"
 	   groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.pharmacist,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management,clinica_digital_consultorio.accounting_assistant"
@@ -563,12 +563,12 @@
 	
 	
 	<!-- Schedule menu -->
-	<menuitem id="menu_clinica_doctor_schedule"
+	<!-- <menuitem id="menu_clinica_doctor_schedule"
 		name="Schedule"
 		parent="menu_doctor_process"
 		action="clinica_digital_consultorio.action_clinica_doctor_schedule"
 		sequence="4"
-		groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.anesthesiologist"/>
+		groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.anesthesiologist"/> -->
 		
    <menuitem id="menu_clinica_surgery_room"
 			name="Surgery Rooms"

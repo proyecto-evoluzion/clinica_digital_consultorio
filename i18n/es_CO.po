@@ -3942,7 +3942,7 @@ msgstr "Enfermera"
 #: selection:doctor.professional,profession_type:0
 #: selection:create.health.professional,profession_type:0
 msgid "Plastic Surgeon"
-msgstr "Cirujano Plástico"
+msgstr "Médico"
 
 #. module: clinica_digital_consultorio
 #: selection:clinica.record.list.visualizer,view_model:0

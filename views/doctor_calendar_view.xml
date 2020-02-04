@@ -264,15 +264,15 @@
 					<group name="profession_details_sub1" >
 						<field name='surgeon_id' domain="[('profession_type','=','plastic_surgeon')]" 
 							attrs="{'readonly':[('state','!=','new')]}"/>
-						<field name='programmer_id'  attrs="{'readonly':[('state','!=','new')]}"/>
+						<!-- <field name='programmer_id'  attrs="{'readonly':[('state','!=','new')]}"/> -->
 					</group>
 					<group name="profession_details_sub2" >
 						<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]"  
-							attrs="{'readonly':[('state','!=','new'),('state','!=','confirmed')],'required':[('state','!=','new')]}"/>
+							attrs="{'readonly':[('state','!=','new'),('state','!=','confirmed')]}"/>
 						<field name='anesthesia_type'  attrs="{'readonly':[('state','!=','new'),('state','!=','confirmed')],'required':[('state','!=','new')]}"/>
 					</group>
 				</group>
-				<group name="professionald_group">
+				<!-- <group name="professionald_group">
 					<group>
 						<field name='circulating_id' domain="[('profession_type','=','nurse')]" />
 						<field name='nurse_boss_id' domain="[('profession_type','=','nurse')]"/>
@@ -280,10 +280,10 @@
 					<group>
 						<field name='technologist_id' domain="[('profession_type','=','technologists')]"/>   
 					</group>
-				</group>
-				<group name="procedure">
+				</group> -->
+				<!-- <group name="procedure">
 					<field name='procedure'  attrs="{'readonly':[('state','!=','new')]}"/>
-				</group>
+				</group> -->
 				<group name="procedure">
 					<field name='notes' />
 				</group>

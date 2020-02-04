@@ -145,6 +145,12 @@ class PlasticSurgerySheet(models.Model):
     analysis = fields.Text(string="Analysis")
     template_id = fields.Many2one('attention.quick.template', string='Template')
     prescription_id = fields.Many2one('doctor.prescription', string='Prescription')
+    state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')    
+
+    @api.multi
+    def action_set_close(self):
+        for record in self:
+            record.state = 'closed'    
 
     
     @api.onchange('room_id')

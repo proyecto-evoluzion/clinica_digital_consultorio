@@ -123,6 +123,12 @@ class PlasticSurgerySheet(models.Model):
     physical_examination_ids = fields.One2many('clinica.physical.examination', 'plastic_surgery_id', string="Physical Examination")
     doctor_id = fields.Many2one('doctor.professional', string='Professional')
     prescription_id = fields.Many2one('doctor.prescription', string='Prescription')
+    state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')    
+
+    @api.multi
+    def action_set_close(self):
+        for record in self:
+            record.state = 'closed'    
     
     @api.onchange('room_id')
     def onchange_room_id(self):

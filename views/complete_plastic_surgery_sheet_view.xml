@@ -9,6 +9,9 @@
             	<header>
 	                <button name="action_view_clinica_record_history" string="View History" 
 	                	type="object" class="oe_highlight"/>
+                    <button name="action_set_close" string="Set to Close" 
+                        type="object" states="open"/>
+                    <field name="state" widget="statusbar" statusbar_visible="open,closed"/>                        
 	            </header>
             	<sheet>
             		<group name="main_group">
@@ -59,7 +62,7 @@
                                 </page>
                                 <page name="patient_background" string="Patient Background">
                                     <group>
-                                        <field name="background_ids" nolabel="1" context="{'default_patient_id': patient_id}">
+                                        <field name="background_ids" nolabel="1" context="{'default_patient_id': patient_id}" attrs="{'readonly':[('state','=','closed')]}">
                                             <tree editable="bottom">
                                                 <field name="patient_id" invisible="1"/>
                                                 <field name="background_type"/>      

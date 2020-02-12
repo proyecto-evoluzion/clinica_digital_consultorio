@@ -850,6 +850,14 @@
        						<t t-if="plastic_surgery.disease_state3">Disease Status: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.disease_state3"/></t>
        					</td>
        				</tr>
+					<tr t-if="plastic_surgery.treatment">
+       					<td colspan="2" style="text-align:center; font-size: 14px;"><strong>TRATAMIENTO</strong></td>
+       				</tr>
+					<tr t-if="plastic_surgery.treatment">
+       					<td style="width:100%; ">
+       						<t t-if="plastic_surgery.treatment"><span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.treatment"/></t>
+       					</td>
+       				</tr>
        				<!-- <tr t-if="plastic_surgery.plan_analysis"><td colspan="2" style="text-align:center; "><strong>PLAN, ANALYSIS AND CONDUCT</strong></td></tr>
    					<tr t-if="plastic_surgery.plan_analysis">
        					<td colspan="2" style="width:50%; ">

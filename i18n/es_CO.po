@@ -4335,6 +4335,7 @@ msgstr "Paciente"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_doctor_epicrisis_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_medical_evolution_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_presurgical_record_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_quirurgic_sheet_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.doctor_administrative_data_form
@@ -4343,6 +4344,56 @@ msgstr "Paciente"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.view_clinica_nurse_chief_sheet_form
 msgid "Patient Background"
 msgstr "Antecedentes Paciente"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Clinical Registry"
+msgstr "Registro médico"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Reason for Consultation"
+msgstr "Motivo de consulta"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Confidential Notes"
+msgstr "Notas confidenciales"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Paraclinical"
+msgstr "Paraclínicos"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Systems Reviews"
+msgstr "Revisión por sistemas"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Fisical Exam"
+msgstr "Exámen físico"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Size and weight"
+msgstr "Talla y peso"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "vital S"
+msgstr "Signos vitales"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Blood pressure"
+msgstr "Presión sanguínea"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Dx and Treatment"
+msgstr "Diagnóstico y tratamiento"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form

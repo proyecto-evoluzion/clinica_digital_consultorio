@@ -507,6 +507,7 @@ class DoctorAdministrativeData(models.Model):
             if warn_msg:
                 raise ValidationError(warn_msg)
         tools.image_resize_images(vals)
+        vals.update({'patient_name': "%s %s %s %s" % (vals['lastname'], vals['surname'] or '', vals['firstname'], vals['middlename'] or '')})
         res = super(DoctorAdministrativeData, self).create(vals)
         res._check_tdocs()
         partner_vals = res._get_related_partner_vals(vals)

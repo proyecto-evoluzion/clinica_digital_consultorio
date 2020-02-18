@@ -167,9 +167,9 @@
             <field name="model">clinica.plastic.surgery</field>
             <field name="arch" type="xml">
                 <search string="Search Plastic Surgery">
-                    <field name="number"  />
-                    <field name='attention_code_id'/>
-                    <field name="patient_id" />
+                    <field name="numberid" string="Doc. Identidad"/>
+                    <!-- <field name='attention_code_id'/> -->
+                    <field name="patient_id" string="Nombre paciente"/>
                     <group expand="0" string="Group By">
                     	<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
                     </group>
@@ -183,7 +183,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="clinica_presurgical_record_tree"/>
-            <field name="search_view_id" ref="clinica_presurgical_record_filter"/>
+            <field name="search_view_id" ref="clinica_plastic_surgery_filter"/>
         </record> 
         
         <menuitem id="menu_clinica_plastic_surgery"

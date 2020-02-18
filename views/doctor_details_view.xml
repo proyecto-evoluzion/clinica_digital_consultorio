@@ -528,8 +528,9 @@
             <field name="model">doctor.patient</field>
             <field name="arch" type="xml">
                 <search string="Search Administrative Data">
-                    <field name="name" string="Number ID" />
-                    <field name="tdoc" string="Type of Document"/>
+                    <field name="patient_name" string="Nombre paciente" />
+                    <field name="ref" string="Doc. Identidad Nacional"/>
+                    <field name="name" string="Doc. Identidad Extranjero"/>
                     <group expand="0" string="Group By">
                         <filter string="Type of Document" name="groupby_tdoc" domain="[]" context="{'group_by':'tdoc'}"/>
                     </group>

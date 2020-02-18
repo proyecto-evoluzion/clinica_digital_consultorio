@@ -201,7 +201,7 @@ class DoctorAdministrativeData(models.Model):
         image_path = get_module_resource('clinica_digital_consultorio', 'static/src/img', 'default_image.png')
         return tools.image_resize_image_big(base64.b64encode(open(image_path, 'rb').read()))
     
-    patient_name = fields.Char(string='Patient Name', store=True, compute='_compute_patient_name')
+    patient_name = fields.Char(string='Patient Name', size=60)
     name = fields.Char(string='Number ID')
     ref = fields.Integer(string='Number ID for TI or CC Documents')
     tdoc = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
@@ -321,27 +321,27 @@ class DoctorAdministrativeData(models.Model):
     epicrisis_ids = fields.One2many('doctor.epicrisis', 'patient_id', string="Epicrisis", copy=False)
     
     
-    @api.multi
-    @api.depends('firstname', 'lastname', 'middlename', 'surname')
-    def _compute_patient_name(self):
-        for data in self:
-            firstname = data.firstname or ''
-            lastname = data.lastname or ''
-            middlename = data.middlename or ''
-            surname = data.surname or ''
-            nameList = [
-                firstname.strip(),
-                lastname.strip(),
-                middlename.strip(),
-                surname.strip()
-                ]
-            formatedList = []
-            name = ''
-            for item in nameList:
-                if item is not '':
-                    formatedList.append(item)
-                name = ' ' .join(formatedList).title()
-            data.patient_name = name
+    # @api.multi
+    # @api.depends('firstname', 'lastname', 'middlename', 'surname')
+    # def _compute_patient_name(self):
+    #     for data in self:
+    #         firstname = data.firstname or ''
+    #         lastname = data.lastname or ''
+    #         middlename = data.middlename or ''
+    #         surname = data.surname or ''
+    #         nameList = [
+    #             firstname.strip(),
+    #             lastname.strip(),
+    #             middlename.strip(),
+    #             surname.strip()
+    #             ]
+    #         formatedList = []
+    #         name = ''
+    #         for item in nameList:
+    #             if item is not '':
+    #                 formatedList.append(item)
+    #             name = ' ' .join(formatedList).title()
+    #         data.patient_name = name
     
     @api.multi
     @api.depends('birth_date')
@@ -507,6 +507,7 @@ class DoctorAdministrativeData(models.Model):
             if warn_msg:
                 raise ValidationError(warn_msg)
         tools.image_resize_images(vals)
+        vals.update({'patient_name': "%s %s %s %s" % (vals['lastname'], vals['surname'] or '', vals['firstname'], vals['middlename'] or '')})
         res = super(DoctorAdministrativeData, self).create(vals)
         res._check_tdocs()
         partner_vals = res._get_related_partner_vals(vals)

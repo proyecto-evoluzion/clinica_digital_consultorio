@@ -180,9 +180,8 @@
             <field name="model">complete.clinica.plastic.surgery</field>
             <field name="arch" type="xml">
                 <search string="Search Plastic Surgery">
-                    <field name="number"  />
-                    <field name='attention_code_id'/>
-                    <field name="patient_id" />
+                    <field name="numberid" string="Doc. Identidad"/>
+                    <field name="patient_id" string="Nombre paciente"/>
                     <group expand="0" string="Group By">
                     	<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
                     </group>

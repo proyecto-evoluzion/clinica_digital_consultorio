@@ -512,6 +512,7 @@ class DoctorAdministrativeData(models.Model):
         res._check_tdocs()
         partner_vals = res._get_related_partner_vals(vals)
         partner_vals.update({'tdoc': 1})
+        partner_vals.update({'name': vals['patient_name']})        
         partner = self.env['res.partner'].create(partner_vals)
         res.partner_id = partner.id 
         return res

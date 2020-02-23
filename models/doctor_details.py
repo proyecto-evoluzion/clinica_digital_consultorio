@@ -452,10 +452,10 @@ class DoctorAdministrativeData(models.Model):
                     partner_vals.update({'x_name1': vals.get('firstname', False)})
                 if 'lastname' in vals:
                     lastname = vals.get('lastname', False) or ''
-                    partner_vals.update({'x_name2': vals.get('lastname', False)})
+                    partner_vals.update({'x_name2': vals.get('middlename', False)})
                 if 'middlename' in vals:
                     middlename = vals.get('middlename', False) or ''
-                    partner_vals.update({'x_lastname1': vals.get('middlename', False)})
+                    partner_vals.update({'x_lastname1': vals.get('lastname', False)})
                 if 'surname' in vals:
                     surname = vals.get('surname', False) or ''
                     partner_vals.update({'x_lastname2': vals.get('surname', False)})

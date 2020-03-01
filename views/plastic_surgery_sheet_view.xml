@@ -16,16 +16,16 @@
             	<sheet>
             		<group name="main_group">
             			<group name="main_sub_group1" >
-                            <field name='date_attention' required="1"/>
+                            <field name='date_attention' required="1" string="Fecha de atención"/>
             				<!-- <field name='attention_code_id' required="1"/> -->
                             <field name='type_id' invisible="1"/>
             			</group>
             			<group name="main_sub_group2" >
-            				<field name='number' readonly="1"/>
+            				<field name='number' readonly="1" string="Atención Nº"/>
             			</group>
             		</group>
             		<group name="attention_details">
-            			<field name='patient_id' required="1"/>
+            			<field name='patient_id' required="1" string="Paciente"/>
                         <field name="gender" invisible="1" />
             		</group>
             		<group name="consultation_reason" colspan="2" col='1'>
@@ -111,12 +111,12 @@
 
                         <group name="disease_details" string="Main Disease">
                             <group>
-                            <field name='disease_id'/>
+                            <field name='disease_id' string="Diagnóstico"/>
                             </group>
                             <group>
                             <!-- <field name='disease_type' /> -->
                             <!-- <field name='disease_state' attrs="{'invisible':[('disease_type','=','related')]}" string="Kind"/> -->
-                            <field name='disease_state'/>
+                            <field name='disease_state' string="Tipo"/>
                             </group>  
                         </group>
                         
@@ -127,7 +127,7 @@
                         <group name="template">
 		         			<group name="template_sub1">
 		         				<field name='medical_recipe_template_id' options="{'no_create_edit': True}"
-		         					domain="[('user_id','=',uid),('type','=','medical_recipe')]"/>
+		         					domain="[('user_id','=',uid),('type','=','medical_recipe')]" string="Plantilla"/>
 		         			</group>
 		         			<group></group>
 		         		</group>

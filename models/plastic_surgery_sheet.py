@@ -299,8 +299,8 @@ class PhysicalExamination(models.Model):
     _name = "clinica.physical.examination"
 
     plastic_surgery_id = fields.Many2one('clinica.plastic.surgery', string='Plastic Surgery')
-    element = fields.Many2one('clinica.physical.item', string='Physical Examination Type')
-    physical_examination = fields.Char(string="Physical Examination")
+    element = fields.Many2one('clinica.physical.item', string='Tipo Exámen Físico')
+    physical_examination = fields.Char(string="Exámen Físico")
 
 class PhysicalExaminationType(models.Model):
     _name = "clinica.physical.item"

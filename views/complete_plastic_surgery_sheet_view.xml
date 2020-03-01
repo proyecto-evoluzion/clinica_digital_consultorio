@@ -136,7 +136,7 @@
                                 <label for="treatment" string="Treatment"/>
                                 <field name="treatment" nolabel="1"/>
                             </group>
-                            <group name="paraclinical" colspan="2" col='1'>
+                            <!-- <group name="paraclinical" colspan="2" col='1'>
                                 <label for="paraclinical" string="Paraclinical"/>
                                 <field name="paraclinical" nolabel="1"/>
                             </group>
@@ -147,7 +147,7 @@
                             <group name="surgery" colspan="2" col='1'>
                                 <label for="surgery" string="Surgery"/>
                                 <field name="surgery" nolabel="1"/>
-                            </group>
+                            </group> -->
                             <group name="prescription" colspan="2" col='1'>
                                 <label for="prescription_id" string="Prescription"/>
                                 <field name="prescription_id" nolabel="1"/>

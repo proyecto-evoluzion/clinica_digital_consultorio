@@ -1871,6 +1871,7 @@ msgstr "FUR"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_plastic_surgery_date_attention
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_date_attention
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_presurgical_record_date_attention
 msgid "Date of attention"
 msgstr "Fecha de atención"
@@ -4484,6 +4485,23 @@ msgid "Physical Exam"
 msgstr "Examen Físico"
 
 #. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_physical_examination_physical_examination
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
+msgid "Physical Examination"
+msgstr "Exámen Físico"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_physical_examination_element
+msgid "Physical Examination Type"
+msgstr "Tipo Exámen Físico"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_plastic_surgery_physical_exam
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
+msgid "Physical Exam Observations"
+msgstr "Observaciones Exámen Físico"
+
+#. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.doctor_administrative_data_form
 msgid "Place of Birth"
 msgstr "Lugar de Nacimiento"
@@ -5442,6 +5460,8 @@ msgstr "Sitio"
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_presurgical_record_physical_size
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_presurgical_record_form
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_size
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
 msgid "Size"
 msgstr "Talla"
 
@@ -5747,6 +5767,7 @@ msgstr "Hora de Inicio de Cirugía"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.view_clinica_recovery_sheet_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.view_clinica_nurse_chief_sheet_form
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
 msgid "Surgical"
 msgstr "Quirúrgicos"
 
@@ -6297,6 +6318,11 @@ msgid "Vital signs"
 msgstr "Vital signs"
 
 #. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Vital Signs"
+msgstr "Signos vitales"
+
+#. module: clinica_digital_consultorio
 #: selection:doctor.patient,civil_state:0
 msgid "Viuda/o"
 msgstr "Viuda/o"
@@ -6382,8 +6408,64 @@ msgstr "Alerta!"
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_presurgical_record_physical_weight
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_presurgical_record_form
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_weight
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
 msgid "Weight"
 msgstr "Peso"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_heart_rate
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Heart rate"
+msgstr "Ritmo cardiaco"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_breathing_frequency
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Breathing frequency"
+msgstr "Frecuencia respiratoria"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_systolic_blood_pressure
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Systolic blood pressure"
+msgstr "Presión sanguínea sistólica"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_diastolic_blood_pressure
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Diastolic blood pressure"
+msgstr "Presión sanguínea diastólica"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_analysis
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Analysis"
+msgstr "Análisis"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_template_id
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Template"
+msgstr "Plantilla"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_treatment
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Treatment"
+msgstr "Tratamiento"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_therapies
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Therapies"
+msgstr "Terapias"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_surgery
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Surgery"
+msgstr "Cirugía"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_presurgical_record_other_diseases
@@ -6868,6 +6950,10 @@ msgstr "Ins. Quirúrgico"
 #. module: clinica_digital_consultorio
 #: model:ir.ui.menu,name:clinica_digital_consultorio.menu_doctor_prescription
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_waiting_room_form
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_plastic_surgery_prescription_id
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_prescription_id
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
 msgid "Prescription"
 msgstr "Prescripciones"
 

@@ -11,23 +11,39 @@
           </header>
          	<sheet>
             <group col="4">
+              <field name="order_type"/>
   	         	<field name="name"/>
+              <field name="prescription_date" invisible="1"/>
               <field name="prescription_date"/>
             </group>
             <group col="4">
               <field name="patient_id"/>
-              <field name="numberid" required="1"/>
+              <field name="user_type"/>
+              <field name="patientname"/>
+              <field name="phone"/>
+              <field name="sex"/>
+              <field name="residence_address"/>
             </group>
             <group col="4">
-              <field name="doctor_id"/>
-              <field name="profession_type"/>
+              <span col="2">
+                <field name="doctor_id" nolabel="1" style="width:25%" readonly="1" force_save="1"/>
+                <field name="profession_type" nolabel="1" style="width:25%" readonly="1" force_save="1"/>,
+                ordena:
+              </span>
             </group>
-             <group string="Prescribe"> 
-              <field name="order" nolabel="1"/>
+            <group string="Informes y otros" attrs="{'invisible':[('order_type','!=','informs')]}">
+              <field name="prescription" nolabel="1" style="width:100%"/>
             </group>
-            <group>
+            <group col="4" attrs="{'invisible':[('order_type','!=','informs')]}">
+              <field name="template_id" invisible="1"/>
               <field name="template_id"/>
             </group>
+            <group attrs="{'invisible':[('order_type','!=','informs')]}">
+              <field name="images" nolabel="1"/>
+            </group>
+            <!-- <group>
+              <field name="template_id"/>
+            </group> -->
          	</sheet>
          </form>
          </field>

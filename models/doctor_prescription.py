@@ -32,28 +32,37 @@ class DoctorPrescription(models.Model):
 		signature = html2text.html2text(user.signature)
 		return signature
 
-	name= fields.Char(string="Order Type", required="1")
-	patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
-	prescription_date = fields.Date(string='Date', default=fields.Date.context_today)
-	doctor_id = fields.Many2one('doctor.professional', string='Professional')
+	def _get_professional(self):
+		user = self.env.user
+		professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user.id)])
+		return professional_obj		
+
+	name= fields.Char(string="Nombre del informe", required="1")
+	order_type= fields.Selection([('informs','Informes y otros'),('medicines','Medicamentos'),('exam','Laboratorios')],
+							string="Tipo de orden", required="1", default='informs')
+	prescription_date = fields.Date(string='Fecha', default=fields.Date.context_today)
+	patient_id = fields.Many2one('doctor.patient', 'Paciente', ondelete='restrict')
+	patientname = fields.Char(string='# Historia Clínica', related='patient_id.name')
+	numberid = fields.Integer(string='# Historia Clínica', related='patient_id.ref')
+	user_type = fields.Selection([('contributory','Contributory'),('subsidized','Subsidized'),('linked','Linked'),('particular','Particular'),('other','Other'),('victim_contributive','Victim - Contributive'),('victim_subsidized','Victim - Subsidized'),('victim_linked','Victim - Linked')],string='Tipo de Usuario', related='patient_id.user_type')
+	phone = fields.Char(string='Teléfono', related='patient_id.phone')
+	sex = fields.Selection([('male','Male'), ('female','Female')],string='Género', related='patient_id.sex')
+	residence_address = fields.Text(string='Dirección', related='patient_id.residence_address')
+	doctor_id = fields.Many2one('doctor.professional', string='Professional', default=_get_professional)
 	profession_type = fields.Selection([('plastic_surgeon','Plastic Surgeon'),('anesthesiologist','Anesthesiologist'),
 										('technologists','Surgical Technologists'),('helpers','Surgical Helpers'),
 										('nurse','Nurse')], 
-										string='Profession Type', default='plastic_surgeon', related="doctor_id.profession_type")
-	order = fields.Text(string="Order", required="1")
-	template_id = fields.Many2one('doctor.prescription.template', string='Template')
-	sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
-	numberid = fields.Char(string='Number ID', related='patient_id.name')	
+										string='Profession Type', related="doctor_id.profession_type")
+	prescription = fields.Text(string="Informe")
+	template_id = fields.Many2one('doctor.prescription.template', string='Plantilla')
+	images = fields.Html(string='Imagenes')
+	# sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
+	
 
 	@api.onchange('template_id')
 	def onchange_template_id(self):
 		if self.template_id:
 			self.order = self.template_id.description
-
-	@api.onchange('patient_id')
-	def onchange_number(self):
-		if self.patient_id:
-			self.numberid = self.patient_id.ref			
 
 	@api.multi
 	def _set_visualizer_default_values(self):

@@ -57,6 +57,9 @@ class DoctorPrescription(models.Model):
 	template_id = fields.Many2one('doctor.prescription.template', string='Plantilla')
 	images = fields.Html(string='Imagenes')
 	# sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
+
+	exam_ids = fields.One2many('doctor.prescription.exam','prescription_id', string="Examen")
+
 	
 
 	@api.onchange('template_id')
@@ -86,10 +89,19 @@ class DoctorPrescription(models.Model):
                 'target': 'new'
             }           
 
-class DoctorPrescription(models.Model):
+class DoctorPrescriptionTemplate(models.Model):
 	_name = "doctor.prescription.template"
 	_rec_name="name"
 
 	name = fields.Char(string="Name", required="1")
 	description = fields.Text(string="Description", required="1")
 	active = fields.Boolean(string="Active", default=True)
+
+class DoctorPrescriptionExam(models.Model):
+	_name = "doctor.prescription.exam"
+	_rec_name="cups_id"
+
+	cups_id = fields.Many2one('doctor.cups.code', 'CUPS', ondelete='restrict')
+	prescription_id = fields.Many2one('doctor.prescription', 'Prescription Exam')
+	qty = fields.Integer(string="Cantidad")
+	indications = fields.Char(string="Indicaciones")	

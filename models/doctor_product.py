@@ -38,7 +38,7 @@ class HealthProcedures(models.Model):
 
 class DoctorCupsCode(models.Model):
     _name = "doctor.cups.code"
-    _rec_name = 'code'
+    _rec_name = 'product_id'
     
     code = fields.Char(related='product_id.procedure_code', string='Code', size=16, store=True)
     product_id = fields.Many2one('product.product', string='Health Procedure', ondelete='restrict')

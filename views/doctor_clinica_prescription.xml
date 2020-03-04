@@ -43,6 +43,10 @@
             <group attrs="{'invisible':[('order_type','!=','informs')]}">
               <field name="images" nolabel="1"/>
             </group>
+            <!--order_type 2-->
+            <group string="Medicamentos" attrs="{'invisible':[('order_type','!=','medicines')]}">
+              <field name="atc_ids" nolabel="1" style="width:100%"/>
+            </group>
             <!--order_type 3-->
             <group string="Exámen, Imagen o procedimiento diagnostico o terapeútico (CUPS)" attrs="{'invisible':[('order_type','!=','exam')]}">
               <field name="exam_ids" nolabel="1" style="width:100%">

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--ATC Principal View-->
+	<record id="doctor_atc_view_tree" model="ir.ui.view">
+        <field name="name">doctor.atc.view.tree</field>
+        <field name="model">doctor.atc</field>
+        <field name="arch" type="xml">
+            <tree string="ATC" editable="top">
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="doctor_atc_action" model="ir.actions.act_window">
+        <field name="name">ATC</field>
+        <field name="res_model">doctor.atc</field>
+        <field name="view_type">form</field>
+        <field name='view_mode'>tree</field>
+        <field name="view_id" ref="doctor_atc_view_tree"/>
+    </record>
+
+    <menuitem
+        id="doctor_atc_menu"
+        name="ATC"
+        action="doctor_atc_action"
+        parent="menu_doctor_config_details"
+        groups="base.group_system"
+        sequence="12"/>
+
+    <!--ATC Route View-->
+    <record id="doctor_atc_route_view_tree" model="ir.ui.view">
+        <field name="name">doctor.atc.route.view.tree</field>
+        <field name="model">doctor.atc_route</field>
+        <field name="arch" type="xml">
+            <tree string="ATC Route" editable="top">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="doctor_atc_route_action" model="ir.actions.act_window">
+        <field name="name">ATC Route</field>
+        <field name="res_model">doctor.atc_route</field>
+        <field name="view_type">form</field>
+        <field name='view_mode'>tree</field>
+        <field name="view_id" ref="doctor_atc_route_view_tree"/>
+    </record>
+
+    <menuitem
+        id="doctor_atc_route_menu"
+        name="ATC Route"
+        action="doctor_atc_route_action"
+        parent="menu_doctor_config_details"
+        groups="base.group_system"
+        sequence="13"/>
+
+
+    <!--ATC Use View-->
+    <record id="doctor_atc_use_view_tree" model="ir.ui.view">
+        <field name="name">doctor.atc.use.view.tree</field>
+        <field name="model">doctor.atc_use</field>
+        <field name="arch" type="xml">
+            <tree string="ATC Use" editable="top">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="doctor_atc_use_action" model="ir.actions.act_window">
+        <field name="name">ATC Use</field>
+        <field name="res_model">doctor.atc_use</field>
+        <field name="view_type">form</field>
+        <field name='view_mode'>tree</field>
+        <field name="view_id" ref="doctor_atc_use_view_tree"/>
+    </record>
+
+    <menuitem
+        id="doctor_atc_use_menu"
+        name="ATC Use"
+        action="doctor_atc_use_action"
+        parent="menu_doctor_config_details"
+        groups="base.group_system"
+        sequence="14"/>
+
+
+    <!--atc_medicine View-->
+    <record id="doctor_atc_medicine_view_form" model="ir.ui.view">
+        <field name="name">doctor.atc.medicine.view.form</field>
+        <field name="model">doctor.atc_medicine</field>
+        <field name="arch" type="xml">
+            <form string="ATC">
+                <group col="4">
+                    <field name="atc_id"/>                    
+                    <field name="name" invisible="1"/>
+                </group>
+                <group col="4">
+                  <field name="total_to_use"/>
+                  <field name="atc_route_id"/>
+                </group>
+                <group col="4">
+                  <field name="atc_use_id"/>
+                  <field name="atc_use_id" invisible="1"/>
+                </group>
+                <group col="4">
+                  <field name="every_use"/>
+                  <field name="frequency_type1"/>
+                </group>
+                <group col="4">
+                  <field name="deadline_use"/>
+                  <field name="frequency_type2"/>
+                </group>
+                <label for="indications"/>
+                <field name="indications"/>
+            </form>
+        </field>
+    </record>
+    
+    <record id="doctor_atc_medicine_action" model="ir.actions.act_window">
+        <field name="name">Medicine ATC</field>
+        <field name="res_model">doctor.atc_medicine</field>
+        <field name="view_type">form</field>
+        <field name='view_mode'>form</field>
+        <field name="view_id" ref="doctor_atc_medicine_view_form"/>
+    </record>
+
+    <!-- <menuitem
+        id="doctor_atc_medicine_menu"
+        name="Medicine ATC"
+        action="doctor_atc_medicine_action"
+        parent="menu_doctor_config_details"
+        groups="base.group_system"
+        sequence="15"/> -->
+    
+</odoo>

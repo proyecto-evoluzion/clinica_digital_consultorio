@@ -67,6 +67,7 @@
         'views/record_authenticate_views.xml',
         'views/clinica_physical_item.xml',
         'views/base_localization_menu.xml',
+        'views/doctor_atc.xml',
         'data/l10n_diseases_co_data.xml'
     ],
     'demo': [

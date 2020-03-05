@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        
+<record model="doctor.atc" id="doctor_atc_001 ">  
+<field name="name"> FLUORURO DE SODIO </field>
+<field name="code"> A01AA01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_002 ">  
+<field name="name"> HIDROXIDO DE ALUMINIO </field>
+<field name="code"> A02AB01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_003 ">  
+<field name="name"> COMBINACIONES </field>
+<field name="code"> A02AB10 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_004 ">  
+<field name="name"> RANITIDINA  </field>
+<field name="code"> A02BA02 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_005 ">  
+<field name="name"> OMEPRAZOL </field>
+<field name="code"> A02BC01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_006 ">  
+<field name="name"> ESOMEPRAZOL </field>
+<field name="code"> A02BC05 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_007 ">  
+<field name="name"> SUCRALFATE  </field>
+<field name="code"> A02BX02 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_008 ">  
+<field name="name"> ATROPINA  </field>
+<field name="code"> A03BA01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_009 ">  
+<field name="name"> BUTILESCOPOLAMINA </field>
+<field name="code"> A03BB01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_010 ">  
+<field name="name"> BUTILESCOPOLAMINA Y ANALGESICOS </field>
+<field name="code"> A03DB04 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_011 ">  
+<field name="name"> METOCLOPRAMIDA  </field>
+<field name="code"> A03FA01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_012 ">  
+<field name="name"> ONDANSETRON </field>
+<field name="code"> A04AA01 </field>
+</record>
+
+<record model="doctor.atc" id="doctor_atc_013 ">  
+<field name="name"> BISACODIL </field>
+<field name="code"> A06AB02 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_014 ">  
+<field name="name"> ACEITE DE CASTOR  </field>
+<field name="code"> A06AB05 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_015 ">  
+<field name="name"> GLICEROL  </field>
+<field name="code"> A06AX01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_016 ">  
+<field name="name"> NISTATINA </field>
+<field name="code"> A07AA02 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_017 ">  
+<field name="name"> CARBON MEDICINAL  </field>
+<field name="code"> A07BA01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_018 ">  
+<field name="name"> ELECTROLITOS CON CARBOHIDRATOS REHIDRATACION ORAL </field>
+<field name="code"> A07CA99 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_019 ">  
+<field name="name"> LOPERAMIDA  </field>
+<field name="code"> A07DA03 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_020 ">  
+<field name="name"> SULFASALAZINA </field>
+<field name="code"> A07EC01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_021 ">  
+<field name="name"> MESALAZINA  </field>
+<field name="code"> A07EC02 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_022 ">  
+<field name="name"> INSULINA (HUMANA) </field>
+<field name="code"> A10AB01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_023 ">  
+<field name="name"> INSULINA LISPRO </field>
+<field name="code"> A10AB04 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_024 ">  
+<field name="name"> INSULINA ASPARTATO  </field>
+<field name="code"> A10AB05 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_025 ">  
+<field name="name"> INSULINA GLULISINA  </field>
+<field name="code"> A10AB06 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_026 ">  
+<field name="name"> INSULINA (HUMANA) </field>
+<field name="code"> A10AC01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_027 ">  
+<field name="name"> INSULINA (HUMANA) </field>
+<field name="code"> A10AD01 </field>
+</record>   
+
+<record model="doctor.atc" id="doctor_atc_028 ">  
+<field name="name"> INSULINA (HUMANA) </field>
+<field name="code"> A10AE01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_029 ">  
+<field name="name"> INSULINA GLARGINA </field>
+<field name="code"> A10AE04 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_030 ">  
+<field name="name"> INSULIN DETEMIR </field>
+<field name="code"> A10AE05 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_031 ">  
+<field name="name"> METFORMINA  </field>
+<field name="code"> A10BA02 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_032 ">  
+<field name="name"> GLIBENCLAMIDA </field>
+<field name="code"> A10BB01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_033 ">  
+<field name="name"> RETINOL ( VIT A)  </field>
+<field name="code"> A11CA01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_034 ">  
+<field name="name"> CALCITRIOL  </field>
+<field name="code"> A11CC04 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_035 ">  
+<field name="name"> TIAMINA (VIT B1)  </field>
+<field name="code"> A11DA01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_036 ">  
+<field name="name"> ACIDO ASCORBICO (VIT C) </field>
+<field name="code"> A11GA01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_037 ">  
+<field name="name"> PIRIDOXINA (VIT B6) </field>
+<field name="code"> A11HA02 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_038 ">  
+<field name="name"> CALCIO GLUCONATO  </field>
+<field name="code"> A12AA03 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_039 ">  
+<field name="name"> CALCIO CARBONATO  </field>
+<field name="code"> A12AA04 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_040 ">  
+<field name="name"> CALCIO (DIFERENTES SALES EN COMBINACION)  </field>
+<field name="code"> A12AA20 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_041 ">  
+<field name="name"> POTASIO GLUCONATO </field>
+<field name="code"> A12BA05 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_042 ">  
+<field name="name"> WARFARINA </field>
+<field name="code"> B01AA03 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_043 ">  
+<field name="name"> HEPARINA  </field>
+<field name="code"> B01AB01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_044 ">  
+<field name="name"> CLOPIDOGREL </field>
+<field name="code"> B01AC04 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_045 ">  
+<field name="name"> ACETILSALICILICO ACIDO  </field>
+<field name="code"> B01AC06 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_046 ">  
+<field name="name"> TIROFIBAN </field>
+<field name="code"> B01AC17 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_047 ">  
+<field name="name"> ESTREPTOKINASA  </field>
+<field name="code"> B01AD01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_048 ">  
+<field name="name"> ALTEPLASE </field>
+<field name="code"> B01AD02 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_049 ">  
+<field name="name"> TRANEXAMICO ACIDO </field>
+<field name="code"> B02AA02 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_050 ">  
+<field name="name"> FITOMENADIONA </field>
+<field name="code"> B02BA01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_051 ">  
+<field name="name"> COAGULACION FACTORES VIII </field>
+<field name="code"> B02BD02 </field>
+</record>   
+
+<record model="doctor.atc" id="doctor_atc_052 ">  
+<field name="name"> COAGULACION FACTOR IX </field>
+<field name="code"> B02BD04 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_053 ">  
+<field name="name"> FERROSO SULFATO </field>
+<field name="code"> B03AA07 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_054 ">  
+<field name="name"> HIERRO OXIDO SACARATADO </field>
+<field name="code"> B03AC02 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_055 ">  
+<field name="name"> CIANOCOBALAMINA </field>
+<field name="code"> B03BA01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_056 ">  
+<field name="name"> HIDROXICOBALAMINA </field>
+<field name="code"> B03BA03 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_057 ">  
+<field name="name"> FOLICO ACIDO  </field>
+<field name="code"> B03BB01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_058 ">  
+<field name="name"> ERITROPOYETINA  </field>
+<field name="code"> B03XA01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_059 ">  
+<field name="name"> ALBUMINA  </field>
+<field name="code"> B05AA01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_060 ">  
+<field name="name"> OTRAS FRACCIONES PROTEICAS PLASMATICAS  </field>
+<field name="code"> B05AA02 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_061 ">  
+<field name="name"> AMINOACIDOS </field>
+<field name="code"> B05BA01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_062 ">  
+<field name="name"> EMULSIONES LIPIDAS  </field>
+<field name="code"> B05BA02 </field>
+</record>   
+
+<record model="doctor.atc" id="doctor_atc_063 ">  
+<field name="name"> CARBOHIDRATOS </field>
+<field name="code"> B05BA03 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_064 ">  
+<field name="name"> COMBINACIONES </field>
+<field name="code"> B05BA10 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_065 ">  
+<field name="name"> ELECTROLITOS  </field>
+<field name="code"> B05BB01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_066 ">  
+<field name="name"> MANITOL </field>
+<field name="code"> B05BC01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_067 ">  
+<field name="name"> SOLUCION ISOTONICA PARA DIALISIS PERITONEAL </field>
+<field name="code"> B05DA99 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_068 ">  
+<field name="name"> POTASIO CLORURO </field>
+<field name="code"> B05XA01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_069 ">  
+<field name="name"> SODIO BICARBONATO </field>
+<field name="code"> B05XA02 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_070 ">  
+<field name="name"> SODIO CLORURO </field>
+<field name="code"> B05XA03 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_071 ">  
+<field name="name"> MAGNESIO SULFATO  </field>
+<field name="code"> B05XA05 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_072 ">  
+<field name="name"> POTASIO FOSFATO INCL COMBINACIONES CON OTRAS SALES DE POTASIO </field>
+<field name="code"> B05XA06 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_073 ">  
+<field name="name"> ELECTROLITOS COMBINACIONES  </field>
+<field name="code"> B05XA30 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_074 ">  
+<field name="name"> CONCENTRADO PARA HEMODIALISIS </field>
+<field name="code"> B05ZA98 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_075 ">  
+<field name="name"> METILDIGOXINA </field>
+<field name="code"> C01AA08 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_076 ">  
+<field name="name"> AMIODARONA  </field>
+<field name="code"> C01BD01 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_077 ">  
+<field name="name"> NOREPINEFRINA </field>
+<field name="code"> C01CA03 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_078 ">  
+<field name="name"> DOPAMINA  </field>
+<field name="code"> C01CA04 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_079 ">  
+<field name="name"> DOBUTAMINA  </field>
+<field name="code"> C01CA07 </field>
+</record>   
+<record model="doctor.atc" id="doctor_atc_080 ">  
+<field name="name"> EPINEFRINA  </field>
+<field name="code"> C01CA24 </field>
+</record>   
+
+
+
+    </data>
+</odoo>

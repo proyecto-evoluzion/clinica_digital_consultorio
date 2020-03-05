@@ -59,6 +59,7 @@ class DoctorPrescription(models.Model):
 	# sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
 
 	exam_ids = fields.One2many('doctor.prescription.exam','prescription_id', string="Examen")
+	atc_ids = fields.One2many('doctor.atc_medicine','prescription_id', string="ATC")
 
 	
 

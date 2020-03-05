@@ -55,7 +55,7 @@
         'views/anhestesic_registry_view.xml',
         'views/post_anhestesic_care_view.xml',
         'views/plastic_surgery_sheet_view.xml',
-        #'views/complete_plastic_surgery_sheet_view.xml',
+        'views/complete_plastic_surgery_sheet_view.xml',
         'views/medical_evolution_view.xml',
         'views/doctor_epicrisis_view.xml',
         'views/quirurgical_check_list_view.xml',
@@ -69,7 +69,7 @@
         'views/base_localization_menu.xml',
         'views/doctor_atc.xml',
         'data/l10n_diseases_co_data.xml'
-        # 'data/doctor_atc_data.xml'
+        'data/doctor_atc_data.xml'
     ],
     'demo': [
     ],

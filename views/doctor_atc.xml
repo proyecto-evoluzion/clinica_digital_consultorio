@@ -6,7 +6,7 @@
         <field name="name">doctor.atc.view.tree</field>
         <field name="model">doctor.atc</field>
         <field name="arch" type="xml">
-            <tree string="ATC" editable="top">
+            <tree string="Medicamento" editable="top">
                 <field name="code"/>
                 <field name="name"/>
             </tree>
@@ -14,7 +14,7 @@
     </record>
     
     <record id="doctor_atc_action" model="ir.actions.act_window">
-        <field name="name">ATC</field>
+        <field name="name">Medicamento</field>
         <field name="res_model">doctor.atc</field>
         <field name="view_type">form</field>
         <field name='view_mode'>tree</field>
@@ -23,7 +23,7 @@
 
     <menuitem
         id="doctor_atc_menu"
-        name="ATC"
+        name="Medicamento"
         action="doctor_atc_action"
         parent="menu_doctor_config_details"
         groups="base.group_system"
@@ -34,14 +34,15 @@
         <field name="name">doctor.atc.route.view.tree</field>
         <field name="model">doctor.atc_route</field>
         <field name="arch" type="xml">
-            <tree string="ATC Route" editable="top">
+            <tree string="Vía de administración" editable="top">
+                <field name="code"/>
                 <field name="name"/>
             </tree>
         </field>
     </record>
     
     <record id="doctor_atc_route_action" model="ir.actions.act_window">
-        <field name="name">ATC Route</field>
+        <field name="name">Vía de administración</field>
         <field name="res_model">doctor.atc_route</field>
         <field name="view_type">form</field>
         <field name='view_mode'>tree</field>
@@ -50,7 +51,7 @@
 
     <menuitem
         id="doctor_atc_route_menu"
-        name="ATC Route"
+        name="Vía de administración"
         action="doctor_atc_route_action"
         parent="menu_doctor_config_details"
         groups="base.group_system"
@@ -62,14 +63,15 @@
         <field name="name">doctor.atc.use.view.tree</field>
         <field name="model">doctor.atc_use</field>
         <field name="arch" type="xml">
-            <tree string="ATC Use" editable="top">
+            <tree string="Forma de uso" editable="top">
+                <field name="code"/>
                 <field name="name"/>
             </tree>
         </field>
     </record>
     
     <record id="doctor_atc_use_action" model="ir.actions.act_window">
-        <field name="name">ATC Use</field>
+        <field name="name">Forma de uso</field>
         <field name="res_model">doctor.atc_use</field>
         <field name="view_type">form</field>
         <field name='view_mode'>tree</field>
@@ -78,7 +80,7 @@
 
     <menuitem
         id="doctor_atc_use_menu"
-        name="ATC Use"
+        name="Forma de uso"
         action="doctor_atc_use_action"
         parent="menu_doctor_config_details"
         groups="base.group_system"
@@ -90,7 +92,7 @@
         <field name="name">doctor.atc.medicine.view.form</field>
         <field name="model">doctor.atc_medicine</field>
         <field name="arch" type="xml">
-            <form string="ATC">
+            <form string="Medicamento">
                 <group col="4">
                     <field name="atc_id"/>                    
                     <field name="name" invisible="1"/>
@@ -118,7 +120,7 @@
     </record>
     
     <record id="doctor_atc_medicine_action" model="ir.actions.act_window">
-        <field name="name">Medicine ATC</field>
+        <field name="name">Medicamento ATC</field>
         <field name="res_model">doctor.atc_medicine</field>
         <field name="view_type">form</field>
         <field name='view_mode'>form</field>

@@ -26,8 +26,8 @@ class DoctorAtc(models.Model):
     _rec_name = "name"
     _description = 'ATC Record to prescribe'
     
-    name = fields.Char('ATC')
-    code = fields.Char('Code')
+    name = fields.Char('Medicamento')
+    code = fields.Char('Código')
 
 
 class DoctorAtcRoute(models.Model):
@@ -35,7 +35,7 @@ class DoctorAtcRoute(models.Model):
     _rec_name = "name"    
     _description = 'ATC Record Indication'
     
-    name = fields.Char('Route')
+    name = fields.Char('Vía de administración')
     code = fields.Char('Code')    
 
 
@@ -44,7 +44,7 @@ class DoctorAtc(models.Model):
     _rec_name = "name"    
     _description = 'ATC Record use mode'
     
-    name = fields.Char('Use mode')
+    name = fields.Char('Forma de uso')
     code = fields.Char('Code')      
 
 
@@ -54,12 +54,12 @@ class DoctorAtc(models.Model):
     _description = 'Medicine General Record'
     
     name = fields.Char(string='name',default="Medicinas")
-    atc_id = fields.Many2one('doctor.atc', string='ATC')
-    atc_route_id = fields.Many2one('doctor.atc_route', string='Route')
-    atc_use_id = fields.Many2one('doctor.atc_use', string='Use mode')
-    total_to_use = fields.Integer(string="To use")
-    every_use = fields.Integer(string="Every use")
-    deadline_use = fields.Integer(string="Deadline use")
+    atc_id = fields.Many2one('doctor.atc', string='Medicamento')
+    atc_route_id = fields.Many2one('doctor.atc_route', string='Vía de administración')
+    atc_use_id = fields.Many2one('doctor.atc_use', string='Forma de uso')
+    total_to_use = fields.Integer(string="Cantidad total")
+    every_use = fields.Integer(string="Cada")
+    deadline_use = fields.Integer(string="Durante")
     frequency_type1 = fields.Selection([('minute','Minutos'),('hour','Horas'),
 										('day','Días'),('week','Semanas'),
 										('month','Meses')],string='Frequency Type 1')

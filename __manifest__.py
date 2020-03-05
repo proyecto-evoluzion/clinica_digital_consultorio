@@ -69,6 +69,7 @@
         'views/base_localization_menu.xml',
         'views/doctor_atc.xml',
         'data/l10n_diseases_co_data.xml'
+        'data/doctor_atc_data.xml'
     ],
     'demo': [
     ],

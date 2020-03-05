@@ -36,6 +36,7 @@ class DoctorAtcRoute(models.Model):
     _description = 'ATC Record Indication'
     
     name = fields.Char('Route')
+    code = fields.Char('Code')    
 
 
 class DoctorAtc(models.Model):
@@ -44,6 +45,7 @@ class DoctorAtc(models.Model):
     _description = 'ATC Record use mode'
     
     name = fields.Char('Use mode')
+    code = fields.Char('Code')      
 
 
 class DoctorAtc(models.Model):

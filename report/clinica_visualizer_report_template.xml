@@ -857,7 +857,7 @@
        					</td>
        				</tr> -->
        				<tr t-if="plastic_surgery.medical_recipe"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>MEDICAL ORDERS AND RECIPE</strong></td></tr>
-       				<tr t-if="plastic_surgery.prescription_id"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>MEDICAL ORDERS AND RECIPE</strong></td><strong>MEDICAL ORDERS AND RECIPE</strong></td></tr>
+       				<tr t-if="plastic_surgery.prescription_id"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>MEDICAL ORDERS AND RECIPE</strong></td></tr>
               <tr t-if="plastic_surgery.prescription_id">
                 <td style="width:100%; ">
                   Nombre: <span style="padding-left:2px;" t-field="plastic_surgery.prescription_id.name"/><br/>

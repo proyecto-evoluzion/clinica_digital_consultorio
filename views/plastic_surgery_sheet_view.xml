@@ -16,7 +16,7 @@
             	<sheet>
             		<group name="main_group">
             			<group name="main_sub_group1" >
-                            <field name='date_attention' required="1" string="Fecha de atención"/>
+                            <field name='date_attention' required="1" string="Fecha de atención" attrs="{'readonly':[('state','=','closed')]}"/>
             				<!-- <field name='attention_code_id' required="1"/> -->
                             <field name='type_id' invisible="1"/>
             			</group>
@@ -25,12 +25,12 @@
             			</group>
             		</group>
             		<group name="attention_details">
-            			<field name='patient_id' required="1" string="Paciente"/>
+            			<field name='patient_id' required="1" string="Paciente" attrs="{'readonly':[('state','=','closed')]}"/>
                         <field name="gender" invisible="1" />
             		</group>
             		<group name="consultation_reason" colspan="2" col='1'>
                          <label for="consultation_reason" string="Reason for Consultation"/>
-                         <field name="consultation_reason" nolabel="1"/>
+                         <field name="consultation_reason" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                      </group>
             				
             		<notebook>
@@ -38,46 +38,46 @@
 
 		       				<group name="pathological" colspan="2" col='1'>
 		       					<label for="pathological" string="Pathological"/>
-		       					<field name="pathological" nolabel="1"/>
+		       					<field name="pathological" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
 		       				</group>
                             <group name="surgical" colspan="2" col='1'>
                                 <label for="surgical" string="Surgical"/>
-                                <field name="surgical" nolabel="1"/>
+                                <field name="surgical" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
                             <group name="toxic" colspan="2" col='1'>
                                 <label for="toxic" string="Toxic"/>
-                                <field name="toxic" nolabel="1"/>
+                                <field name="toxic" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
                             <group name="allergic" colspan="2" col='1'>
                                 <label for="allergic" string="Allergic"/>
-                                <field name="allergic" nolabel="1"/>
+                                <field name="allergic" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
                             <group name="pharmacological" colspan="2" col='1'>
                                 <label for="pharmacological" string="Pharmacological"/>
-                                <field name="pharmacological" nolabel="1"/>
+                                <field name="pharmacological" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
                             <group name="gyneco_obst" colspan="2" col='1'>
                                 <label for="gyneco_obst" string="Gyneco-Obstetricians"/>
-                                <field name="gyneco_obst" nolabel="1"/>
+                                <field name="gyneco_obst" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
 
                             <group name="patient_female_backgorund_main" attrs="{'invisible':[('gender','=','male')]}">
                                 
                                 <div>
                                     <label for="gestations" string="G" />
-                                    <field name="gestations" class="oe_inline" width="20"/>
+                                    <field name="gestations" class="oe_inline" width="20" attrs="{'readonly':[('state','=','closed')]}"/>
                                     <label for="births" string="P" />
-                                    <field name="births" class="oe_inline" style="width:20%%"/>
+                                    <field name="births" class="oe_inline" style="width:20%" attrs="{'readonly':[('state','=','closed')]}"/>
                                     <label for="cesarean" string="C" />
-                                    <field name="cesarean"  class="oe_inline" style="width:20%%"/>
+                                    <field name="cesarean"  class="oe_inline" style="width:20%" attrs="{'readonly':[('state','=','closed')]}"/>
                                     <label for="abortion_number" string="A" />
-                                    <field name="abortion_number" class="oe_inline" style="width:20%%"/>
+                                    <field name="abortion_number" class="oe_inline" style="width:20%" attrs="{'readonly':[('state','=','closed')]}"/>
                                     <label for="last_menstruation_date" string="FUR" />
-                                    <field name="last_menstruation_date" class="oe_inline" style="width:20%%"/>
+                                    <field name="last_menstruation_date" class="oe_inline" style="width:20%" attrs="{'readonly':[('state','=','closed')]}"/>
                                     <label for="last_birth_date" string="FUP" />
-                                    <field name="last_birth_date" class="oe_inline" style="width:20%%"/>
+                                    <field name="last_birth_date" class="oe_inline" style="width:20%" attrs="{'readonly':[('state','=','closed')]}"/>
                                     <label for="mature_promoting_factor" string="MPF" />
-                                    <field name="mature_promoting_factor" class="oe_inline" style="width:20%%"/>
+                                    <field name="mature_promoting_factor" class="oe_inline" style="width:20%" attrs="{'readonly':[('state','=','closed')]}"/>
                                    
                                 </div>   
 
@@ -85,17 +85,17 @@
 
 		       				<group name="relatives" colspan="2" col='1'>
                                 <label for="relatives" string="Relatives"/>
-                                <field name="relatives" nolabel="1"/>
+                                <field name="relatives" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
                             <group name="others" colspan="2" col='1'>
                                 <label for="others" string="Others"/>
-                                <field name="others" nolabel="1"/>
+                                <field name="others" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
                             
 		      			</page>
             			<page name="physical_exam" string="Physical Exam">
                             <group string="Physical Examination">
-                                <field name="physical_examination_ids" nolabel="1" >
+                                <field name="physical_examination_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
                                     <tree editable="bottom">
                                         <field name="element" domain="['|',('professional_id.res_user_id','=',uid),('professional_id','=',False)]"/>
                                         <field name="physical_examination"/>        
@@ -104,30 +104,30 @@
                             </group>
             				<group name="physical_exam" colspan="2" col='1'>
             					<label for="physical_exam" string="Physical Exam Observations"/>
-            					<field name="physical_exam" nolabel="1"/>
+            					<field name="physical_exam" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
             				</group>
             			</page>
             		 	<page name="paraclinical_exam" string="Dx and Treatment">
 
                         <group name="disease_details" string="Main Disease">
                             <group>
-                            <field name='disease_id' string="Diagnóstico"/>
+                            <field name='disease_id' string="Diagnóstico" attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
                             <group>
                             <!-- <field name='disease_type' /> -->
                             <!-- <field name='disease_state' attrs="{'invisible':[('disease_type','=','related')]}" string="Kind"/> -->
-                            <field name='disease_state' string="Tipo"/>
+                            <field name='disease_state' string="Tipo" attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>  
                         </group>
                         
                         <group name="treatment" colspan="2" col='1'>
                             <label for="treatment" string="Treatment"/>
-                            <field name="treatment" nolabel="1"/>
+                            <field name="treatment" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                         </group>
                         <group name="template">
 		         			<group name="template_sub1">
 		         				<field name='medical_recipe_template_id' options="{'no_create_edit': True}"
-		         					domain="[('user_id','=',uid),('type','=','medical_recipe')]" string="Plantilla"/>
+		         					domain="[('user_id','=',uid),('type','=','medical_recipe')]" string="Plantilla" attrs="{'readonly':[('state','=','closed')]}"/>
 		         			</group>
 		         			<group></group>
 		         		</group>
@@ -137,7 +137,7 @@
                         </group> -->
                         <group name="prescription" colspan="2" col='1'>
                             <label for="prescription_id" string="Prescription"/>
-                            <field name="prescription_id" nolabel="1"/>
+                            <field name="prescription_id" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                         </group>
             			</page>  
             		</notebook>

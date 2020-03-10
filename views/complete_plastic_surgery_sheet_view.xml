@@ -16,16 +16,16 @@
             	<sheet>
             		<group name="main_group">
             			<group name="main_sub_group1" >
-                            <field name='date_attention' required="1" string="Fecha de atención"/>
+                            <field name='date_attention' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
             				<!-- <field name='attention_code_id' required="1"/> -->
                             <field name='type_id' invisible="1"/>
             			</group>
             			<group name="main_sub_group2" >
-            				<field name='number' readonly="1" string="Atención Nº"/>
+            				<field name='number' readonly="1"/>
             			</group>
             		</group>
             		<group name="attention_details">
-            			<field name='patient_id' required="1" style="width:40%;" string="Paciente"/>
+            			<field name='patient_id' required="1" style="width:40%;" attrs="{'readonly':[('state','=','closed')]}"/>
                         <field name="gender" invisible="1" />
             		</group>
             		<!-- <group name="consultation_reason" colspan="2" col='1'>
@@ -39,20 +39,20 @@
                                 <page name="consultation_reason" string="Reason for Consultation">
                                     <group name="consultation_reason" colspan="2" col='1'>
                                         <label for="consultation_reason" string="Reason for Consultation"/>
-                                        <field name="consultation_reason" nolabel="1"/>
+                                        <field name="consultation_reason" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                                     </group>
                                     <group name="confidential_notes" colspan="2" col='1'>
                                         <label for="confidential_notes" string="Confidential Notes"/>
-                                        <field name="confidential_notes" nolabel="1"/>
+                                        <field name="confidential_notes" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                                     </group>
                                     <group name="paraclinical" colspan="2" col='1'>
                                         <label for="paraclinical" string="Paraclinical"/>
-                                        <field name="paraclinical" nolabel="1"/>
+                                        <field name="paraclinical" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                                     </group>
                                 </page>
                                 <page name="system_review" string="Systems Reviews">
                                     <group name="system_review">
-                                        <field name="system_review_ids" nolabel="1" >
+                                        <field name="system_review_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
                                             <tree editable="bottom">
                                                 <field name="type_review"/>
                                                 <field name="system_review"/>      
@@ -80,31 +80,31 @@
                                         <div name="paraclinical" class="col-md-4" string="Size and weight">
                                             <h3>Size and weight</h3>
                                             <label for="size" string="Size"/>
-                                            <field name="size" nolabel="1"/><br></br>
+                                            <field name="size" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/><br></br>
                                             <label for="weight" string="Weight"/>
-                                            <field name="weight" nolabel="1"/><br></br>
+                                            <field name="weight" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/><br></br>
                                             <label for="imc" string="IMC"/>
-                                            <field name="imc" nolabel="1"/>
+                                            <field name="imc" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                                         </div>
                                         <div name="vital_s" class="col-md-4" string="vital S">
                                             <h3>vital S</h3>
                                             <label for="heart_rate" string="Heart rate"/>
-                                            <field name="heart_rate" nolabel="1"/><br></br>
+                                            <field name="heart_rate" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/><br></br>
                                             <label for="breathing_frequency" string="Breathing frequency"/>
-                                            <field name="breathing_frequency" nolabel="1"/>
+                                            <field name="breathing_frequency" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                                         </div>
                                         <div name="blood_pressure" class="col-md-4" string="Blood pressure">
                                             <h3>Blood pressure</h3>
                                             <label for="systolic_blood_pressure" string="Systolic blood pressure"/>
-                                            <field name="systolic_blood_pressure" nolabel="1"/><br></br>
+                                            <field name="systolic_blood_pressure" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/><br></br>
                                             <label for="diastolic_blood_pressure" string="Diastolic blood pressure"/>
-                                            <field name="diastolic_blood_pressure" nolabel="1"/>
+                                            <field name="diastolic_blood_pressure" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                                         </div>
                                     </div>
                                 </page>
                                 <page name="fisical_exam" string="Fisical Exam">
                                     <group>
-                                        <field name="physical_examination_ids" nolabel="1" >
+                                        <field name="physical_examination_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
                                             <tree editable="bottom">
                                                 <field name="element" domain="['|',('professional_id.res_user_id','=',uid),('professional_id','=',False)]"/>
                                                 <field name="physical_examination"/>        
@@ -117,12 +117,12 @@
                         <page name="dx_treatment" string="Dx and Treatment">
                             <group name="analysis" colspan="2" col='1'>
                                 <label for="analysis" string="Analysis"/>
-                                <field name="analysis" nolabel="1"/>
+                                <field name="analysis" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                                 <label for="template_id" string="Template" style="width: 25%"/>
-                                <field name="template_id" nolabel="1" style="width: 25%"/>
+                                <field name="template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
                             <group>
-                                <field name="diagnosis_ids" nolabel="1" >
+                                <field name="diagnosis_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
                                     <tree editable="bottom">
                                         <field name="diseases_id"/>
                                         <field name="code" invisible="1"/>
@@ -134,7 +134,7 @@
                             </group>
                             <group name="treatment" colspan="2" col='1'>
                                 <label for="treatment" string="Treatment"/>
-                                <field name="treatment" nolabel="1"/>
+                                <field name="treatment" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
                             <!-- <group name="paraclinical" colspan="2" col='1'>
                                 <label for="paraclinical" string="Paraclinical"/>
@@ -150,7 +150,7 @@
                             </group> -->
                             <group name="prescription" colspan="2" col='1'>
                                 <label for="prescription_id" string="Prescription"/>
-                                <field name="prescription_id" nolabel="1"/>
+                                <field name="prescription_id" nolabel="1" domain="[('load_register','=',True)]" attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
                         </page>
             		</notebook>

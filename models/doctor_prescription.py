@@ -60,6 +60,7 @@ class DoctorPrescription(models.Model):
 
 	exam_ids = fields.One2many('doctor.prescription.exam','prescription_id', string="Examen")
 	atc_ids = fields.One2many('doctor.atc_medicine','prescription_id', string="ATC")
+	load_register = fields.Boolean(string='-', default=False)
 
 	
 
@@ -105,4 +106,4 @@ class DoctorPrescriptionExam(models.Model):
 	cups_id = fields.Many2one('doctor.cups.code', 'CUPS', ondelete='restrict')
 	prescription_id = fields.Many2one('doctor.prescription', 'Prescription Exam')
 	qty = fields.Integer(string="Cantidad")
-	indications = fields.Char(string="Indicaciones")	
+	indications = fields.Char(string="Indicaciones")

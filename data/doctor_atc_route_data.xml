@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+    	<record model="doctor.atc_route" id="doctor_atc_route_001	">	
+		<field name="name">BUCAL</field>
+		<field name="code">BU</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_002	">	
+		<field name="name">CONJUNTIVAL</field>
+		<field name="code">CO</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_003	">	
+		<field name="name">DENTAL</field>
+		<field name="code">DT</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_004	">	
+		<field name="name">EPIDURAL</field>
+		<field name="code">EP</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_005	">	
+		<field name="name">HEMODIALISIS</field>
+		<field name="code">HE</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_006	">	
+		<field name="name">INHALACION</field>
+		<field name="code">IH</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_007	">	
+		<field name="name">INTRA-ARTERIAL</field>
+		<field name="code">IA</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_008	">	
+		<field name="name">INTRA-ARTICULAR</field>
+		<field name="code">IR</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_009	">	
+		<field name="name">INTRA-CARDIAC</field>
+		<field name="code">IC</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_010	">
+		<field name="name">INTRACAVERNOSA</field>
+		<field name="code">IB</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_011	">	
+		<field name="name">INTRADERMAL</field>
+		<field name="code">ID</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_012	">	
+		<field name="name">INTRAESPINAL</field>
+		<field name="code">IE</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_013	">	
+		<field name="name">INTRALESIONAL</field>
+		<field name="code">IL</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_014	">	
+		<field name="name">INTRAMUSCULAR</field>
+		<field name="code">IM</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_015	">	
+		<field name="name">INTRANASAL</field>
+		<field name="code">IN</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_016	">	
+		<field name="name">INTRAOCULAR</field>
+		<field name="code">IO</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_017	">	
+		<field name="name">INTRAPERITONEAL</field>
+		<field name="code">IP</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_018	">	
+		<field name="name">INTRATECAL</field>
+		<field name="code">IT</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_019	">	
+		<field name="name">INTRAUTERINA</field>
+		<field name="code">IU</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_020	">	
+		<field name="name">INTRAVENOSA</field>
+		<field name="code">IV</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_021	">	
+		<field name="name">INTRAVESICAL</field>
+		<field name="code">IS</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_022	">	
+		<field name="name">ORAL</field>
+		<field name="code">PO</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_023	">	
+		<field name="name">OTICO AURICULAR</field>
+		<field name="code">OA</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_024	">	
+		<field name="name">PARENTERAL</field>
+		<field name="code">PA</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_025	">	
+		<field name="name">RECTAL</field>
+		<field name="code">PR</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_026	">	
+		<field name="name">SUBCUTANEA</field>
+		<field name="code">SC</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_027	">	
+		<field name="name">SUBLINGUAL</field>
+		<field name="code">SL</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_028	">	
+		<field name="name">TOPICA EXTERNA</field>
+		<field name="code">TP</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_029	">	
+		<field name="name">TRANSDERMAL</field>
+		<field name="code">TD</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_030	">	
+		<field name="name">URETRAL</field>
+		<field name="code">UR</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_031	">	
+		<field name="name">VAGINAL</field>
+		<field name="code">VG</field>
+		</record>		
+		<record model="doctor.atc_route" id="doctor_atc_route_032	">	
+		<field name="name">OTRA</field>
+		<field name="code">OT</field>
+		</record>		
+
+
+    </data>
+</odoo>

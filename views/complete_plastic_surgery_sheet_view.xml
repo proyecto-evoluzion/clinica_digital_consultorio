@@ -80,25 +80,25 @@
                                         <div name="paraclinical" class="col-md-4" string="Size and weight">
                                             <h3>Size and weight</h3>
                                             <label for="size" string="Size"/>
-                                            <field name="size" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/><br></br>
+                                            <field name="size" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:50%;"/><br></br>
                                             <label for="weight" string="Weight"/>
-                                            <field name="weight" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/><br></br>
+                                            <field name="weight" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:50%;"/><br></br>
                                             <label for="imc" string="IMC"/>
-                                            <field name="imc" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                            <field name="imc" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:50%;"/>
                                         </div>
                                         <div name="vital_s" class="col-md-4" string="vital S">
                                             <h3>vital S</h3>
                                             <label for="heart_rate" string="Heart rate"/>
-                                            <field name="heart_rate" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/><br></br>
+                                            <field name="heart_rate" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:50%;"/><br></br>
                                             <label for="breathing_frequency" string="Breathing frequency"/>
-                                            <field name="breathing_frequency" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                            <field name="breathing_frequency" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:50%;"/>
                                         </div>
                                         <div name="blood_pressure" class="col-md-4" string="Blood pressure">
                                             <h3>Blood pressure</h3>
                                             <label for="systolic_blood_pressure" string="Systolic blood pressure"/>
-                                            <field name="systolic_blood_pressure" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/><br></br>
+                                            <field name="systolic_blood_pressure" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:50%;"/><br></br>
                                             <label for="diastolic_blood_pressure" string="Diastolic blood pressure"/>
-                                            <field name="diastolic_blood_pressure" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                            <field name="diastolic_blood_pressure" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:50%;"/>
                                         </div>
                                     </div>
                                 </page>

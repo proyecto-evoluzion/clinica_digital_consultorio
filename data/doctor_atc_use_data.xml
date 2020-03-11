@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+    	<record model="doctor.atc_use" id="doctor_atc_use_001	">	
+		<field name="name">AEROSOLES</field>
+		<field name="code">AE</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_002	">	
+		<field name="name">SOLUCION BUCOFARINGUEA</field>
+		<field name="code">BS</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_003	">	
+		<field name="name">CAPSULA BLANDA</field>
+		<field name="code">CB</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_004	">	
+		<field name="name">CAPSULA DURA</field>
+		<field name="code">CD</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_005	">	
+		<field name="name">CAPSULA CON CUBIERTA ENTERICA</field>
+		<field name="code">CE</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_006	">	
+		<field name="name">CAPSULA DE LIBERACION PROLONGADA</field>
+		<field name="code">CM</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_007	">	
+		<field name="name">CREMAS, GELES, UNGUENTOS Y PASTAS</field>
+		<field name="code">CR</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_008	">	
+		<field name="name">SUSPENSION TOPICA</field>
+		<field name="code">CS</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_009	">	
+		<field name="name">CREMA TOPICA</field>
+		<field name="code">CT</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_010	">	
+		<field name="name">CAPSULA VAGINAL</field>
+		<field name="code">CV</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_011	">	
+		<field name="name">TRANSDERMICOS</field>
+		<field name="code">DT</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_012	">	
+		<field name="name">EMULSION INYECTABLE</field>
+		<field name="code">EI</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_013	">	
+		<field name="name">ELIXIR</field>
+		<field name="code">EL</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_014	">	
+		<field name="name">EMULSION ORAL</field>
+		<field name="code">EO</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_015	">	
+		<field name="name">SUSPENSION INYECTABLE</field>
+		<field name="code">ES</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_016	">	
+		<field name="name">SOLUCIÓN CONCENTRADA PARA INFUSIÓN</field>
+		<field name="code">FS</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_017	">	
+		<field name="name">GAS</field>
+		<field name="code">GA</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_018	">	
+		<field name="name">GRANULOS EFERVESCENTES</field>
+		<field name="code">GE</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_019	">	
+		<field name="name">GRANULOS</field>
+		<field name="code">GN</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_020	">	
+		<field name="name">GEL TOPICO</field>
+		<field name="code">GT</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_021	">	
+		<field name="name">GEL VAGINAL</field>
+		<field name="code">GV</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_022	">	
+		<field name="name">INYECTABLES</field>
+		<field name="code">IN</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_023	">	
+		<field name="name">IMPLANTES Y SISTEMAS INTRAUTERINOS E INTRAOCULARES</field>
+		<field name="code">IP</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_024	">	
+		<field name="name">SUSPENSION OTICA</field>
+		<field name="code">IS</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_025	">	
+		<field name="name">JALEA</field>
+		<field name="code">JA</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_026	">	
+		<field name="name">JABON LIQUIDO</field>
+		<field name="code">JL</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_027	">	
+		<field name="name">JARABE</field>
+		<field name="code">JR</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_028	">	
+		<field name="name">LIQUIDO OLEOSO (Aceite)</field>
+		<field name="code">LA</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_029	">	
+		<field name="name">LOCION</field>
+		<field name="code">LC</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_030	">	
+		<field name="name">LAMINAS DISPERSABLES</field>
+		<field name="code">LD</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_031	">	
+		<field name="name">LIQUIDO ESTERIL PARA INYECCION (AGUA)</field>
+		<field name="code">LE</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_032	">	
+		<field name="name">LIOFILIZADO ORAL DE DISPERSION RAPIDA</field>
+		<field name="code">LO</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_033	">	
+		<field name="name">OVULO</field>
+		<field name="code">MO</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_034	">	
+		<field name="name">SUPOSITORIO</field>
+		<field name="code">MS</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_035	">	
+		<field name="name">MEDICAMENTOS NO ESTERILES SOLIDOS - POLVOS Y GRANULADOS</field>
+		<field name="code">NE</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_036	">	
+		<field name="name">SOLUCION NASAL</field>
+		<field name="code">NS</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_037	">	
+		<field name="name">POLVO PARA RECONSTITUIR A SUSPENSION ORAL</field>
+		<field name="code">OP</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_038	">	
+		<field name="name">SOLUCION ORAL</field>
+		<field name="code">OS</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_039	">	
+		<field name="name">POLVO LIOFILIZADO PARA RECONSTITUIR A SOLUCION INYECTABLE</field>
+		<field name="code">PL</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_040	">	
+		<field name="name">POMADA</field>
+		<field name="code">PM</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_041	">	
+		<field name="name">POLVO PARA RECONSTITUIR A SOLUCION ORAL</field>
+		<field name="code">PO</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_042	">	
+		<field name="name">POLVO ESTERIL PARA RECONSTITUIR A SOLUCION INYECTABLE</field>
+		<field name="code">PS</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_043	">	
+		<field name="name">POLVO MEDICADO PARA USO TOPICO</field>
+		<field name="code">PT</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_044	">	
+		<field name="name">SUSPENSION PARA ADMINISTRAR POR VIA RECTAL</field>
+		<field name="code">RS</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_045	">	
+		<field name="name">SUSPENSION NASAL</field>
+		<field name="code">SA</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_046	">	
+		<field name="name">SOLUCION BUCAL</field>
+		<field name="code">SB</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_047	">	
+		<field name="name">SOLUCION TOPICA</field>
+		<field name="code">SC</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_048	">	
+		<field name="name">SOLUCION PARA USO TRANSDERMICO(PARCHE)</field>
+		<field name="code">SD</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_049	">	
+		<field name="name">SOLUCION ESTERIL PARA IRRIGACION</field>
+		<field name="code">SE</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_050	">	
+		<field name="name">SUSPENSION OFTALMICA</field>
+		<field name="code">SF</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_051	">	
+		<field name="name">SUSPENSION PARA INHALACION</field>
+		<field name="code">SI</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_052	">	
+		<field name="name">SISTEMAS DE LIBERACION</field>
+		<field name="code">SL</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_053	">	
+		<field name="name">SOLUCION PARA INHALACION</field>
+		<field name="code">SN</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_054	">	
+		<field name="name">SOLUCION OFTALMICA</field>
+		<field name="code">SO</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_055	">	
+		<field name="name">SOLUCION PARA PRESERVACION DE ORGANOS EN TRANSPLANTES</field>
+		<field name="code">SP</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_056	">	
+		<field name="name">SUSPENSION ORAL</field>
+		<field name="code">SR</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_057	">	
+		<field name="name">SUSPENSIONES</field>
+		<field name="code">SS</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_058	">	
+		<field name="name">SOLUCION OTICA</field>
+		<field name="code">ST</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_059	">	
+		<field name="name">SOLUCION PARA NEBULIZACION</field>
+		<field name="code">SU</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_060	">	
+		<field name="name">POLVO ESTERIL PARA RECONSTITUIR A SUSPENSION INYECTABLE</field>
+		<field name="code">SY</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_061	">	
+		<field name="name">TABLETA BUCAL</field>
+		<field name="code">TB</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_062	">	
+		<field name="name">TABLETA CON CUBIERTA ENTERICA CON PELICULA</field>
+		<field name="code">TC</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_063	">	
+		<field name="name">TABLETA DISPERSABLE</field>
+		<field name="code">TD</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_064	">	
+		<field name="name">TABLETA EFERVESCENTE</field>
+		<field name="code">TE</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_065	">	
+		<field name="name">TABLETA CON CUBIERTA ENTERICA(GRAGEA)</field>
+		<field name="code">TG</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_066	">	
+		<field name="name">TABLETA CUBIERTA (GRAGEA)</field>
+		<field name="code">TI</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_067	">	
+		<field name="name">TABLETA MASTICABLE</field>
+		<field name="code">TM</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_068	">	
+		<field name="name">TABLETA</field>
+		<field name="code">TN</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_069	">	
+		<field name="name">TABLETA CUBIERTA CON PELICULA</field>
+		<field name="code">TP</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_070	">	
+		<field name="name">TABLETA RECUBIERTA</field>
+		<field name="code">TR</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_071	">	
+		<field name="name">TABLETA DE LIBERACION PROLONGADA</field>
+		<field name="code">TS</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_072	">	
+		<field name="name">TABLETA SUBLINGUAL</field>
+		<field name="code">TU</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_073	">	
+		<field name="name">TABLETA VAGINAL</field>
+		<field name="code">TV</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_074	">	
+		<field name="name">UNGUENTO OFTALMICO</field>
+		<field name="code">UO</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_075	">	
+		<field name="name">UNGUENTO PROCTOLOGICO</field>
+		<field name="code">UP</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_076	">	
+		<field name="name">UNGUENTO TOPICO</field>
+		<field name="code">UT</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_077	">	
+		<field name="name">CREMA VAGINAL</field>
+		<field name="code">VC</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_078	">	
+		<field name="name">SOLUCION INYECTABLE</field>
+		<field name="code">YS</field>
+		</record>		
+		<record model="doctor.atc_use" id="doctor_atc_use_079	">	
+		<field name="name">GOTAS ORALES</field>
+		<field name="code">GO</field>
+		</record>		
+
+
+    </data>
+</odoo>

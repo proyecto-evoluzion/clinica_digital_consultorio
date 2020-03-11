@@ -4378,16 +4378,19 @@ msgstr "Exámen físico"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
 msgid "Size and weight"
 msgstr "Talla y peso"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
 msgid "vital S"
 msgstr "Signos vitales"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
 msgid "Blood pressure"
 msgstr "Presión sanguínea"
 
@@ -5462,6 +5465,7 @@ msgstr "Sitio"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_presurgical_record_form
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_size
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
 msgid "Size"
 msgstr "Talla"
 
@@ -6416,24 +6420,32 @@ msgstr "Peso"
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_heart_rate
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_plastic_surgery_heart_rate
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
 msgid "Heart rate"
 msgstr "Ritmo cardiaco"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_breathing_frequency
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_plastic_surgery_breathing_frequency
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
 msgid "Breathing frequency"
 msgstr "Frecuencia respiratoria"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_systolic_blood_pressure
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_plastic_surgery_systolic_blood_pressure
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
 msgid "Systolic blood pressure"
 msgstr "Presión sanguínea sistólica"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_diastolic_blood_pressure
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_plastic_surgery_diastolic_blood_pressure
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
 msgid "Diastolic blood pressure"
 msgstr "Presión sanguínea diastólica"
 

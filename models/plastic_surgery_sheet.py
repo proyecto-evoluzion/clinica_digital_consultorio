@@ -32,6 +32,12 @@ from odoo.exceptions import ValidationError
 class PlasticSurgerySheet(models.Model):
     _name = "clinica.plastic.surgery"
     _rec_name = 'number'
+
+    @api.depends('size','weight')
+    def _comp_imc(self):
+        if self.size != 0:
+            for calc_imc in self:
+                self.imc = self.weight / pow(self.size,2)    
     
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict')
@@ -124,6 +130,13 @@ class PlasticSurgerySheet(models.Model):
     doctor_id = fields.Many2one('doctor.professional', string='Professional')
     prescription_id = fields.Many2one('doctor.prescription', string='Prescription')
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')    
+    systolic_blood_pressure = fields.Float(string="Systolic blood pressure")
+    diastolic_blood_pressure = fields.Float(string="Diastolic blood pressure")
+    heart_rate = fields.Integer(string="Heart rate")
+    breathing_frequency = fields.Integer(string="Breathing frequency")    
+    size = fields.Float(string="Size")
+    weight = fields.Float(string="Weight")
+    imc = fields.Float(string="IMC", compute=_comp_imc)    
 
     @api.multi
     def action_set_close(self):

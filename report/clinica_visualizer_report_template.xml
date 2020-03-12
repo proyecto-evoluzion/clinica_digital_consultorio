@@ -656,10 +656,6 @@
        	<template id="clinica_digital_consultorio.plastic_surgery_visualizer_template">
        		<div class="page">
            	<div class="oe_structure"/>
-       		<!-- <t t-if="clinica_records['plastic_surgery']" class="invisible">
-       			<strong><span style="width:100%; text-align:left; font-size:30px;">PLASTIC SURGERY SHEETS</span></strong>
-    	    	<br/>
-    	    </t> -->
     	    <t t-foreach="clinica_records['plastic_surgery']" t-as="plastic_surgery">
       			<t t-set="plastic_surgery" t-value="plastic_surgery.with_context({'lang':plastic_surgery.patient_id.partner_id.lang})" />
        			<table style="width:100%; ">
@@ -719,18 +715,52 @@
                   </t>
                 </td>
               </tr>
+              
        				<tr t-if="plastic_surgery.consultation_reason"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>REASON FOR CONSULTATION</strong></td></tr>
    					<tr t-if="plastic_surgery.consultation_reason">
        					<td colspan="2" style="width:50%; ">
        						<span style="padding-left:2px;" t-field="plastic_surgery.consultation_reason"/>
        					</td>
        				</tr>
-       				<tr t-if="plastic_surgery.pathological" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>PATHOLOGICAL</strong></td></tr>
-       				<tr t-if="plastic_surgery.pathological" >
+       				<tr t-if="plastic_surgery.pathological"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>PATHOLOGICAL</strong></td></tr>
+   					<tr t-if="plastic_surgery.pathological">
        					<td colspan="2" style="width:50%; ">
        						<span style="padding-left:2px;" t-field="plastic_surgery.pathological"/>
        					</td>
        				</tr>
+       			<!--DATOS DEL FORMATO CLINICO COMPLETO-->
+       				<!-- <tr t-if="plastic_surgery.confidential_notes">
+       					<td colspan="2" style="width:50%; ">
+       						<span style="padding-left:2px;" t-field="plastic_surgery.confidential_notes"/>
+       					</td>
+       				</tr>
+       				<tr t-if="plastic_surgery.paraclinical">
+       					<td colspan="2" style="width:50%; ">
+       						<span style="padding-left:2px;" t-field="plastic_surgery.paraclinical"/>
+       					</td>
+       				</tr>
+       				<tr t-if="plastic_surgery.system_review_ids" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>REVISIÓN POR SISTEMAS</strong></td></tr>
+       				<tr t-if="plastic_surgery.system_review_ids">
+       					<t t-foreach="plastic_surgery.system_review_ids" t-as="reviews">
+	       					<td colspan="2" style="width:50%; ">
+	       						<span style="padding-left:2px;" t-field="reviews.type_review"/>
+	       					</td>
+	       					<td colspan="2" style="width:50%; ">
+	       						<span style="padding-left:2px;" t-field="reviews.system_review"/>
+	       					</td>
+	       				</t>
+       				</tr>
+       				<tr t-if="plastic_surgery.background_ids" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>ANTECEDENTES</strong></td></tr>
+       				<tr t-if="plastic_surgery.background_ids">
+       					<t t-foreach="plastic_surgery.background_ids" t-as="back">
+	       					<td colspan="2" style="width:50%; ">
+	       						<span style="padding-left:2px;" t-field="back.type_review"/>
+	       					</td>
+	       					<td colspan="2" style="width:50%; ">
+	       						<span style="padding-left:2px;" t-field="back.system_review"/>
+	       					</td>
+	       				</t>
+       				</tr> -->
        				<tr t-if="plastic_surgery.surgical" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>SURGICAL</strong></td></tr>
        				<tr t-if="plastic_surgery.surgical" >
        					<td colspan="2" style="width:50%; ">
@@ -784,6 +814,14 @@
 		   								</tr>
 		   							</table>
 		   							</t>
+		   							<t t-if="plastic_surgery.toxic">
+		       						<strong>Tóxico: </strong>
+		   							<table style="width:100%;">
+		   								<tr>
+		   									<td><span style="padding-left:2px;" t-field="plastic_surgery.toxic"/></td>
+		   								</tr>
+		   							</table>
+		   							</t>
    								</td>
    								</tr>
    								<tr t-if="plastic_surgery.gender == 'female'" style="border-top: 0px;">
@@ -801,20 +839,20 @@
    							</table>
    						</td>
        				</tr>
-       				<tr t-if="plastic_surgery.physical_sistolic_arteric_presure or plastic_surgery.physical_diastolic_artery_presure or plastic_surgery.physical_fc or plastic_surgery.physical_fr or plastic_surgery.physical_weight or plastic_surgery.physical_size or plastic_surgery.physical_body_mass_index">
+       				<tr t-if="plastic_surgery.size or plastic_surgery.weight or plastic_surgery.imc or plastic_surgery.heart_rate or plastic_surgery.breathing_frequency or plastic_surgery.systolic_blood_pressure or plastic_surgery.diastolic_blood_pressure">
        					<td colspan="2" style="text-align:center; font-size: 14px;"><strong>PHYSICAL DETAILS</strong></td>
        				</tr>
-   					<tr t-if="plastic_surgery.physical_sistolic_arteric_presure or plastic_surgery.physical_diastolic_artery_presure or plastic_surgery.physical_fc or plastic_surgery.physical_fr or plastic_surgery.physical_weight or plastic_surgery.physical_size or plastic_surgery.physical_body_mass_index">
+   					<tr t-if="plastic_surgery.size or plastic_surgery.weight or plastic_surgery.imc or plastic_surgery.heart_rate or plastic_surgery.breathing_frequency or plastic_surgery.systolic_blood_pressure or plastic_surgery.diastolic_blood_pressure">
        					<td style="width:50%; ">
-       						<t t-if="plastic_surgery.physical_sistolic_arteric_presure or plastic_surgery.physical_diastolic_artery_presure">TA: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.physical_sistolic_arteric_presure"/>/
-       							<span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.physical_diastolic_artery_presure"/><br/></t>
-       						<t t-if="plastic_surgery.physical_fc">FC: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.physical_fc"/>b/m <br/> </t>
-       						<t t-if="plastic_surgery.physical_fr">FR: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.physical_fr"/>b/m </t>
+       						<t t-if="plastic_surgery.weight">Weight: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.weight"/>Kg <br/> </t>
+       						<t t-if="plastic_surgery.size">Size: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.size"/>Cm <br/> </t>
+       						<t t-if="plastic_surgery.imc">IMC (Body Mass Index): <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.imc"/>kg/m² </t>
        					</td>
        					<td style="width:50%; ">
-       						<t t-if="plastic_surgery.physical_weight">Weight: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.physical_weight"/>Kg <br/> </t>
-       						<t t-if="plastic_surgery.physical_size">Size: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.physical_size"/>Cm <br/> </t>
-       						<t t-if="plastic_surgery.physical_body_mass_index">IMC (Body Mass Index): <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.physical_body_mass_index"/>kg/m² </t>
+       						<t t-if="plastic_surgery.heart_rate">Ritmo cardiaco: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.heart_rate"/><br/> </t>
+       						<t t-if="plastic_surgery.breathing_frequency">Frecuencia respiratoria: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.breathing_frequency"/><br/> </t>
+       						<t t-if="plastic_surgery.systolic_blood_pressure">Presión sanguínea sistólica: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.systolic_blood_pressure"/></t>
+       						<t t-if="plastic_surgery.diastolic_blood_pressure">Presión sanguínea diastólica: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.diastolic_blood_pressure"/></t>
        					</td>
        				</tr>
    					<tr t-if="plastic_surgery.physical_exam or plastic_surgery.physical_examination_ids"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>PHYSICAL EXAM</strong></td></tr>
@@ -850,13 +888,13 @@
        						<t t-if="plastic_surgery.disease_state3">Disease Status: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.disease_state3"/></t>
        					</td>
        				</tr>
-       				<!-- <tr t-if="plastic_surgery.plan_analysis"><td colspan="2" style="text-align:center; "><strong>PLAN, ANALYSIS AND CONDUCT</strong></td></tr>
-   					<tr t-if="plastic_surgery.plan_analysis">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="plastic_surgery.plan_analysis"/>
-       					</td>
-       				</tr> -->
-       				<tr t-if="plastic_surgery.medical_recipe"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>MEDICAL ORDERS AND RECIPE</strong></td></tr>
+       				<tr t-if="plastic_surgery.treatment">
+       					<td colspan="2" style="text-align:center; font-size: 14px;"><strong>TRATAMIENTO</strong></td>
+       				</tr>
+       				<tr t-if="plastic_surgery.treatment">
+       					<td colspan="2" style="text-align:center; font-size: 14px;"><span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.treatment"/></td>
+       				</tr>
+       				<!-- <tr t-if="plastic_surgery.medical_recipe"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>MEDICAL ORDERS AND RECIPE</strong></td></tr> -->
        				<tr t-if="plastic_surgery.prescription_id"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>MEDICAL ORDERS AND RECIPE</strong></td></tr>
               <t t-if="plastic_surgery.prescription_id">
 				<tr>
@@ -866,11 +904,46 @@
 					Fecha: <span style="padding-left:2px;" t-field="plastic_surgery.prescription_id.prescription_date"/><br/>
 					</td>
 				</tr>
-				<tr>
-					<td style="width:100%; ">
-						<span style="padding-left:2px;" t-field="plastic_surgery.prescription_id.images"/>
-					</td>
-				</tr>
+				<t t-if="plastic_surgery.prescription_id.order_type == 'informs'">
+					<tr>
+						<td style="width:100%; ">
+							<span style="padding-left:2px;" t-field="plastic_surgery.prescription_id.prescription"/>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:100%; ">
+							<span style="padding-left:2px;" t-field="plastic_surgery.prescription_id.images"/>
+						</td>
+					</tr>
+				</t>
+				<t t-if="plastic_surgery.prescription_id.order_type == 'medicines'">
+					<t t-if="plastic_surgery.prescription_id.atc_ids">
+						<t t-foreach="plastic_surgery.prescription_id.atc_ids" t-as="atc">
+							<tr>
+								<td style="width:100%; ">
+									<span style="padding-left:2px;" t-field="atc.atc_id"/>
+								</td>
+							</tr>
+						</t>
+					</t>
+				</t>
+				<t t-if="plastic_surgery.prescription_id.order_type == 'exam'">
+					<t t-if="plastic_surgery.prescription_id.exam_ids">
+						<t t-foreach="plastic_surgery.prescription_id.exam_ids" t-as="exams">
+							<tr>
+								<td style="width:33%;">
+									CUPS<span style="padding-left:2px;" t-field="exams.cups_id"/>
+								</td>
+								<td style="width:33%;">
+									Cantidad<span style="padding-left:2px;" t-field="exams.qty"/>
+								</td>
+								<td style="width:33%;">
+									Indicaciones<span style="padding-left:2px;" t-field="exams.indications"/>
+								</td>
+							</tr>
+						</t>
+					</t>
+				</t>
               </t>
    				</table>
           <div style="border-top: 1px solid black;">

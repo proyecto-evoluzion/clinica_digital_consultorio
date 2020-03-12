@@ -163,7 +163,7 @@
                         </group> -->
                         <group name="prescription" colspan="2" col='1'>
                             <label for="prescription_id" string="Prescription"/>
-                            <field name="prescription_id" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                            <field name="prescription_id" nolabel="1" domain="[('load_register','=',True)]" attrs="{'readonly':[('state','=','closed')]}" context="{'default_patient_id':patient_id}"/>
                         </group>
             			</page>  
             		</notebook>

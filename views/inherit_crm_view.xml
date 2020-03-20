@@ -10,6 +10,9 @@
               <button name="action_schedule_meeting" position="before">
               	<button class="oe_stat_button" type="object" context="{'phone': phone}" name="doctor_appointment" icon="fa-calendar">Citas</button>
               </button>
+              <button name="action_schedule_meeting" position="attributes">
+                <attribute name="groups">base.group_system</attribute>
+              </button>
          </field>
     </record>
     

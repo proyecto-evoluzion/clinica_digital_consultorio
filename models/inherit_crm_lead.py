@@ -19,31 +19,29 @@
 #
 ###############################################################################
 
-from . import doctor_details
-from . import res_config_settings
-from . import clinica_text_template
-from . import res_partner
-from . import doctor_product 
-from . import doctor_attentions
-from . import doctor_surgical_technologist
-from . import quirurgic_sheet
-from . import nurse_sheet
-from . import plastic_surgery_sheet
-from . import complete_plastic_surgery_sheet
-from . import doctor_calendar
-from . import anhestesic_registry
-from . import medical_evolution
-from . import doctor_epicrisis
-from . import quirurgical_check_list
-from . import clinica_record_list_visualizer
-from . import post_anhestesic_care
-from . import invoice
-from . import doctor_prescription
-from . import record_authenticate
-from . import clinica_patient_background
-from . import attention_quick_template
-from . import doctor_atc
-from . import inherit_crm_lead
+
+from odoo import models, fields, api, _
 
 
-# vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
+class CrmLead(models.Model):
+    _inherit = "crm.lead"
+
+    
+    @api.multi
+    def doctor_appointment(self):
+
+        self.ensure_one()
+        action = self.env.ref('clinica_digital_consultorio.action_clinica_surgery_room_procedures').read()[0]
+        future_partner = self.contact_name
+        pivot = future_partner.find(" ")
+        firstn = future_partner[:pivot]
+        lastn = future_partner[pivot+1:]
+        action['context'] = {
+            'default_phone': self.phone,
+            'default_name': self.name,
+            'default_email_from': self.email_from,
+            'default_email_from': self.email_from,
+            'default_firstname': firstn,
+            'default_lastname': lastn,
+        }
+        return action

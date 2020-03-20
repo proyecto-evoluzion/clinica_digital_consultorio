@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<odoo>
+
+	
+	<record id="inherit_crm_lead_form" model="ir.ui.view">
+         <field name="name">inherit.crm.lead.form</field>
+         <field name="model">crm.lead</field>
+         <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+         <field name="arch" type="xml">
+              <button name="action_schedule_meeting" position="before">
+              	<button class="oe_stat_button" type="object" context="{'phone': phone}" name="doctor_appointment" icon="fa-calendar">Citas</button>
+              </button>
+         </field>
+    </record>
+    
+</odoo>
+
+

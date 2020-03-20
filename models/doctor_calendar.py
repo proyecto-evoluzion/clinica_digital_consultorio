@@ -159,6 +159,7 @@ class DoctorWaitingRoom(models.Model):
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
     middlename = fields.Char(string='Second Name')
+    email_from = fields.Char(string='Email From CRM')
     surname = fields.Char(string='Second Last Name')
     gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender')
     birth_date = fields.Date(string='Birth Date')

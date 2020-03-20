@@ -225,7 +225,9 @@
 						attrs="{'readonly':[('state','!=','new')], 'invisible':[('room_type','=','waiting')], 'required': [('room_type','=','surgery')]}"/>
 						<!-- <field name='schedule_id' attrs="{'readonly':[('state','!=','new')]}"
 							domain="[('start_date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('start_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)))]" /> -->
-						<field name='patient_id' required="1" attrs="{'readonly':[('state','!=','new')]}"/>
+						<field name='patient_id' required="1" attrs="{'readonly':[('state','!=','new')]}" context="{'default_firstname': firstname,
+							'default_lastname': lastname,
+							'default_email': email_from}"/>
 						<field name='user_type' attrs="{'readonly':[('state','!=','new')]}"/>
 						<field name='appointment_type_id' attrs="{'readonly':[('state','!=','new')]}"/>
 						<field name='procedure_date' required="1" attrs="{'readonly':[('state','!=','new')]}"/>
@@ -293,6 +295,7 @@
 						<field name='lastname' attrs="{'readonly':[('state','!=','new')]}" force_save="1"/>
 						<field name='middlename' attrs="{'readonly':[('state','!=','new')]}" force_save="1"/>
 						<field name='surname' attrs="{'readonly':[('state','!=','new')]}" force_save="1"/>
+						<field name='email_from' attrs="{'readonly':[('state','!=','new')]}" force_save="1"/>
 					</group>
 					<group name="patient_personal_info_sub2" >
 					</group>

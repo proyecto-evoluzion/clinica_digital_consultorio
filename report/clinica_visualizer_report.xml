@@ -10,7 +10,17 @@
             name="clinica_digital_consultorio.visualizer_report" 
             print_report_name="'Clinica Record History' "
             menu="False"/>
-            
+
+        <!-- Prescription Report -->
+
+        <report id="clinica_digital_consultorio.clinica_prescription_report"
+            string="Prescripción"
+            model="doctor.prescription"
+            report_type="qweb-html"
+            file="clinica_digital_consultorio.visualizer_prescription_report" 
+            name="clinica_digital_consultorio.visualizer_prescription_report" 
+            print_report_name="'Prescription Record' "
+            menu="True"/>
             
      </data>
 </odoo>

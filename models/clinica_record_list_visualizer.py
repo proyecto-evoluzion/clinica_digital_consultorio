@@ -33,6 +33,8 @@ class ClinicaRecordVisualizer(models.Model):
     _rec_name = 'patient_id'
     
     patient_id = fields.Many2one('doctor.patient', 'Patient')
+    one_record = fields.Boolean(string='Conservar último registro')
+    pivot = fields.Boolean(string='pivote')
     doctor_id = fields.Many2one('doctor.professional', string='Doctor')
     start_period = fields.Datetime(string='Start Period')
     end_period = fields.Datetime(string='End Period')
@@ -56,6 +58,8 @@ class ClinicaRecordVisualizer(models.Model):
                                    string="Epicrisis", copy=False)
     prescription_ids = fields.Many2many('doctor.prescription', 'prescription_visualizer_rel', 'visualizer_id', 'prescription_id', 
                                    string="Prescription", copy=False)
+    copy_prescription_ids = fields.Many2many('doctor.prescription', 'copy_prescription_visualizer_rel', 'copy_visualizer_id', 'copy_prescription_id', 
+                                   string="Copy Prescription", copy=False)
     view_model = fields.Selection([('nurse_sheet','Nurse Sheet'),('quirurgic_sheet','Quirurgic Sheet'),
                                    ('surgery_room','Surgery Room Procedures'),('waiting_room','Waiting Room'),
                                    ('presurgical','Presurgical Record'),('anhestesic_registry','Anhestesic Registry'),
@@ -271,7 +275,24 @@ class ClinicaRecordVisualizer(models.Model):
     @api.multi
     def action_print_clinica_record_history(self):
         return self.env.ref('clinica_digital_consultorio.clinica_visualizer_report').report_action(self)
-            
+
+    @api.onchange('one_record')
+    def onchange_recs(self):
+        if self.one_record:
+            cpy = 0
+            self.copy_prescription_ids = [(6,0,self.prescription_ids.ids)]
+            for cpy_rec in self.prescription_ids:
+                cpy = cpy_rec.id
+            self.prescription_ids = [(6,0,[cpy])]
+            self.pivot = True
+            print(self.prescription_ids)
+            print(self.copy_prescription_ids)
+        else:
+            if self.pivot:
+                print('asdasdsdsd')
+                print(self.copy_prescription_ids)
+                self.prescription_ids = [(6,0,self.copy_prescription_ids.ids)]
+                self.pivot = False
     
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
 

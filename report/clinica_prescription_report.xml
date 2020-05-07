@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="clinica_digital_consultorio.prescription_individual_visualizer_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-set="prescription" t-value="o.with_context({'lang':o.patient_id.partner_id.lang})"/>
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <table style="width:100%;">
+                          <tr>
+                            <td style="width:40%; text-align:center; font-size: 15px;" t-if="o.name"><strong>Nombre del informe: <span t-field="o.name" style="padding-left:2px;"/></strong></td>
+                            <td style="width:40%; text-align:center; font-size: 15px;" t-else=""><strong>ORDEN O RECETA</strong></td>
+                            <td style="width:25%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Date: <span t-field="o.prescription_date" style="padding-left:2px;"/></strong></td>
+                          </tr>
+                        </table>
+                        <table class="table table-bordered" style=" width:100%;">
+                          <tr><td colspan="2" style="text-align:center; "><strong>DATOS DEL PACIENTE</strong></td></tr>
+                          <tr>
+                            <td style="width:50%; "><t t-if="o.patientname"># Historia Clínica: <span style="padding-left:2px;" t-field="o.patient_id.ref"/></t></td>
+                            <td style="width:50%; ">
+                              Nombre: <span style="padding-left:2px;" t-field="o.patient_id.firstname"/> <span style="padding-left:2px;" t-field="o.patient_id.lastname"/><br/>
+                              <t t-if="o.patient_id.age">Edad: <span style="padding-left:2px;" t-field="o.patient_id.age"/><br/></t>
+                              <t t-if="o.patient_id.insurer_id and flag == 0">
+                                Asegurador: <span style="padding-left:2px;" t-field="o.patient_id.insurer_id.name"/><br/>
+                              </t>
+                            </td>
+                          </tr>
+                          <t t-if="o.order_type == 'informs'">
+                            <tr>
+                              <td colspan="2" style="text-align:center;"><strong>Informes y otros</strong></td>
+                            </tr>
+                            <tr >
+                              <td colspan="2"><span t-field="o.prescription"/></td>
+                            </tr>
+                            <tr >
+                              <td colspan="2"><span t-field="o.images"/></td>
+                            </tr>
+                          </t>
+                          <t t-if="o.order_type == 'medicines'">
+                            <tr>
+                              <td colspan="2" style="text-align:center;"><strong>Medicamentos</strong></td>
+                            </tr>
+                            <t t-foreach="o.atc_ids" t-as="atc">
+                              <tr >
+                                <td colspan="2"><strong><span t-field="atc.atc_id.name"/></strong></td>
+                              </tr>
+                              <tr>
+                                <td style="width:100%; ">
+                                  <t>Forma de uso: <span style="padding-left:2px;" t-field="atc.total_to_use"/><br/></t>
+                                  <t>Vía de administración: <span style="padding-left:2px;" t-field="atc.atc_route_id"/><br/></t>
+                                  <t>Forma de uso: <span style="padding-left:2px;" t-field="atc.atc_use_id"/><br/></t>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="width:50%; ">
+                                  <t>Cada: <span style="padding-left:2px;" t-field="atc.every_use"/></t>
+                                </td>
+                                <td style="width:50%; ">
+                                  <t><span style="padding-left:2px;" t-field="atc.frequency_type1"/></t>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="width:50%; ">
+                                  <t>Durante: <span style="padding-left:2px;" t-field="atc.deadline_use"/></t>
+                                </td>
+                                <td style="width:50%; ">
+                                  <t><span style="padding-left:2px;" t-field="atc.frequency_type2"/></t>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="2" style="text-align:center;"><span t-field="atc.indications"/></td>
+                              </tr>
+                            </t>
+                          </t>
+                          <t t-if="o.order_type == 'exam'">
+                            <tr>
+                              <td colspan="2" style="text-align:center;"><strong>Exámen, Imagen o procedimiento diagnostico o terapeútico (CUPS)</strong></td>
+                            </tr>
+                            <t t-foreach="o.exam_ids" t-as="cups">
+                              <tr >
+                                <td colspan="2"><span t-field="cups.cups_id.product_id.name"/></td>
+                              </tr>
+                              <tr>
+                                <td style="width:50%; ">
+                                  <t>Cantidad: <span style="padding-left:2px;" t-field="cups.qty"/></t>
+                                </td>
+                                <td style="width:50%; ">
+                                  <t>Indicaciones: <span style="padding-left:2px;" t-field="cups.indications"/></t>
+                                </td>
+                              </tr>
+                            </t>
+                          </t>
+                        </table>
+                        <div style="border-top: 1px solid black;">
+                          <div t-if="o.doctor_id.medical_record" style="width:100%; text-align: center;">
+                            <span style="padding-left:2px; " t-field="o.doctor_id.firstname"/>&amp;nbsp
+                            <span style="padding-left:2px; " t-field="o.doctor_id.lastname"/>&amp;nbsp / 
+                            &amp;nbsp<span style="padding-left:2px; " t-field="o.doctor_id.medical_record"/>
+                          </div>
+                        </div>
+                        <p style="page-break-after: always;"/>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <template id="visualizer_prescription_report">
+          <t t-foreach="docs" t-as="o">
+              <t t-call="clinica_digital_consultorio.prescription_individual_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+          </t>
+        </template>
+
+    </data>
+</odoo>

@@ -319,7 +319,7 @@ class DoctorAdministrativeData(models.Model):
     plastic_surgery_ids = fields.One2many('clinica.plastic.surgery', 'patient_id', string="Plastic Surgery Sheets", copy=False)
     medical_evolution_ids = fields.One2many('clinica.medical.evolution', 'patient_id', string="Medical Orders and Evolution", copy=False)
     epicrisis_ids = fields.One2many('doctor.epicrisis', 'patient_id', string="Epicrisis", copy=False)
-
+    active = fields.Boolean(string="Active", default=True)
 
     @api.multi
     def setting_names(self):

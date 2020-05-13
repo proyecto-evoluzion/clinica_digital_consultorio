@@ -219,7 +219,7 @@ class DoctorAdministrativeData(models.Model):
     lastname = fields.Char(string='First Last Name')
     middlename = fields.Char(string='Second Name')
     surname = fields.Char(string='Second Last Name')
-    sex = fields.Selection([('male','Male'), ('female','Female')], string='Gender', required=True)
+    sex = fields.Selection([('male','Male'), ('female','Female')], string='Gender', required=False)
     birth_date = fields.Date(string='Birth Date')
     blood_type = fields.Selection([('a','A'),('b','B'),('ab','AB'),('o','O')], string='Blood Type')
     blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')

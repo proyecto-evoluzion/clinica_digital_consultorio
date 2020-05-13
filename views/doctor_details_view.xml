@@ -207,6 +207,9 @@
             <form string="Administrative Data Form">
                 <sheet>
                 	<div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-check">
+                            <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;active&quot;}"/>
+                        </button>
                 		<button name="action_view_surgery_room_procedures" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 							string="Surgery Room Procedures"
 							groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.pharmacist,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management,clinica_digital_consultorio.accounting_assistant">
@@ -551,6 +554,14 @@
               </p>
             </field>
         </record>
+
+        <act_window id="action_archive"
+            name="test2"
+            res_model="doctor.patient"
+            view_mode="tree"
+            domain="[('customer', '=', True)]"
+            context="{'default_customer': True}"
+            limit="80" />
         
         <menuitem id="menu_doctor_details"
             web_icon="clinica_digital_consultorio,static/description/icon.png"

@@ -33,7 +33,7 @@ class ClinicaRecordVisualizer(models.Model):
     _rec_name = 'patient_id'
     
     patient_id = fields.Many2one('doctor.patient', 'Patient')
-    one_record = fields.Boolean(string='Conservar último registro')
+    one_record = fields.Boolean(string='Conservar último registro', default=True)
     pivot = fields.Boolean(string='pivote')
     doctor_id = fields.Many2one('doctor.professional', string='Doctor')
     start_period = fields.Datetime(string='Start Period')
@@ -278,21 +278,18 @@ class ClinicaRecordVisualizer(models.Model):
 
     @api.onchange('one_record')
     def onchange_recs(self):
-        if self.one_record:
-            cpy = 0
-            self.copy_prescription_ids = [(6,0,self.prescription_ids.ids)]
-            for cpy_rec in self.prescription_ids:
-                cpy = cpy_rec.id
-            self.prescription_ids = [(6,0,[cpy])]
-            self.pivot = True
-            print(self.prescription_ids)
-            print(self.copy_prescription_ids)
-        else:
-            if self.pivot:
-                print('asdasdsdsd')
-                print(self.copy_prescription_ids)
-                self.prescription_ids = [(6,0,self.copy_prescription_ids.ids)]
-                self.pivot = False
+        if self.view_model in ['prescription']:
+            if self.one_record:
+                cpy = 0
+                self.copy_prescription_ids = [(6,0,self.prescription_ids.ids)]
+                for cpy_rec in self.prescription_ids:
+                    cpy = cpy_rec.id
+                self.prescription_ids = [(6,0,[cpy])]
+                self.pivot = True
+            else:
+                if self.pivot:
+                    self.prescription_ids = [(6,0,self.copy_prescription_ids.ids)]
+                    self.pivot = False
     
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
 

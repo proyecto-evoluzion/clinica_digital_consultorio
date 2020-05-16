@@ -131,8 +131,8 @@
    					</tree>
    				</field>
           <separator string="Prescription" attrs="{'invisible':[('view_model','not in',['epicrisis','all'])]}"/>
-          <label for="one_record" attrs="{'invisible':[('view_model','not in',['epicrisis','all'])]}"/>
-          <field name="one_record"/>
+          <label for="one_record" attrs="{'invisible':[('view_model','not in',['prescription','all'])]}"/>
+          <field name="one_record" attrs="{'invisible':[('view_model','not in',['prescription','all'])]}"/>
           <field name="pivot" invisible="1"/>
           <field name="copy_prescription_ids" invisible="1"/>
           <field name="prescription_ids" nolabel="1" force_save="1" readonly="1" 

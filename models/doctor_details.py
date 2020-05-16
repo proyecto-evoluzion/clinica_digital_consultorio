@@ -474,16 +474,16 @@ class DoctorAdministrativeData(models.Model):
                 surname = data.surname or ''
                 if 'firstname' in vals:
                     firstname = vals.get('firstname', False) or ''
-                    partner_vals.update({'x_name1': vals.get('firstname', False)})
+                    partner_vals.update({'x_name1': firstname})
                 if 'lastname' in vals:
                     lastname = vals.get('lastname', False) or ''
-                    partner_vals.update({'x_name2': vals.get('middlename', False)})
+                    partner_vals.update({'x_lastname1': lastname})
                 if 'middlename' in vals:
                     middlename = vals.get('middlename', False) or ''
-                    partner_vals.update({'x_lastname1': vals.get('lastname', False)})
+                    partner_vals.update({'x_name2': middlename})
                 if 'surname' in vals:
                     surname = vals.get('surname', False) or ''
-                    partner_vals.update({'x_lastname2': vals.get('surname', False)})
+                    partner_vals.update({'x_lastname2': surname})
                 nameList = [
                     firstname.strip(),
                     lastname.strip(),
@@ -569,6 +569,11 @@ class DoctorAdministrativeData(models.Model):
                  or 'birth_date' in vals or 'email' in vals or 'phone' in vals or 'mobile' in vals or 'image' in vals \
                  or 'residence_district' in vals or 'residence_department_id' in vals or 'residence_country_id' in vals or 'residence_address' in vals:
             for data in self:
+                firstname = data.firstname or ''
+                lastname = data.lastname or ''
+                middlename = data.middlename or ''
+                surname = data.surname or ''
+                data.patient_name = firstname + ' ' + lastname + ' ' + middlename + ' ' +  surname
                 if data.partner_id:
                     partner_vals = data._get_related_partner_vals(vals)
                     data.partner_id.write(partner_vals)

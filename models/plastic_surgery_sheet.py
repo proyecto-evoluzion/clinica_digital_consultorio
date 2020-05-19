@@ -259,6 +259,7 @@ class PlasticSurgerySheet(models.Model):
                 vals['doctor_id'] = professional_obj.id
         
         res = super(PlasticSurgerySheet, self).create(vals)
+        res.room_id.patient_state = 'attended'
         res._check_document_types()
         return res
     

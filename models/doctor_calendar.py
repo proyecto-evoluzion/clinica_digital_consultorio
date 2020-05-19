@@ -180,6 +180,8 @@ class DoctorWaitingRoom(models.Model):
     procedure_ids = fields.One2many('doctor.waiting.room.procedures', 'room_id', string='Helath Procedures', copy=False)
     state = fields.Selection([('new','New'),('confirmed','Confirmed'),('ordered','SO Created')], 
                                         string='Status', default='new')
+    patient_state = fields.Selection([('dated','Citado'),('attended','Atendido'),('not_attended','No atentido')], 
+                                        string='Estado paciente', default='not_attended')
     nurse_sheet_created = fields.Boolean(string='Nurse Sheet Created', compute='_compute_nurse_sheet_creation')
     anhestesic_registry_created = fields.Boolean(string='Anhestesic Registry Created', compute='_compute_anhestesic_registry_creation')
     sale_order_id = fields.Many2one('sale.order', string='Sales Order', copy=False)
@@ -526,6 +528,7 @@ class DoctorWaitingRoom(models.Model):
             res._add_assigned_professionals()
         if vals.get('schedule_id', False):
             res._allocate_in_schedule_time()
+        res.state = 'confirmed'
         return res
     
     @api.multi

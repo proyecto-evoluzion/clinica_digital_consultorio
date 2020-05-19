@@ -589,13 +589,21 @@ class DoctorAdministrativeData(models.Model):
     
     @api.multi
     def action_view_surgery_room_procedures(self):
-        action = self.env.ref('clinica_digital_consultorio.action_clinica_surgery_room_procedures')
+        # Redireccion a Agenda
+        # action = self.env.ref('clinica_digital_consultorio.action_clinica_surgery_room_procedures')
+        # Redireccion a Sala de espera
+        action = self.env.ref('clinica_digital_consultorio.action_clinica_waiting_room')
         result = action.read()[0]
         #override the context to get rid of the default filtering
         ctx_vals = self._set_clinica_form_default_values()
-        ctx_vals.update({'default_room_type': 'surgery'})
+        doctor_id = self.env['doctor.professional'].search([('profession_type','=','plastic_surgeon')], limit=1)
+        # ctx_vals.update({'default_room_type': 'surgery'})
+        ctx_vals.update({'default_room_type': 'waiting'})
+        ctx_vals.update({'default_patient_state': 'dated'})
+        ctx_vals.update({'default_surgeon_id': doctor_id.id})
         result['context'] = ctx_vals
-        room_proc_ids = self.env['doctor.waiting.room'].search([('room_type','=','surgery'),('patient_id','=',self.id)])
+        # room_proc_ids = self.env['doctor.waiting.room'].search([('room_type','=','surgery'),('patient_id','=',self.id)])
+        room_proc_ids = self.env['doctor.waiting.room'].search([('room_type','=','waiting'),('patient_id','=',self.id)])
         
         #choose the view_mode accordingly
         if len(room_proc_ids) != 1:

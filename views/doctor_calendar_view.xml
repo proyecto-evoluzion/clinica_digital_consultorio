@@ -188,6 +188,10 @@
 						string="Pre-Surgical Records"
 						groups="clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
 					</button>
+					<button name="action_not_attended" type="object" class="oe_stat_button" icon="fa-calendar-times-o" 
+						string="No asistió"
+						attrs="{'invisible':[('patient_state','!=','dated')]}">
+					</button>
 					<!-- <button name="action_view_quirurgic_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Quirurgic Sheet"
 						groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
@@ -387,14 +391,14 @@
 		<field name="arch" type="xml">
 			<tree string="Waiting Room Tree" decoration-success="patient_state in ('attended')" 
               decoration-bf="patient_state == 'dated'"
-              decoration-danger="patient_state == 'not_attended'"
-              default_order="patient_state">
-				<field name="schedule_id"/>
-				<field name='patient_id'/>
-				<field name="surgeon_id"/>
-				<field name="anesthesiologist_id"/>
-				<field name="procedure_date"/>
-				<field name="procedure_end_date"/>
+              decoration-warning="patient_state == 'not_attended'"
+              default_order="procedure_date">
+				<!--<field name="schedule_id"/>-->
+				<field name="patient_id" string="Paciente"/>
+				<field name="surgeon_id" string="Profesional"/>
+				<!--<field name="anesthesiologist_id"/>-->
+				<field name="procedure_date" string="Hora Inicio"/>
+				<!--<field name="procedure_end_date"/>-->
 				<field name="patient_state"/>
 			</tree>
 		</field>

@@ -35,9 +35,9 @@ class PlasticSurgerySheet(models.Model):
 
     @api.depends('size','weight')
     def _comp_imc(self):
-        if self.size != 0:
-            for calc_imc in self:
-                self.imc = self.weight / pow(self.size,2)    
+        for imc in self:
+            if imc.size != 0:
+                imc.imc = imc.weight / pow(imc.size,2)    
     
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict')

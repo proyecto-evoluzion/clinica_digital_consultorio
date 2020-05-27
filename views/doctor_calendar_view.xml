@@ -235,8 +235,8 @@
 							'default_email': email_from}"/>
 						<field name='user_type' attrs="{'readonly':[('state','!=','new')]}"/>
 						<field name='appointment_type_id' attrs="{'readonly':[('state','!=','new')]}"/>
-						<field name='procedure_date' required="1" attrs="{'readonly':[('state','!=','new')]}"/>
-						<field name='procedure_end_date' required="1" attrs="{'readonly':[('state','!=','new')]}"/>
+						<field name='procedure_date' required="1" attrs="{'readonly':[('state','=','ordered')]}"/>
+						<field name='procedure_end_date' required="1" attrs="{'readonly':[('state','=','ordered')]}"/>
 						
 					</group>
 					<group name="main_sub_group2" >

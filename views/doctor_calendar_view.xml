@@ -391,7 +391,8 @@
 		<field name="arch" type="xml">
 			<tree string="Waiting Room Tree" decoration-success="patient_state in ('attended')" 
               decoration-bf="patient_state == 'dated'"
-              decoration-warning="patient_state == 'not_attended'"
+              decoration-warning="patient_state == 'not_attended'" 
+              decoration-info="patient_state == 'in_room'"
               default_order="procedure_date">
 				<!--<field name="schedule_id"/>-->
 				<field name="patient_id" string="Paciente"/>

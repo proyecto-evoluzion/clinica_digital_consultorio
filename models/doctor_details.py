@@ -586,6 +586,17 @@ class DoctorAdministrativeData(models.Model):
     @api.multi
     def _set_clinica_form_default_values(self):
         return {'default_patient_id': self.id}
+
+    @api.multi
+    def action_patient_arrived(self):
+        # Se cambia estatus del paciente a asiste.
+        room = self.env['doctor.waiting.room'].search([('patient_id','=',self.id),('patient_state','=','dated')])
+        count = 0
+        for rec in room:
+            count = rec.id
+
+        room = self.env['doctor.waiting.room'].search([('id','=',count)])
+        room.patient_state = 'in_room'
     
     @api.multi
     def action_view_surgery_room_procedures(self):

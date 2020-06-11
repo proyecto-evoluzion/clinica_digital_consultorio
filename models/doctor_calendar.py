@@ -150,7 +150,7 @@ class DoctorWaitingRoom(models.Model):
     @api.multi
     def api_connect(self):
         # Parametros de conexion:
-        db = "copiaevolutionmedicalcenter"
+        db = "evolutionmedicalcenter"
         username ="api@test.com"
         password = "api.test"
         url = 'https://evolutionmedicalcenter.clinicadigital.net'

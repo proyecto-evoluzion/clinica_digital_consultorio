@@ -29,6 +29,8 @@ from odoo.tools import DEFAULT_SERVER_DATE_FORMAT as DF
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 import calendar
 from odoo.exceptions import ValidationError
+import xmlrpc.client
+# from xmlrpc import client as xmlrpclib
 
 class ClinicaSurgeryRoom(models.Model):
     _name = "clinica.surgery.room"
@@ -143,6 +145,124 @@ class ScheduleTimeAllocation(models.Model):
 class DoctorWaitingRoom(models.Model):
     _name = "doctor.waiting.room"
     _description= 'Doctor Waiting Room'
+
+
+    @api.multi
+    def api_connect(self):
+        # Parametros de conexion:
+        db = "copiaevolutionmedicalcenter"
+        username ="api@test.com"
+        password = "api.test"
+        url = 'https://evolutionmedicalcenter.clinicadigital.net/'
+
+        # Apuntando al EndPoint de Odoo
+        common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
+        uid = common.authenticate(db, username, password, {})
+        models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
+
+        plastic_surgery_obj = self.env['clinica.plastic.surgery'].search([('room_id','=', self.id)], limit=1)
+
+        # Read() Patient
+        if plastic_surgery_obj.patient_id:
+            if plastic_surgery_obj.patient_id.ref:
+                ids = models.execute_kw(db, uid, password,
+                    'doctor.patient', 'search',
+                    [[['ref', '=', plastic_surgery_obj.patient_id.ref]]],
+                    {'limit': 1})
+            else:
+                ids = models.execute_kw(db, uid, password,
+                    'doctor.patient', 'search',
+                    [[['name', '=', plastic_surgery_obj.patient_id.name]]],
+                    {'limit': 1})
+        if len(ids) > 0:
+            patient_id = self.env['doctor.patient'].search([('id','=',ids[0])], limit=1)
+            patient_id = patient_id.id
+        else:
+            patient_id = models.execute_kw(db, uid, password, 'doctor.patient', 'create', [{
+                'tdoc': plastic_surgery_obj.patient_id.tdoc or '',
+                'ref': plastic_surgery_obj.patient_id.ref or '',
+                'name': plastic_surgery_obj.patient_id.name or '',
+                'lastname': plastic_surgery_obj.patient_id.lastname or '',
+                'firstname': plastic_surgery_obj.patient_id.firstname or '',
+                'middlename': plastic_surgery_obj.patient_id.middlename or '',
+                'surname': plastic_surgery_obj.patient_id.surname or '',
+                'sex': plastic_surgery_obj.patient_id.sex or '',
+                'birth_date': plastic_surgery_obj.patient_id.birth_date or '',
+                'blood_type': plastic_surgery_obj.patient_id.blood_type or '',
+                'blood_rh': plastic_surgery_obj.patient_id.blood_rh or '',
+                'user_type': plastic_surgery_obj.patient_id.user_type or '',
+                'email': plastic_surgery_obj.patient_id.email or '',
+                'phone': plastic_surgery_obj.patient_id.phone or '',
+                'link_type': plastic_surgery_obj.patient_id.link_type or '',
+                'insurer_id': plastic_surgery_obj.patient_id.insurer_id.id or False,
+                'residence_address': plastic_surgery_obj.patient_id.residence_address or '',
+                'birth_country_id': plastic_surgery_obj.patient_id.birth_country_id.id or False,
+                'residence_country_id': plastic_surgery_obj.patient_id.residence_country_id.id or False,
+                'provenance_country_id': plastic_surgery_obj.patient_id.provenance_country_id.id or False,
+                'residence_city_id': plastic_surgery_obj.patient_id.residence_city_id.id or False,
+                'residence_department_id': plastic_surgery_obj.patient_id.residence_department_id.id or False,
+                'residence_address': plastic_surgery_obj.patient_id.residence_address or '',
+                'civil_state': plastic_surgery_obj.patient_id.civil_state or '',
+                'occupation': plastic_surgery_obj.patient_id.occupation or '',
+                'responsible_name': plastic_surgery_obj.patient_id.responsible_name or '',
+                'responsible_relationship': plastic_surgery_obj.patient_id.responsible_relationship or '',
+                'responsible_relationship': plastic_surgery_obj.patient_id.responsible_relationship or '',
+                'responsible_phone': plastic_surgery_obj.patient_id.responsible_phone or '',
+                'accompany_relationship': plastic_surgery_obj.patient_id.accompany_relationship or '',
+                'accompany_relationship': plastic_surgery_obj.patient_id.accompany_relationship or '',
+                'accompany_phone': plastic_surgery_obj.patient_id.accompany_phone or '',
+                'consultation_reason': plastic_surgery_obj.patient_id.consultation_reason or '',
+                'doctor_id': 6,
+                }])
+
+        # Read() Disease
+        if plastic_surgery_obj.disease_id:
+            disease = models.execute_kw(db, uid, password,
+                'doctor.diseases', 'search',
+                [[['code', '=', plastic_surgery_obj.disease_id.code]]],
+                {'limit': 1})
+            disease = disease[0]
+        else:
+            disease = False
+
+        # Create()
+        partner_id = models.execute_kw(db, uid, password, 'clinica.plastic.surgery', 'create', [{
+            'date_attention': plastic_surgery_obj.date_attention,
+            # 'number': "Dr. Antonio Salgado / "+ plastic_surgery_obj.number or '',
+            'patient_id': patient_id,
+            # 'document_type': .document_type,
+            'consultation_reason': plastic_surgery_obj.consultation_reason or '',
+            'pathological': plastic_surgery_obj.pathological or '',
+            'surgical': plastic_surgery_obj.surgical or '',
+            'toxic': plastic_surgery_obj.toxic or '',
+            'allergic': plastic_surgery_obj.allergic or '',
+            'gyneco_obst': plastic_surgery_obj.gyneco_obst or '',
+            'pharmacological': plastic_surgery_obj.pharmacological or '',
+            'gestations': plastic_surgery_obj.gestations or '',
+            'births': plastic_surgery_obj.births or '',
+            'cesarean': plastic_surgery_obj.cesarean or '',
+            'abortion_number': plastic_surgery_obj.abortion_number or '',
+            'last_menstruation_date': plastic_surgery_obj.last_menstruation_date or '',
+            'last_birth_date': plastic_surgery_obj.last_birth_date or '',
+            'mature_promoting_factor': plastic_surgery_obj.mature_promoting_factor or '',
+            'relatives': plastic_surgery_obj.relatives or '',
+            'others': plastic_surgery_obj.others or '',
+            'size': plastic_surgery_obj.size or 0.00,
+            'weight': plastic_surgery_obj.weight or 0.00,
+            'imc': plastic_surgery_obj.imc or 0.00,
+            'heart_rate': plastic_surgery_obj.heart_rate or 0,
+            'breathing_frequency': plastic_surgery_obj.breathing_frequency or 0,
+            'systolic_blood_pressure': plastic_surgery_obj.systolic_blood_pressure or 0.00,
+            'diastolic_blood_pressure': plastic_surgery_obj.diastolic_blood_pressure or 0.00,
+            # 'physical_examination_ids': plastic_surgery_obj.physical_examination_ids,
+            'physical_exam': plastic_surgery_obj.physical_exam or '',
+            'disease_id': disease,
+            'disease_state': plastic_surgery_obj.disease_state or '',
+            'treatment': plastic_surgery_obj.treatment or '',
+            # 'prescription_id': plastic_surgery_obj.prescription_id.id,
+            'doctor_id': 6,
+            'professional_id': 6,
+            }])
     
     name = fields.Char(string='Name', copy=False)
     room_type = fields.Selection([('surgery','Surgery Room'),('waiting','Waiting Room')], string='Room Type')

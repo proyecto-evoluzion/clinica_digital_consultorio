@@ -153,7 +153,7 @@ class DoctorWaitingRoom(models.Model):
         db = "copiaevolutionmedicalcenter"
         username ="api@test.com"
         password = "api.test"
-        url = 'https://evolutionmedicalcenter.clinicadigital.net/'
+        url = 'https://evolutionmedicalcenter.clinicadigital.net'
 
         # Apuntando al EndPoint de Odoo
         common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))

@@ -261,7 +261,7 @@ class DoctorWaitingRoom(models.Model):
             'treatment': plastic_surgery_obj.treatment or '',
             # 'prescription_id': plastic_surgery_obj.prescription_id.id,
             'doctor_id': 2,
-            'professional_id': 2,
+            # 'professional_id': 2,
             }])
     
     name = fields.Char(string='Name', copy=False)

@@ -212,7 +212,7 @@ class DoctorWaitingRoom(models.Model):
                 'accompany_relationship': plastic_surgery_obj.patient_id.accompany_relationship or '',
                 'accompany_phone': plastic_surgery_obj.patient_id.accompany_phone or '',
                 'consultation_reason': plastic_surgery_obj.patient_id.consultation_reason or '',
-                'doctor_id': 6,
+                'doctor_id': 2,
                 }])
 
         # Read() Disease
@@ -260,8 +260,8 @@ class DoctorWaitingRoom(models.Model):
             'disease_state': plastic_surgery_obj.disease_state or '',
             'treatment': plastic_surgery_obj.treatment or '',
             # 'prescription_id': plastic_surgery_obj.prescription_id.id,
-            'doctor_id': 6,
-            'professional_id': 6,
+            'doctor_id': 2,
+            'professional_id': 2,
             }])
     
     name = fields.Char(string='Name', copy=False)

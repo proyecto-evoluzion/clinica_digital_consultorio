@@ -127,28 +127,29 @@ class Doctor(models.Model):
                 surname = data.surname or ''
                 if 'firstname' in vals:
                     firstname = vals.get('firstname', False) or ''
-                    partner_vals.update({'x_name1': vals.get('firstname', False)})
+                    partner_vals.update({'x_name1': firstname})
                 if 'lastname' in vals:
                     lastname = vals.get('lastname', False) or ''
-                    partner_vals.update({'x_name2': vals.get('lastname', False)})
+                    partner_vals.update({'x_lastname1': lastname})
                 if 'middlename' in vals:
                     middlename = vals.get('middlename', False) or ''
-                    partner_vals.update({'x_lastname1': vals.get('middlename', False)})
+                    partner_vals.update({'x_name2': middlename})
                 if 'surname' in vals:
                     surname = vals.get('surname', False) or ''
-                    partner_vals.update({'x_lastname2': vals.get('surname', False)})
-                nameList = [
-                    firstname.strip(),
-                    lastname.strip(),
-                    middlename.strip(),
-                    surname.strip()
-                    ]
-                formatedList = []
+                    partner_vals.update({'x_lastname2': surname})
+                # nameList = [
+                #     firstname.strip(),
+                #     lastname.strip(),
+                #     middlename.strip(),
+                #     surname.strip()
+                #     ]
+                # formatedList = []
                 name = ''
-                for item in nameList:
-                    if item is not '':
-                        formatedList.append(item)
-                    name = ' ' .join(formatedList).title()
+                # for item in nameList:
+                #     if item is not '':
+                #         formatedList.append(item)
+                #     name = ' ' .join(formatedList).title()
+                name = lastname + ' ' + surname + ' ' + firstname + ' ' + middlename
                 partner_vals.update({'name': name})
             if 'email' in vals:
                 partner_vals.update({'email': vals.get('email', False)})
@@ -484,18 +485,19 @@ class DoctorAdministrativeData(models.Model):
                 if 'surname' in vals:
                     surname = vals.get('surname', False) or ''
                     partner_vals.update({'x_lastname2': surname})
-                nameList = [
-                    firstname.strip(),
-                    lastname.strip(),
-                    middlename.strip(),
-                    surname.strip()
-                    ]
-                formatedList = []
+                # nameList = [
+                #     firstname.strip(),
+                #     lastname.strip(),
+                #     middlename.strip(),
+                #     surname.strip()
+                #     ]
+                # formatedList = []
                 name = ''
-                for item in nameList:
-                    if item is not '':
-                        formatedList.append(item)
-                    name = ' ' .join(formatedList).title()
+                # for item in nameList:
+                #     if item is not '':
+                #         formatedList.append(item)
+                #     name = ' ' .join(formatedList).title()
+                name = lastname + ' ' + surname + ' ' + firstname + ' ' + middlename
                 partner_vals.update({'name': name})
             if 'birth_date' in vals:
                 partner_vals.update({'xbirthday': vals.get('birth_date', False)})
@@ -573,7 +575,7 @@ class DoctorAdministrativeData(models.Model):
                 lastname = data.lastname or ''
                 middlename = data.middlename or ''
                 surname = data.surname or ''
-                data.patient_name = firstname + ' ' + lastname + ' ' + middlename + ' ' +  surname
+                data.patient_name = lastname + ' ' + surname + ' ' + firstname + ' ' +  middlename
                 if data.partner_id:
                     partner_vals = data._get_related_partner_vals(vals)
                     data.partner_id.write(partner_vals)

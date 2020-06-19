@@ -428,10 +428,10 @@
                 <tree string="Doctor Administrative Data Tree">
                     <field name="name" string="Número de Identificación"/>
                     <field name="tdoc" string="Tipo de documento"/>
-                    <field name="firstname" string="Primer Nombre"/>
                     <field name="lastname" string="Primer Apellido"/>
-                    <field name="middlename" placeholder="Second Name" string="Segundo Nombre"/>
                     <field name="surname" placeholder="Second Last Name" string="Segundo Apellido"/>
+                    <field name="firstname" string="Primer Nombre"/>
+                    <field name="middlename" placeholder="Second Name" string="Segundo Nombre"/>
                     <field name="birth_date" required="0" string="Fecha Nacimiento"/>
                     <field name="age" required="1" string="Edad"/>
                     <field name="age_unit" string="Unidad Medida Edad"/>

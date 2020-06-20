@@ -166,8 +166,7 @@
 					groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor"/>
 				<button name="action_create_so" string="Create Sales Order" 
 					class="btn-primary" type="object" states="confirmed"/>
-				<button name="api_connect" string="Crear Cirugía" 
-					class="btn-primary" type="object" states="confirmed"/>
+				<button name="api_connect" string="Enviar HC" class="btn-primary" type="object" states="confirmed"/>
 				<!-- <button name="action_view_clinica_record_history" string="View History" 
 					type="object" class="oe_highlight"/> -->
 				<field name="state" widget="statusbar" statusbar_visible="new,confirmed,ordered"/>

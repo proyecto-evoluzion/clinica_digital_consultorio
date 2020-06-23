@@ -44,3 +44,10 @@
 			'email': "partner@new.com",
 			}])
 		print(partner_id)
+
+		# Write()
+		partner_id = models.execute_kw(db, uid, password, 'res.partner', 'write', [[id], {
+			'name': "New Partner",
+			'email': "partner@new.com",
+			}])
+		print(partner_id)

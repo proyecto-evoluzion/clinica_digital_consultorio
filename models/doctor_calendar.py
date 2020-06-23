@@ -151,9 +151,11 @@ class DoctorWaitingRoom(models.Model):
     def api_connect(self):
         # Parametros de conexion:
         db = "evolutionmedicalcenter"
+        # db = "copiaevolutionmedicalcenter"
         username ="api@test.com"
         password = "api.test"
         url = 'https://evolutionmedicalcenter.clinicadigital.net'
+        # url = 'http://copiaevolutionmedicalcenter.clinicadigital.net'
 
         # Apuntando al EndPoint de Odoo
         common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
@@ -162,8 +164,10 @@ class DoctorWaitingRoom(models.Model):
 
         plastic_surgery_obj = self.env['clinica.plastic.surgery'].search([('room_id','=', self.id)], limit=1)
 
-        # Read() Patient
+        # Read() Existing Records
+        ids = []
         if plastic_surgery_obj.patient_id:
+            # Se busca paciente
             if plastic_surgery_obj.patient_id.ref:
                 ids = models.execute_kw(db, uid, password,
                     'doctor.patient', 'search',
@@ -174,6 +178,7 @@ class DoctorWaitingRoom(models.Model):
                     'doctor.patient', 'search',
                     [[['name', '=', plastic_surgery_obj.patient_id.name]]],
                     {'limit': 1})
+
         if len(ids) > 0:
             patient_id = self.env['doctor.patient'].search([('id','=',ids[0])], limit=1)
             patient_id = patient_id.id
@@ -199,8 +204,8 @@ class DoctorWaitingRoom(models.Model):
                 'birth_country_id': plastic_surgery_obj.patient_id.birth_country_id.id or False,
                 'residence_country_id': plastic_surgery_obj.patient_id.residence_country_id.id or False,
                 'provenance_country_id': plastic_surgery_obj.patient_id.provenance_country_id.id or False,
-                'residence_city_id': plastic_surgery_obj.patient_id.residence_city_id.id or False,
-                'residence_department_id': plastic_surgery_obj.patient_id.residence_department_id.id or False,
+                # 'residence_city_id': plastic_surgery_obj.patient_id.residence_city_id.id or False,
+                # 'residence_department_id': plastic_surgery_obj.patient_id.residence_department_id.id or False,
                 'residence_address': plastic_surgery_obj.patient_id.residence_address or '',
                 'civil_state': plastic_surgery_obj.patient_id.civil_state or '',
                 'occupation': plastic_surgery_obj.patient_id.occupation or '',
@@ -213,6 +218,25 @@ class DoctorWaitingRoom(models.Model):
                 'accompany_phone': plastic_surgery_obj.patient_id.accompany_phone or '',
                 'consultation_reason': plastic_surgery_obj.patient_id.consultation_reason or '',
                 'doctor_id': 2,
+                }])
+
+            # Write()
+
+            if plastic_surgery_obj.patient_id.residence_department_id:
+                residence_department_id = models.execute_kw(db, uid, password,
+                    'res.country.state', 'search',
+                    [[['name', '=', plastic_surgery_obj.patient_id.residence_department_id.name],['country_id', '=',49]]],
+                    {'limit': 1})
+
+            if plastic_surgery_obj.patient_id.residence_city_id:
+                residence_city_id = models.execute_kw(db, uid, password,
+                    'res.country.state.city', 'search',
+                    [[['name', '=', plastic_surgery_obj.patient_id.residence_city_id.name]]],
+                    {'limit': 1})
+
+            update = models.execute_kw(db, uid, password, 'doctor.patient', 'write', [[patient_id], {
+                'residence_city_id': residence_city_id[0] or False,
+                'residence_department_id': residence_department_id[0] or False,
                 }])
 
         # Read() Disease

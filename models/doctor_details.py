@@ -579,6 +579,13 @@ class DoctorAdministrativeData(models.Model):
                 if data.partner_id:
                     partner_vals = data._get_related_partner_vals(vals)
                     data.partner_id.write(partner_vals)
+
+        # Send data to waiting.room
+        waiting_room_obj = self.env['doctor.waiting.room'].search([('patient_id','=',self.id)])
+        if waiting_room_obj:
+            for room in waiting_room_obj:
+                room.gender = self.sex
+                room.birth_date = self.birth_date
         return res
 
     _sql_constraints = [

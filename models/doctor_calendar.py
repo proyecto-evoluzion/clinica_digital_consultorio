@@ -28,7 +28,7 @@ from dateutil import relativedelta
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT as DF
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 import calendar
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError,AccessError, UserError, RedirectWarning, Warning
 import xmlrpc.client
 # from xmlrpc import client as xmlrpclib
 
@@ -150,12 +150,12 @@ class DoctorWaitingRoom(models.Model):
     @api.multi
     def api_connect(self):
         # Parametros de conexion:
-        db = "evolutionmedicalcenter"
-        # db = "copiaevolutionmedicalcenter"
+        # db = "evolutionmedicalcenter"
+        db = "copiaevolutionmedicalcenter"
         username ="api@test.com"
         password = "api.test"
-        url = 'https://evolutionmedicalcenter.clinicadigital.net'
-        # url = 'http://copiaevolutionmedicalcenter.clinicadigital.net'
+        # url = 'https://evolutionmedicalcenter.clinicadigital.net'
+        url = 'http://copiaevolutionmedicalcenter.clinicadigital.net'
 
         # Apuntando al EndPoint de Odoo
         common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
@@ -166,6 +166,7 @@ class DoctorWaitingRoom(models.Model):
 
         # Read() Existing Records
         ids = []
+        flag = 0
         if plastic_surgery_obj.patient_id:
             # Se busca paciente
             if plastic_surgery_obj.patient_id.ref:
@@ -199,13 +200,10 @@ class DoctorWaitingRoom(models.Model):
                 'email': plastic_surgery_obj.patient_id.email or '',
                 'phone': plastic_surgery_obj.patient_id.phone or '',
                 'link_type': plastic_surgery_obj.patient_id.link_type or '',
-                'insurer_id': plastic_surgery_obj.patient_id.insurer_id.id or False,
                 'residence_address': plastic_surgery_obj.patient_id.residence_address or '',
                 'birth_country_id': plastic_surgery_obj.patient_id.birth_country_id.id or False,
                 'residence_country_id': plastic_surgery_obj.patient_id.residence_country_id.id or False,
                 'provenance_country_id': plastic_surgery_obj.patient_id.provenance_country_id.id or False,
-                # 'residence_city_id': plastic_surgery_obj.patient_id.residence_city_id.id or False,
-                # 'residence_department_id': plastic_surgery_obj.patient_id.residence_department_id.id or False,
                 'residence_address': plastic_surgery_obj.patient_id.residence_address or '',
                 'civil_state': plastic_surgery_obj.patient_id.civil_state or '',
                 'occupation': plastic_surgery_obj.patient_id.occupation or '',
@@ -234,9 +232,16 @@ class DoctorWaitingRoom(models.Model):
                     [[['name', '=', plastic_surgery_obj.patient_id.residence_city_id.name]]],
                     {'limit': 1})
 
+            if plastic_surgery_obj.patient_id.insurer_id:
+                insurer_id = models.execute_kw(db, uid, password,
+                    'res.partner', 'search',
+                    [[['xidentification', '=', plastic_surgery_obj.patient_id.insurer_id.xidentification]]],
+                    {'limit': 1})
+
             update = models.execute_kw(db, uid, password, 'doctor.patient', 'write', [[patient_id], {
                 'residence_city_id': residence_city_id[0] or False,
                 'residence_department_id': residence_department_id[0] or False,
+                'insurer_id': insurer_id[0] or False,
                 }])
 
         # Read() Disease
@@ -287,6 +292,7 @@ class DoctorWaitingRoom(models.Model):
             'doctor_id': 2,
             # 'professional_id': 2,
             }])
+
     
     name = fields.Char(string='Name', copy=False)
     room_type = fields.Selection([('surgery','Surgery Room'),('waiting','Waiting Room')], string='Room Type')

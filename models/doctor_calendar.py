@@ -150,12 +150,12 @@ class DoctorWaitingRoom(models.Model):
     @api.multi
     def api_connect(self):
         # Parametros de conexion:
-        # db = "evolutionmedicalcenter"
-        db = "copiaevolutionmedicalcenter"
+        db = "evolutionmedicalcenter"
+        # db = "copiaevolutionmedicalcenter"
         username ="api@test.com"
         password = "api.test"
-        # url = 'https://evolutionmedicalcenter.clinicadigital.net'
-        url = 'http://copiaevolutionmedicalcenter.clinicadigital.net'
+        url = 'https://evolutionmedicalcenter.clinicadigital.net'
+        # url = 'http://copiaevolutionmedicalcenter.clinicadigital.net'
 
         # Apuntando al EndPoint de Odoo
         common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))

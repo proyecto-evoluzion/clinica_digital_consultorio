@@ -225,18 +225,24 @@ class DoctorWaitingRoom(models.Model):
                     'res.country.state', 'search',
                     [[['name', '=', plastic_surgery_obj.patient_id.residence_department_id.name],['country_id', '=',49]]],
                     {'limit': 1})
+            else:
+                residence_department_id = False
 
             if plastic_surgery_obj.patient_id.residence_city_id:
                 residence_city_id = models.execute_kw(db, uid, password,
                     'res.country.state.city', 'search',
                     [[['name', '=', plastic_surgery_obj.patient_id.residence_city_id.name]]],
                     {'limit': 1})
+            else:
+                residence_city_id = False
 
             if plastic_surgery_obj.patient_id.insurer_id:
                 insurer_id = models.execute_kw(db, uid, password,
                     'res.partner', 'search',
                     [[['xidentification', '=', plastic_surgery_obj.patient_id.insurer_id.xidentification]]],
                     {'limit': 1})
+            else:
+                insurer_id = False
 
             update = models.execute_kw(db, uid, password, 'doctor.patient', 'write', [[patient_id], {
                 'residence_city_id': residence_city_id[0] or False,

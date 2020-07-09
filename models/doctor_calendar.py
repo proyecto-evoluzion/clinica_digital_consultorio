@@ -298,6 +298,7 @@ class DoctorWaitingRoom(models.Model):
             'doctor_id': 2,
             # 'professional_id': 2,
             }])
+        self.send_hc = True
 
     
     name = fields.Char(string='Name', copy=False)
@@ -349,6 +350,7 @@ class DoctorWaitingRoom(models.Model):
     smoke_uom = fields.Selection([('day','per Day'), ('week','per Week'),('month','per Month'), 
                                   ('year','per Year')], string="Smoke Unit of Measure", default='day', related='patient_id.smoke_uom')
     is_alcoholic = fields.Boolean(string="Alcoholic Drinks", related='patient_id.is_alcoholic')
+    send_hc = fields.Boolean(string="HC sended?")
     alcohol_frequency = fields.Integer(string="Frequency", related='patient_id.alcohol_frequency')
     alcohol_frequency_uom = fields.Selection([('day','per Day'), ('week','per Week'), ('month','per Month'), 
                                               ('year','per Year')], string="Alcoholic Frequency Unit of Measure", default='day', 

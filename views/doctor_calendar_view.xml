@@ -166,7 +166,7 @@
 					groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor"/>
 				<button name="action_create_so" string="Create Sales Order" 
 					class="btn-primary" type="object" states="confirmed"/>
-				<button name="api_connect" string="Enviar HC" class="btn-primary" type="object" attrs="{'invisible': ['patient_state','!=','attended']}"/>
+				<button name="api_connect" string="Enviar HC" class="btn-primary" type="object" attrs="{'invisible': ['|',('patient_state','!=','attended'),('send_hc','=', True)]}"/>
 				<!-- <button name="action_view_clinica_record_history" string="View History" 
 					type="object" class="oe_highlight"/> -->
 				<field name="state" widget="statusbar" statusbar_visible="new,confirmed,ordered"/>
@@ -222,6 +222,7 @@
 					<h1>
 						<field name="name" readonly="1"/>
 						<field name="patient_state" invisible="1"/>
+						<field name="send_hc" invisible="1"/>
 					</h1>
 				</div>
 				<group name="main_group">

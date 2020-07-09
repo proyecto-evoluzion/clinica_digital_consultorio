@@ -86,6 +86,7 @@ class Doctor(models.Model):
     lastname = fields.Char(string='First Last Name')
     middlename = fields.Char(string='Second Name')
     surname = fields.Char(string='Second Last Name')
+    digital_sign = fields.Char(string='Firma Digital')
     sex = fields.Selection([('male','Male'), ('female','Female')], string='Gender')
     email = fields.Char(string='Email')
     phone = fields.Char(string='Phone Number')
@@ -177,6 +178,11 @@ class Doctor(models.Model):
                             }
             user = self.env['res.users'].create(user_vals)
             res.res_user_id = user.id
+        fname = vals.get('firstname', False) or ''
+        mname = vals.get('middlename', False) or ''
+        lname = vals.get('lastname', False) or ''
+        sname = vals.get('surname', False) or ''
+        res.digital_sign = fname +' '+ mname +' '+ lname +' '+ sname
         return res
     
     @api.multi
@@ -190,6 +196,11 @@ class Doctor(models.Model):
                 if doctor.partner_id:
                     partner_vals = doctor._get_related_partner_vals(vals)
                     doctor.partner_id.write(partner_vals)
+            fname = vals.get('firstname', False) or ''
+            mname = vals.get('middlename', False) or ''
+            lname = vals.get('lastname', False) or ''
+            sname = vals.get('surname', False) or ''
+            self.digital_sign = fname +' '+ mname +' '+ lname +' '+ sname
         return res
     
 

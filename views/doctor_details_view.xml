@@ -150,6 +150,8 @@
                             <field name="middlename" string="Segundo Nombre"/>
                     	</group>
                     </group>
+                    <h3>Nombre personalizado - Firma Digital</h3>
+                    <field name="digital_sign" nolabel="1" placeholder="Nombres Apellidos" style="width:60%"/>
                     <notebook colspan="4">
 	                    <page string="My procedures">
 	                        <field name="product_ids" nolabel="1" 

@@ -713,13 +713,16 @@
                   <t t-if="plastic_surgery.patient_id.insurer_id">
                     <strong>Insurer: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.insurer_id.name"/><br/>
                   </t>
+                  <t t-if="plastic_surgery.patient_id.residence_address">
+                    <strong>Dirección: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.residence_address"/><br/>
+                  </t>
                 </td>
               </tr>
               
-       				<tr t-if="plastic_surgery.consultation_reason"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>REASON FOR CONSULTATION</strong></td></tr>
-   					<tr t-if="plastic_surgery.consultation_reason">
+       				<tr t-if="plastic_surgery.this_consultation_reason"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>REASON FOR CONSULTATION</strong></td></tr>
+   					<tr t-if="plastic_surgery.this_consultation_reason">
        					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="plastic_surgery.consultation_reason"/>
+       						<span style="padding-left:2px;" t-field="plastic_surgery.this_consultation_reason"/>
        					</td>
        				</tr>
        				<tr t-if="plastic_surgery.pathological"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>PATHOLOGICAL</strong></td></tr>

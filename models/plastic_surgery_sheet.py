@@ -60,6 +60,7 @@ class PlasticSurgerySheet(models.Model):
     blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')
     
     consultation_reason = fields.Text(string="Reason for Consultation", related="patient_id.consultation_reason")
+    this_consultation_reason = fields.Text(string="Motivo de Consulta")
     pathological = fields.Text(string="Pathological", related='patient_id.pathological')
     surgical = fields.Text(string="Surgical", related='patient_id.surgical')
     toxic = fields.Text(string="Toxic")
@@ -136,7 +137,8 @@ class PlasticSurgerySheet(models.Model):
     breathing_frequency = fields.Integer(string="Breathing frequency")    
     size = fields.Float(string="Size")
     weight = fields.Float(string="Weight")
-    imc = fields.Float(string="IMC", compute=_comp_imc)    
+    imc = fields.Float(string="IMC", compute=_comp_imc)
+    load_register = fields.Boolean(string='-', default=False)
 
     @api.multi
     def action_set_close(self):
@@ -149,9 +151,9 @@ class PlasticSurgerySheet(models.Model):
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
     
     @api.onchange('patient_id')
-    def onchange_consultation_reason(self):
+    def onchange_this_consultation_reason(self):
         if self.patient_id:
-            self.consultation_reason = self.patient_id.consultation_reason
+            self.this_consultation_reason = self.patient_id.consultation_reason
 
     @api.multi
     @api.depends('birth_date')
@@ -261,6 +263,8 @@ class PlasticSurgerySheet(models.Model):
         res = super(PlasticSurgerySheet, self).create(vals)
         if res.room_id:
             res.room_id.patient_state = 'attended'
+        if res.this_consultation_reason:
+            res.consultation_reason = res.this_consultation_reason
         res._check_document_types()
         return res
     

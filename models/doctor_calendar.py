@@ -266,7 +266,7 @@ class DoctorWaitingRoom(models.Model):
             # 'number': "Dr. Antonio Salgado / "+ plastic_surgery_obj.number or '',
             'patient_id': patient_id,
             # 'document_type': .document_type,
-            'consultation_reason': plastic_surgery_obj.consultation_reason or '',
+            'consultation_reason': plastic_surgery_obj.this_consultation_reason or '',
             'pathological': plastic_surgery_obj.pathological or '',
             'surgical': plastic_surgery_obj.surgical or '',
             'toxic': plastic_surgery_obj.toxic or '',

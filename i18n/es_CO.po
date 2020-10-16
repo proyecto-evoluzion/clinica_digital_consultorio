@@ -257,8 +257,8 @@ msgstr "<strong>APPOINTMENT DETAILS</strong>"
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.presurgical_record_visualizer_template
-msgid "<strong style="font-size:12px;">ALLERGIC:</strong><br/>"
-msgstr "<strong style="font-size:12px;">ALÉRGICOS:</strong><br/>"
+msgid "<strong>Allergic:</strong>"
+msgstr "<strong>Alérgicos:</strong>"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.anhestesic_registry_visualizer_template
@@ -308,14 +308,14 @@ msgstr "<strong>LIQUIDOS ELIMINADOS</strong>"
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.presurgical_record_visualizer_template
-msgid "<strong style="font-size:12px;">MAIN DISEASE:</strong><br/>"
-msgstr "<strong style="font-size:12px;">DIAGNÓSTICO PRINCIPAL:</strong><br/>"
+msgid "<strong>MAIN DISEASE</strong>"
+msgstr "<strong>DIAGNÓSTICO PRINCIPAL</strong>"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.presurgical_record_visualizer_template
-msgid "<strong style="font-size:12px;">MEDICAL ORDERS AND RECIPE:</strong><br/>"
-msgstr "<strong style="font-size:12px;">ORDENES MÉDICAS Y RECETA:</strong><br/>"
+msgid "<strong>MEDICAL ORDERS AND RECIPE</strong>"
+msgstr "<strong>ORDENES MÉDICAS Y RECETA</strong>"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.anhestesic_registry_visualizer_template
@@ -360,14 +360,14 @@ msgstr "<strong style="font-size:12px;">EXAMENES PARACLÍNICOS:</strong><br/>"
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.presurgical_record_visualizer_template
-msgid "<strong style="font-size:12px;">PATHOLOGICAL</strong><br/>"
-msgstr "<strong style="font-size:12px;">PATOLÓGICOS</strong><br/>"
+msgid "<strong>PATHOLOGICAL</strong>"
+msgstr "<strong>PATOLÓGICOS</strong>"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.presurgical_record_visualizer_template
-msgid "<strong style="font-size:12px;">PATIENT BACKGROUND</strong><br/>"
-msgstr "<strong style="font-size:12px;">ANTECEDENTES</strong><br/>"
+msgid "<strong>PATIENT BACKGROUND</strong>"
+msgstr "<strong>ANTECEDENTES</strong>"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.anhestesic_registry_visualizer_template
@@ -390,14 +390,14 @@ msgstr "<strong>Tipo de documento: </strong>"
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.presurgical_record_visualizer_template
-msgid "<strong style="font-size:12px;">PHYSICAL DETAILS:</strong><br/>"
-msgstr "<strong style="font-size:12px;">DETALLES FÍSICOS:</strong><br/>"
+msgid "<strong>PHYSICAL DETAILS</strong>"
+msgstr "<strong>DETALLES FÍSICOS</strong>"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.presurgical_record_visualizer_template
-msgid "<strong style="font-size:12px;">PHYSICAL EXAM:</strong><br/>"
-msgstr "<strong style="font-size:12px;">EXAMEN FÍSICO:</strong><br/>"
+msgid "<strong>PHYSICAL EXAM</strong>"
+msgstr "<strong>EXAMEN FÍSICO</strong>"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.plastic_surgery_visualizer_template
@@ -426,8 +426,8 @@ msgstr "<strong>PRUEBAS COAGULACIÓN</strong>"
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.presurgical_record_visualizer_template
-msgid "<strong style="font-size:12px;">PHARMACOLOGICAL:</strong><br/>"
-msgstr "<strong style="font-size:12px;">FARMACOLÓGICOS:</strong><br/>"
+msgid "<strong>Pharmacological: </strong>"
+msgstr "<strong>Farmacológicos: </strong>"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.anhestesic_registry_visualizer_template
@@ -443,14 +443,14 @@ msgstr "<strong style="font-size:12px;">DESCRIPCIÓN QUIRURGICA</strong><br/>"
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.presurgical_record_visualizer_template
-msgid "<strong style="font-size:12px;">REASON FOR CONSULTATION</strong><br/>"
-msgstr "<strong style="font-size:12px;">MOTIVO DE CONSULTA</strong><br/>"
+msgid "<strong>REASON FOR CONSULTATION</strong>"
+msgstr "<strong>MOTIVO DE CONSULTA</strong>"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.presurgical_record_visualizer_template
-msgid "<strong style="font-size:12px;">RELATIVES</strong><br/>"
-msgstr "<strong style="font-size:12px;">FAMILIARES</strong><br/>"
+msgid "<strong>RELATIVES</strong>"
+msgstr "<strong>FAMILIARES</strong>"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.anhestesic_registry_visualizer_template
@@ -479,8 +479,8 @@ msgstr "<strong>SURGERY ROOM PROCEDURE DETAILS</strong>"
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.presurgical_record_visualizer_template
-msgid "<strong style="font-size:12px;">SURGICAL</strong><br/>"
-msgstr "<strong style="font-size:12px;">QUIRÚRGICOS</strong><br/>"
+msgid "<strong>SURGICAL</strong>"
+msgstr "<strong>QUIRÚRGICOS</strong>"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.quirurgic_sheet_visualizer_template
@@ -4565,7 +4565,7 @@ msgstr "Plastic Surgery"
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.plastic_surgery_visualizer_template
 msgid "Plastic Surgery Attention Number:"
-msgstr "Cirugía Plástica Atención N°:"
+msgstr "Atención N°:"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form

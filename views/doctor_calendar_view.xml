@@ -427,9 +427,9 @@
 		<field name="model">doctor.waiting.room</field>
 		<field name="arch" type="xml">
 			<search string="Search Appointments">
+				<field name="patient_id" />
 				<field name="surgeon_id"  />
 				<field name='anesthesiologist_id'/>
-				<field name="patient_id" />
 				<field name="schedule_id" />
 				<filter string="Today's Confirmed/Ordered Appointments" name="confirmed_today" domain="[('state','in', ['confirmed','ordered']),
 				   ('procedure_date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('procedure_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)))]"/>

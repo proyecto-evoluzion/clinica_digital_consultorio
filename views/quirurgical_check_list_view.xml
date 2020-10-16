@@ -320,12 +320,12 @@
         <field name="model">clinica.quirurgical.check.list</field>
         <field name="arch" type="xml">
             <search string="Search Quirurgical Check List">
+            	<field name="patient_id" />
             	<field name="name" />
                 <field name="surgeon_id"  />
                 <field name='anesthesiologist_id'/>
                 <field name='technologist_id'/>
          		<field name='nurse_id'/>
-                <field name="patient_id" />
                 <group expand="0" string="Group By">
                 	<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
                 	<filter string="Surgeon" name="groupby_surgeon_id" domain="[]" context="{'group_by':'surgeon_id'}"/>

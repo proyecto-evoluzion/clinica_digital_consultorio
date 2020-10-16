@@ -334,9 +334,9 @@
             <field name="model">doctor.presurgical.record</field>
             <field name="arch" type="xml">
                 <search string="Search Presurgical">
+                    <field name="patient_id" />
                     <field name="number"  />
                     <field name='attention_code_id'/>
-                    <field name="patient_id" />
                     <group expand="0" string="Group By">
                     	<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
                     </group>

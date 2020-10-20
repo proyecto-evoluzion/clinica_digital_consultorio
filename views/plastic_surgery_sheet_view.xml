@@ -100,11 +100,13 @@
                                 <div name="paraclinical" class="col-md-4" string="Size and weight">
                                     <h3>Size and weight</h3>
                                     <label for="size" string="Size"/>
-                                    <field name="size" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:50%;"/><br></br>
+                                    <field name="size" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:50%;"/>m<br></br>
                                     <label for="weight" string="Weight"/>
-                                    <field name="weight" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:50%;"/><br></br>
+                                    <field name="weight" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:50%;"/>Kg<br></br>
                                     <label for="imc" string="IMC"/>
-                                    <field name="imc" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:50%;"/>
+                                    <field name="imc" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:50%;"/>Kg/m2<br></br>
+                                    <label for="igc" string="Indice de grasa corporal aproximado"/>
+                                    <field name="igc" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:50%;"/>
                                 </div>
                                 <div name="vital_s" class="col-md-4" string="vital S">
                                     <h3>vital S</h3>
@@ -119,6 +121,18 @@
                                     <field name="systolic_blood_pressure" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:50%;"/><br></br>
                                     <label for="diastolic_blood_pressure" string="Diastolic blood pressure"/>
                                     <field name="diastolic_blood_pressure" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:50%;"/>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div name="temp" class="col-md-6" string="Temp">
+                                    <h3>Temperatura</h3>
+                                    <label for="temp" string="Temperatura"/>
+                                    <field name="temp" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:10%;"/>C°<br></br>
+                                </div>
+                                <div name="spo2" class="col-md-6" string="SpO2">
+                                    <h3>SpO2</h3>
+                                    <label for="pulse" string="Pulsioximetría"/>
+                                    <field name="pulse" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" style="width:10%;"/>%<br></br>
                                 </div>
                             </div>
                             <group>

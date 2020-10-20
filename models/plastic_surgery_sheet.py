@@ -38,6 +38,19 @@ class PlasticSurgerySheet(models.Model):
         for imc in self:
             if imc.size != 0:
                 imc.imc = imc.weight / pow(imc.size,2)    
+
+
+    @api.depends('imc')
+    def _comp_igc(self):
+        for igc in self:
+            if igc.imc != 0:
+                age = self.patient_id.age
+                sex = self.patient_id.sex
+                if sex == 'male':
+                    sex = 1
+                else:
+                    sex = 0
+                igc.igc = 1.39 * igc.imc + 0.16 * int(age) - 10.34 * int(sex) - 9
     
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict')
@@ -139,6 +152,9 @@ class PlasticSurgerySheet(models.Model):
     weight = fields.Float(string="Weight")
     imc = fields.Float(string="IMC", compute=_comp_imc)
     load_register = fields.Boolean(string='-', default=False)
+    temp = fields.Float(string="Temperatura")
+    igc = fields.Float(string="Indice de grasa corporal aproximado", compute=_comp_igc)
+    pulse = fields.Integer(string="Pulsioximetría")
 
     @api.multi
     def action_set_close(self):

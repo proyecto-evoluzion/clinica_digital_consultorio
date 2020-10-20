@@ -849,13 +849,16 @@
        					<td style="width:50%; ">
        						<t t-if="plastic_surgery.weight">Weight: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.weight"/>Kg <br/> </t>
        						<t t-if="plastic_surgery.size">Size: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.size"/>Cm <br/> </t>
-       						<t t-if="plastic_surgery.imc">IMC (Body Mass Index): <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.imc"/>kg/m² </t>
+       						<t t-if="plastic_surgery.imc">IMC (Body Mass Index): <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.imc"/>kg/m² <br/></t>
+                  <t t-if="plastic_surgery.igc">Indice de grasa corporal aproximado: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.igc"/> <br/></t>
+                  <t t-if="plastic_surgery.temp">Temperatura: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.temp"/>C° <br/> </t>
        					</td>
        					<td style="width:50%; ">
        						<t t-if="plastic_surgery.heart_rate">Ritmo cardiaco: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.heart_rate"/><br/> </t>
        						<t t-if="plastic_surgery.breathing_frequency">Frecuencia respiratoria: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.breathing_frequency"/><br/> </t>
-       						<t t-if="plastic_surgery.systolic_blood_pressure">Presión sanguínea sistólica: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.systolic_blood_pressure"/></t>
-       						<t t-if="plastic_surgery.diastolic_blood_pressure">Presión sanguínea diastólica: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.diastolic_blood_pressure"/></t>
+       						<t t-if="plastic_surgery.systolic_blood_pressure">Presión sanguínea sistólica: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.systolic_blood_pressure"/><br/></t>
+       						<t t-if="plastic_surgery.diastolic_blood_pressure">Presión sanguínea diastólica: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.diastolic_blood_pressure"/><br/></t>
+                  <t t-if="plastic_surgery.pulse">SpO2: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.pulse"/>% <br/> </t>
        					</td>
        				</tr>
    					<tr t-if="plastic_surgery.physical_exam or plastic_surgery.physical_examination_ids"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>PHYSICAL EXAM</strong></td></tr>

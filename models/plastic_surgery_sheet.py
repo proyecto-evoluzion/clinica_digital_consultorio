@@ -44,8 +44,8 @@ class PlasticSurgerySheet(models.Model):
     def _comp_igc(self):
         for igc in self:
             if igc.imc != 0:
-                age = self.patient_id.age
-                sex = self.patient_id.sex
+                age = igc.patient_id.age
+                sex = igc.patient_id.sex
                 if sex == 'male':
                     sex = 1
                 else:
@@ -122,6 +122,7 @@ class PlasticSurgerySheet(models.Model):
     physical_body_mass_index = fields.Float(string="IMC (Body Mass Index)")
     physical_exam = fields.Text(string="Physical Exam Observations")
     
+    diagnosis_ids = fields.One2many('consultorio.diagnosis.template', 'ps_format_id', string="Diagnóstico CIE10")
     disease_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
     disease2_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
     disease3_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
@@ -155,6 +156,14 @@ class PlasticSurgerySheet(models.Model):
     temp = fields.Float(string="Temperatura")
     igc = fields.Float(string="Indice de grasa corporal aproximado", compute=_comp_igc)
     pulse = fields.Integer(string="Pulsioximetría")
+
+    @api.onchange('diagnosis_ids')
+    def onchange_diagnosis_ids(self):
+        for dignosis in self.diagnosis_ids:
+            dignosis.update({'code': dignosis.diseases_id.code})
+            dignosis.update({'name': dignosis.diseases_id.name})
+            dignosis.update({'type_diagnosis': dignosis.diseases_id.type_diagnosis})
+            dignosis.update({'state_diagnosis': dignosis.diseases_id.state_diagnosis})
 
     @api.multi
     def action_set_close(self):
@@ -344,6 +353,19 @@ class PhysicalExaminationType(models.Model):
     professional_id = fields.Many2one('doctor.professional', string='Professional')
     active = fields.Boolean(string="Active", default="True")
     
+class PSDiagnosisTemplateModel(models.Model):
+    _name = "consultorio.diagnosis.template"
+    _rec_name = 'name'
     
+    code = fields.Char('Code', size=4)
+    name = fields.Char('Disease', size=256)
+    type_diagnosis = fields.Selection([('principal','Principal'),
+                             ('ralated','Relacionado')],default='principal', string='Tipo Diagnóstico')
+    state_diagnosis = fields.Selection([('diagnostic_impression','Impresión diagnóstica'),
+                             ('confirm','Confirmado'),
+                             ('recurrent','Recurrente')],default='diagnostic_impression', string='Estado Diagnóstico')
+
+    diseases_id = fields.Many2one('doctor.diseases', string='Diagnóstico')
+    ps_format_id = fields.Many2one('clinica.plastic.surgery', string='PS Format')
     
     

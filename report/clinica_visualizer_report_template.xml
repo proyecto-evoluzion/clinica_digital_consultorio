@@ -870,17 +870,31 @@
                   <span style="padding-left:2px;" t-field="plastic_surgery.physical_exam"/>
        					</td>
        				</tr>
-       				<tr t-if="plastic_surgery.disease_id or plastic_surgery.disease_state">
-       					<td colspan="2" style="text-align:center; font-size: 14px;"><strong>MAIN DISEASE</strong></td>
-       				</tr>
-       				<tr t-if="plastic_surgery.disease_id or plastic_surgery.disease_state">
-       					<td style="width:50%; ">
-       						<t t-if="plastic_surgery.disease_id">Diagnosis: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.disease_id"/></t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="plastic_surgery.disease_id">Disease Status: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.disease_state"/></t>
-       					</td>
-       				</tr>
+       				<tr t-if="plastic_surgery.diagnosis_ids">
+                <td colspan="2" style="text-align:center; ">
+                  <t><strong>DIAGNÓSTICO CIE10</strong></t>
+                </td>
+              </tr>
+              <tr t-if="plastic_surgery.diagnosis_ids" style="padding:0px;">
+                <td colspan="2" style=" padding:0px;">
+                  <table class="table" style="width:100%;margin:0px;">
+                    <thead>
+                      <th style="width:10%;">Código</th>
+                      <th style="width:30%;">Diagnóstico</th>
+                      <th style="width:30%;">Tipo Diagnóstico</th>
+                      <th style="width:30%;">Estado Diagnóstico</th>
+                    </thead>
+                    <tbody>
+                      <tr t-foreach="plastic_surgery.diagnosis_ids" t-as="pvalue">
+                        <td style="width:10%;"><span t-field="pvalue.code"/></td>
+                        <td style="width:30%;"><span t-field="pvalue.diseases_id"/></td>
+                        <td style="width:30%;"><span t-field="pvalue.diseases_id"/></td>
+                        <td style="width:30%;"><span t-field="pvalue.state_diagnosis"/></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
        				<tr t-if="plastic_surgery.disease2_id or plastic_surgery.disease3_id or plastic_surgery.disease_state2 or plastic_surgery.disease_state3">
        					<td colspan="2" style="text-align:center; font-size: 14px;"><strong>OTHER DISEASES</strong></td>
        				</tr>

@@ -151,14 +151,15 @@
             		 	<page name="paraclinical_exam" string="Dx and Treatment">
 
                         <group name="disease_details" string="Main Disease">
-                            <group>
-                            <field name='disease_id' string="Diagnóstico" attrs="{'readonly':[('state','=','closed')]}"/>
-                            </group>
-                            <group>
-                            <!-- <field name='disease_type' /> -->
-                            <!-- <field name='disease_state' attrs="{'invisible':[('disease_type','=','related')]}" string="Kind"/> -->
-                            <field name='disease_state' string="Tipo" attrs="{'readonly':[('state','=','closed')]}"/>
-                            </group>  
+                            <field name="diagnosis_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
+                                <tree editable="bottom">
+                                    <field name="code" readonly="1" force_save="1"/>
+                                    <field name="name" invisible="1"/>
+                                    <field name="diseases_id"/>
+                                    <field name="type_diagnosis"/>        
+                                    <field name="state_diagnosis"/>        
+                                </tree>
+                            </field>
                         </group>
                         
                         <group name="treatment" colspan="2" col='1'>

@@ -25,6 +25,10 @@ class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
     
     default_time_space = fields.Integer(string="Schedule Time Space in Minutes")
+    multiple_format = fields.Boolean(
+        string='Manage Multiple Attention Formats')
+    emc_api = fields.Boolean(
+        string='Enable API Connect Button')
     
     @api.model
     def get_values(self):
@@ -32,7 +36,9 @@ class ResConfigSettings(models.TransientModel):
         params = self.env['ir.config_parameter'].sudo()
         default_time_space = params.get_param('clinica_digital_consultorio.default_time_space', default=5)
         res.update(
-            default_time_space=float(default_time_space)
+            default_time_space=float(default_time_space),
+            multiple_format=params.get_param('clinica_digital_consultorio.multiple_format'),
+            emc_api=params.get_param('clinica_digital_consultorio.emc_api')
         )
         return res
     
@@ -41,6 +47,8 @@ class ResConfigSettings(models.TransientModel):
         super(ResConfigSettings, self).set_values()
         default_time_space = float(self.default_time_space)
         self.env['ir.config_parameter'].sudo().set_param("clinica_digital_consultorio.default_time_space", default_time_space)
+        self.env['ir.config_parameter'].sudo().set_param("clinica_digital_consultorio.multiple_format", self.multiple_format)
+        self.env['ir.config_parameter'].sudo().set_param("clinica_digital_consultorio.emc_api", self.emc_api)
      
     
     

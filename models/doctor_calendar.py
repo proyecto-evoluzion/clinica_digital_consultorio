@@ -30,6 +30,7 @@ from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 import calendar
 from odoo.exceptions import ValidationError,AccessError, UserError, RedirectWarning, Warning
 import xmlrpc.client
+from lxml import etree
 # from xmlrpc import client as xmlrpclib
 
 class ClinicaSurgeryRoom(models.Model):
@@ -300,6 +301,14 @@ class DoctorWaitingRoom(models.Model):
             }])
         self.send_hc = True
 
+    def _default_config_value(self):
+        config_value = self.env['res.config.settings'].sudo().default_get('multiple_format')
+        return config_value['multiple_format']
+
+    def _default_config_value2(self):
+        config_value = self.env['res.config.settings'].sudo().default_get('emc_api')
+        return config_value['emc_api']
+
     
     name = fields.Char(string='Name', copy=False)
     room_type = fields.Selection([('surgery','Surgery Room'),('waiting','Waiting Room')], string='Room Type')
@@ -381,6 +390,12 @@ class DoctorWaitingRoom(models.Model):
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')
     assurance_plan_id = fields.Many2one('doctor.insurer.plan', string='Assurer Plan')
     schedule_allocation_id = fields.Many2one('doctor.schedule.time.allocation', string='Schedule Time Allocation')
+    attention_format_ids = fields.Many2many('att.format', 
+                                   string="Attention Formats", copy=False)
+    emc_api = fields.Boolean(string='EMC API Connect?', default=_default_config_value2)
+    multiple_format = fields.Boolean(string='Multiple Formats?', default=_default_config_value)
+    is_simple_format = fields.Boolean(string='Is Simple Format?')
+    is_complete_format = fields.Boolean(string='Is Complete Format?')
     
     
     @api.multi
@@ -418,6 +433,24 @@ class DoctorWaitingRoom(models.Model):
             anhestesic_registry_ids = self.env['clinica.anhestesic.registry'].search([('room_id','=',room.id)])
             if anhestesic_registry_ids:
                 room.anhestesic_registry_created = True
+
+    @api.onchange('surgeon_id')
+    def onchange_surgeon_id(self):
+        if self.surgeon_id.multiple_format:
+            att_format = []
+            for att_f in self.surgeon_id.attention_format_ids:
+                att_format.append(att_f.id)
+                if att_f.type == 'simple':
+                    self.update({'is_simple_format': True})
+                if att_f.type == 'complete':
+                    self.update({'is_complete_format': True})
+            self.update({'attention_format_ids': [(6,0,att_format)]})
+
+
+        if self.room_type and self.room_type == 'surgery':
+            self.from_surgery_procedure = True
+        else:
+            self.from_surgery_procedure = False
                 
     @api.onchange('room_type')
     def onchange_room_type(self):
@@ -831,96 +864,11 @@ class DoctorWaitingRoom(models.Model):
             'default_room_id' : self.id
         }
         return vals
-            
-    @api.multi
-    def action_view_anhestesic_registry(self):
-        action = self.env.ref('clinica_digital_consultorio.action_clinica_anhestesic_registry')
-        result = action.read()[0]
-        #override the context to get rid of the default filtering
-        result['context'] = self._set_clinica_form_default_values()
-        anhestesic_registry_ids = self.env['clinica.anhestesic.registry'].search([('room_id','=',self.id)])
-        
-        #choose the view_mode accordingly
-        if len(anhestesic_registry_ids) != 1:
-            result['domain'] = "[('id', 'in', " + str(anhestesic_registry_ids.ids) + ")]"
-        elif len(anhestesic_registry_ids) == 1:
-            res = self.env.ref('clinica_digital_consultorio.clinica_anhestesic_registry_form', False)
-            result['views'] = [(res and res.id or False, 'form')]
-            result['res_id'] = anhestesic_registry_ids.id
-        return result
-    
-    @api.multi
-    def action_view_presurgical_record(self):
-        action = self.env.ref('clinica_digital_consultorio.action_clinica_presurgical_record')
-        result = action.read()[0]
-        #override the context to get rid of the default filtering
-        result['context'] = self._set_clinica_form_default_values()
-        pre_surgical_ids = self.env['doctor.presurgical.record'].search([('room_id','=',self.id)])
-        
-        #choose the view_mode accordingly
-        if len(pre_surgical_ids) != 1:
-            result['domain'] = "[('id', 'in', " + str(pre_surgical_ids.ids) + ")]"
-        elif len(pre_surgical_ids) == 1:
-            res = self.env.ref('clinica_digital_consultorio.clinica_presurgical_record_form', False)
-            result['views'] = [(res and res.id or False, 'form')]
-            result['res_id'] = pre_surgical_ids.id
-        return result
 
     @api.multi
     def action_not_attended(self):
         for record in self:
             record.patient_state = 'not_attended'
-    
-    @api.multi
-    def action_view_quirurgic_sheet(self):
-        action = self.env.ref('clinica_digital_consultorio.action_clinica_quirurgic_sheet')
-        result = action.read()[0]
-        #override the context to get rid of the default filtering
-        result['context'] = self._set_clinica_form_default_values()
-        quirurgic_sheets = self.env['doctor.quirurgic.sheet'].search([('room_id','=',self.id)])
-        
-        #choose the view_mode accordingly
-        if len(quirurgic_sheets) != 1:
-            result['domain'] = "[('id', 'in', " + str(quirurgic_sheets.ids) + ")]"
-        elif len(quirurgic_sheets) == 1:
-            res = self.env.ref('clinica_digital_consultorio.clinica_quirurgic_sheet_form', False)
-            result['views'] = [(res and res.id or False, 'form')]
-            result['res_id'] = quirurgic_sheets.id
-        return result
-    
-    @api.multi
-    def action_view_quirurgical_check_list(self):
-        action = self.env.ref('clinica_digital_consultorio.action_clinica_quirurgical_check_list')
-        result = action.read()[0]
-        #override the context to get rid of the default filtering
-        result['context'] = self._set_clinica_form_default_values()
-        quirurgic_check_lists = self.env['clinica.quirurgical.check.list'].search([('room_id','=',self.id)])
-        
-        #choose the view_mode accordingly
-        if len(quirurgic_check_lists) != 1:
-            result['domain'] = "[('id', 'in', " + str(quirurgic_check_lists.ids) + ")]"
-        elif len(quirurgic_check_lists) == 1:
-            res = self.env.ref('clinica_digital_consultorio.clinica_quirurgical_check_list_form', False)
-            result['views'] = [(res and res.id or False, 'form')]
-            result['res_id'] = quirurgic_check_lists.id
-        return result
-    
-    @api.multi
-    def action_view_post_anhestesic_care(self):
-        action = self.env.ref('clinica_digital_consultorio.action_clinica_post_anhestesic_care')
-        result = action.read()[0]
-        #override the context to get rid of the default filtering
-        result['context'] = self._set_clinica_form_default_values()
-        post_anhestesic_care_ids = self.env['clinica.post.anhestesic.care'].search([('room_id','=',self.id)])
-        
-        #choose the view_mode accordingly
-        if len(post_anhestesic_care_ids) != 1:
-            result['domain'] = "[('id', 'in', " + str(post_anhestesic_care_ids.ids) + ")]"
-        elif len(post_anhestesic_care_ids) == 1:
-            res = self.env.ref('clinica_digital_consultorio.view_clinica_post_anhestesic_care_form', False)
-            result['views'] = [(res and res.id or False, 'form')]
-            result['res_id'] = post_anhestesic_care_ids.id
-        return result
     
     @api.multi
     def action_view_plastic_surgery(self):
@@ -938,40 +886,42 @@ class DoctorWaitingRoom(models.Model):
             result['views'] = [(res and res.id or False, 'form')]
             result['res_id'] = plastic_surgery_ids.id
         return result
-    
+
     @api.multi
-    def action_view_medical_evolution(self):
-        action = self.env.ref('clinica_digital_consultorio.action_clinica_medical_evolution')
+    def action_view_complete_plastic_surgery(self):
+        action = self.env.ref('clinica_digital_consultorio.complete_action_clinica_plastic_surgery')
         result = action.read()[0]
         #override the context to get rid of the default filtering
         result['context'] = self._set_clinica_form_default_values()
-        evolution_ids = self.env['clinica.medical.evolution'].search([('room_id','=',self.id)])
+        plastic_surgery_ids = self.env['complete.clinica.plastic.surgery'].search([('room_id','=',self.id)])
         
         #choose the view_mode accordingly
-        if len(evolution_ids) != 1:
-            result['domain'] = "[('id', 'in', " + str(evolution_ids.ids) + ")]"
-        elif len(evolution_ids) == 1:
-            res = self.env.ref('clinica_digital_consultorio.clinica_medical_evolution_form', False)
+        if len(plastic_surgery_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(plastic_surgery_ids.ids) + ")]"
+        elif len(plastic_surgery_ids) == 1:
+            res = self.env.ref('clinica_digital_consultorio.complete_clinica_plastic_surgery_form', False)
             result['views'] = [(res and res.id or False, 'form')]
-            result['res_id'] = evolution_ids.id
+            result['res_id'] = plastic_surgery_ids.id
         return result
-    
-    @api.multi
-    def action_view_epicrisis(self):
-        action = self.env.ref('clinica_digital_consultorio.action_clinica_doctor_epicrisis')
-        result = action.read()[0]
-        #override the context to get rid of the default filtering
-        result['context'] = self._set_clinica_form_default_values()
-        epicrisis_ids = self.env['doctor.epicrisis'].search([('room_id','=',self.id)])
-        
-        #choose the view_mode accordingly
-        if len(epicrisis_ids) != 1:
-            result['domain'] = "[('id', 'in', " + str(epicrisis_ids.ids) + ")]"
-        elif len(epicrisis_ids) == 1:
-            res = self.env.ref('clinica_digital_consultorio.clinica_doctor_epicrisis_form', False)
-            result['views'] = [(res and res.id or False, 'form')]
-            result['res_id'] = epicrisis_ids.id
-        return result
+
+    @api.model
+    def fields_view_get(self, view_id=None, view_type='tree', toolbar=False, submenu=False):
+        res = super(DoctorWaitingRoom, self).fields_view_get(view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
+        simple_format = ''
+        complete_format = ''
+        doc = etree.XML(res['arch'])
+        format_obj = self.env['att.format'].search([])
+        for format_name in format_obj:
+            if format_name.type == 'simple':
+                simple_format = format_name.name
+            if format_name.type == 'complete':
+                complete_format = format_name.name
+        for node in doc.xpath("//button[@name='action_view_plastic_surgery']"):
+            node.set('string',  simple_format)
+        for node in doc.xpath("//button[@name='action_view_complete_plastic_surgery']"):
+            node.set('string',  complete_format)
+        res['arch'] = etree.tostring(doc)
+        return res
     
 
 class DoctorWaitingRoomProcedures(models.Model):

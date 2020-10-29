@@ -56,7 +56,7 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="assurance_plan_tree"/>
             <field name="search_view_id" ref="view_assurance_plan_filter"/>
-        </record>    
+        </record>
         
         
 	    <!-- doctor diseases Form View -->
@@ -139,6 +139,7 @@
                     <group name="main_info" >
                     	<group>
                     		<field name="profession_type" required="1" string="Profesión"/>
+                            <field name="multiple_format" invisible="0"/>
 	                        <field name="email"/>
 	                        <field name="phone" string="Teléfono"/>
                             <field name="medical_record" string="Registro Médico"/>
@@ -157,6 +158,9 @@
 	                        <field name="product_ids" nolabel="1" 
 	                        	context="{'search_default_health_procedure': 1}"/>
 	                    </page>
+                        <page string="My formats attentions" attrs="{'invisible':[('multiple_format','=',False)]}">
+                            <field name="attention_format_ids" nolabel="1" options="{'no_create': True}" widget="many2many_tags" style="margin-top:1%;"/>
+                        </page>
 	                </notebook>
                 </sheet>
             </form>
@@ -561,6 +565,55 @@
             </field>
         </record>
 
+        <record id="doctor_attention_format" model="ir.ui.view">
+            <field name="name">doctor.attention.format</field>
+            <field name="model">att.format</field>
+            <field name="arch" type="xml">
+            <form string="Attention Format Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name='name' required="1"/>
+                            <field name='type' required="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+        
+        <record id="doctor_attention_format_tree" model="ir.ui.view">
+            <field name="name">doctor.attention.format.tree</field>
+            <field name="model">att.format</field>
+            <field name="arch" type="xml">
+                <tree string="Assurance Plan Tree">
+                    <field name="name"/>
+                    <field name='type'/>
+                </tree>
+            </field>
+        </record>
+        
+        
+        <record id="doctor_attention_format_filter" model="ir.ui.view">
+            <field name="name">doctor.attention.format.search</field>
+            <field name="model">att.format</field>
+            <field name="arch" type="xml">
+                <search string="Search Attention Format">
+                    <field name="name" string="Name" />
+                    <field name='type' string="Type" />
+                </search>
+            </field>
+       </record>
+        
+        <record id="action_attention_format" model="ir.actions.act_window">
+            <field name="name">Attention Format</field>
+            <field name="res_model">att.format</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="doctor_attention_format_tree"/>
+            <field name="search_view_id" ref="doctor_attention_format_filter"/>
+        </record>
+
         <act_window id="action_archive"
             name="test2"
             res_model="doctor.patient"
@@ -628,6 +681,12 @@
             parent="menu_doctor_config_details"
             action="action_appointment_type"
             sequence="4"/>
+
+        <menuitem id="menu_attention_format"
+            name="Attentions Formats"
+            parent="menu_doctor_config_details"
+            action="action_attention_format"
+            sequence="5"/>
             
  </odoo>
 

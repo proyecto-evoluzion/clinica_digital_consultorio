@@ -78,6 +78,10 @@ class AppointmentType(models.Model):
 class Doctor(models.Model):
     _name = "doctor.professional"
     _rec_name = "partner_id"
+
+    def _default_config_value(self):
+        config_value = self.env['res.config.settings'].sudo().default_get('multiple_format')
+        return config_value['multiple_format']
     
     tdoc = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                                       ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
@@ -100,7 +104,10 @@ class Doctor(models.Model):
                                        string='Profession Type', default='plastic_surgeon')
     product_ids = fields.Many2many('product.product', 'product_professional_rel', 'doctor_id', 'product_id', 
                                    string="Health Procedures", copy=False)
+    attention_format_ids = fields.Many2many('att.format', 'format_professional_rel', 'doctor_id', 'format_id', 
+                                   string="Attention Formats", copy=False)
     medical_record = fields.Char(string='Medical record', required=True)
+    multiple_format = fields.Boolean(string='Multiple Formats?', default=_default_config_value)
 
     @api.onchange('medical_record')
     def onchange_medical_record(self):
@@ -355,7 +362,7 @@ class DoctorAdministrativeData(models.Model):
                 patient.patient_name += middlename
                 partner_vals.update({'x_name2': middlename})
             partner_vals.update({'name': patient.patient_name})
-            partner_obj.write(partner_vals)    
+            partner_obj.write(partner_vals)
     
     
     # @api.multi
@@ -816,6 +823,14 @@ class DoctorAdministrativeData(models.Model):
             result['views'] = [(res and res.id or False, 'form')]
             result['res_id'] = epicrisis_ids.id
         return result
+
+class DoctorAttentionFormat(models.Model):
+    _name = "att.format"
+    _rec_name = 'name'
+
+    name = fields.Char(string="Name")
+    type = fields.Selection([('simple','Clinical'),
+                             ('complete','Clinical Complete')],default='simple', string='Type')
     
 
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:

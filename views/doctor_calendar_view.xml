@@ -156,17 +156,17 @@
 			<header>
 				<button name="action_confirm" string="Confirm Appointment" class="btn-primary" 
 					type="object"  attrs="{'invisible':['|',('state','!=','new'),('room_type','=','surgery')]}"/>
-				<button name="action_confirm" string="Confirm Room Procedure" class="btn-primary"
-				 type="object" attrs="{'invisible':['|',('state','!=','new'),('room_type','=','waiting')]}"/>
-				 <button name="action_view_anhestesic_registry" string="Create Anhestesic Registry" 
+				<!-- <button name="action_confirm" string="Confirm Room Procedure" class="btn-primary"
+				 type="object" attrs="{'invisible':['|',('state','!=','new'),('room_type','=','waiting')]}"/> -->
+				 <!-- <button name="action_view_anhestesic_registry" string="Create Anhestesic Registry" 
 					class="btn-primary" type="object" attrs="{'invisible': ['|',('anhestesic_registry_created','=',True),('state','!=','ordered')]}"
-					groups="base.group_system,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management"/>
-				<button name="action_view_nurse_sheet" string="Create Nurse Sheet" 
+					groups="base.group_system,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management"/> -->
+				<!-- <button name="action_view_nurse_sheet" string="Create Nurse Sheet" 
 					class="btn-primary" type="object" attrs="{'invisible': ['|',('nurse_sheet_created','=',True),('state','!=','ordered')]}"
-					groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor"/>
+					groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor"/> -->
 				<button name="action_create_so" string="Create Sales Order" 
 					class="btn-primary" type="object" states="confirmed"/>
-				<button name="api_connect" string="Enviar HC" class="btn-primary" type="object" attrs="{'invisible': ['|',('patient_state','!=','attended'),('send_hc','=', True)]}"/>
+				<button name="api_connect" string="Enviar HC" class="btn-primary" type="object" attrs="{'invisible': ['|','|',('patient_state','!=','attended'),('send_hc','=', True),('emc_api','=', True)]}"/>
 				<!-- <button name="action_view_clinica_record_history" string="View History" 
 					type="object" class="oe_highlight"/> -->
 				<field name="state" widget="statusbar" statusbar_visible="new,confirmed,ordered"/>
@@ -177,52 +177,38 @@
 						states="ordered" string="Quotation" 
 						groups="base.group_system,clinica_digital_consultorio.programmer_assistant">
 					</button>
-					<button name="action_view_anhestesic_registry" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
-						attrs="{'invisible': [('anhestesic_registry_created', '=', False)]}" string="Anhestesic Registry"
-						groups="base.group_system,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
-					</button>
-					<button name="action_view_nurse_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
-						attrs="{'invisible': [('nurse_sheet_created', '=', False)]}" string="Nurse Sheets"
-						groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor">
-					</button>
-					<button name="action_view_presurgical_record" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
-						string="Pre-Surgical Records"
-						groups="clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
-					</button>
 					<button name="action_not_attended" type="object" class="oe_stat_button" icon="fa-calendar-times-o" 
 						string="No asistió"
 						attrs="{'invisible':[('patient_state','!=','dated')]}">
 					</button>
-					<!-- <button name="action_view_quirurgic_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
-						string="Quirurgic Sheet"
-						groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
-					</button> -->
-					<!-- <button name="action_view_quirurgical_check_list" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
-						string="Quirurgical Check List"
-						groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor">
-					</button> -->
-					<!-- <button name="action_view_post_anhestesic_care" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
-						string="Cuidado Post-Anestésico"
-						groups="clinica_digital_consultorio.management,clinica_digital_consultorio.anesthesiologist">
-					</button> -->
 					<button name="action_view_plastic_surgery" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Plastic Surgery Sheet"
-						groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor">
+						groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor"
+						attrs="{'invisible': [('is_simple_format','=', False)]}">
 					</button>
-					<!-- <button name="action_view_medical_evolution" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
-						string="Med. Order and Evolution"
-						groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
-					</button> -->
-					<!-- <button name="action_view_epicrisis" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
-						string="Epicrisis"
-						groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management">
-					</button> -->
+					<button name="action_view_plastic_surgery" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Plastic Surgery Sheet"
+						groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor"
+						attrs="{'invisible': [('multiple_format','=', True)]}">
+					</button>
+					<button name="action_view_complete_plastic_surgery" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Complete Plastic Surgery Sheet"
+						groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor"
+						attrs="{'invisible': [('is_complete_format','=', False)]}">
+					</button>
+					<button name="action_view_complete_plastic_surgery" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Complete Plastic Surgery Sheet"
+						groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor"
+						attrs="{'invisible': [('multiple_format','=', True)]}">
+					</button>
 				</div>
 				<div class="oe_title">
 					<h1>
 						<field name="name" readonly="1"/>
 						<field name="patient_state" invisible="1"/>
 						<field name="send_hc" invisible="1"/>
+						<field name="emc_api" invisible="1"/>
+						<field name="multiple_format" invisible="1"/>
 					</h1>
 				</div>
 				<group name="main_group">
@@ -273,7 +259,9 @@
 					<group name="profession_details_sub1" >
 						<field name='surgeon_id' domain="[('profession_type','=','plastic_surgeon')]" 
 							attrs="{'readonly':[('state','!=','new')]}"/>
-						<!-- <field name='programmer_id'  attrs="{'readonly':[('state','!=','new')]}"/> -->
+						<field name="attention_format_ids" options="{'no_create': True}" widget="many2many_tags" invisible="1"/>
+						<field name="is_simple_format" invisible="1"/>
+						<field name="is_complete_format" invisible="1"/>
 					</group>
 					<group name="profession_details_sub2" >
 						<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]"  

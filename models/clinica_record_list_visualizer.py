@@ -60,11 +60,14 @@ class ClinicaRecordVisualizer(models.Model):
                                    string="Prescription", copy=False)
     copy_prescription_ids = fields.Many2many('doctor.prescription', 'copy_prescription_visualizer_rel', 'copy_visualizer_id', 'copy_prescription_id', 
                                    string="Copy Prescription", copy=False)
+    complete_plastic_surgery_ids = fields.Many2many('complete.clinica.plastic.surgery', 'complete_plastic_surgery_visualizer_rel', 'complete_visualizer_id', 'complete_plastic_surgery_id', 
+                                   string="Complete Format", copy=False)
     view_model = fields.Selection([('nurse_sheet','Nurse Sheet'),('quirurgic_sheet','Quirurgic Sheet'),
                                    ('surgery_room','Surgery Room Procedures'),('waiting_room','Waiting Room'),
                                    ('presurgical','Presurgical Record'),('anhestesic_registry','Anhestesic Registry'),
-                                   ('plastic_surgery','Plastic Surgery'),('medical_evolution','Medical Evolution'),
-                                   ('epicrisis','Epicrisis'),('prescription','Prescription'),('all','All')], string='View from model', default='all')
+                                   ('plastic_surgery','Plastic Surgery'),('complete_plastic_surgery','Complete Plastic Surgery'),
+                                   ('medical_evolution','Medical Evolution'),('epicrisis','Epicrisis'),
+                                   ('prescription','Prescription'),('all','All')], string='View from model', default='all')
     
     
     def _get_nurse_sheet_ids(self, search_domain, doctor, start_period, end_period):
@@ -175,6 +178,20 @@ class ClinicaRecordVisualizer(models.Model):
         if plastic_surgery_objs:
             plastic_surgery_ids = plastic_surgery_objs.ids
         return plastic_surgery_ids
+
+    def _get_complete_plastic_surgery_ids(self, search_domain, doctor, start_period, end_period):
+        plastic_surgery_ids = []
+        plastic_surgery_search_domain = []
+        plastic_surgery_search_domain.extend(search_domain)
+        if start_period:
+            plastic_surgery_search_domain.append(('date_attention','>=',start_period))
+        if end_period:
+            plastic_surgery_search_domain.append(('date_attention','<=',end_period))
+            
+        plastic_surgery_objs = self.env['complete.clinica.plastic.surgery'].search(plastic_surgery_search_domain)
+        if plastic_surgery_objs:
+            plastic_surgery_ids = plastic_surgery_objs.ids
+        return plastic_surgery_ids
     
     def _get_medical_evolution_ids(self, search_domain, doctor, start_period, end_period):
         medical_evolution_ids = []
@@ -254,6 +271,8 @@ class ClinicaRecordVisualizer(models.Model):
                 anhestesic_registry_ids = self._get_anhestesic_registry_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
             if self.view_model in ['plastic_surgery','all']:
                 plastic_surgery_ids = self._get_plastic_surgery_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
+            if self.view_model in ['complete_plastic_surgery','all']:
+                complete_plastic_surgery_ids = self._get_complete_plastic_surgery_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
             if self.view_model in ['medical_evolution','all']:
                 medical_evolution_ids = self._get_medical_evolution_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
             if self.view_model in ['epicrisis','all']:
@@ -268,6 +287,7 @@ class ClinicaRecordVisualizer(models.Model):
         self.presurgical_record_ids = presurgical_record_ids
         self.anhestesic_registry_ids = anhestesic_registry_ids
         self.plastic_surgery_ids = plastic_surgery_ids
+        self.complete_plastic_surgery_ids = complete_plastic_surgery_ids
         self.medical_evolution_ids = medical_evolution_ids
         self.epicrisis_ids = epicrisis_ids
         self.prescription_ids = prescription_ids

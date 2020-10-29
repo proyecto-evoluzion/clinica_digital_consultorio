@@ -146,6 +146,14 @@
             <field name="doctor_id"/>
             </tree>
           </field>
+          <separator string="Complete Plastic Surgery Sheet" attrs="{'invisible':[('view_model','not in',['complete_plastic_surgery','all'])]}"/>
+          <field name="complete_plastic_surgery_ids" nolabel="1" force_save="1" readonly="1"
+            attrs="{'invisible':[('view_model','not in',['complete_plastic_surgery','all'])]}">
+            <tree string="Complete Plastic Surgery Sheet">
+              <field name="date_attention"/>
+              <field name="patient_id"/>
+            </tree>
+          </field>
          	</sheet>
          </form>
          </field>

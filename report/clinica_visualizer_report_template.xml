@@ -985,58 +985,57 @@
             <t t-set="complete_plastic_surgery" t-value="complete_plastic_surgery.with_context({'lang':complete_plastic_surgery.patient_id.partner_id.lang})" />
             <table style="width:100%; ">
               <tr>
-                <td style="width:25%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Attention Date: <span t-field="complete_plastic_surgery.date_attention" style="padding-left:2px;"/></strong></td>
-                <td style="width:50%; text-align:center; font-size: 15px;"><strong>Plastic Surgery Attention Number: <span t-field="complete_plastic_surgery.number" style="padding-left:2px;"/></strong></td>
-                <td style="width:25%; padding-left:5px; text-align:right; font-size: 15px;"><strong>Attention Code: <span t-field="complete_plastic_surgery.attention_code_id" style="padding-left:2px;"/></strong></td>
+                <td style="width:50%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Fecha Atención: <span t-field="complete_plastic_surgery.date_attention" style="padding-left:2px;"/></strong></td>
+                <td style="width:50%; text-align:center; font-size: 15px;"><strong>Atención N°: <span t-field="complete_plastic_surgery.number" style="padding-left:2px;"/></strong></td>
               </tr>
             </table>
             <table class="table " style="width:100%;">
-              <tr><td colspan="2" style="text-align:center; font-size: 14px;"><strong>PATIENT DATA</strong></td></tr>
+              <tr><td colspan="2" style="text-align:center; font-size: 14px;"><strong>DATOS DEL PACIENTE</strong></td></tr>
               <tr>
-                <td colspan="1" style="width:60%; ">
+                <td colspan="1" style="width:60%;">
                   <t t-if="complete_plastic_surgery.patient_id.tdoc">
-                    <strong>Doc. type: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.tdoc"/><br/>
+                    <strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.tdoc"/><br/>
                   </t>
                   <t t-if="complete_plastic_surgery.patient_id.ref">
-                    <strong>Number ID: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.ref"/><br/>
+                    <strong>Número Documento: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.ref"/><br/>
                   </t>
-                  <strong>Patient Name: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.firstname"/>
+                  <strong>Nombre Paciente: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.firstname"/>
                   <span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.middlename"/>
                   <span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.lastname"/>
                   <span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.surname"/><br/>
                   <t t-if="complete_plastic_surgery.patient_id.blood_type">
-                    <strong>Blood type: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.blood_type"/>
+                    <strong>Tipo de Sangre: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.blood_type"/>
                     <span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.blood_rh"/><br/>
                   </t>
                   <t t-if="complete_plastic_surgery.patient_id.sex">
-                    <strong>Gender: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.sex"/><br/>
+                    <strong>Género: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.sex"/><br/>
                   </t>
-                  <strong>Relatives Data</strong><br/>
+                  <strong>Datos acompañante</strong><br/>
                   <t t-if="complete_plastic_surgery.patient_id.accompany_name">
-                    <strong>Name: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.accompany_name"/><br/>
+                    <strong>Nombre: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.accompany_name"/><br/>
                   </t>
                   <t t-if="complete_plastic_surgery.patient_id.accompany_phone">
-                    <strong>Phone: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.user_type"/><br/>
+                    <strong>Teléfono: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.user_type"/><br/>
                   </t>
                 </td>
-                <td colspan="1" style="width:40%; ">
+                <td colspan="1" style="width:40%;">
                   <t t-if="complete_plastic_surgery.patient_id.birth_date">
-                    <strong>Date of birth: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.birth_date"/><br/>
+                    <strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.birth_date"/><br/>
                   </t>
                   <t t-if="complete_plastic_surgery.patient_id.age">
-                    <strong>Age: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.age"/><span style="padding-left:2px;" t-field="complete_plastic_surgery.age_meassure_unit"/><br/>
+                    <strong>Edad: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.age"/><span style="padding-left:2px;" t-field="complete_plastic_surgery.age_meassure_unit"/><br/>
                   </t>
                   <t t-if="complete_plastic_surgery.patient_id.user_type">
-                    <strong>User type: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.user_type"/><br/>
+                    <strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.user_type"/><br/>
                   </t>
                   <t t-if="complete_plastic_surgery.patient_id.phone">
-                    <strong>Phone: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.phone"/><br/>
+                    <strong>Teléfono: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.phone"/><br/>
                   </t>
                   <t t-if="complete_plastic_surgery.patient_id.email">
                     <strong>Email: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.email"/><br/>
                   </t>
                   <t t-if="complete_plastic_surgery.patient_id.insurer_id">
-                    <strong>Insurer: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.insurer_id.name"/><br/>
+                    <strong>Aseguradora: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.insurer_id.name"/><br/>
                   </t>
                   <t t-if="complete_plastic_surgery.patient_id.residence_address">
                     <strong>Dirección: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.residence_address"/><br/>
@@ -1044,104 +1043,60 @@
                 </td>
               </tr>
               
-              <tr t-if="complete_plastic_surgery.consultation_reason"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>REASON FOR CONSULTATION</strong></td></tr>
+              <tr t-if="complete_plastic_surgery.consultation_reason"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>MOTIVO DE CONSULTA</strong></td></tr>
             <tr t-if="complete_plastic_surgery.consultation_reason">
                 <td colspan="2" style="width:50%; ">
                   <span style="padding-left:2px;" t-field="complete_plastic_surgery.consultation_reason"/>
                 </td>
               </tr>
-              <tr t-if="complete_plastic_surgery.pathological"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>PATHOLOGICAL</strong></td></tr>
-            <tr t-if="complete_plastic_surgery.pathological">
+              <tr t-if="complete_plastic_surgery.paraclinical" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>PARACLÍNICOS</strong></td></tr>
+              <tr t-if="complete_plastic_surgery.paraclinical" >
                 <td colspan="2" style="width:50%; ">
-                  <span style="padding-left:2px;" t-field="complete_plastic_surgery.pathological"/>
+                  <span style="padding-left:2px;" t-field="complete_plastic_surgery.paraclinical"/>
                 </td>
               </tr>
-              <tr t-if="complete_plastic_surgery.surgical" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>SURGICAL</strong></td></tr>
-              <tr t-if="complete_plastic_surgery.surgical" >
-                <td colspan="2" style="width:50%; ">
-                  <span style="padding-left:2px;" t-field="complete_plastic_surgery.surgical"/>
+              <tr t-if="complete_plastic_surgery.system_review_ids" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>REVISIÓN POR SISTEMAS</strong></td></tr>
+              <tr t-if="complete_plastic_surgery.system_review_ids" style="padding:0px;">
+                <td colspan="2" style=" padding:0px;">
+                  <table class="table" style="width:100%;margin:0px;">
+                    <thead>
+                      <th style="width:50%;">Tipo Revisión</th>
+                      <th style="width:50%;">Revisión por Sistema</th>
+                    </thead>
+                    <tbody>
+                      <tr t-foreach="complete_plastic_surgery.system_review_ids" t-as="pvalue">
+                        <td style="width:50%;"><span t-field="pvalue.type_review"/></td>
+                        <td style="width:50%;"><span t-field="pvalue.system_review"/></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </td>
               </tr>
-              <tr t-if="complete_plastic_surgery.relatives" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>RELATIVES</strong></td></tr>
-              <tr t-if="complete_plastic_surgery.relatives" >
-                <td colspan="2" style="width:50%; ">
-                  <span style="padding-left:2px;" t-field="complete_plastic_surgery.relatives"/>
+              <tr t-if="complete_plastic_surgery.background_ids" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>ANTECEDENTES</strong></td></tr>
+              <tr t-if="complete_plastic_surgery.background_ids" style="padding:0px;">
+                <td colspan="2" style=" padding:0px;">
+                  <table class="table" style="width:100%;margin:0px;">
+                    <thead>
+                      <th style="width:50%;">Tipo</th>
+                      <th style="width:50%;">Antecedente</th>
+                    </thead>
+                    <tbody>
+                      <tr t-foreach="complete_plastic_surgery.background_ids" t-as="pvalue">
+                        <td style="width:50%;"><span t-field="pvalue.background_type"/></td>
+                        <td style="width:50%;"><span t-field="pvalue.background"/></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </td>
-              </tr>
-              <tr t-if="complete_plastic_surgery.smoke or complete_plastic_surgery.cigarate_daily or complete_plastic_surgery.is_alcoholic or complete_plastic_surgery.alcohol_frequency or complete_plastic_surgery.marijuana or complete_plastic_surgery.cocaine or complete_plastic_surgery.ecstasy or complete_plastic_surgery.body_background_others or complete_plastic_surgery.pharmacological or complete_plastic_surgery.allergic or complete_plastic_surgery.gender == 'female'">
-                <td colspan="2" style="text-align:center; font-size: 14px;"><strong>PATIENT BACKGROUND</strong></td>
-              </tr>
-            <tr t-if="complete_plastic_surgery.smoke or complete_plastic_surgery.cigarate_daily or complete_plastic_surgery.is_alcoholic or complete_plastic_surgery.alcohol_frequency or complete_plastic_surgery.marijuana or complete_plastic_surgery.cocaine or complete_plastic_surgery.ecstasy or complete_plastic_surgery.body_background_others or complete_plastic_surgery.pharmacological or complete_plastic_surgery.allergic or complete_plastic_surgery.gender == 'female'">
-              <td colspan="2" style="padding:0px;">
-                <table class="table" style="width:100%;margin:0px;">
-                  <tr t-if="complete_plastic_surgery.smoke or complete_plastic_surgery.cigarate_daily or complete_plastic_surgery.is_alcoholic or complete_plastic_surgery.alcohol_frequency or complete_plastic_surgery.marijuana or complete_plastic_surgery.cocaine or complete_plastic_surgery.ecstasy or complete_plastic_surgery.body_background_others or complete_plastic_surgery.pharmacological or complete_plastic_surgery.allergic">
-                  <td style="width:50%;">
-                    <t t-if="complete_plastic_surgery.smoke">Smoke: <span style="padding-left:2px;" t-field="complete_plastic_surgery.smoke"/><br/></t>
-                      <t t-if="complete_plastic_surgery.cigarate_daily">Cigarettes / Day: <span style="padding-left:2px;" t-field="complete_plastic_surgery.cigarate_daily"/><br/></t>
-                      <t t-if="complete_plastic_surgery.is_alcoholic">Alcoholic Drinks: <span style="padding-left:2px;" t-field="complete_plastic_surgery.is_alcoholic"/><br/></t>
-                      <t t-if="complete_plastic_surgery.alcohol_frequency">Frequency: <span style="padding-left:2px;" t-field="complete_plastic_surgery.alcohol_frequency"/><br/></t>
-                      <t t-if="complete_plastic_surgery.marijuana">Marijuana: <span style="padding-left:2px;" t-field="complete_plastic_surgery.marijuana"/><br/></t>
-                      <t t-if="complete_plastic_surgery.cocaine">Cocaine: <span style="padding-left:2px;" t-field="complete_plastic_surgery.cocaine"/><br/></t>
-                      <t t-if="complete_plastic_surgery.ecstasy">Ecstasy: <span style="padding-left:2px;" t-field="complete_plastic_surgery.ecstasy"/></t>
-                  </td>
-                  <td style="width:50%; ">
-                    <t t-if="complete_plastic_surgery.body_background_others">
-                    <strong >Others: </strong>
-                    <table style="width:100%;">
-                      <tr>
-                        <td><span style="padding-left:2px;" t-field="complete_plastic_surgery.body_background_others"/></td>
-                      </tr>
-                    </table>
-                    </t>
-                    <t t-if="complete_plastic_surgery.pharmacological">
-                      <strong>Pharmacological: </strong>
-                    <table style="width:100%;">
-                      <tr>
-                        <td><span style="padding-left:2px;" t-field="complete_plastic_surgery.pharmacological"/></td>
-                      </tr>
-                    </table>
-                    </t>
-                    <t t-if="complete_plastic_surgery.allergic">
-                      <strong>Allergic: </strong>
-                    <table style="width:100%;">
-                      <tr>
-                        <td><span style="padding-left:2px;" t-field="complete_plastic_surgery.allergic"/></td>
-                      </tr>
-                    </table>
-                    </t>
-                    <t t-if="complete_plastic_surgery.toxic">
-                      <strong>Tóxico: </strong>
-                    <table style="width:100%;">
-                      <tr>
-                        <td><span style="padding-left:2px;" t-field="complete_plastic_surgery.toxic"/></td>
-                      </tr>
-                    </table>
-                    </t>
-                  </td>
-                  </tr>
-                  <tr t-if="complete_plastic_surgery.gender == 'female'" style="border-top: 0px;">
-                    <td style="width:50%; border-right: 2px solid black;border-top: 0px;">
-                      Number of Pregnancies: <span style="padding-left:2px;" t-field="complete_plastic_surgery.pregnancy_number"/><br/>
-                      N° de hijos: <span style="padding-left:2px;" t-field="complete_plastic_surgery.child_number"/><br/>
-                      Number of Abortions: <span style="padding-left:2px;" t-field="complete_plastic_surgery.abortion_number"/>
-                    </td>
-                    <td style="width:50%; border-top: 0px;">
-                      Date of Last Birth: <span style="padding-left:2px;" t-field="complete_plastic_surgery.last_birth_date"/><br/>
-                      Date of Last Menstruation: <span style="padding-left:2px;" t-field="complete_plastic_surgery.last_menstruation_date"/><br/>
-                      Contrtaceptive Methods: <span style="padding-left:2px;" t-field="complete_plastic_surgery.contrtaceptive_methods"/>
-                    </td>
-                  </tr>
-                </table>
-              </td>
               </tr>
               <tr t-if="complete_plastic_surgery.size or complete_plastic_surgery.weight or complete_plastic_surgery.imc or complete_plastic_surgery.heart_rate or complete_plastic_surgery.breathing_frequency or complete_plastic_surgery.systolic_blood_pressure or complete_plastic_surgery.diastolic_blood_pressure">
-                <td colspan="2" style="text-align:center; font-size: 14px;"><strong>PHYSICAL DETAILS</strong></td>
+                <td colspan="2" style="text-align:center; font-size: 14px;"><strong>DETALLES FÍSICOS</strong></td>
               </tr>
             <tr t-if="complete_plastic_surgery.size or complete_plastic_surgery.weight or complete_plastic_surgery.imc or complete_plastic_surgery.heart_rate or complete_plastic_surgery.breathing_frequency or complete_plastic_surgery.systolic_blood_pressure or complete_plastic_surgery.diastolic_blood_pressure">
                 <td style="width:50%; ">
-                  <t t-if="complete_plastic_surgery.weight">Weight: <span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.weight"/>Kg <br/> </t>
-                  <t t-if="complete_plastic_surgery.size">Size: <span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.size"/>Cm <br/> </t>
-                  <t t-if="complete_plastic_surgery.imc">IMC (Body Mass Index): <span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.imc"/>kg/m² <br/></t>
+                  <t t-if="complete_plastic_surgery.weight">Peso: <span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.weight"/>Kg <br/> </t>
+                  <t t-if="complete_plastic_surgery.size">Talla: <span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.size"/>Cm <br/> </t>
+                  <t t-if="complete_plastic_surgery.imc">IMC: <span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.imc"/>kg/m² <br/></t>
                   <t t-if="complete_plastic_surgery.igc">Indice de grasa corporal aproximado: <span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.igc"/> <br/></t>
                   <t t-if="complete_plastic_surgery.temp">Temperatura: <span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.temp"/>C° <br/> </t>
                 </td>
@@ -1153,7 +1108,7 @@
                   <t t-if="complete_plastic_surgery.pulse">SpO2: <span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.pulse"/>% <br/> </t>
                 </td>
               </tr>
-            <tr t-if="complete_plastic_surgery.physical_exam or complete_plastic_surgery.physical_examination_ids"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>PHYSICAL EXAM</strong></td></tr>
+            <tr t-if="complete_plastic_surgery.physical_exam or complete_plastic_surgery.physical_examination_ids"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>EXÁMEN FÍSICO</strong></td></tr>
             <tr t-if="complete_plastic_surgery.physical_exam or complete_plastic_surgery.physical_examination_ids">
                 <td colspan="2" style="width:50%; ">
                   <t style="border-bottom: 1px solid gray;" t-foreach="complete_plastic_surgery.physical_examination_ids" t-as="pe">
@@ -1187,18 +1142,11 @@
                   </table>
                 </td>
               </tr>
-              <tr t-if="complete_plastic_surgery.disease2_id or complete_plastic_surgery.disease3_id or complete_plastic_surgery.disease_state2 or complete_plastic_surgery.disease_state3">
-                <td colspan="2" style="text-align:center; font-size: 14px;"><strong>OTHER DISEASES</strong></td>
+              <tr t-if="complete_plastic_surgery.analysis">
+                <td colspan="2" style="text-align:center; font-size: 14px;"><strong>ANÁLISIS</strong></td>
               </tr>
-            <tr t-if="complete_plastic_surgery.disease2_id or complete_plastic_surgery.disease3_id or complete_plastic_surgery.disease_state2 or complete_plastic_surgery.disease_state3">
-                <td style="width:50%; ">
-                  <t t-if="complete_plastic_surgery.disease2_id">Diagnosis: <span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.disease2_id"/><br/></t>
-                  <t t-if="complete_plastic_surgery.disease3_id">Diagnosis: <span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.disease3_id"/></t>
-                </td>
-                <td style="width:50%; ">
-                  <t t-if="complete_plastic_surgery.disease_state2">Disease Status: <span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.disease_state2"/><br/></t>
-                  <t t-if="complete_plastic_surgery.disease_state3">Disease Status: <span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.disease_state3"/></t>
-                </td>
+              <tr t-if="complete_plastic_surgery.analysis">
+                <td colspan="2" style="text-align:center; font-size: 14px;"><span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.analysis"/></td>
               </tr>
               <tr t-if="complete_plastic_surgery.treatment">
                 <td colspan="2" style="text-align:center; font-size: 14px;"><strong>TRATAMIENTO</strong></td>
@@ -1206,7 +1154,7 @@
               <tr t-if="complete_plastic_surgery.treatment">
                 <td colspan="2" style="text-align:center; font-size: 14px;"><span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.treatment"/></td>
               </tr>
-              <tr t-if="complete_plastic_surgery.prescription_id"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>MEDICAL ORDERS AND RECIPE</strong></td></tr>
+              <tr t-if="complete_plastic_surgery.prescription_id"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>ORDENES MÉDICAS</strong></td></tr>
               <t t-if="complete_plastic_surgery.prescription_id">
         <tr>
           <td style="width:100%; ">

@@ -38,6 +38,18 @@ class PlasticSurgerySheet(models.Model):
         if self.size != 0:
             for calc_imc in self:
                 self.imc = self.weight / pow(self.size,2)
+
+    @api.depends('imc')
+    def _comp_igc(self):
+        for igc in self:
+            if igc.imc != 0:
+                age = igc.patient_id.age
+                sex = igc.patient_id.sex
+                if sex == 'male':
+                    sex = 1
+                else:
+                    sex = 0
+                igc.igc = 1.39 * igc.imc + 0.16 * int(age) - 10.34 * int(sex) - 9
     
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict')
@@ -133,7 +145,7 @@ class PlasticSurgerySheet(models.Model):
     physical_examination_ids = fields.One2many('clinica.physical.examination', 'plastic_surgery_id', string="Physical Examination")
     system_review_ids = fields.One2many('clinica.system.review', 'plastic_surgery_id', string="Systems Reviews")
     background_ids = fields.One2many('clinica.patient.background', 'complete_format_id', string="Background")
-    diagnosis_ids = fields.One2many('doctor.diseases', 'complete_format_id', string="Diseases")
+    # diagnosis_ids = fields.One2many('doctor.diseases', 'complete_format_id', string="Diseases")
     doctor_id = fields.Many2one('doctor.professional', string='Professional')
     systolic_blood_pressure = fields.Float(string="Systolic blood pressure")
     diastolic_blood_pressure = fields.Float(string="Diastolic blood pressure")
@@ -145,7 +157,22 @@ class PlasticSurgerySheet(models.Model):
     analysis = fields.Text(string="Analysis")
     template_id = fields.Many2one('attention.quick.template', string='Template')
     prescription_id = fields.Many2one('doctor.prescription', string='Prescription')
-    state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')    
+    state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+    load_register = fields.Boolean(string='-', default=False)
+    temp = fields.Float(string="Temperatura")
+    igc = fields.Float(string="Indice de grasa corporal aproximado", compute=_comp_igc)
+    pulse = fields.Integer(string="Pulsioximetría")
+    diagnosis_ids = fields.One2many('consultorio.diagnosis.template', 'complete_format_id', string="Diagnóstico CIE10")
+    
+
+    @api.onchange('diagnosis_ids')
+    def onchange_diagnosis_ids(self):
+        for dignosis in self.diagnosis_ids:
+            dignosis.update({'code': dignosis.diseases_id.code})
+            dignosis.update({'name': dignosis.diseases_id.name})
+            dignosis.update({'type_diagnosis': dignosis.diseases_id.type_diagnosis})
+            dignosis.update({'state_diagnosis': dignosis.diseases_id.state_diagnosis})
+
 
     @api.multi
     def action_set_close(self):
@@ -309,7 +336,7 @@ class PlasticSurgerySheet(models.Model):
     def _set_visualizer_default_values(self):
         vals = {
             'default_patient_id': self.patient_id and self.patient_id.id or False,
-            'default_view_model': 'plastic_surgery',
+            'default_view_model': 'complete_plastic_surgery',
             }
         return vals
            

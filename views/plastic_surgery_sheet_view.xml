@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
             <form string="Plastic Surgery Form">
             	<header>
-	                <button name="action_view_clinica_record_history" string="View History" 
+	                <button name="action_view_clinica_record_history" string="Ver Historia" 
 	                	type="object" class="oe_highlight"/>
                     <button name="action_set_close" string="Set to Close" 
                         type="object" states="open"/>

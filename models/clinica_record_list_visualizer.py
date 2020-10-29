@@ -256,6 +256,7 @@ class ClinicaRecordVisualizer(models.Model):
         medical_evolution_ids = []
         epicrisis_ids = []
         prescription_ids = []
+        complete_plastic_surgery_ids = []
         if self.patient_id:
             search_domain.append(('patient_id','=',self.patient_id.id))
         if self.patient_id or self.doctor_id or self.start_period or self.end_period:

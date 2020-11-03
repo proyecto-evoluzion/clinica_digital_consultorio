@@ -1454,6 +1454,21 @@
                   </tr>
                 </t>
               </t>
+              <t t-if="prescription.complete_format_id">
+                <tr><td colspan="2" style="text-align:center; "><strong>IMPRESIÓN DIAGNÓSTICA</strong></td></tr>
+                <tr>
+                  <t t-foreach="prescription.complete_format_id.diagnosis_ids" t-as="diagnosis">
+                    <tr>
+                      <td style="width:100%;">
+                        <span style="padding-left:2px;" t-field="diagnosis.code"/>
+                      </td>
+                      <td style="width:100%;">
+                        <span style="padding-left:2px;" t-field="diagnosis.name"/>
+                      </td>
+                    </tr>
+                  </t>
+                </tr>
+              </t>
             </table>
             <div style="border-top: 1px solid black;">
               <div t-if="prescription.doctor_id.medical_record" style="width:100%; text-align: center;">

@@ -305,6 +305,10 @@ class PlasticSurgerySheet(models.Model):
                 vals['doctor_id'] = professional_obj.id
         
         res = super(PlasticSurgerySheet, self).create(vals)
+        if res.prescription_id:
+            res.prescription_id.name = res.number
+            res.prescription_id.complete_format_id = res.id
+
         res._check_document_types()
         return res
     

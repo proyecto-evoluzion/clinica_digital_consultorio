@@ -25,6 +25,7 @@ import html2text
 
 class DoctorPrescription(models.Model):
 	_name = "doctor.prescription"
+	_rec_name = 'name'
 
 	@api.model
 	def _get_signature(self):
@@ -37,11 +38,12 @@ class DoctorPrescription(models.Model):
 		professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user.id)])
 		return professional_obj		
 
-	name= fields.Char(string="Nombre del informe", required="1")
+	name= fields.Char(string="Nombre del informe")
 	order_type= fields.Selection([('informs','Informes y otros'),('medicines','Medicamentos'),('exam','Laboratorios')],
 							string="Tipo de orden", required="1", default='informs')
 	prescription_date = fields.Date(string='Fecha', default=fields.Date.context_today)
 	patient_id = fields.Many2one('doctor.patient', 'Paciente', ondelete='restrict')
+	complete_format_id = fields.Many2one('complete.clinica.plastic.surgery', 'Atencion', ondelete='restrict')
 	patientname = fields.Char(string='# Historia Clínica', related='patient_id.name')
 	numberid = fields.Integer(string='# Historia Clínica', related='patient_id.ref')
 	user_type = fields.Selection([('contributory','Contributory'),('subsidized','Subsidized'),('linked','Linked'),('particular','Particular'),('other','Other'),('victim_contributive','Victim - Contributive'),('victim_subsidized','Victim - Subsidized'),('victim_linked','Victim - Linked')],string='Tipo de Usuario', related='patient_id.user_type')

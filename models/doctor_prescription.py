@@ -25,7 +25,7 @@ import html2text
 
 class DoctorPrescription(models.Model):
 	_name = "doctor.prescription"
-	_rec_name = 'name'
+	_rec_name = 'patient_id'
 
 	@api.model
 	def _get_signature(self):

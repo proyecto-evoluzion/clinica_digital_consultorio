@@ -142,7 +142,7 @@ class PlasticSurgerySheet(models.Model):
     medical_recipe = fields.Text(string="Medical Orders and Recipe")
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
-    physical_examination_ids = fields.One2many('clinica.physical.examination', 'plastic_surgery_id', string="Physical Examination")
+    physical_examination_ids = fields.One2many('clinica.physical.examination', 'complete_plastic_surgery_id', string="Physical Examination")
     system_review_ids = fields.One2many('clinica.system.review', 'plastic_surgery_id', string="Systems Reviews")
     background_ids = fields.One2many('clinica.patient.background', 'complete_format_id', string="Background")
     # diagnosis_ids = fields.One2many('doctor.diseases', 'complete_format_id', string="Diseases")

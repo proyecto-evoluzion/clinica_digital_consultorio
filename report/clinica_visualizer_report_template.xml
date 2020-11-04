@@ -1089,9 +1089,15 @@
                   </table>
                 </td>
               </tr>
-              <tr t-if="complete_plastic_surgery.size or complete_plastic_surgery.weight or complete_plastic_surgery.imc or complete_plastic_surgery.heart_rate or complete_plastic_surgery.breathing_frequency or complete_plastic_surgery.systolic_blood_pressure or complete_plastic_surgery.diastolic_blood_pressure">
+              <!-- <t t-foreach="complete_plastic_surgery" t-as="complete">
+              	<tr t-if="complete.size or complete.weight or complete.imc or complete.heart_rate or complete.breathing_frequency or complete.systolic_blood_pressure or complete.diastolic_blood_pressure">
+                	<td colspan="2" style="text-align:center; font-size: 14px;"><strong>DETALLES FÍSICOS</strong></td>
+              	</tr>
+              </t> -->
+
+            <!-- <tr t-if="complete_plastic_surgery.size or complete_plastic_surgery.weight or complete_plastic_surgery.imc or complete_plastic_surgery.heart_rate or complete_plastic_surgery.breathing_frequency or complete_plastic_surgery.systolic_blood_pressure or complete_plastic_surgery.diastolic_blood_pressure">
                 <td colspan="2" style="text-align:center; font-size: 14px;"><strong>DETALLES FÍSICOS</strong></td>
-              </tr>
+            </tr>
             <tr t-if="complete_plastic_surgery.size or complete_plastic_surgery.weight or complete_plastic_surgery.imc or complete_plastic_surgery.heart_rate or complete_plastic_surgery.breathing_frequency or complete_plastic_surgery.systolic_blood_pressure or complete_plastic_surgery.diastolic_blood_pressure">
                 <td style="width:50%; ">
                   <t t-if="complete_plastic_surgery.weight">Peso: <span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.weight"/>Kg <br/> </t>
@@ -1107,7 +1113,7 @@
                   <t t-if="complete_plastic_surgery.diastolic_blood_pressure">Presión sanguínea diastólica: <span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.diastolic_blood_pressure"/><br/></t>
                   <t t-if="complete_plastic_surgery.pulse">SpO2: <span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.pulse"/>% <br/> </t>
                 </td>
-              </tr>
+              </tr> -->
             <tr t-if="complete_plastic_surgery.physical_exam or complete_plastic_surgery.physical_examination_ids"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>EXÁMEN FÍSICO</strong></td></tr>
             <tr t-if="complete_plastic_surgery.physical_exam or complete_plastic_surgery.physical_examination_ids">
                 <td colspan="2" style="width:50%; ">

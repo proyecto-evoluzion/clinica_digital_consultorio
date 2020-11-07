@@ -163,6 +163,16 @@ class PlasticSurgerySheet(models.Model):
     igc = fields.Float(string="Indice de grasa corporal aproximado", compute=_comp_igc)
     pulse = fields.Integer(string="Pulsioximetría")
     diagnosis_ids = fields.One2many('consultorio.diagnosis.template', 'complete_format_id', string="Diagnóstico CIE10")
+
+
+    @api.multi
+    def _set_prescription_form_default_values(self):
+        vals = {
+            'default_patient_id': self.patient_id and self.patient_id.id or False,
+            'default_complete_format_id' : self.id,
+            'default_name' : self.number
+        }
+        return vals
     
 
     @api.onchange('diagnosis_ids')
@@ -177,7 +187,24 @@ class PlasticSurgerySheet(models.Model):
     @api.multi
     def action_set_close(self):
         for record in self:
-            record.state = 'closed'    
+            record.state = 'closed'
+
+    @api.multi
+    def action_prescription(self):
+        action = self.env.ref('clinica_digital_consultorio.action_doctor_prescription')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = self._set_prescription_form_default_values()
+        prescription_ids = self.env['doctor.prescription'].search([('complete_format_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(prescription_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(prescription_ids.ids) + ")]"
+        elif len(prescription_ids) == 1:
+            res = self.env.ref('clinica_digital_consultorio.doctor_prescription_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = prescription_ids.id
+        return result
 
     
     @api.onchange('room_id')

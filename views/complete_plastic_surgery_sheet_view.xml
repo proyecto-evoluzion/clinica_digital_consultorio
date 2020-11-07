@@ -14,6 +14,12 @@
                     <field name="state" widget="statusbar" statusbar_visible="open,closed"/>                        
 	            </header>
             	<sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_prescription" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+                            string="Orden / Precripción" 
+                            groups="base.group_system,clinica_digital_consultorio.complete_format">
+                        </button>
+                    </div>
             		<group name="main_group">
             			<group name="main_sub_group1" >
                             <field name='date_attention' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
@@ -150,19 +156,7 @@
                                 <label for="treatment" string="Treatment"/>
                                 <field name="treatment" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
-                            <!-- <group name="paraclinical" colspan="2" col='1'>
-                                <label for="paraclinical" string="Paraclinical"/>
-                                <field name="paraclinical" nolabel="1"/>
-                            </group>
-                            <group name="therapies" colspan="2" col='1'>
-                                <label for="therapies" string="Therapies"/>
-                                <field name="therapies" nolabel="1"/>
-                            </group>
-                            <group name="surgery" colspan="2" col='1'>
-                                <label for="surgery" string="Surgery"/>
-                                <field name="surgery" nolabel="1"/>
-                            </group> -->
-                            <group name="prescription" colspan="2" col='1'>
+                            <group name="prescription" colspan="2" col='1' invisible="1">
                                 <label for="prescription_id" string="Prescription"/>
                                 <field name="prescription_id" nolabel="1" domain="[('load_register','=',True)]" attrs="{'readonly':[('state','=','closed')]}" context="{'default_patient_id':patient_id}"/>
                             </group>

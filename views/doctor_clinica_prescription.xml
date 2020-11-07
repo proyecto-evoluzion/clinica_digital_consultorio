@@ -13,17 +13,14 @@
             <!--General Group-->
             <group col="4">
               <field name="order_type"/>
-  	         	<field name="name"/>
+  	         	<field name="name" invisible="0"/>
               <field name="prescription_date" invisible="1"/>
               <field name="prescription_date"/>
             </group>
             <group col="4">
               <field name="patient_id"/>
-              <!-- <field name="user_type"/> -->
+              <field name="complete_format_id" invisible="1"/>
               <field name="patientname"/>
-              <!-- <field name="phone"/>
-              <field name="sex"/>
-              <field name="residence_address"/> -->
             </group>
             <group col="4">
               <span col="2">

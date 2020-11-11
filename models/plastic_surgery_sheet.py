@@ -162,8 +162,8 @@ class PlasticSurgerySheet(models.Model):
         for dignosis in self.diagnosis_ids:
             dignosis.update({'code': dignosis.diseases_id.code})
             dignosis.update({'name': dignosis.diseases_id.name})
-            dignosis.update({'type_diagnosis': dignosis.diseases_id.type_diagnosis})
-            dignosis.update({'state_diagnosis': dignosis.diseases_id.state_diagnosis})
+            # dignosis.update({'type_diagnosis': dignosis.diseases_id.type_diagnosis})
+            # dignosis.update({'state_diagnosis': dignosis.diseases_id.state_diagnosis})
 
     @api.multi
     def action_set_close(self):

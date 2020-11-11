@@ -346,8 +346,8 @@ class DoctorWaitingRoom(models.Model):
     procedure_ids = fields.One2many('doctor.waiting.room.procedures', 'room_id', string='Helath Procedures', copy=False)
     state = fields.Selection([('new','New'),('confirmed','Confirmed'),('ordered','SO Created')], 
                                         string='Status', default='new')
-    patient_state = fields.Selection([('dated','Citado'),('attended','Atendido'),('not_attended','No asistio'),('in_room','En sala de espera')], 
-                                        string='Estado paciente', default='not_attended')
+    patient_state = fields.Selection([('dated','Citado'),('attended','Atendido'),('not_attended','No asistio'),('in_room','En sala de espera'),('retired','Se retiró')], 
+                                        string='Estado paciente', default='dated')
     nurse_sheet_created = fields.Boolean(string='Nurse Sheet Created', compute='_compute_nurse_sheet_creation')
     anhestesic_registry_created = fields.Boolean(string='Anhestesic Registry Created', compute='_compute_anhestesic_registry_creation')
     sale_order_id = fields.Many2one('sale.order', string='Sales Order', copy=False)
@@ -869,6 +869,16 @@ class DoctorWaitingRoom(models.Model):
     def action_not_attended(self):
         for record in self:
             record.patient_state = 'not_attended'
+
+    @api.multi
+    def action_arrive(self):
+        for record in self:
+            record.patient_state = 'in_room'
+
+    @api.multi
+    def action_retired(self):
+        for record in self:
+            record.patient_state = 'retired'
     
     @api.multi
     def action_view_plastic_surgery(self):

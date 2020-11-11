@@ -156,19 +156,9 @@
 			<header>
 				<button name="action_confirm" string="Confirm Appointment" class="btn-primary" 
 					type="object"  attrs="{'invisible':['|',('state','!=','new'),('room_type','=','surgery')]}"/>
-				<!-- <button name="action_confirm" string="Confirm Room Procedure" class="btn-primary"
-				 type="object" attrs="{'invisible':['|',('state','!=','new'),('room_type','=','waiting')]}"/> -->
-				 <!-- <button name="action_view_anhestesic_registry" string="Create Anhestesic Registry" 
-					class="btn-primary" type="object" attrs="{'invisible': ['|',('anhestesic_registry_created','=',True),('state','!=','ordered')]}"
-					groups="base.group_system,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management"/> -->
-				<!-- <button name="action_view_nurse_sheet" string="Create Nurse Sheet" 
-					class="btn-primary" type="object" attrs="{'invisible': ['|',('nurse_sheet_created','=',True),('state','!=','ordered')]}"
-					groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.clinical_auditor"/> -->
 				<button name="action_create_so" string="Create Sales Order" 
 					class="btn-primary" type="object" states="confirmed"/>
 				<button name="api_connect" string="Enviar HC" class="btn-primary" type="object" attrs="{'invisible': ['|','|',('patient_state','!=','attended'),('send_hc','=', True),('emc_api','=', True)]}"/>
-				<!-- <button name="action_view_clinica_record_history" string="View History" 
-					type="object" class="oe_highlight"/> -->
 				<field name="state" widget="statusbar" statusbar_visible="new,confirmed,ordered"/>
 			</header>
 			<sheet>
@@ -177,9 +167,17 @@
 						states="ordered" string="Quotation" 
 						groups="base.group_system,clinica_digital_consultorio.programmer_assistant">
 					</button>
-					<button name="action_not_attended" type="object" class="oe_stat_button" icon="fa-calendar-times-o" 
+					<button name="action_arrive" type="object" class="oe_stat_button" icon="fa-calendar-check-o" 
+						string="Asistió"
+						attrs="{'invisible':[('patient_state','!=','dated')]}">
+					</button>
+					<button name="action_not_attended" type="object" class="oe_stat_button" icon="fa-calendar-check-o" 
 						string="No asistió"
 						attrs="{'invisible':[('patient_state','!=','dated')]}">
+					</button>
+					<button name="action_retired" type="object" class="oe_stat_button" icon="fa-calendar-minus-o" 
+						string="Se retiró"
+						attrs="{'invisible':[('patient_state','!=','in_room')]}">
 					</button>
 					<button name="action_view_plastic_surgery" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Plastic Surgery Sheet"
@@ -381,7 +379,7 @@
 		<field name="arch" type="xml">
 			<tree string="Waiting Room Tree" decoration-success="patient_state in ('attended')" 
               decoration-bf="patient_state == 'dated'"
-              decoration-warning="patient_state == 'not_attended'" 
+              decoration-warning="patient_state in ['not_attended','retired']" 
               decoration-info="patient_state == 'in_room'"
               default_order="procedure_date">
 				<!--<field name="schedule_id"/>-->

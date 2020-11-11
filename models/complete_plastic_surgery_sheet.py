@@ -180,8 +180,8 @@ class PlasticSurgerySheet(models.Model):
         for dignosis in self.diagnosis_ids:
             dignosis.update({'code': dignosis.diseases_id.code})
             dignosis.update({'name': dignosis.diseases_id.name})
-            dignosis.update({'type_diagnosis': dignosis.diseases_id.type_diagnosis})
-            dignosis.update({'state_diagnosis': dignosis.diseases_id.state_diagnosis})
+            # dignosis.update({'type_diagnosis': dignosis.diseases_id.type_diagnosis})
+            # dignosis.update({'state_diagnosis': dignosis.diseases_id.state_diagnosis})
 
 
     @api.multi
@@ -332,6 +332,8 @@ class PlasticSurgerySheet(models.Model):
                 vals['doctor_id'] = professional_obj.id
         
         res = super(PlasticSurgerySheet, self).create(vals)
+        if res.room_id:
+            res.room_id.patient_state = 'attended'
         if res.prescription_id:
             res.prescription_id.name = res.number
             res.prescription_id.complete_format_id = res.id

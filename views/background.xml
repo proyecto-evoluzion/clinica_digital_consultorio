@@ -22,7 +22,7 @@
     </record>
 
     <menuitem
-        id="config_clinica_patient_background_action"
+        id="config_clinica_patient_background_menu"
         name="Patient Background"
         action="config_clinica_patient_background_action"
         parent="menu_doctor_config_details"

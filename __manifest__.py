@@ -69,6 +69,8 @@
         'views/clinica_physical_item.xml',
         'views/base_localization_menu.xml',
         'views/doctor_atc.xml',
+        'views/config_clinica_system_review.xml',
+        'views/background.xml',
         'views/inherit_crm_view.xml',
         'data/l10n_diseases_co_data.xml',
         'data/doctor_atc_data.xml',

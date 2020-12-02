@@ -50,6 +50,20 @@ class PlasticSurgerySheet(models.Model):
                 else:
                     sex = 0
                 igc.igc = 1.39 * igc.imc + 0.16 * int(age) - 10.34 * int(sex) - 9
+
+    def _default_system_review(self):
+        system_rev_list = []
+        system_rev_vals = {}
+        system_review_obj = self.env['config.clinica.system.review'].search([])
+        if system_review_obj:
+            for system_rev in system_review_obj:
+                system_rev_vals = {
+                    'type_review': system_rev.type_review,
+                    'system_review': system_rev.system_review
+                }
+                rec = self.env['clinica.system.review'].create(system_rev_vals)
+                system_rev_list.append(rec.id)
+        return [(6,0,system_rev_list)]
     
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict')
@@ -143,8 +157,11 @@ class PlasticSurgerySheet(models.Model):
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
     physical_examination_ids = fields.One2many('clinica.physical.examination', 'complete_plastic_surgery_id', string="Physical Examination")
-    system_review_ids = fields.One2many('clinica.system.review', 'plastic_surgery_id', string="Systems Reviews")
+    physical_examination_notes = fields.Text(string="Others")
+    system_review_ids = fields.One2many('clinica.system.review', 'plastic_surgery_id', string="Systems Reviews", default=_default_system_review)
+    system_review_notes = fields.Text(string="Others")
     background_ids = fields.One2many('clinica.patient.background', 'complete_format_id', string="Background")
+    background_notes = fields.Text(string="Others")
     # diagnosis_ids = fields.One2many('doctor.diseases', 'complete_format_id', string="Diseases")
     doctor_id = fields.Many2one('doctor.professional', string='Professional')
     systolic_blood_pressure = fields.Float(string="Systolic blood pressure")
@@ -170,7 +187,7 @@ class PlasticSurgerySheet(models.Model):
         vals = {
             'default_patient_id': self.patient_id and self.patient_id.id or False,
             'default_complete_format_id' : self.id,
-            'default_name' : self.number
+            # 'default_name' : self.number
         }
         return vals
     
@@ -224,7 +241,21 @@ class PlasticSurgerySheet(models.Model):
                                             'background_type': patient_bk.background_type,
                                             'background': patient_bk.background})
                 if patient_background_upd:
-                    self.update({'background_ids':patient_background_upd})
+                    self.update({'background_ids': [(6,0,[])]})
+                    self.update({'background_ids': patient_background_upd})
+            else:
+                background_list = []
+                background_vals = {}
+                background_obj = self.env['config.clinica.patient.background'].search([])
+                if background_obj:
+                    for background in background_obj:
+                        background_vals = {
+                            'background_type': background.background_type,
+                            'background': background.background
+                        }
+                    rec = self.env['clinica.patient.background'].create(background_vals)
+                    background_list.append(rec.id)
+                self.update({'background_ids': [(6,0,background_list)]})
 
     @api.multi
     @api.depends('birth_date')
@@ -391,6 +422,12 @@ class SystemsReviews(models.Model):
     _name = "clinica.system.review"
 
     plastic_surgery_id = fields.Many2one('complete.clinica.plastic.surgery', string='FCC')
+    type_review = fields.Char(string="Type Review")
+    system_review = fields.Char(string="System Review")
+
+class ConfigSystemsReviews(models.Model):
+    _name = "config.clinica.system.review"
+
     type_review = fields.Char(string="Type Review")
     system_review = fields.Char(string="System Review")
 

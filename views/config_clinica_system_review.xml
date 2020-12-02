@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Tree View-->
+	<record id="config_clinica_system_review_view_tree" model="ir.ui.view">
+        <field name="name">config.clinica.system.review.view.tree</field>
+        <field name="model">config.clinica.system.review</field>
+        <field name="arch" type="xml">
+            <tree string="Revisión por sistemas" editable="top">
+                <field name="type_review"/>
+                <field name="system_review"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="config_clinica_system_review_action" model="ir.actions.act_window">
+        <field name="name">Revisión por sistemas</field>
+        <field name="res_model">config.clinica.system.review</field>
+        <field name="view_type">form</field>
+        <field name='view_mode'>tree</field>
+        <field name="view_id" ref="config_clinica_system_review_view_tree"/>
+    </record>
+
+    <menuitem
+        id="config_clinica_system_review_menu"
+        name="Revisión por sistemas"
+        action="config_clinica_system_review_action"
+        parent="menu_doctor_config_details"
+        groups="base.group_system"
+        sequence="12"/>
+    
+</odoo>

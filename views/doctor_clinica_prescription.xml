@@ -13,8 +13,6 @@
             <!--General Group-->
             <group col="4">
               <field name="order_type"/>
-  	         	<field name="name" invisible="0"/>
-              <field name="prescription_date" invisible="1"/>
               <field name="prescription_date"/>
             </group>
             <group col="4">
@@ -26,7 +24,8 @@
               <span col="2">
                 <field name="doctor_id" nolabel="1" style="width:25%" readonly="1" force_save="1"/>
                 <field name="profession_type" nolabel="1" style="width:25%" readonly="1" force_save="1"/>,
-                ordena:
+                ordena: 
+                <field name="name" nolabel="1" style="width:25%"/>
               </span>
             </group>
             <!--order_type 1-->

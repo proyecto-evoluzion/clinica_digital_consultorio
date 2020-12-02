@@ -65,6 +65,10 @@
                                             </tree>
                                         </field>
                                     </group>
+                                    <group>
+                                        <label for="system_review_notes"/>
+                                        <field name="system_review_notes" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                    </group>
                                 </page>
                                 <page name="patient_background" string="Patient Background">
                                     <group>
@@ -75,6 +79,35 @@
                                                 <field name="background"/>      
                                             </tree>
                                         </field>
+                                    </group>
+                                    <group>
+                                        <label for="background_notes"/>
+                                        <field name="background_notes" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                    </group>
+                                    <group name="gyneco_obst" colspan="2" col="1" attrs="{'invisible':[('gender','=','male')]}">
+                                        <label for="gyneco_obst"/>
+                                        <field name="gyneco_obst" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                    </group>
+                                    <group name="patient_female_backgorund_main" attrs="{'invisible':[('gender','=','male')]}">
+                                
+                                        <div>
+                                            <label for="gestations" string="G"/>
+                                            <field name="gestations" class="oe_inline" width="20" attrs="{'readonly':[('state','=','closed')]}"/>
+                                            <label for="births" string="P"/>
+                                            <field name="births" class="oe_inline" style="width:20%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                            <label for="cesarean" string="C"/>
+                                            <field name="cesarean" class="oe_inline" style="width:20%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                            <label for="abortion_number" string="A"/>
+                                            <field name="abortion_number" class="oe_inline" style="width:20%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                            <label for="last_menstruation_date" string="FUR"/>
+                                            <field name="last_menstruation_date" class="oe_inline" style="width:20%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                            <label for="last_birth_date" string="FUP"/>
+                                            <field name="last_birth_date" class="oe_inline" style="width:20%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                            <label for="mature_promoting_factor" string="MPF"/>
+                                            <field name="mature_promoting_factor" class="oe_inline" style="width:20%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                           
+                                        </div>   
+
                                     </group>
                                 </page>
                             </notebook>
@@ -130,6 +163,10 @@
                                                 <field name="physical_examination"/>        
                                             </tree>
                                         </field>
+                                    </group>
+                                    <group>
+                                        <label for="physical_examination_notes"/>
+                                        <field name="physical_examination_notes" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                                     </group>
                                 </page>
                             </notebook>

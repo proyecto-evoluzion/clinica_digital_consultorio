@@ -50,7 +50,12 @@ class DoctorPrescription(models.Model):
   			end = datetime.datetime.strptime(rec.inability_end_date, "%Y-%m-%d")
   			minus = start - end
   			minus = str(minus)
-  			rec.inability_total_days = minus[1:2]
+  			if len(minus) == 16:
+  				rec.inability_total_days = minus[1:2]
+  			elif len(minus) == 17:
+  				rec.inability_total_days = minus[1:3]
+  			else:
+  				rec.inability_total_days = minus[1:4]
 
   name= fields.Char(string="Nombre del informe")
   order_type= fields.Selection([('informs','Informes y otros'),

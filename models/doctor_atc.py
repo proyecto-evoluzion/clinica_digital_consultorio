@@ -56,9 +56,9 @@ class DoctorAtc(models.Model):
     name = fields.Char(string='name',default="Medicinas")
     atc_id = fields.Many2one('doctor.atc', string='Medicamento')
     atc_route_id = fields.Many2one('doctor.atc_route', string='Vía de administración')
-    atc_use_id = fields.Many2one('doctor.atc_use', string='Forma de uso')
+    atc_use_id = fields.Many2one('doctor.atc_use', string='Forma farmaceutica')
     total_to_use = fields.Integer(string="Cantidad total")
-    every_use = fields.Integer(string="Cada")
+    every_use = fields.Integer(string="Frecuencia: Cada")
     deadline_use = fields.Integer(string="Durante")
     frequency_type1 = fields.Selection([('minute','Minutos'),('hour','Horas'),
 										('day','Días'),('week','Semanas'),

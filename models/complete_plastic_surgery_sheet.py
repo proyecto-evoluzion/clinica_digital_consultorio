@@ -64,6 +64,20 @@ class PlasticSurgerySheet(models.Model):
                 rec = self.env['clinica.system.review'].create(system_rev_vals)
                 system_rev_list.append(rec.id)
         return [(6,0,system_rev_list)]
+
+    def _default_physical_examination(self):
+        physical_examination_list = []
+        physical_examination_vals = {}
+        physical_examination_obj = self.env['config.physical.examination'].search([])
+        if physical_examination_obj:
+            for physical_examination in physical_examination_obj:
+                physical_examination_vals = {
+                    'type_exam': physical_examination.type_exam,
+                    'exam': physical_examination.exam
+                }
+                rec = self.env['physical.examination'].create(physical_examination_vals)
+                physical_examination_list.append(rec.id)
+        return [(6,0,physical_examination_list)]
     
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict')
@@ -156,7 +170,7 @@ class PlasticSurgerySheet(models.Model):
     medical_recipe = fields.Text(string="Medical Orders and Recipe")
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
-    physical_examination_ids = fields.One2many('clinica.physical.examination', 'complete_plastic_surgery_id', string="Physical Examination")
+    physical_examination_ids = fields.One2many('physical.examination', 'plastic_surgery_id', string="Physical Examination", default=_default_physical_examination)
     physical_examination_notes = fields.Text(string="Others")
     system_review_ids = fields.One2many('clinica.system.review', 'plastic_surgery_id', string="Systems Reviews", default=_default_system_review)
     system_review_notes = fields.Text(string="Others")
@@ -431,13 +445,22 @@ class ConfigSystemsReviews(models.Model):
     type_review = fields.Char(string="Type Review")
     system_review = fields.Char(string="System Review")
 
-class PhysicalExaminationType(models.Model):
-    _name = "clinica.physical.item"
+# class PhysicalExaminationType(models.Model):
+#     _name = "clinica.physical.item"
 
-    name = fields.Char(string="Name", required=True)
-    professional_id = fields.Many2one('doctor.professional', string='Professional')
-    active = fields.Boolean(string="Active", default="True")
-    
-    
-    
-    
+#     name = fields.Char(string="Name", required=True)
+#     professional_id = fields.Many2one('doctor.professional', string='Professional')
+#     active = fields.Boolean(string="Active", default="True")
+
+class PhysicalExamination(models.Model):
+    _name = "physical.examination"
+
+    plastic_surgery_id = fields.Many2one('complete.clinica.plastic.surgery', string='FCC')
+    type_exam = fields.Char(string="Type Physical Exam")
+    exam = fields.Char(string="Exam")
+
+class ConfigPhysicalExamination(models.Model):
+    _name = "config.physical.examination"
+
+    type_exam = fields.Char(string="Type Physical Exam")
+    exam = fields.Char(string="Exam")

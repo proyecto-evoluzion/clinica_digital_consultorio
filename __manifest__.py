@@ -70,6 +70,7 @@
         'views/base_localization_menu.xml',
         'views/doctor_atc.xml',
         'views/config_clinica_system_review.xml',
+        'views/config_physical_examination.xml',
         'views/background.xml',
         'views/inherit_crm_view.xml',
         'data/l10n_diseases_co_data.xml',

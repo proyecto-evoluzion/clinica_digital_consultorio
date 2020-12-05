@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--Tree View-->
+	<record id="config_physical_examination_view_tree" model="ir.ui.view">
+        <field name="name">config.physical.examination.view.tree</field>
+        <field name="model">config.physical.examination</field>
+        <field name="arch" type="xml">
+            <tree string="Exámen Físico" editable="top">
+                <field name="type_exam"/>
+                <field name="exam"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="config_physical_examination_action" model="ir.actions.act_window">
+        <field name="name">Exámen Físico</field>
+        <field name="res_model">config.physical.examination</field>
+        <field name="view_type">form</field>
+        <field name='view_mode'>tree</field>
+        <field name="view_id" ref="config_physical_examination_view_tree"/>
+    </record>
+
+    <menuitem
+        id="config_physical_examination_menu"
+        name="Exámen Físico"
+        action="config_physical_examination_action"
+        parent="menu_doctor_config_details"
+        groups="base.group_system"
+        sequence="12"/>
+    
+</odoo>

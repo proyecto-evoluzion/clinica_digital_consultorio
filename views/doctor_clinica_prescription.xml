@@ -18,6 +18,7 @@
             <group col="4">
               <field name="patient_id"/>
               <field name="complete_format_id" invisible="1"/>
+              <field name="company_id" invisible="1"/>
               <field name="patientname"/>
             </group>
             <group col="4">
@@ -52,6 +53,15 @@
                   <field name="indications"/>
                 </tree>
               </field>
+            </group>
+            <!--order_type 4-->
+            <group string="Incapacidad" attrs="{'invisible':[('order_type','!=','inability')]}">
+              <label for="inability_start_date"/>
+              <field name="inability_start_date" nolabel="1" style="width:100%"/>
+              <label for="inability_end_date"/>
+              <field name="inability_end_date" nolabel="1" style="width:100%"/>
+              <label for="inability_total_days"/>
+              <field name="inability_total_days" nolabel="1" style="width:100%; font-weight: bold;"/>
             </group>
          	</sheet>
          </form>

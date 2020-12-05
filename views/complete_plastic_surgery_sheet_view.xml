@@ -159,9 +159,13 @@
                                     <group>
                                         <field name="physical_examination_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
                                             <tree editable="bottom">
+                                                <field name="type_exam"/>
+                                                <field name="exam"/>        
+                                            </tree>
+                                            <!-- <tree editable="bottom">
                                                 <field name="element" domain="['|',('professional_id.res_user_id','=',uid),('professional_id','=',False)]"/>
                                                 <field name="physical_examination"/>        
-                                            </tree>
+                                            </tree> -->
                                         </field>
                                     </group>
                                     <group>

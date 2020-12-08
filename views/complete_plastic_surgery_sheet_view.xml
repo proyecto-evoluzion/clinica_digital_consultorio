@@ -182,10 +182,10 @@
                                 <label for="template_id" string="Template" style="width: 25%"/>
                                 <field name="template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
-                            <group name="disease_details" string="Main Disease">
+                            <group name="disease_details" string="Dianóstico">
                                 <field name="diagnosis_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
                                     <tree editable="bottom">
-                                        <field name="code" readonly="1" force_save="1"/>
+                                        <field name="code" readonly="1" force_save="1" string="Código"/>
                                         <field name="name" invisible="1"/>
                                         <field name="diseases_id"/>
                                         <field name="type_diagnosis"/>        

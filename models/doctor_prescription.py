@@ -125,18 +125,18 @@ class DoctorPrescription(models.Model):
             }           
 
 class DoctorPrescriptionTemplate(models.Model):
-  _name = "doctor.prescription.template"
-  _rec_name="name"
+	_name = "doctor.prescription.template"
+	_rec_name="name"
 
-  name = fields.Char(string="Name", required="1")
-  description = fields.Text(string="Description", required="1")
-  active = fields.Boolean(string="Active", default=True)
+	name = fields.Char(string="Name", required="1")
+	description = fields.Text(string="Description", required="1")
+	active = fields.Boolean(string="Active", default=True)
 
 class DoctorPrescriptionExam(models.Model):
-  _name = "doctor.prescription.exam"
-  _rec_name="cups_id"
+	_name = "doctor.prescription.exam"
+	_rec_name="cups_id"
 
-  cups_id = fields.Many2one('doctor.cups.code', 'CUPS', ondelete='restrict')
-  prescription_id = fields.Many2one('doctor.prescription', 'Prescription Exam')
-  qty = fields.Integer(string="Cantidad")
-  indications = fields.Char(string="Indicaciones")
+	cups_id = fields.Many2one('doctor.cups.code', 'CUPS', ondelete='restrict', domain=[('procedure_type','in',['3','4','5'])])
+	prescription_id = fields.Many2one('doctor.prescription', 'Prescription Exam')
+	qty = fields.Integer(string="Cantidad")
+	indications = fields.Char(string="Indicaciones")

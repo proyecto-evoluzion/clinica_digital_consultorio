@@ -1877,6 +1877,16 @@ msgid "Date of attention"
 msgstr "Fecha de atención"
 
 #. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_number
+msgid "Attention number"
+msgstr "Atención N°"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_patient_id
+msgid "Patient"
+msgstr "Paciente"
+
+#. module: clinica_digital_consultorio
 #: selection:clinica.anhestesic.registry,age_meassure_unit:0
 #: selection:clinica.medical.evolution,age_meassure_unit:0
 #: selection:clinica.nurse.sheet,age_meassure_unit:0

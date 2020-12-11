@@ -524,6 +524,7 @@ msgstr "AB"
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:doctor.surgical.technologist,document_type:0
+#: selection:doctor.patient,tdoc_rips:0
 msgid "AS - Unidentified Adult"
 msgstr "AS - Adulto sin Identificación"
 
@@ -1210,6 +1211,7 @@ msgstr "Victima - Asociado"
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:doctor.surgical.technologist,document_type:0
+#: selection:doctor.patient,tdoc_rips:0
 msgid "CC - ID Document"
 msgstr "CC - Cédula de ciudadanía"
 
@@ -1227,6 +1229,7 @@ msgstr "CC - Cédula de ciudadanía"
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:doctor.surgical.technologist,document_type:0
+#: selection:doctor.patient,tdoc_rips:0
 msgid "CE - Aliens Certificate"
 msgstr "CE - Cédula de Extranjería"
 
@@ -3494,8 +3497,29 @@ msgstr "Líquidos"
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:doctor.surgical.technologist,document_type:0
+#: selection:doctor.patient,tdoc_rips:0
 msgid "MS - Unidentified Minor"
 msgstr "MS - Menor sin Identificación"
+
+#. module: clinica_digital_consultorio
+#: selection:doctor.patient,tdoc_rips:0
+msgid "CD - Diplomatic card"
+msgstr "CD - Carnet Diplomático"
+
+#. module: clinica_digital_consultorio
+#: selection:doctor.patient,tdoc_rips:0
+msgid "SC - safe passage"
+msgstr "SC - Salvoconducto"
+
+#. module: clinica_digital_consultorio
+#: selection:doctor.patient,tdoc_rips:0
+msgid "PE - Special Permit of Permanence"
+msgstr "PE - Permiso Especial de Permanencia"
+
+#. module: clinica_digital_consultorio
+#: selection:doctor.patient,tdoc_rips:0
+msgid "CN - Birth certificate"
+msgstr "CN - Certificado de Naciemiento"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_anhestesic_registry_form
@@ -4236,6 +4260,7 @@ msgstr "Cargar a factura"
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:doctor.surgical.technologist,document_type:0
+#: selection:doctor.patient,tdoc_rips:0
 msgid "PA - Passport"
 msgstr "PA - Pasaporte"
 
@@ -5055,6 +5080,7 @@ msgstr "Cotización"
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:doctor.surgical.technologist,document_type:0
+#: selection:doctor.patient,tdoc_rips:0
 msgid "RC - Civil Registry"
 msgstr "RC - Registro Civil"
 
@@ -5928,6 +5954,7 @@ msgstr "TC:"
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:doctor.surgical.technologist,document_type:0
+#: selection:doctor.patient,tdoc_rips:0
 msgid "TI - Identity Card"
 msgstr "TI - Tarjeta de Identidad"
 

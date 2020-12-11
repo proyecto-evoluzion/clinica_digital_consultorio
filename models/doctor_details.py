@@ -86,6 +86,8 @@ class Doctor(models.Model):
     tdoc = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                                       ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
                                       ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
+
+     
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
     middlename = fields.Char(string='Second Name')
@@ -224,6 +226,12 @@ class DoctorAdministrativeData(models.Model):
     name = fields.Char(string='Number ID')
     ref = fields.Integer(string='Number ID for TI or CC Documents')
     tdoc = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
+    tdoc_rips = fields.Selection([('CC','CC - ID Document'),('CE','CE - Aliens Certificate'),
+                                      ('PA','PA - Passport'),('RC','RC - Civil Registry'),('TI','TI - Identity Card'),
+                                      ('AS','AS - Unidentified Adult'),('MS','MS - Unidentified Minor'),
+                                      ('CD','CD - Diplomatic card'),('SC','SC - safe passage'),
+                                      ('PE','PE - Special Permit of Permanence'),
+                                      ('CN','CN - Birth certificate')], string='Type of Document')
     photo = fields.Binary("Image", attachment=True, default=_default_image,
         help="This field holds the image used as avatar for this contact, limited to 1024x1024px", copy=False)
     photo_medium = fields.Binary("Medium-sized image", attachment=True, 
@@ -446,11 +454,11 @@ class DoctorAdministrativeData(models.Model):
             self.responsible_phone = ''
             self.other_responsible_relationship=''   
             
-    @api.onchange('ref', 'tdoc')
+    @api.onchange('ref', 'tdoc_rips')
     def onchange_ref(self):
         if self.ref:
             self.name = str(self.ref) 
-        if self.tdoc and self.tdoc in ['cc','ti'] and self.ref == 0:
+        if self.tdoc_rips and self.tdoc_rips in ['CC','TI'] and self.ref == 0:
             self.name = str(0)
     
     def _check_email(self, email):
@@ -469,15 +477,17 @@ class DoctorAdministrativeData(models.Model):
     @api.multi
     def _check_tdocs(self):
         for data in self:
-            if data.age_unit == '3' and data.tdoc not in ['rc','ms']:
+            if data.age_unit == '3' and data.tdoc_rips not in ['RC','MS','CN']:
                 raise ValidationError(_("You can only choose 'RC' or 'MS' documents, for age less than 1 month."))
-            if data.age > 17 and data.age_unit == '1' and data.tdoc in ['rc','ms']:
+            if data.age > 17 and data.age_unit == '1' and data.tdoc_rips in ['RC','MS','CN']:
                 raise ValidationError(_("You cannot choose 'RC' or 'MS' document types for age greater than 17 years."))
-            if data.age_unit in ['2','3'] and data.tdoc in ['cc','as','ti']:
+            if data.age_unit in ['2','3'] and data.tdoc_rips in ['CC','AS','TI']:
                 raise ValidationError(_("You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."))
-            if data.tdoc == 'ms' and data.age_unit != '3':
+            if data.tdoc_rips == 'MS' and data.age_unit != '3':
                 raise ValidationError(_("You can only choose 'MS' document for age between 1 to 30 days."))
-            if data.tdoc == 'as' and data.age_unit == '1' and data.age <= 17:
+            if data.tdoc_rips == 'AS' and data.age_unit == '1' and data.age <= 17:
+                raise ValidationError(_("You can choose 'AS' document only if the age is greater than 17 years."))
+            if data.age >= 19 and data.age_unit == '1' and data.tdoc_rips in ['RC','MS','CN']:
                 raise ValidationError(_("You can choose 'AS' document only if the age is greater than 17 years."))
         
     @api.multi

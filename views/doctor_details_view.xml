@@ -271,16 +271,21 @@
                     <div class="oe_title">
                         <div>
                             <div>
-                                <label for="tdoc" string="Type of Document"/>
-                                <field name="tdoc" placeholder="Type of Document" required="1"/>
+                                <label for="tdoc" string="Type of Document" invisible="1"/>
+                                <field name="tdoc" placeholder="Type of Document" required="0" invisible="1"/>
                             </div>
-                            <div attrs="{'invisible':[('tdoc','in',['cc','ti'])]}">
+
+                            <div>
+                                <label for="tdoc_rips" string="Type of Document"/>
+                                <field name="tdoc_rips" placeholder="Type of Document" required="1"/>
+                            </div>
+                            <div attrs="{'invisible':[('tdoc_rips','in',['CC','TI'])]}">
                                 <label  for="name" string="Number ID"/>
                                 <field name="name" placeholder="Number ID" required="1"/>
                             </div>
-                            <div attrs="{'invisible':[('tdoc','not in',['cc','ti'])]}">
+                            <div attrs="{'invisible':[('tdoc_rips','not in',['CC','TI'])]}">
                                 <label  for="ref" string="Number ID"/>
-                                <field name="ref" placeholder="Number ID" attrs="{'required': [('tdoc','in',['cc','ti'])]}"/>
+                                <field name="ref" placeholder="Number ID" attrs="{'required': [('tdoc_rips','in',['CC','TI'])]}"/>
                             </div>
                         </div>
                     </div>
@@ -433,7 +438,8 @@
             <field name="arch" type="xml">
                 <tree string="Doctor Administrative Data Tree">
                     <field name="name" string="Número de Identificación"/>
-                    <field name="tdoc" string="Tipo de documento"/>
+                    <field name="tdoc" string="Tipo de documento" invisible="1"/>
+                    <field name="tdoc_rips" string="Tipo de documento"/>
                     <field name="lastname" string="Primer Apellido"/>
                     <field name="surname" placeholder="Second Last Name" string="Segundo Apellido"/>
                     <field name="firstname" string="Primer Nombre"/>
@@ -459,7 +465,8 @@
                     <field name="lastname"/>
                     <field name="middlename"/>
                     <field name="surname"/>
-                    <field name="tdoc"/>
+                    <field name="tdoc" invisible="1"/>
+                    <field name="tdoc_rips"/>
                     <field name="sex"/>
                     <field name="blood_type"/>
                     <field name="blood_rh"/>
@@ -517,8 +524,10 @@
                                 	<div class="oe_kanban_details">
                                     <strong class="oe_partner_heading"><field name="patient_name"/></strong>
                                     <ul>
-                                        <li t-if="record.tdoc.raw_value" class="o_text_overflow"><field name="tdoc"/></li>
-                                    	<li t-if="record.tdoc.raw_value" class="o_text_overflow"><field name="name"/></li>
+                                        <li t-if="record.tdoc.raw_value" class="o_text_overflow"><field name="tdoc" invisible="1"/></li>
+                                        <li t-if="record.tdoc_rips.raw_value" class="o_text_overflow"><field name="tdoc_rips"/></li>
+                                    	<li t-if="record.tdoc.raw_value" class="o_text_overflow"><field name="name" invisible="1"/></li>
+                                        <li t-if="record.tdoc_rips.raw_value" class="o_text_overflow"><field name="name"/></li>
                                         <li t-if="record.firstname.raw_value"><field name="firstname"/></li>
                                         <li t-if="record.sex.raw_value" class="o_text_overflow">Gender: <field name="sex"/></li>
                                         <li t-if="record.blood_type.raw_value">Blood Type: <field name="blood_type"/><field name="blood_rh"/></li>
@@ -545,7 +554,8 @@
                     <field name="ref" string="Doc. Identidad Nacional"/>
                     <field name="name" string="Doc. Identidad Extranjero"/>
                     <group expand="0" string="Group By">
-                        <filter string="Type of Document" name="groupby_tdoc" domain="[]" context="{'group_by':'tdoc'}"/>
+                        <filter string="Type of Document" name="groupby_tdoc" domain="[]" context="{'group_by':'tdoc'}" invisible="1"/>
+                        <filter string="Type of Document" name="groupby_tdoc_rips" domain="[]" context="{'group_by':'tdoc_rips'}"/>
                     </group>
                 </search>
             </field>

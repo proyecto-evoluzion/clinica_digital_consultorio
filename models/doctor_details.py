@@ -485,7 +485,7 @@ class DoctorAdministrativeData(models.Model):
                 raise ValidationError(_("You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."))
             if data.tdoc_rips == 'MS' and data.age_unit != '3':
                 raise ValidationError(_("You can only choose 'MS' document for age between 1 to 30 days."))
-            if data.tdoc_rips == 'AS' and data.age_unit == '1' and data.age >= 17:
+            if data.tdoc_rips == 'AS' and data.age_unit == '1' and data.age > 17:
                 raise ValidationError(_("You can choose 'AS' document only if the age is greater than 17 years."))
             if data.age >= 19 and data.age_unit == '1' and data.tdoc_rips in ['RC','MS','CN','TI']:
                 raise ValidationError(_("You can choose document only if the age is greater than 19 years"))

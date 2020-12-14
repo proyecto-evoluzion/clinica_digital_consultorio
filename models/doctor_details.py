@@ -488,7 +488,9 @@ class DoctorAdministrativeData(models.Model):
             if data.tdoc_rips == 'AS' and data.age_unit == '1' and data.age > 17:
                 raise ValidationError(_("You can choose 'AS' document only if the age is greater than 17 years."))
             if data.age >= 19 and data.age_unit == '1' and data.tdoc_rips in ['RC','MS','CN','TI']:
-                raise ValidationError(_("You can choose document only if the age is greater than 19 years"))
+                raise ValidationError(_("The type of document for age is not supported"))
+            if data.tdoc_rips == 'CC' and data.age_unit == '1' and data.age < 18:
+                raise ValidationError(_("Age does not correspond to the document type."))
 
         
     @api.multi

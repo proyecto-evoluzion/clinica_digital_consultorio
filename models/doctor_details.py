@@ -175,7 +175,7 @@ class Doctor(models.Model):
         res = super(Doctor, self).create(vals)
         if not res.partner_id:
             partner_vals = res._get_related_partner_vals(vals)
-            partner_vals.update({'tdoc': 1})
+            partner_vals.update({'doctype': 1})
             partner = self.env['res.partner'].create(partner_vals)
             res.partner_id = partner.id
         if not res.res_user_id:
@@ -431,7 +431,7 @@ class DoctorAdministrativeData(models.Model):
     @api.onchange('birth_date','age_unit')
     def onchange_birth_date(self):
         if self.age_unit == '3':
-            self.tdoc = 'rc'
+            self.tdoc = 'RC'
         if self.birth_date:
             warn_msg = self._check_birth_date(self.birth_date)
             if warn_msg:
@@ -477,10 +477,10 @@ class DoctorAdministrativeData(models.Model):
     @api.multi
     def _check_tdocs(self):
         for data in self:
-            if data.age_unit == '3' and data.tdoc_rips not in ['RC','MS']:
-                raise ValidationError(_("You can only choose 'RC' or 'MS' documents, for age less than 1 month."))
+            if data.age_unit == '3' and data.tdoc_rips not in ['RC','MS','CN']:
+                raise ValidationError(_("You can only choose 'RC'-'CN' or 'MS' documents, for age less than 1 month."))
             if data.age > 17 and data.age_unit == '1' and data.tdoc_rips in ['RC','MS','CN']:
-                raise ValidationError(_("You cannot choose 'RC' or 'MS' document types for age greater than 17 years."))
+                raise ValidationError(_("You cannot choose 'RC'-'CN' or 'MS' document types for age greater than 17 years."))
             if data.age_unit in ['2','3'] and data.tdoc_rips in ['CC','AS','TI']:
                 raise ValidationError(_("You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."))
             if data.tdoc_rips == 'MS' and data.age_unit != '3':
@@ -564,7 +564,7 @@ class DoctorAdministrativeData(models.Model):
     def create(self, vals):
         if vals.get('email', False):
             self._check_email(vals.get('email'))
-        if vals.get('tdoc', False) and vals['tdoc'] in ['cc','ti']:
+        if vals.get('tdoc_rips', False) and vals['tdoc_rips'] in ['CC','TI']:
             ref = 0
             if vals.get('ref', False):
                 ref = vals['ref']
@@ -579,7 +579,7 @@ class DoctorAdministrativeData(models.Model):
         res = super(DoctorAdministrativeData, self).create(vals)
         res._check_tdocs()
         partner_vals = res._get_related_partner_vals(vals)
-        partner_vals.update({'tdoc': 1})
+        partner_vals.update({'doctype': 1})
         partner_vals.update({'name': vals['patient_name']})        
         partner = self.env['res.partner'].create(partner_vals)
         res.partner_id = partner.id 
@@ -590,12 +590,12 @@ class DoctorAdministrativeData(models.Model):
         if vals.get('email', False):
             self._check_email(vals.get('email'))
         tools.image_resize_images(vals)
-        if vals.get('tdoc', False) or vals.get('ref', False):
-            if vals.get('tdoc', False):
-                tdoc = vals['tdoc']
+        if vals.get('tdoc_rips', False) or vals.get('ref', False):
+            if vals.get('tdoc_rips', False):
+                tdoc = vals['tdoc_rips']
             else:
-                tdoc = self.tdoc
-            if tdoc in ['cc','ti']:
+                tdoc = self.tdoc_rips
+            if tdoc in ['CC','TI']:
                 if vals.get('ref', False):
                     ref = vals['ref']
                 else:
@@ -630,7 +630,7 @@ class DoctorAdministrativeData(models.Model):
         return res
 
     _sql_constraints = [
-        ('ref_tdoc_unique', 'unique(name,tdoc)', 'Error creating! This patient already exists in the system.')
+        ('ref_tdoc_unique', 'unique(name,tdoc_rips)', 'Error creating! This patient already exists in the system.')
     ]
     
     @api.multi

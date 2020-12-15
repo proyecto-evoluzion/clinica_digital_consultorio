@@ -4689,7 +4689,7 @@ msgstr "Plaquetas:"
 #: code:addons/clinica_digital_consultorio/models/anhestesic_registry.py:269
 #: code:addons/clinica_digital_consultorio/models/doctor_attentions.py:223
 #: code:addons/clinica_digital_consultorio/models/doctor_calendar.py:184
-#: code:addons/clinica_digital_consultorio/models/doctor_details.py:408
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:472
 #: code:addons/clinica_digital_consultorio/models/doctor_epicrisis.py:148
 #: code:addons/clinica_digital_consultorio/models/medical_evolution.py:152
 #: code:addons/clinica_digital_consultorio/models/nurse_sheet.py:160
@@ -4698,7 +4698,49 @@ msgstr "Plaquetas:"
 #: code:addons/clinica_digital_consultorio/models/quirurgical_check_list.py:174
 #, python-format
 msgid "Please enter non zero value for Number ID"
-msgstr "Please enter non zero value for Number ID"
+msgstr "Por favor ingrese un Número de documento distinto a cero."
+
+#. module: clinica_digital_consultorio
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:481
+#, python-format
+msgid "You can only choose 'RC'-'CN' or 'MS' documents, for age less than 1 month."
+msgstr "La edad del paciente no coincide con el Tipo de Documento seleccionado, por favor verifique los datos ingresados."
+
+#. module: clinica_digital_consultorio
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:483
+#, python-format
+msgid "You cannot choose 'RC'-'CN' or 'MS' document types for age greater than 17 years."
+msgstr "La edad del paciente no coincide con el Tipo de Documento seleccionado, por favor verifique los datos ingresados."
+
+#. module: clinica_digital_consultorio
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:485
+#, python-format
+msgid "You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."
+msgstr "La edad del paciente no coincide con el Tipo de Documento seleccionado, por favor verifique los datos ingresados."
+
+#. module: clinica_digital_consultorio
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:487
+#, python-format
+msgid "You can only choose 'MS' document for age between 1 to 30 days."
+msgstr "La edad del paciente no coincide con el Tipo de Documento seleccionado, por favor verifique los datos ingresados."
+
+#. module: clinica_digital_consultorio
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:489
+#, python-format
+msgid "You can choose 'AS' document only if the age is greater than 17 years."
+msgstr "La edad del paciente no coincide con el Tipo de Documento seleccionado, por favor verifique los datos ingresados."
+
+#. module: clinica_digital_consultorio
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:491
+#, python-format
+msgid "The type of document for age is not supported"
+msgstr "La edad del paciente no coincide con el Tipo de Documento seleccionado, por favor verifique los datos ingresados."
+
+#. module: clinica_digital_consultorio
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:493
+#, python-format
+msgid "Age does not correspond to the document type."
+msgstr "La edad del paciente no coincide con el Tipo de Documento seleccionado, por favor verifique los datos ingresados."
 
 #. module: clinica_digital_consultorio
 #: code:addons/clinica_digital_consultorio/models/doctor_details.py:387
@@ -6664,66 +6706,6 @@ msgstr "You can choose 'AS' document only if the age is greater than 17 years."
 #, python-format
 msgid "Error! Plase add at least one procedure."
 msgstr "Error! Por favor agregue al menos un procedimiento en salud."
-
-#. module: clinica_digital_consultorio
-#: code:addons/clinica_digital_consultorio/models/anhestesic_registry.py:295
-#: code:addons/clinica_digital_consultorio/models/doctor_attentions.py:238
-#: code:addons/clinica_digital_consultorio/models/doctor_calendar.py:210
-#: code:addons/clinica_digital_consultorio/models/doctor_details.py:396
-#: code:addons/clinica_digital_consultorio/models/doctor_epicrisis.py:174
-#: code:addons/clinica_digital_consultorio/models/medical_evolution.py:178
-#: code:addons/clinica_digital_consultorio/models/nurse_sheet.py:186
-#: code:addons/clinica_digital_consultorio/models/plastic_surgery_sheet.py:219
-#: code:addons/clinica_digital_consultorio/models/quirurgic_sheet.py:192
-#: code:addons/clinica_digital_consultorio/models/quirurgical_check_list.py:200
-#, python-format
-msgid "You can only choose 'MS' document for age between 1 to 30 days."
-msgstr "You can only choose 'MS' document for age between 1 to 30 days."
-
-#. module: clinica_digital_consultorio
-#: code:addons/clinica_digital_consultorio/models/anhestesic_registry.py:289
-#: code:addons/clinica_digital_consultorio/models/doctor_attentions.py:232
-#: code:addons/clinica_digital_consultorio/models/doctor_calendar.py:204
-#: code:addons/clinica_digital_consultorio/models/doctor_details.py:390
-#: code:addons/clinica_digital_consultorio/models/doctor_epicrisis.py:168
-#: code:addons/clinica_digital_consultorio/models/medical_evolution.py:172
-#: code:addons/clinica_digital_consultorio/models/nurse_sheet.py:180
-#: code:addons/clinica_digital_consultorio/models/plastic_surgery_sheet.py:213
-#: code:addons/clinica_digital_consultorio/models/quirurgic_sheet.py:186
-#: code:addons/clinica_digital_consultorio/models/quirurgical_check_list.py:194
-#, python-format
-msgid "You can only choose 'RC' or 'MS' documents, for age less than 1 month."
-msgstr "You can only choose 'RC' or 'MS' documents, for age less than 1 month."
-
-#. module: clinica_digital_consultorio
-#: code:addons/clinica_digital_consultorio/models/anhestesic_registry.py:293
-#: code:addons/clinica_digital_consultorio/models/doctor_attentions.py:236
-#: code:addons/clinica_digital_consultorio/models/doctor_calendar.py:208
-#: code:addons/clinica_digital_consultorio/models/doctor_details.py:394
-#: code:addons/clinica_digital_consultorio/models/doctor_epicrisis.py:172
-#: code:addons/clinica_digital_consultorio/models/medical_evolution.py:176
-#: code:addons/clinica_digital_consultorio/models/nurse_sheet.py:184
-#: code:addons/clinica_digital_consultorio/models/plastic_surgery_sheet.py:217
-#: code:addons/clinica_digital_consultorio/models/quirurgic_sheet.py:190
-#: code:addons/clinica_digital_consultorio/models/quirurgical_check_list.py:198
-#, python-format
-msgid "You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."
-msgstr "You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."
-
-#. module: clinica_digital_consultorio
-#: code:addons/clinica_digital_consultorio/models/anhestesic_registry.py:291
-#: code:addons/clinica_digital_consultorio/models/doctor_attentions.py:234
-#: code:addons/clinica_digital_consultorio/models/doctor_calendar.py:206
-#: code:addons/clinica_digital_consultorio/models/doctor_details.py:392
-#: code:addons/clinica_digital_consultorio/models/doctor_epicrisis.py:170
-#: code:addons/clinica_digital_consultorio/models/medical_evolution.py:174
-#: code:addons/clinica_digital_consultorio/models/nurse_sheet.py:182
-#: code:addons/clinica_digital_consultorio/models/plastic_surgery_sheet.py:215
-#: code:addons/clinica_digital_consultorio/models/quirurgic_sheet.py:188
-#: code:addons/clinica_digital_consultorio/models/quirurgical_check_list.py:196
-#, python-format
-msgid "You cannot choose 'RC' or 'MS' document types for age greater than 17 years."
-msgstr "You cannot choose 'RC' or 'MS' document types for age greater than 17 years."
 
 #. module: clinica_digital_consultorio
 #: model:ir.model,name:clinica_digital_consultorio.model_assurance_plan

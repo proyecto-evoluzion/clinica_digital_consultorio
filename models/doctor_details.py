@@ -454,12 +454,49 @@ class DoctorAdministrativeData(models.Model):
             self.responsible_phone = ''
             self.other_responsible_relationship=''   
             
-    @api.onchange('ref', 'tdoc_rips')
+    @api.onchange('ref', 'tdoc_rips','name')
     def onchange_ref(self):
-        if self.ref:
-            self.name = str(self.ref) 
+        if self.tdoc_rips == 'CC':
+            if self.ref:
+                if len(str(self.ref)) != 10:
+                   raise ValidationError(_('Document number received only 10 character.'))
+                self.name = str(self.ref)
+        if self.tdoc_rips == 'TI':
+            if self.ref:
+                if len(str(self.ref)) != 11:
+                   raise ValidationError(_('Document number received only 11 character.'))
+        if self.tdoc_rips == 'CE':
+            if self.name:
+                if len(self.name) != 6:
+                   raise ValidationError(_('Document number received only 6 character.'))
+        if self.tdoc_rips in ['CD','PA', 'SC']:
+            if self.name:
+                if len(self.name) != 16:
+                   raise ValidationError(_('Document number received only 16 character.'))
+        if self.tdoc_rips == 'PE':
+            if self.name:
+                if len(self.name) != 15:
+                   raise ValidationError(_('Document number received only 15 character.'))
+        if self.tdoc_rips == 'RC':
+            if self.name:
+                if len(self.name) != 11:
+                   raise ValidationError(_('Document number received only 11 character.'))
+        if self.tdoc_rips == 'CN':
+            if self.name:
+                if len(self.name) != 9:
+                   raise ValidationError(_('Document number received only 9 character.'))
+        if self.tdoc_rips == 'AS':
+            if self.name:
+                if len(self.name) != 10:
+                   raise ValidationError(_('Document number received only 10 character.'))
+        if self.tdoc_rips == 'MS':
+            if self.name:
+                if len(self.name) != 12:
+                   raise ValidationError(_('Document number received only 12 character.'))
+
         if self.tdoc_rips and self.tdoc_rips in ['CC','TI'] and self.ref == 0:
             self.name = str(0)
+        
     
     def _check_email(self, email):
         if not tools.single_email_re.match(email):
@@ -491,17 +528,7 @@ class DoctorAdministrativeData(models.Model):
                 raise ValidationError(_("The type of document for age is not supported"))
             if data.tdoc_rips == 'CC' and data.age_unit == '1' and data.age < 18:
                 raise ValidationError(_("Age does not correspond to the document type."))
-    @api.multi
-    def _check_tdoslong(self):
-        for data in self:
-            if data.tdoc_rips =='CC':
-                validationnumber = len(str(data.ref))
-                if validationnumber > 10:
-                    raise ValidationError(_("Document number received only 10 character"))
-
-
-            
-
+    
         
     @api.multi
     def _get_related_partner_vals(self, vals):

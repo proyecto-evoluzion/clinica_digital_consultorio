@@ -494,8 +494,8 @@ class DoctorAdministrativeData(models.Model):
                 if len(self.name) != 12:
                    raise ValidationError(_('Document number received only 12 character.'))
 
-        if self.tdoc_rips and self.tdoc_rips in ['CC','TI'] and self.ref == 0:
-            self.name = str(0)
+        # if self.tdoc_rips and self.tdoc_rips in ['CC','TI'] and self.ref == 0:
+        #     self.name = str(0)
         
     
     def _check_email(self, email):

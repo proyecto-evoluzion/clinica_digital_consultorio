@@ -4701,46 +4701,100 @@ msgid "Please enter non zero value for Number ID"
 msgstr "Por favor ingrese un Número de documento distinto a cero."
 
 #. module: clinica_digital_consultorio
-#: code:addons/clinica_digital_consultorio/models/doctor_details.py:481
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:518
 #, python-format
 msgid "You can only choose 'RC'-'CN' or 'MS' documents, for age less than 1 month."
 msgstr "La edad del paciente no coincide con el Tipo de Documento seleccionado, por favor verifique los datos ingresados."
 
 #. module: clinica_digital_consultorio
-#: code:addons/clinica_digital_consultorio/models/doctor_details.py:483
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:520
 #, python-format
 msgid "You cannot choose 'RC'-'CN' or 'MS' document types for age greater than 17 years."
 msgstr "La edad del paciente no coincide con el Tipo de Documento seleccionado, por favor verifique los datos ingresados."
 
 #. module: clinica_digital_consultorio
-#: code:addons/clinica_digital_consultorio/models/doctor_details.py:485
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:522
 #, python-format
 msgid "You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."
 msgstr "La edad del paciente no coincide con el Tipo de Documento seleccionado, por favor verifique los datos ingresados."
 
 #. module: clinica_digital_consultorio
-#: code:addons/clinica_digital_consultorio/models/doctor_details.py:487
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:524
 #, python-format
 msgid "You can only choose 'MS' document for age between 1 to 30 days."
 msgstr "La edad del paciente no coincide con el Tipo de Documento seleccionado, por favor verifique los datos ingresados."
 
 #. module: clinica_digital_consultorio
-#: code:addons/clinica_digital_consultorio/models/doctor_details.py:489
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:526
 #, python-format
 msgid "You can choose 'AS' document only if the age is greater than 17 years."
 msgstr "La edad del paciente no coincide con el Tipo de Documento seleccionado, por favor verifique los datos ingresados."
 
 #. module: clinica_digital_consultorio
-#: code:addons/clinica_digital_consultorio/models/doctor_details.py:491
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:528
 #, python-format
 msgid "The type of document for age is not supported"
 msgstr "La edad del paciente no coincide con el Tipo de Documento seleccionado, por favor verifique los datos ingresados."
 
 #. module: clinica_digital_consultorio
-#: code:addons/clinica_digital_consultorio/models/doctor_details.py:493
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:530
 #, python-format
 msgid "Age does not correspond to the document type."
 msgstr "La edad del paciente no coincide con el Tipo de Documento seleccionado, por favor verifique los datos ingresados."
+
+#. module: clinica_digital_consultorio
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:462
+#, python-format
+msgid "Document number received only 10 character."
+msgstr "N° Documento solo acepta 10 Números."
+
+#. module: clinica_digital_consultorio
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:467
+#, python-format
+msgid "Document number received only 11 character."
+msgstr "N° Documento solo acepta 11 Números."
+
+#. module: clinica_digital_consultorio
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:471
+#, python-format
+msgid "Document number received only 6 character."
+msgstr "N° Documento solo acepta 6 Carateres."
+
+#. module: clinica_digital_consultorio
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:475
+#, python-format
+msgid "Document number received only 16 character."
+msgstr "N° Documento solo acepta 16 Carateres."
+
+#. module: clinica_digital_consultorio
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:475
+#, python-format
+msgid "Document number received only 15 character."
+msgstr "N° Documento solo acepta 15 Carateres."
+
+#. module: clinica_digital_consultorio
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:483
+#, python-format
+msgid "Document number received only 11 character."
+msgstr "N° Documento solo acepta 11 Carateres."
+
+#. module: clinica_digital_consultorio
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:487
+#, python-format
+msgid "Document number received only 9 character."
+msgstr "N° Documento solo acepta 9 Carateres."
+
+#. module: clinica_digital_consultorio
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:491
+#, python-format
+msgid "Document number received only 10 character."
+msgstr "N° Documento solo acepta 10 Carateres."
+
+#. module: clinica_digital_consultorio
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:495
+#, python-format
+msgid "Document number received only 12 character."
+msgstr "N° Documento solo acepta 12 Carateres."
 
 #. module: clinica_digital_consultorio
 #: code:addons/clinica_digital_consultorio/models/doctor_details.py:387

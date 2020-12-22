@@ -224,6 +224,7 @@ class DoctorAdministrativeData(models.Model):
     
     patient_name = fields.Char(string='Patient Name', size=60)
     name = fields.Char(string='Number ID')
+    ref2 = fields.Char(string='Number ID for TI or CC Documents')
     ref = fields.Integer(string='Number ID for TI or CC Documents')
     tdoc = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
     tdoc_rips = fields.Selection([('CC','CC - ID Document'),('CE','CE - Aliens Certificate'),
@@ -431,7 +432,7 @@ class DoctorAdministrativeData(models.Model):
     @api.onchange('birth_date','age_unit')
     def onchange_birth_date(self):
         if self.age_unit == '3':
-            self.tdoc = 'RC'
+            self.tdoc_rips = 'RC'
         if self.birth_date:
             warn_msg = self._check_birth_date(self.birth_date)
             if warn_msg:
@@ -454,48 +455,49 @@ class DoctorAdministrativeData(models.Model):
             self.responsible_phone = ''
             self.other_responsible_relationship=''   
             
-    @api.onchange('ref', 'tdoc_rips','name')
+    @api.onchange('ref2', 'tdoc_rips','name')
     def onchange_ref(self):
         if self.tdoc_rips == 'CC':
-            if self.ref:
-                if len(str(self.ref)) != 10:
+            if self.ref2:
+                if len(self.ref2) > 10:
                    raise ValidationError(_('Document number received only 10 character.'))
-                self.name = str(self.ref)
+                self.name = self.ref2
         if self.tdoc_rips == 'TI':
-            if self.ref:
-                if len(str(self.ref)) != 11:
+            if self.ref2:
+                if len(self.ref2) > 11:
                    raise ValidationError(_('Document number received only 11 character.'))
+                self.name = self.ref2
         if self.tdoc_rips == 'CE':
             if self.name:
-                if len(self.name) != 6:
+                if len(self.name) > 6:
                    raise ValidationError(_('Document number received only 6 character.'))
         if self.tdoc_rips in ['CD','PA', 'SC']:
             if self.name:
-                if len(self.name) != 16:
+                if len(self.name) > 16:
                    raise ValidationError(_('Document number received only 16 character.'))
         if self.tdoc_rips == 'PE':
             if self.name:
-                if len(self.name) != 15:
+                if len(self.name) > 15:
                    raise ValidationError(_('Document number received only 15 character.'))
         if self.tdoc_rips == 'RC':
             if self.name:
-                if len(self.name) != 11:
+                if len(self.name) > 11:
                    raise ValidationError(_('Document number received only 11 character.'))
         if self.tdoc_rips == 'CN':
             if self.name:
-                if len(self.name) != 9:
+                if len(self.name) > 9:
                    raise ValidationError(_('Document number received only 9 character.'))
         if self.tdoc_rips == 'AS':
             if self.name:
-                if len(self.name) != 10:
+                if len(self.name) > 10:
                    raise ValidationError(_('Document number received only 10 character.'))
         if self.tdoc_rips == 'MS':
             if self.name:
-                if len(self.name) != 12:
+                if len(self.name) > 12:
                    raise ValidationError(_('Document number received only 12 character.'))
 
-        # if self.tdoc_rips and self.tdoc_rips in ['CC','TI'] and self.ref == 0:
-        #     self.name = str(0)
+        if self.tdoc_rips and self.tdoc_rips in ['CC','TI'] and self.ref2 == '0':
+            self.name = str(0)
         
     
     def _check_email(self, email):
@@ -593,8 +595,8 @@ class DoctorAdministrativeData(models.Model):
             self._check_email(vals.get('email'))
         if vals.get('tdoc_rips', False) and vals['tdoc_rips'] in ['CC','TI']:
             ref = 0
-            if vals.get('ref', False):
-                ref = vals['ref']
+            if vals.get('ref2', False):
+                ref = vals['ref2']
             numberid = self._check_assign_numberid(ref)
             vals.update({'name': numberid})
         if vals.get('birth_date', False):
@@ -617,17 +619,18 @@ class DoctorAdministrativeData(models.Model):
         if vals.get('email', False):
             self._check_email(vals.get('email'))
         tools.image_resize_images(vals)
-        if vals.get('tdoc_rips', False) or vals.get('ref', False):
+        if vals.get('tdoc_rips', False) or vals.get('ref2', False):
             if vals.get('tdoc_rips', False):
                 tdoc = vals['tdoc_rips']
             else:
                 tdoc = self.tdoc_rips
             if tdoc in ['CC','TI']:
-                if vals.get('ref', False):
-                    ref = vals['ref']
+                if vals.get('ref2', False):
+                    ref = vals['ref2']
                 else:
-                    ref = self.ref
+                    ref = self.ref2
                 numberid = self._check_assign_numberid(ref)
+                vals.update({'name': numberid})
         if vals.get('birth_date', False):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:

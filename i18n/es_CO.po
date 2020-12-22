@@ -4746,55 +4746,55 @@ msgstr "La edad del paciente no coincide con el Tipo de Documento seleccionado, 
 #: code:addons/clinica_digital_consultorio/models/doctor_details.py:462
 #, python-format
 msgid "Document number received only 10 character."
-msgstr "N° Documento solo acepta 10 Números."
+msgstr "N° Documento acepta máximo 10 Números."
 
 #. module: clinica_digital_consultorio
 #: code:addons/clinica_digital_consultorio/models/doctor_details.py:467
 #, python-format
 msgid "Document number received only 11 character."
-msgstr "N° Documento solo acepta 11 Números."
+msgstr "N° Documento acepta máximo 11 Números."
 
 #. module: clinica_digital_consultorio
 #: code:addons/clinica_digital_consultorio/models/doctor_details.py:471
 #, python-format
 msgid "Document number received only 6 character."
-msgstr "N° Documento solo acepta 6 Carateres."
+msgstr "N° Documento acepta máximo 6 Carateres."
 
 #. module: clinica_digital_consultorio
 #: code:addons/clinica_digital_consultorio/models/doctor_details.py:475
 #, python-format
 msgid "Document number received only 16 character."
-msgstr "N° Documento solo acepta 16 Carateres."
+msgstr "N° Documento acepta máximo 16 Carateres."
 
 #. module: clinica_digital_consultorio
 #: code:addons/clinica_digital_consultorio/models/doctor_details.py:475
 #, python-format
 msgid "Document number received only 15 character."
-msgstr "N° Documento solo acepta 15 Carateres."
+msgstr "N° Documento acepta máximo 15 Carateres."
 
 #. module: clinica_digital_consultorio
 #: code:addons/clinica_digital_consultorio/models/doctor_details.py:483
 #, python-format
 msgid "Document number received only 11 character."
-msgstr "N° Documento solo acepta 11 Carateres."
+msgstr "N° Documento acepta máximo 11 Carateres."
 
 #. module: clinica_digital_consultorio
 #: code:addons/clinica_digital_consultorio/models/doctor_details.py:487
 #, python-format
 msgid "Document number received only 9 character."
-msgstr "N° Documento solo acepta 9 Carateres."
+msgstr "N° Documento acepta máximo 9 Carateres."
 
 #. module: clinica_digital_consultorio
 #: code:addons/clinica_digital_consultorio/models/doctor_details.py:491
 #, python-format
 msgid "Document number received only 10 character."
-msgstr "N° Documento solo acepta 10 Carateres."
+msgstr "N° Documento acepta máximo 10 Carateres."
 
 #. module: clinica_digital_consultorio
 #: code:addons/clinica_digital_consultorio/models/doctor_details.py:495
 #, python-format
 msgid "Document number received only 12 character."
-msgstr "N° Documento solo acepta 12 Carateres."
+msgstr "N° Documento acepta máximo 12 Carateres."
 
 #. module: clinica_digital_consultorio
 #: code:addons/clinica_digital_consultorio/models/doctor_details.py:387

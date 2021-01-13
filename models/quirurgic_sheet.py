@@ -153,7 +153,7 @@ class DoctorQuirurgicSheet(models.Model):
             self.birth_date = self.patient_id.birth_date
             self.blood_type = self.patient_id.blood_type
             self.blood_rh = self.patient_id.blood_rh
-            self.document_type = self.patient_id.tdoc
+            self.document_type = self.patient_id.tdoc_rips
             self.numberid = self.patient_id.name
             self.numberid_integer = self.patient_id.ref
             

@@ -56,7 +56,7 @@ class PlasticSurgerySheet(models.Model):
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict')
     date_attention = fields.Date('Date of attention', required=True, default=fields.Date.context_today)
     type_id = fields.Selection([('fist_time','First Time'),('control','Control')], string='Consultation Type', default='fist_time')
-    document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document', related="patient_id.tdoc")
+    document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document', related="patient_id.tdoc_rips")
     numberid = fields.Char(string='Number ID', related='patient_id.name')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents', related='patient_id.ref')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')

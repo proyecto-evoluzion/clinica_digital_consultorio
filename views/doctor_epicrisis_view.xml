@@ -78,7 +78,7 @@
 	   				<field name="patient_in_date"/>
 	   				<field name="patient_out_date"/>
 	   				<field name="patient_id"/>
-	   				<field name="tdoc"/>
+	   				<field name="tdoc_rips"/>
 	   				<field name="numberid"/>
               </tree>
           </field>

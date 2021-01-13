@@ -284,8 +284,8 @@
                                 <field name="name" placeholder="Number ID" required="1"/>
                             </div>
                             <div attrs="{'invisible':[('tdoc_rips','not in',['CC','TI'])]}">
-                                <label  for="ref" string="Number ID"/>
-                                <field name="ref" placeholder="Number ID" attrs="{'required': [('tdoc_rips','in',['CC','TI'])]}"/>
+                                <label  for="ref2" string="Number ID"/>
+                                <field widget="mask" data-inputmask="'alias': 'integer'" name="ref2" placeholder="Number ID" attrs="{'required': [('tdoc_rips','in',['CC','TI'])]}"/>
                             </div>
                         </div>
                     </div>

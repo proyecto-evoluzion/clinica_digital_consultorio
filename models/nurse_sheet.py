@@ -123,7 +123,7 @@ class ClinicaNurseSheet(models.Model):
             self.surname = self.patient_id.surname
             self.gender = self.patient_id.sex
             self.birth_date = self.patient_id.birth_date
-            self.document_type = self.patient_id.tdoc
+            self.document_type = self.patient_id.tdoc_rips
             self.numberid = self.patient_id.name
             self.numberid_integer = self.patient_id.ref
             self.blood_type = self.patient_id.blood_type

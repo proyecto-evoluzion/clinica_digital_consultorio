@@ -512,15 +512,15 @@ msgstr "AB"
 
 #. module: clinica_digital_consultorio
 #: selection:clinica.anhestesic.registry,document_type:0
-#: selection:clinica.medical.evolution,tdoc:0
+#: selection:clinica.medical.evolution,tdoc_rips:0
 #: selection:clinica.nurse.sheet,document_type:0
 #: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
-#: selection:doctor.epicrisis,tdoc:0 selection:doctor.patient,tdoc:0
+#: selection:doctor.epicrisis,tdoc_rips:0 selection:doctor.patient,tdoc_rips:0
 #: selection:doctor.presurgical.record,document_type:0
-#: selection:doctor.professional,tdoc:0
+#: selection:doctor.professional,tdoc_rips:0
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:doctor.surgical.technologist,document_type:0
@@ -1199,15 +1199,15 @@ msgstr "Victima - Asociado"
 
 #. module: clinica_digital_consultorio
 #: selection:clinica.anhestesic.registry,document_type:0
-#: selection:clinica.medical.evolution,tdoc:0
+#: selection:clinica.medical.evolution,tdoc_rips:0
 #: selection:clinica.nurse.sheet,document_type:0
 #: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
-#: selection:doctor.epicrisis,tdoc:0 selection:doctor.patient,tdoc:0
+#: selection:doctor.epicrisis,tdoc_rips:0 selection:doctor.patient,tdoc_rips:0
 #: selection:doctor.presurgical.record,document_type:0
-#: selection:doctor.professional,tdoc:0
+#: selection:doctor.professional,tdoc_rips:0
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:doctor.surgical.technologist,document_type:0
@@ -1217,15 +1217,15 @@ msgstr "CC - Cédula de ciudadanía"
 
 #. module: clinica_digital_consultorio
 #: selection:clinica.anhestesic.registry,document_type:0
-#: selection:clinica.medical.evolution,tdoc:0
+#: selection:clinica.medical.evolution,tdoc_rips:0
 #: selection:clinica.nurse.sheet,document_type:0
 #: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
-#: selection:doctor.epicrisis,tdoc:0 selection:doctor.patient,tdoc:0
+#: selection:doctor.epicrisis,tdoc_rips:0 selection:doctor.patient,tdoc_rips:0
 #: selection:doctor.presurgical.record,document_type:0
-#: selection:doctor.professional,tdoc:0
+#: selection:doctor.professional,tdoc_rips:0
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:doctor.surgical.technologist,document_type:0
@@ -3485,15 +3485,15 @@ msgstr "Líquidos"
 
 #. module: clinica_digital_consultorio
 #: selection:clinica.anhestesic.registry,document_type:0
-#: selection:clinica.medical.evolution,tdoc:0
+#: selection:clinica.medical.evolution,tdoc_rips:0
 #: selection:clinica.nurse.sheet,document_type:0
 #: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
-#: selection:doctor.epicrisis,tdoc:0 selection:doctor.patient,tdoc:0
+#: selection:doctor.epicrisis,tdoc_rips:0 selection:doctor.patient,tdoc_rips:0
 #: selection:doctor.presurgical.record,document_type:0
-#: selection:doctor.professional,tdoc:0
+#: selection:doctor.professional,tdoc_rips:0
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:doctor.surgical.technologist,document_type:0
@@ -4248,15 +4248,15 @@ msgstr "Cargar a factura"
 
 #. module: clinica_digital_consultorio
 #: selection:clinica.anhestesic.registry,document_type:0
-#: selection:clinica.medical.evolution,tdoc:0
+#: selection:clinica.medical.evolution,tdoc_rips:0
 #: selection:clinica.nurse.sheet,document_type:0
 #: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
-#: selection:doctor.epicrisis,tdoc:0 selection:doctor.patient,tdoc:0
+#: selection:doctor.epicrisis,tdoc_rips:0 selection:doctor.patient,tdoc_rips:0
 #: selection:doctor.presurgical.record,document_type:0
-#: selection:doctor.professional,tdoc:0
+#: selection:doctor.professional,tdoc_rips:0
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:doctor.surgical.technologist,document_type:0
@@ -5164,15 +5164,15 @@ msgstr "Cotización"
 
 #. module: clinica_digital_consultorio
 #: selection:clinica.anhestesic.registry,document_type:0
-#: selection:clinica.medical.evolution,tdoc:0
+#: selection:clinica.medical.evolution,tdoc_rips:0
 #: selection:clinica.nurse.sheet,document_type:0
 #: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
-#: selection:doctor.epicrisis,tdoc:0 selection:doctor.patient,tdoc:0
+#: selection:doctor.epicrisis,tdoc_rips:0 selection:doctor.patient,tdoc_rips:0
 #: selection:doctor.presurgical.record,document_type:0
-#: selection:doctor.professional,tdoc:0
+#: selection:doctor.professional,tdoc_rips:0
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:doctor.surgical.technologist,document_type:0
@@ -6038,15 +6038,15 @@ msgstr "TC:"
 
 #. module: clinica_digital_consultorio
 #: selection:clinica.anhestesic.registry,document_type:0
-#: selection:clinica.medical.evolution,tdoc:0
+#: selection:clinica.medical.evolution,tdoc_rips:0
 #: selection:clinica.nurse.sheet,document_type:0
 #: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
-#: selection:doctor.epicrisis,tdoc:0 selection:doctor.patient,tdoc:0
+#: selection:doctor.epicrisis,tdoc_rips:0 selection:doctor.patient,tdoc_rips:0
 #: selection:doctor.presurgical.record,document_type:0
-#: selection:doctor.professional,tdoc:0
+#: selection:doctor.professional,tdoc_rips:0
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:doctor.surgical.technologist,document_type:0
@@ -6268,16 +6268,16 @@ msgstr "Tipo de anestesia:"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_anhestesic_registry_document_type
-#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_medical_evolution_tdoc
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_medical_evolution_tdoc_rips
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_nurse_sheet_document_type
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_recovery_sheet_document_type
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_nurse_chief_sheet_document_type
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_plastic_surgery_document_type
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_quirurgical_check_list_document_type
-#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_epicrisis_tdoc
-#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_tdoc
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_epicrisis_tdoc_rips
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_tdoc_rips
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_presurgical_record_document_type
-#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_professional_tdoc
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_professional_tdoc_rips
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_quirurgic_sheet_document_type
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_waiting_room_document_type
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_prescription_document_type

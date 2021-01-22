@@ -50,7 +50,7 @@
                   <field name="name"/>
      				<field name="procedure_date"/>
      				<field name="patient_id"/>
-     				<field name="tdoc"/>
+     				<field name="tdoc_rips"/>
      				<field name="numberid"/>
               </tree>
           </field>

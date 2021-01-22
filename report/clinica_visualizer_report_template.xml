@@ -669,8 +669,8 @@
        				<tr><td colspan="2" style="text-align:center; font-size: 14px;"><strong>PATIENT DATA</strong></td></tr>
        				<tr>
                 <td colspan="1" style="width:60%; ">
-                  <t t-if="plastic_surgery.patient_id.tdoc">
-                    <strong>Doc. type: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.tdoc"/><br/>
+                  <t t-if="plastic_surgery.patient_id.tdoc_rips">
+                    <strong>Doc. type: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.tdoc_rips"/><br/>
                   </t>
                   <t t-if="plastic_surgery.patient_id.ref">
                     <strong>Number ID: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.ref"/><br/>
@@ -993,8 +993,8 @@
               <tr><td colspan="2" style="text-align:center; font-size: 14px;"><strong>DATOS DEL PACIENTE</strong></td></tr>
               <tr>
                 <td colspan="1" style="width:60%;">
-                  <t t-if="complete_plastic_surgery.patient_id.tdoc">
-                    <strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.tdoc"/><br/>
+                  <t t-if="complete_plastic_surgery.patient_id.tdoc_rips">
+                    <strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.tdoc_rips"/><br/>
                   </t>
                   <t t-if="complete_plastic_surgery.patient_id.ref">
                     <strong>Número Documento: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.ref"/><br/>

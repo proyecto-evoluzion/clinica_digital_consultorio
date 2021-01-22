@@ -344,6 +344,7 @@
                             <field name="residence_country_id" string="Country" placeholder="Country" options="{'no_create_edit': True}"/>
                             <field name="residence_city_id" string="Location/City/Town" placeholder="Location/City/Town" 
                                     options="{'no_create_edit': True}"  domain="[('state_id','=',residence_department_id),('country_id','=',residence_country_id)]"/>
+                            <field name="residence_area_id" string="Residence Area" placeholder="Residence Area"/>
                         </group>
                         <group>
                             <field name="residence_department_id" string="Departamento / D.C." placeholder="Department" options="{'no_create_edit': True}"

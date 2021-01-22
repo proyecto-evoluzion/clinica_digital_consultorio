@@ -47,10 +47,10 @@ class MedicalOrderEvolution(models.Model):
     
     name = fields.Char(string="Name", copy=False)
     procedure_date = fields.Datetime(string='Procedure Date', default=fields.Datetime.now, copy=False)
-    tdoc = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
+    tdoc_rips = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                              ('pa','PA - Passport'),('rc','RC - Civil Registry'),
                              ('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),
-                             ('ms','MS - Unidentified Minor')], string='Type of Document', related="patient_id.tdoc")
+                             ('ms','MS - Unidentified Minor')], string='Type of Document', related="patient_id.tdoc_rips")
     numberid = fields.Char(string='Number ID', related='patient_id.name')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents', related='patient_id.ref')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
@@ -140,18 +140,18 @@ class MedicalOrderEvolution(models.Model):
             self.surname = self.patient_id.surname
             self.sex = self.patient_id.sex
             self.birth_date = self.patient_id.birth_date
-            self.tdoc = self.patient_id.tdoc
+            self.tdoc_rips = self.patient_id.tdoc_rips
             self.numberid = self.patient_id.name
             self.numberid_integer = self.patient_id.ref
             self.blood_type = self.patient_id.blood_type
             self.blood_rh = self.patient_id.blood_rh
             
             
-    @api.onchange('tdoc','numberid_integer','numberid')
+    @api.onchange('tdoc_rips','numberid_integer','numberid')
     def onchange_numberid(self):
-        if self.tdoc and self.tdoc not in ['cc','ti']:
+        if self.tdoc_rips and self.tdoc_rips not in ['cc','ti']:
             self.numberid_integer = 0
-        if self.tdoc and self.tdoc in ['cc','ti'] and self.numberid_integer:
+        if self.tdoc_rips and self.tdoc_rips in ['cc','ti'] and self.numberid_integer:
             self.numberid = self.numberid_integer
             
     def _check_assign_numberid(self, numberid_integer):
@@ -175,21 +175,21 @@ class MedicalOrderEvolution(models.Model):
     @api.multi
     def _check_tdocs(self):
         for anhestesic in self:
-            if anhestesic.age_meassure_unit == '3' and anhestesic.tdoc not in ['rc','ms']:
+            if anhestesic.age_meassure_unit == '3' and anhestesic.tdoc_rips not in ['rc','ms']:
                 raise ValidationError(_("You can only choose 'RC' or 'MS' documents, for age less than 1 month."))
-            if anhestesic.age > 17 and anhestesic.age_meassure_unit == '1' and anhestesic.tdoc in ['rc','ms']:
+            if anhestesic.age > 17 and anhestesic.age_meassure_unit == '1' and anhestesic.tdoc_rips in ['rc','ms']:
                 raise ValidationError(_("You cannot choose 'RC' or 'MS' document types for age greater than 17 years."))
-            if anhestesic.age_meassure_unit in ['2','3'] and anhestesic.tdoc in ['cc','as','ti']:
+            if anhestesic.age_meassure_unit in ['2','3'] and anhestesic.tdoc_rips in ['cc','as','ti']:
                 raise ValidationError(_("You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."))
-            if anhestesic.tdoc == 'ms' and anhestesic.age_meassure_unit != '3':
+            if anhestesic.tdoc_rips == 'ms' and anhestesic.age_meassure_unit != '3':
                 raise ValidationError(_("You can only choose 'MS' document for age between 1 to 30 days."))
-            if anhestesic.tdoc == 'as' and anhestesic.age_meassure_unit == '1' and anhestesic.age <= 17:
+            if anhestesic.tdoc_rips == 'as' and anhestesic.age_meassure_unit == '1' and anhestesic.age <= 17:
                 raise ValidationError(_("You can choose 'AS' document only if the age is greater than 17 years."))
 
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code('medical.evolution') or '/'
-        if vals.get('tdoc', False) and vals['tdoc'] in ['cc','ti']:
+        if vals.get('tdoc_rips', False) and vals['tdoc_rips'] in ['cc','ti']:
             numberid_integer = 0
             if vals.get('numberid_integer', False):
                 numberid_integer = vals['numberid_integer']
@@ -212,12 +212,12 @@ class MedicalOrderEvolution(models.Model):
     
     @api.multi
     def write(self, vals):
-        if vals.get('tdoc', False) or 'numberid_integer' in  vals:
-            if vals.get('tdoc', False):
-                tdoc = vals['tdoc']
+        if vals.get('tdoc_rips', False) or 'numberid_integer' in  vals:
+            if vals.get('tdoc_rips', False):
+                tdoc_rips = vals['tdoc_rips']
             else:
-                tdoc = self.tdoc
-            if tdoc in ['cc','ti']:
+                tdoc_rips = self.tdoc_rips
+            if tdoc_rips in ['cc','ti']:
                 if 'numberid_integer' in  vals:
                     numberid_integer = vals['numberid_integer']
                 else:

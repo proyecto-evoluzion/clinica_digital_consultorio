@@ -42,7 +42,7 @@ class AnhestesicRegistry(models.Model):
     intervention_date = fields.Datetime(string='Intervention Date', default=fields.Datetime.now, copy=False)
     document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                                       ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
-                                      ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document', related="patient_id.tdoc")
+                                      ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document', related="patient_id.tdoc_rips")
     numberid = fields.Char(string='Number ID')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
@@ -251,7 +251,7 @@ class AnhestesicRegistry(models.Model):
             self.surname = self.patient_id.surname
             self.gender = self.patient_id.sex
             self.birth_date = self.patient_id.birth_date
-            self.document_type = self.patient_id.tdoc
+            self.document_type = self.patient_id.tdoc_rips
             self.numberid = self.patient_id.name
             self.numberid_integer = self.patient_id.ref
             self.blood_type = self.patient_id.blood_type

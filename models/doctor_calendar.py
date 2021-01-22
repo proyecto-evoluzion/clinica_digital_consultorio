@@ -186,7 +186,7 @@ class DoctorWaitingRoom(models.Model):
             patient_id = patient_id.id
         else:
             patient_id = models.execute_kw(db, uid, password, 'doctor.patient', 'create', [{
-                'tdoc': plastic_surgery_obj.patient_id.tdoc or '',
+                'tdoc_rips': plastic_surgery_obj.patient_id.tdoc_rips or '',
                 'ref': plastic_surgery_obj.patient_id.ref or '',
                 'name': plastic_surgery_obj.patient_id.name or '',
                 'lastname': plastic_surgery_obj.patient_id.lastname or '',
@@ -469,7 +469,7 @@ class DoctorWaitingRoom(models.Model):
             self.gender = self.patient_id.sex
             self.birth_date = self.patient_id.birth_date
             self.phone = self.patient_id.phone
-            self.document_type = self.patient_id.tdoc
+            self.document_type = self.patient_id.tdoc_rips
             self.numberid = self.patient_id.name
             self.numberid_integer = self.patient_id.ref
             

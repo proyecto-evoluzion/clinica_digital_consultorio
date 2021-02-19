@@ -28,7 +28,9 @@ class Partner(models.Model):
     
     professional_created = fields.Boolean(string="Professional Created", copy=False)
     is_assurance = fields.Boolean(string="Is it an Assurance Company?", copy=False)
+    patient_id = fields.Many2one('doctor.patient',string='Assurance C')
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')
+    
         
         
         

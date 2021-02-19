@@ -324,8 +324,12 @@
                             <field name="link_type" string="Tipo Vinculación"/>
                         </group>
                         <group name='group_insurer_info_sub2'>
-                            <field name="insurer_id"
+                          <field name="insurer_id"
                                 domain="['&amp;',('is_company','=',True), ('is_assurance', '=', True)]" options="{'no_create_edit': True}" string="Aseguradora"/>
+
+                            <field name="insurer_ids" string="Assurance Other" />
+
+
                             <field name="email"/>
                             <field name="residence_address" string="Address" placeholder="Address"/>
                         </group>
@@ -367,6 +371,8 @@
                         </group> -->
                     </group>
 
+
+
                     <group name='group_accompany_responsible_personal_info' >
                         <group name='group_accompany_personal_info' string="Accompany Person's Details">
                             <field name="accompany_name" string="Nombre"/>
@@ -380,6 +386,7 @@
                             </div>
                             <field name="accompany_phone" string="Número de Teléfono de la Persona Acompañante"/>
                             <field name="copy_responsible_info" string="Es Responsable"/>
+                            
                         </group>
                         <group name='group_responsible_personal_info' string="Responsible Person's Details">
                             <field name="responsible_name" string="Nombre"/>
@@ -393,7 +400,23 @@
                             </div>
                             <field name="responsible_phone" string="Número de Teléfono de la Persona Responsable"/>
                         </group>
-                    </group>
+                     </group>
+
+                     <!-- <group name='group_insurer_info_eps' string="Insure Details" col="4">
+                            
+                            <field name="add_insure_info" string="Add insure" />-->
+                   
+                           <!-- <field name="policy_number" string="Policy number"/>-->
+                          <!--  <field name="default_insure" string="Default"/>-->
+                           <!-- <field name="insurer_id" string="Assurance Company"/>-->
+
+                           <!-- <field name="plan" string="plan_insure"/>
+
+                      </group>-->
+
+                     
+                
+
 <!--                    <group name='group_parent_info' > -->
 <!--                        <group name='group_father_info' string="Father's Details"> -->
 <!--                            <field name="father_name"/> -->

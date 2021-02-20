@@ -290,6 +290,10 @@ class DoctorAdministrativeData(models.Model):
     other_responsible_relationship = fields.Char(string="Other Responsible Person's Relationship")
     responsible_phone = fields.Char("Responsible Person's Phone Number")
     copy_responsible_info = fields.Boolean(string="Is Also Responsible")
+#    add_insure_info = fields.Boolean(string="Add insure")
+#    policy_number = fields.Char(string="Policy number")
+#    default_insure = fields.Boolean(string="Default")
+  
 
 #     father_name = fields.Char(string="Father's Name")
 #     father_occupation = fields.Char(string="Father's Occupation")
@@ -304,6 +308,11 @@ class DoctorAdministrativeData(models.Model):
 #     primary_payer =  fields.Selection([('private_user','Usuario Particular'),('eps','EPS'),
 #                                        ('another_insurer','Otra Aseguradora'),('mixed','Pago Mixto')], string="Primary Payer")
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')
+    insurer_ids = fields.One2many('res.partner', 'patient_id', string="Assurance Other", copy=False)
+    
+#   plan = fields.Many2one('doctor.insurer.plan', string='plan_insure')
+  
+
 #     assurance_plan_id = fields.Many2one('assurance.plan', string='Assurer Plans')
 #     other_assurance_partner_id = fields.Many2one('res.partner',string='Other Assurance Company')
 #     other_assurance_plan_id = fields.Many2one('assurance.plan', string='Other Assurer Plans')

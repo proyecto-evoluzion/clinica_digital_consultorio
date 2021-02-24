@@ -7169,7 +7169,7 @@ msgstr "Contrato"
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_contracts_code
 msgid "Contracts Code"
-msgstr "Codigo contrato"
+msgstr "Codigo de contrato"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_contracts_insurer_id
@@ -7221,6 +7221,24 @@ msgstr "Codigo de plan"
 msgid "Procedures"
 msgstr "Procedimientos"
 
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_insurer_ids
+msgid "Assurance Other"
+msgstr "Otras Aseguradoras"
 
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_residence_area_id
+msgid "Residence Area"
+msgstr "Area de Residencia"
+
+#. module: clinica_digital_consultorio
+#: selection:doctor.patient,residence_area_id:0
+msgid "Urban"
+msgstr "Urbano"
+
+#. module: clinica_digital_consultorio
+#: selection:doctor.patient,residence_area_id:0
+msgid "Rural"
+msgstr "Rural"
 
 

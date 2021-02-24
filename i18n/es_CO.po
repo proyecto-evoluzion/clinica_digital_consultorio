@@ -7154,3 +7154,43 @@ msgstr "<strong style="font-size:12px;">PRESCRIPCIÓN</strong><br/>"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.prescription_visualizer_template
 msgid "Age:"
 msgstr "Edad:"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_contracts_name
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_contracts_code
+msgid "Contracts Code"
+msgstr "Codigo contrato"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_contracts_insurer_id
+msgid "Assurance Company"
+msgstr "Aseguradora"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_contracts_start_date
+msgid "From"
+msgstr "De"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_contracts_end_date
+msgid "To"
+msgstr "Hasta"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_contracts_value
+msgid "Value"
+msgstr "Valor"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_contracts_active
+msgid "active"
+msgstr "Activo"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_contracts_plan_ids
+msgid "Plans"
+msgstr "Planes"

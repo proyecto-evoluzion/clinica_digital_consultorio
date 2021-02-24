@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<odoo>
+
+
+
+	<record id="doctor_contracts_form" model="ir.ui.view">
+		<field name="name">doctor.contracts.form</field>
+		<field name="model">doctor.contracts</field>
+		<field name="arch" type="xml">
+			<form string="Contracts">
+				<sheet>
+					<group>
+						<field name="name" string="Contract"/>
+						<field name="code" string="Contracts Code"/>
+						<field name="insurer_id" string="Assurance Company"/>
+						<span>
+                                <label for="start_date"/>
+                                <field name="start_date" string="From" style="width: 50%"/>
+                            </span>
+                            <span>
+                                <label for="end_date"/>
+                                <field name="end_date" string="To" style="width: 50%"/>
+                            </span>
+                        <field name="value" string="Value"/>
+                        <field name="active" string="active"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+    </record>
+
+
+    <record id="doctor_contracts_tree" model="ir.ui.view">
+            <field name="name">doctor.contracts.tree</field>
+            <field name="model">doctor.contracts</field>
+            <field name="arch" type="xml">
+                <tree string="Contracts">
+                    <field name="name" string="Contract"/>
+                    <field name="start_date" string="From"/>
+                    <field name="end_date" string="To"/>
+                    <field name="value" string="Value"/>
+                    <field name="insurer_id" string="Assurance Company"/>
+                    <field name="active" string="active"/>
+                </tree>
+            </field>
+    </record>
+
+    <record id="action_doctor_contracts" model="ir.actions.act_window">
+            <field name="name">Contracts</field>
+            <field name="res_model">doctor.contracts</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="doctor_contracts_form"/>
+          
+    </record>
+
+    <menuitem id="menu_doctor_contracts"
+            name="Contract"
+            parent="menu_doctor_config_details"
+            action="clinica_digital_consultorio.action_doctor_contracts"
+            sequence="4"/>
+
+
+   
+</odoo>

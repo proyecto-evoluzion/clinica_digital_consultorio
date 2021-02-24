@@ -40,12 +40,26 @@ class AssurancePlan(models.Model):
     name = fields.Char(string='Plan')
     code = fields.Char(string='Plan Code')
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')
+    cups_ids = fields.Many2many('doctor.cups.code', string='Procedures')
     
 # class DoctorPatientOccupation(models.Model):
 #     _name = "doctor.patient.occupation"
     
 #     code = fields.Char(string='Code', copy=False)
 #     name = fields.Char(string='Description')
+
+class Contracts(models.Model):
+    _name = "doctor.contracts"
+    
+    name = fields.Char(string='Contract')
+    code = fields.Char(string='Contracts Code')
+    insurer_id = fields.Many2one('res.partner',string='Assurance Company')
+    start_date = fields.Date(string='From')
+    end_date = fields.Date(string='To')
+    value = fields.Float(string='Value')
+    active = fields.Boolean(string='active', default=True)
+
+
 
 class DoctorDiseases(models.Model):
     _name = "doctor.diseases"
@@ -308,7 +322,7 @@ class DoctorAdministrativeData(models.Model):
 #     primary_payer =  fields.Selection([('private_user','Usuario Particular'),('eps','EPS'),
 #                                        ('another_insurer','Otra Aseguradora'),('mixed','Pago Mixto')], string="Primary Payer")
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')
-    insurer_ids = fields.One2many('res.partner', 'patient_id', string="Assurance Other", copy=False)
+    insurer_ids = fields.Many2many('res.partner', string="Assurance Other", domain=[('is_assurance', '=', True)])
     
 #   plan = fields.Many2one('doctor.insurer.plan', string='plan_insure')
   

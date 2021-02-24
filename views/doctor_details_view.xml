@@ -13,8 +13,14 @@
                             <field name='code' required="1"/>
                             <field name='insurer_id' required="1" domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
                         </group>
-                        <group>
-                        </group>
+                    </group>
+                    <group>
+                        <field name='cups_ids'>
+                            <tree editable="bottom">
+                                <field name='name'/>
+                                <field name='list_price'/>
+                            </tree>
+                        </field>
                     </group>
                 </sheet>
             </form>

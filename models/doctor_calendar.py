@@ -316,9 +316,15 @@ class DoctorWaitingRoom(models.Model):
     schedule_id = fields.Many2one('doctor.schedule', string='Schedule', copy=False)
     procedure_date = fields.Datetime(string='Procedure Date', default=fields.Datetime.now, copy=False)
     procedure_end_date = fields.Datetime(string='Procedure End Date', copy=False)
-    document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
-                                      ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
-                                      ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
+    # tdoc_rips = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
+    #                                   ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
+    #                                   ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
+    document_type = fields.Selection([('CC','CC - ID Document'),('CE','CE - Aliens Certificate'),
+                                      ('PA','PA - Passport'),('RC','RC - Civil Registry'),('TI','TI - Identity Card'),
+                                      ('AS','AS - Unidentified Adult'),('MS','MS - Unidentified Minor'),
+                                      ('CD','CD - Diplomatic card'),('SC','SC - safe passage'),
+                                      ('PE','PE - Special Permit of Permanence'),
+                                      ('CN','CN - Birth certificate')], string='Type of Document')
     numberid = fields.Char(string='Number ID')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
@@ -483,9 +489,9 @@ class DoctorWaitingRoom(models.Model):
             
     @api.onchange('document_type','numberid_integer','numberid')
     def onchange_numberid(self):
-        if self.document_type and self.document_type not in ['cc','ti']:
+        if self.document_type and self.document_type not in ['CC','TI']:
             self.numberid_integer = 0
-        if self.document_type and self.document_type in ['cc','ti'] and self.numberid_integer:
+        if self.document_type and self.document_type in ['CC','TI'] and self.numberid_integer:
             self.numberid = self.numberid_integer
             
     @api.onchange('procedure_date','appointment_type_id')
@@ -519,15 +525,15 @@ class DoctorWaitingRoom(models.Model):
     @api.multi
     def _check_document_types(self):
         for room in self:
-            if room.age_meassure_unit == '3' and room.document_type not in ['rc','ms']:
+            if room.age_meassure_unit == '3' and room.document_type not in ['RC','MS']:
                 raise ValidationError(_("You can only choose 'RC' or 'MS' documents, for age less than 1 month."))
-            if room.age > 17 and room.age_meassure_unit == '1' and room.document_type in ['rc','ms']:
+            if room.age > 17 and room.age_meassure_unit == '1' and room.document_type in ['RC','MS']:
                 raise ValidationError(_("You cannot choose 'RC' or 'MS' document types for age greater than 17 years."))
-            if room.age_meassure_unit in ['2','3'] and room.document_type in ['cc','as','ti']:
+            if room.age_meassure_unit in ['2','3'] and room.document_type in ['CC','AS','TI']:
                 raise ValidationError(_("You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."))
-            if room.document_type == 'ms' and room.age_meassure_unit != '3':
+            if room.document_type == 'MS' and room.age_meassure_unit != '3':
                 raise ValidationError(_("You can only choose 'MS' document for age between 1 to 30 days."))
-            if room.document_type == 'as' and room.age_meassure_unit == '1' and room.age <= 17:
+            if room.document_type == 'AS' and room.age_meassure_unit == '1' and room.age <= 17:
                 raise ValidationError(_("You can choose 'AS' document only if the age is greater than 17 years."))
       
     @api.multi
@@ -692,7 +698,7 @@ class DoctorWaitingRoom(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code('doctor.surgery.room.procedure') or '/'
         else:
             vals['name'] = self.env['ir.sequence'].next_by_code('doctor.waiting.room') or '/'
-        if vals.get('document_type', False) and vals['document_type'] in ['cc','ti']:
+        if vals.get('document_type', False) and vals['document_type'] in ['CC','TI']:
             numberid_integer = 0
             if vals.get('numberid_integer', False):
                 numberid_integer = vals['numberid_integer']
@@ -729,7 +735,7 @@ class DoctorWaitingRoom(models.Model):
                 document_type = vals['document_type']
             else:
                 document_type = self.document_type
-            if document_type in ['cc','ti']:
+            if document_type in ['CC','TI']:
                 if 'numberid_integer' in  vals:
                     numberid_integer = vals['numberid_integer']
                 else:

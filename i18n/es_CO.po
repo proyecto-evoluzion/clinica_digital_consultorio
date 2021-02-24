@@ -7203,6 +7203,24 @@ msgstr "Planes"
 
 #. module: clinica_digital_consultorio
 #: model:ir.actions.act_window,name:clinica_digital_consultorio.action_doctor_contracts
-msgid "Contract"
+msgid "Contracts"
 msgstr "Contrato"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.menu,name:clinica_digital_consultorio.menu_doctor_contracts
+msgid "Contract"
+msgstr "Contracto"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_insurer_plan_code
+msgid "Plan Code"
+msgstr "Codigo de plan"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_insurer_plan_cups_ids
+msgid "Procedures"
+msgstr "Procedimientos"
+
+
+
 

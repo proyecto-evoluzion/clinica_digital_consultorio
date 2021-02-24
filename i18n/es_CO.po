@@ -7156,7 +7156,13 @@ msgid "Age:"
 msgstr "Edad:"
 
 #. module: clinica_digital_consultorio
-#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_contracts_name
+#: code:addons/clinica_digital_consultorio/models/doctor_details.py:54
+#, python-format
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_contracts_contract
 msgid "Contract"
 msgstr "Contrato"
 
@@ -7194,3 +7200,9 @@ msgstr "Activo"
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_contracts_plan_ids
 msgid "Plans"
 msgstr "Planes"
+
+#. module: clinica_digital_consultorio
+#: model:ir.actions.act_window,name:clinica_digital_consultorio.action_doctor_contracts
+msgid "Contract"
+msgstr "Contrato"
+

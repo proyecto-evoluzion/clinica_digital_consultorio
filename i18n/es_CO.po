@@ -7209,7 +7209,7 @@ msgstr "Contrato"
 #. module: clinica_digital_consultorio
 #: model:ir.ui.menu,name:clinica_digital_consultorio.menu_doctor_contracts
 msgid "Contract"
-msgstr "Contracto"
+msgstr "Contrato"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_insurer_plan_code

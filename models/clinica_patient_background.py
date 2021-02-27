@@ -43,3 +43,12 @@ class ConfigBackground(models.Model):
     
     background_type = fields.Text(string='Background Type')
     background = fields.Text(string='Background')
+
+
+class ClinicaPatientBackgroundType(models.Model):
+	_name ="clinica.patient.background.type"
+
+	name = fields.Char(string="Name backgroud")
+	code = fields.Char(string="code background")
+	
+	

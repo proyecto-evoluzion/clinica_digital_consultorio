@@ -38,7 +38,7 @@ class AssurancePlan(models.Model):
     _name = "doctor.insurer.plan"
     
     name = fields.Char(string='Plan')
-    code = fields.Char(string='Plan Code')
+#   code = fields.Char(string='Plan Code')
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')
     cups_ids = fields.Many2many('product.product', string='Procedures')
     
@@ -52,7 +52,7 @@ class Contracts(models.Model):
     _name = "doctor.contracts"
     
     name = fields.Char(string='Contract')
-    code = fields.Char(string='Contracts Code')
+#   code = fields.Char(string='Contracts Code')
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')
     start_date = fields.Date(string='From')
     end_date = fields.Date(string='To')

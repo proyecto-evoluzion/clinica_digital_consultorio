@@ -7241,4 +7241,19 @@ msgstr "Urbano"
 msgid "Rural"
 msgstr "Rural"
 
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_policy_number
+msgid "Policy number"
+msgstr "Numero de Poliza"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_plan
+msgid "Plan"
+msgstr "Plan Asociado"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.doctor_administrative_data_form
+msgid "Insure Details"
+msgstr "Detalles de Aseguradora"
+
 

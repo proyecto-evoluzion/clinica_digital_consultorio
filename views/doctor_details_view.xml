@@ -408,17 +408,17 @@
                         </group>
                      </group>
 
-                     <!-- <group name='group_insurer_info_eps' string="Insure Details" col="4">
+                     <group name='group_insurer_info_eps' string="Insure Details" col="4">
                             
-                            <field name="add_insure_info" string="Add insure" />-->
+                           <!-- <field name="add_insure_info" string="Add insure" />-->
                    
-                           <!-- <field name="policy_number" string="Policy number"/>-->
+                           <field name="policy_number" string="Policy number"/>
                           <!--  <field name="default_insure" string="Default"/>-->
                            <!-- <field name="insurer_id" string="Assurance Company"/>-->
 
-                           <!-- <field name="plan" string="plan_insure"/>
+                          <field name="plan" string="Plan"/>
 
-                      </group>-->
+                      </group>
 
                      
                 

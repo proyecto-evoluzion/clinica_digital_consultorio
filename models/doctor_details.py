@@ -38,7 +38,7 @@ class AssurancePlan(models.Model):
     _name = "doctor.insurer.plan"
     
     name = fields.Char(string='Plan')
-#   code = fields.Char(string='Plan Code')
+    code = fields.Char(string='Plan Code')
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')
     cups_ids = fields.Many2many('product.product', string='Procedures')
     
@@ -305,7 +305,7 @@ class DoctorAdministrativeData(models.Model):
     responsible_phone = fields.Char("Responsible Person's Phone Number")
     copy_responsible_info = fields.Boolean(string="Is Also Responsible")
 #    add_insure_info = fields.Boolean(string="Add insure")
-#    policy_number = fields.Char(string="Policy number")
+    policy_number = fields.Char(string="Policy number")
 #    default_insure = fields.Boolean(string="Default")
   
 
@@ -324,7 +324,7 @@ class DoctorAdministrativeData(models.Model):
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')
     insurer_ids = fields.Many2many('res.partner', string="Assurance Other", domain=[('is_assurance', '=', True)])
     
-#   plan = fields.Many2one('doctor.insurer.plan', string='plan_insure')
+    plan = fields.Many2one('doctor.insurer.plan', string='Plan')
   
 
 #     assurance_plan_id = fields.Many2one('assurance.plan', string='Assurer Plans')

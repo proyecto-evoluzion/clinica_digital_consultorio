@@ -58,7 +58,7 @@ class PlasticSurgerySheet(models.Model):
         if system_review_obj:
             for system_rev in system_review_obj:
                 system_rev_vals = {
-                    'type_review': system_rev.type_review,
+                    'review_type_id': system_rev.review_type_id.id,
                     'system_review': system_rev.system_review
                 }
                 rec = self.env['clinica.system.review'].create(system_rev_vals)
@@ -252,7 +252,7 @@ class PlasticSurgerySheet(models.Model):
                 patient_background_upd = []
                 for patient_bk in patient_background_obj:
                     patient_background_upd.append({'patient_id': patient_bk.patient_id.id,
-                                            'background_type': patient_bk.background_type,
+                                            'background_type_id': patient_bk.background_type_id.id,
                                             'background': patient_bk.background})
                 if patient_background_upd:
                     self.update({'background_ids': [(6,0,[])]})
@@ -264,12 +264,13 @@ class PlasticSurgerySheet(models.Model):
                 if background_obj:
                     for background in background_obj:
                         background_vals = {
-                            'background_type': background.background_type,
-                            'background': background.background
+                            'background_type_id': background.background_type_id.id,
+                            'background': background.background,
+                            'patient_id': self.patient_id.id,
                         }
-                    rec = self.env['clinica.patient.background'].create(background_vals)
-                    background_list.append(rec.id)
-                self.update({'background_ids': [(6,0,background_list)]})
+                        rec = self.env['clinica.patient.background'].create(background_vals)
+                        background_list.append(rec.id)
+                    self.update({'background_ids': [(6,0,background_list)]})
 
     @api.multi
     @api.depends('birth_date')
@@ -436,21 +437,20 @@ class SystemsReviews(models.Model):
     _name = "clinica.system.review"
 
     plastic_surgery_id = fields.Many2one('complete.clinica.plastic.surgery', string='FCC')
-    type_review = fields.Char(string="Type Review")
+    review_type_id = fields.Many2one('clinica.system.review.type', 'Review Type')
     system_review = fields.Char(string="System Review")
 
 class ConfigSystemsReviews(models.Model):
     _name = "config.clinica.system.review"
 
-    type_review = fields.Char(string="Type Review")
-    system_review = fields.Char(string="System Review")
+    review_type_id = fields.Many2one('clinica.system.review.type', 'Review Type', ondelete='restrict')
+    system_review = fields.Char(string="Código")
 
-# class PhysicalExaminationType(models.Model):
-#     _name = "clinica.physical.item"
+class ConfigSystemsReviewsType(models.Model):
+    _name = "clinica.system.review.type"
+    _rec_name = 'name'
 
-#     name = fields.Char(string="Name", required=True)
-#     professional_id = fields.Many2one('doctor.professional', string='Professional')
-#     active = fields.Boolean(string="Active", default="True")
+    name = fields.Char(string='System Review Type')
 
 class PhysicalExamination(models.Model):
     _name = "physical.examination"

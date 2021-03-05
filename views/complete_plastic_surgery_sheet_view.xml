@@ -60,7 +60,7 @@
                                     <group name="system_review">
                                         <field name="system_review_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
                                             <tree editable="bottom">
-                                                <field name="type_review"/>
+                                                <field name="review_type_id"/>
                                                 <field name="system_review"/>      
                                             </tree>
                                         </field>
@@ -75,7 +75,7 @@
                                         <field name="background_ids" nolabel="1" context="{'default_patient_id': patient_id}" attrs="{'readonly':[('state','=','closed')]}">
                                             <tree editable="bottom">
                                                 <field name="patient_id" invisible="1"/>
-                                                <field name="background_type"/>      
+                                                <field name="background_type_id"/>      
                                                 <field name="background"/>      
                                             </tree>
                                         </field>

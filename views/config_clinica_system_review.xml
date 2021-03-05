@@ -7,7 +7,7 @@
         <field name="model">config.clinica.system.review</field>
         <field name="arch" type="xml">
             <tree string="Revisión por sistemas" editable="top">
-                <field name="type_review"/>
+                <field name="review_type_id"/>
                 <field name="system_review"/>
             </tree>
         </field>

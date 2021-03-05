@@ -7,7 +7,7 @@
         <field name="model">config.clinica.patient.background</field>
         <field name="arch" type="xml">
             <tree string="Patient Background" editable="top">
-                <field name="background_type"/>
+                <field name="background_type_id"/>
                 <field name="background"/>
             </tree>
         </field>

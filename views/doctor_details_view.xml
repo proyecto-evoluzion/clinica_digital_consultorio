@@ -10,7 +10,7 @@
                     <group>
                         <group>
                             <field name='name' required="1"/>
-                            <field name='code' required="1"/>
+                           <!-- <field name='code' required="1"/>-->
                             <field name='insurer_id' required="1" domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
                         </group>
                     </group>
@@ -33,7 +33,7 @@
             <field name="arch" type="xml">
                 <tree string="Assurance Plan Tree">
                     <field name="name"/>
-                    <field name='code'/>
+                    <!--<field name='code'/>-->
                     <field name="insurer_id"/>
                 </tree>
             </field>
@@ -46,7 +46,7 @@
             <field name="arch" type="xml">
                 <search string="Search Assurancen Plans">
                     <field name="name" string="Plans" />
-                    <field name='code' string="Plan Code" />
+                    <!--<field name='code' string="Plan Code" />-->
                     <field name="insurer_id" string="Assurance Company"/>
                     <group expand="0" string="Group By">
                         <filter string="Assurance Company" name="groupby_assurance_partner_id" domain="[]" context="{'group_by':'insurer_id'}"/>
@@ -408,17 +408,17 @@
                         </group>
                      </group>
 
-                     <!-- <group name='group_insurer_info_eps' string="Insure Details" col="4">
+                     <group name='group_insurer_info_eps' string="Insure Details" col="4">
                             
-                            <field name="add_insure_info" string="Add insure" />-->
+                           <!-- <field name="add_insure_info" string="Add insure" />-->
                    
-                           <!-- <field name="policy_number" string="Policy number"/>-->
+                           <field name="policy_number" string="Policy number"/>
                           <!--  <field name="default_insure" string="Default"/>-->
                            <!-- <field name="insurer_id" string="Assurance Company"/>-->
 
-                           <!-- <field name="plan" string="plan_insure"/>
+                          <field name="plan" string="Plan"/>
 
-                      </group>-->
+                      </group>
 
                      
                 

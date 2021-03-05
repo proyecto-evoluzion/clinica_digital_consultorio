@@ -40,12 +40,14 @@ class PlasticSurgerySheet(models.Model):
 
 class ConfigBackground(models.Model):
     _name = "config.clinica.patient.background"
-    
     background_type_id = fields.Many2one('clinica.patient.background.type', 'Background Type', ondelete='restrict')
     background = fields.Text(string='Código')
+    background_type = fields.Text(string='Background Type')
+    background = fields.Text(string='Background')
 
-class BackgroundType(models.Model):
-    _name = "clinica.patient.background.type"
-    _rec_name = 'name'
 
-    name = fields.Char(string='Background Type')
+class ClinicaPatientBackgroundType(models.Model):
+	_name ="clinica.patient.background.type"
+
+	name = fields.Char(string="Name backgroud")
+	code = fields.Char(string="code background")

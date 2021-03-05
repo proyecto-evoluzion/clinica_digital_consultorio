@@ -12,7 +12,6 @@
                     <group>
 					    <group>
     						<field name="name" string="Contract"/>
-    						<field name="code" string="Contracts Code"/>
     						<field name="insurer_id" string="Assurance Company"/>
                         </group>
                         <group>
@@ -32,7 +31,7 @@
                         <field name='plan_ids'>
                             <tree editable="bottom">
                                 <field name='name'/>
-                                <field name='code'/>
+                               <!-- <field name='code'/>-->
                             </tree>
                         </field>
                     </group>

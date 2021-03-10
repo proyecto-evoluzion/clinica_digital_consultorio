@@ -30,6 +30,17 @@ class Partner(models.Model):
     is_assurance = fields.Boolean(string="Is it an Assurance Company?", copy=False)
     patient_id = fields.Many2one('doctor.patient',string='Assurance C')
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')
+    code_assurance = fields.Char(string="Code Assurance")
+    type_user = fields.Selection([('1','1-Contributivo'),('2','2-Subsidiado'),('3','3-Vinculado'),
+    	                        ('4','4-Particular'),('5','5-Otro'),('6','6-Víctima con afiliación al Régimen Contributivo'),
+    	                        ('7','7-Víctima con afiliación al Régimen subsidiado'),('8','8-Víctima no asegurado (Vinculado)')]
+    	                        ,string="Type User")
+    tdoc_rips = fields.Selection([('NI','Numero de identificacion tributaria NIT'),('CC','Cedula de ciudadania'),
+    								('CE',' Aliens Certificate'),('PA','PA - Passport'),('CD','CD - Diplomatic card'),
+    								('PE','PE - Special Permit of Permanence')], string='Type of Document')
+   
+
+    
     
         
         

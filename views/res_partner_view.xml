@@ -17,15 +17,68 @@
               		<field name="professional_created" invisible="1"/>
               </xpath>
               <xpath expr="//group/group/field[@name='lang']" position="after">
-              		<field name='insurer_id' domain="['&amp;',('is_company','=',True), ('is_assurance', '=', True)]" 
+              		<field name='insurer_id' attrs="{'invisible':[('is_company','=',True)]}" domain="['&amp;',('is_company','=',True), ('is_assurance', '=', True)]" 
               			options="{'no_create_edit': True}"/>
               </xpath>
               <xpath expr="//div/h1" position="after">
                   <field name='is_assurance' attrs="{'invisible': [('is_company','=', False)]}"/>
                   <label for="is_company" string="Is it an Assurance Company?" attrs="{'invisible': [('is_company','=', False)]}"/>
               </xpath>
+
+              <field name="insurer_id" position="after">
+                <field name="code_assurance"/>
+              </field>
+
+             <field name="code_assurance" position="before">
+                <field name="type_user"/>
+                  
+              </field>
+
+
+
+
+
+
          </field>
     </record>
+
+    <record id="view_partner_form_d_inherit" model="ir.ui.view">
+         <field name="name">res.partner.inherit</field>
+         <field name="model">res.partner</field>
+         <field name="inherit_id" ref="l10n_co_res_partner.view_partner_form"/>
+         <field name="arch" type="xml">
+
+          <field name="doctype" position="before">
+            
+          <field name="tdoc_rips"/>
+
+          </field>
+
+
+          <field name="doctype" position="attributes">
+
+            <attribute name="invisible">1</attribute>
+
+          </field>
+
+
+
+          <field name="xidentification" position="attributes">
+
+            <attribute name="invisible">1</attribute>
+
+          </field>
+
+
+
+
+         </field>
+
+    </record>
+
+
+
+
     
 </odoo>
 

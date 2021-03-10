@@ -19,32 +19,13 @@
 #
 ###############################################################################
 
-from . import doctor_details
-from . import res_config_settings
-from . import clinica_text_template
-from . import res_partner
-from . import doctor_product 
-from . import doctor_attentions
-from . import doctor_surgical_technologist
-from . import quirurgic_sheet
-from . import nurse_sheet
-from . import plastic_surgery_sheet
-from . import complete_plastic_surgery_sheet
-from . import doctor_calendar
-from . import anhestesic_registry
-from . import medical_evolution
-from . import doctor_epicrisis
-from . import quirurgical_check_list
-from . import clinica_record_list_visualizer
-from . import post_anhestesic_care
-from . import invoice
-from . import doctor_prescription
-from . import record_authenticate
-from . import clinica_patient_background
-from . import attention_quick_template
-from . import doctor_atc
-from . import inherit_crm_lead
-from . import res_company
+
+from odoo import models, fields, api, _
 
 
-# vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
+class Company(models.Model):
+	_inherit = "res.company"
+
+	bussines_name = fields.Char(string="Bussines name")
+	service_provider = fields.Char(string="Service Provider")
+	

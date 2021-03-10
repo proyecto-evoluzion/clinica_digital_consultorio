@@ -74,7 +74,8 @@
         'views/background.xml',
         'views/inherit_crm_view.xml',
         'views/doctor_contract_view.xml',
-        'data/l10n_diseases_co_data.xml',
+        'views/res_company_view.xml',
+#        'data/l10n_diseases_co_data.xml',
         'data/doctor_atc_data.xml',
         'data/doctor_atc_route_data.xml',
         'data/doctor_atc_use_data.xml'   

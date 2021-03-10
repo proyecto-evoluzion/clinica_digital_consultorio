@@ -331,9 +331,9 @@
                         </group>
                         <group name='group_insurer_info_sub2'>
                           <field name="insurer_id"
-                                domain="['&amp;',('is_company','=',True), ('is_assurance', '=', True)]" options="{'no_create_edit': True}" string="Aseguradora"/>
+                                domain="['&amp;',('is_company','=',True), ('is_assurance', '=', True)]" options="{'no_create_edit': True}" string="Aseguradora" invisible="1"/>
 
-                            <field name="insurer_ids" string="Assurance Other" />
+                           
 
 
                             <field name="email"/>
@@ -413,6 +413,7 @@
                            <!-- <field name="add_insure_info" string="Add insure" />-->
                    
                            <field name="policy_number" string="Policy number"/>
+                            <field name="insurer_ids" string="Assurance o" />
                           <!--  <field name="default_insure" string="Default"/>-->
                            <!-- <field name="insurer_id" string="Assurance Company"/>-->
 

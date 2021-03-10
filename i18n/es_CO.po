@@ -7223,8 +7223,8 @@ msgstr "Procedimientos"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_insurer_ids
-msgid "Assurance Other"
-msgstr "Otras Aseguradoras"
+msgid "Assurance o"
+msgstr "Aseguradoras"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_residence_area_id

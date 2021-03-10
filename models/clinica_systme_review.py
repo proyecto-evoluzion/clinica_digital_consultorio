@@ -19,32 +19,27 @@
 #
 ###############################################################################
 
-from . import doctor_details
-from . import res_config_settings
-from . import clinica_text_template
-from . import res_partner
-from . import doctor_product 
-from . import doctor_attentions
-from . import doctor_surgical_technologist
-from . import quirurgic_sheet
-from . import nurse_sheet
-from . import plastic_surgery_sheet
-from . import complete_plastic_surgery_sheet
-from . import doctor_calendar
-from . import anhestesic_registry
-from . import medical_evolution
-from . import doctor_epicrisis
-from . import quirurgical_check_list
-from . import clinica_record_list_visualizer
-from . import post_anhestesic_care
-from . import invoice
-from . import doctor_prescription
-from . import record_authenticate
-from . import clinica_patient_background
-from . import attention_quick_template
-from . import doctor_atc
-from . import inherit_crm_lead
-from . import res_company
+
+import logging
+logger = logging.getLogger(__name__)
+
+from odoo import models, fields, api, _
+from odoo import tools
+import datetime as dt
+from datetime import datetime
+from dateutil import relativedelta
+from odoo.tools import DEFAULT_SERVER_DATE_FORMAT as DF
+import calendar
+from odoo.modules.module import get_module_resource
+from odoo.exceptions import ValidationError
+import base64
 
 
-# vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
+class clinicaSystmeType(models.Model):
+	_name = "clinica.system.review.type"
+
+	name = fields.Char(string="name_system", required=True)
+	code = fields.Char(string="code", required=True)
+
+
+

@@ -24,6 +24,8 @@ from odoo import models, fields, api, _
 
 class AccountInvoice(models.Model):
     _inherit = "account.invoice"
+
+    copago = fields.Monetary(string="Copago")
     
     @api.multi
     def action_compute_procedure_time(self):

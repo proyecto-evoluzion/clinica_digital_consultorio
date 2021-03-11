@@ -322,7 +322,7 @@ class DoctorAdministrativeData(models.Model):
 #     primary_payer =  fields.Selection([('private_user','Usuario Particular'),('eps','EPS'),
 #                                        ('another_insurer','Otra Aseguradora'),('mixed','Pago Mixto')], string="Primary Payer")
     insurer_id = fields.Many2one('res.partner',string='Assurance Company',domain=[('is_assurance', '=', True)])
-    insurer_ids = fields.Many2many('res.partner', string="Assurance o", domain=[('is_assurance', '=', True)])
+    # insurer_ids = fields.Many2many('res.partner', string="Assurance o", domain=[('is_assurance', '=', True)])
     insurer_ids = fields.One2many('patient.assurance','patient_insurer_id', string="Assurance")
     
     plan = fields.Many2one('doctor.insurer.plan', string='Plan')

@@ -38,6 +38,7 @@ class Partner(models.Model):
     tdoc_rips = fields.Selection([('NI','Numero de identificacion tributaria NIT'),('CC','Cedula de ciudadania'),
     								('CE',' Aliens Certificate'),('PA','PA - Passport'),('CD','CD - Diplomatic card'),
     								('PE','PE - Special Permit of Permanence')], string='Type of Document')
+    number_identification = fields.Char(string="Number Identification")
    
 
     

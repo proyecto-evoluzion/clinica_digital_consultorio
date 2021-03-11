@@ -35,11 +35,6 @@
               </field>
 
 
-             <field name="tdoc_rips" position="after">
-                <field name="number_identification"/>
-                  
-              </field>
-
 
 
 
@@ -57,6 +52,7 @@
           <field name="doctype" position="before">
             
           <field name="tdoc_rips"/>
+           <field name="number_identification"/>
 
           </field>
 

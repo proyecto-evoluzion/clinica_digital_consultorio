@@ -45,6 +45,7 @@ from . import attention_quick_template
 from . import doctor_atc
 from . import inherit_crm_lead
 from . import res_company
+from . import patient_assurance
 
 
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:

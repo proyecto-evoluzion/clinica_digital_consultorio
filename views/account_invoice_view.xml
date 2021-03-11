@@ -15,6 +15,10 @@
                			</div>
                		</group>
               </xpath>
+
+              <field name="amount_tax" position="after">
+                <field name="copago"/>
+              </field>
          </field>
     </record>
     

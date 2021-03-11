@@ -423,10 +423,10 @@
 
                         <field name="insurer_ids" string="Assurance">
                               <tree editable="bottom">
-                                <field name="type_user"/>
+                                <field name="insurer_id" string="Assurance Company"/>
                                 <field name="default_isure"/>
-                                <field name="code_assurance"/>
-                                 <field name="insurer_id" string="Assurance Company"/>
+                                <field name="type_user" readonly="1"/>
+                                <field name="code_assurance" readonly="1"/>
                               </tree>  
                             </field>
                         

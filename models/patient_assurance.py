@@ -36,12 +36,12 @@ class PatientAssurance(models.Model):
 	_name = "patient.assurance"
 
 
-	insurer_id = fields.Many2one('res.partner',string='Assurance Company')
+	insurer_id = fields.Many2one('res.partner',string='Assurance Company', domain=[('is_assurance', '=', True)])
 	type_user = fields.Selection([('1','1-Contributivo'),('2','2-Subsidiado'),('3','3-Vinculado'),
     	                        ('4','4-Particular'),('5','5-Otro'),('6','6-Víctima con afiliación al Régimen Contributivo'),
     	                        ('7','7-Víctima con afiliación al Régimen subsidiado'),('8','8-Víctima no asegurado (Vinculado)')]
-    	                        ,string="Type User")
-	code_assurance = fields.Char(string="Code Assurance")
+    	                        ,string="Type User", related="insurer_id.type_user")
+	code_assurance = fields.Char(string="Code Assurance", related="insurer_id.code_assurance")
 	default_isure = fields.Boolean(string="Is default?")
 	patient_insurer_id = fields.Many2one('doctor.patient', string="Assurance Patient")
 

@@ -53,7 +53,7 @@ class Contracts(models.Model):
     
     name = fields.Char(string='Contract')
 #   code = fields.Char(string='Contracts Code')
-    insurer_id = fields.Many2one('res.partner',string='Assurance Company')
+    insurer_id = fields.Many2one('res.partner',string='Assurance Company', domain=[('is_assurance', '=', True)])
     start_date = fields.Date(string='From')
     end_date = fields.Date(string='To')
     value = fields.Float(string='Value')

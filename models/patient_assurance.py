@@ -44,6 +44,8 @@ class PatientAssurance(models.Model):
 	code_assurance = fields.Char(string="Code Assurance", related="insurer_id.code_assurance")
 	default_isure = fields.Boolean(string="Is default?")
 	patient_insurer_id = fields.Many2one('doctor.patient', string="Assurance Patient")
+	plan = fields.Many2one('doctor.insurer.plan', string="Plans")
+	number_policy = fields.Char(string="Number policy")
 
 	
 		

@@ -316,9 +316,6 @@ class DoctorWaitingRoom(models.Model):
     schedule_id = fields.Many2one('doctor.schedule', string='Schedule', copy=False)
     procedure_date = fields.Datetime(string='Procedure Date', default=fields.Datetime.now, copy=False)
     procedure_end_date = fields.Datetime(string='Procedure End Date', copy=False)
-    # tdoc_rips = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
-    #                                   ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
-    #                                   ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
     document_type = fields.Selection([('CC','CC - ID Document'),('CE','CE - Aliens Certificate'),
                                       ('PA','PA - Passport'),('RC','RC - Civil Registry'),('TI','TI - Identity Card'),
                                       ('AS','AS - Unidentified Adult'),('MS','MS - Unidentified Minor'),
@@ -402,6 +399,7 @@ class DoctorWaitingRoom(models.Model):
     multiple_format = fields.Boolean(string='Multiple Formats?', default=_default_config_value)
     is_simple_format = fields.Boolean(string='Is Simple Format?')
     is_complete_format = fields.Boolean(string='Is Complete Format?')
+    copago = fields.Float(string='Copago')
     
     
     @api.multi

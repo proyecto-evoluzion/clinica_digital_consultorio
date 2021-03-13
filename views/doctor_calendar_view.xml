@@ -243,6 +243,7 @@
 						</div>
 						<field name='insurer_id' attrs="{'readonly':[('state','!=','new')]}" domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
 						<field name='assurance_plan_id' attrs="{'readonly':[('state','!=','new')]}" domain="[('insurer_id','=',insurer_id)]"/>
+						<field name="copago" attrs="{'readonly':[('state','!=','new')]}"/>
 						<field name='nurse_sheet_created' invisible="1"/>
 						<field name='anhestesic_registry_created' invisible="1"/>
 					</group>

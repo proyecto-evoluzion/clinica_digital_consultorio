@@ -7260,7 +7260,7 @@ msgstr "Detalles de Aseguradoras"
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_patient_assurance_number_policy
 msgid "Number policy"
-msgstr "Numero de Poliza"
+msgstr "Número de Póliza"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_patient_assurance_insurer_id
@@ -7275,7 +7275,7 @@ msgstr "Planes"
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_patient_assurance_default_isure
 msgid "Is default?"
-msgstr "Predetermindado"
+msgstr "Predeterminado"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_patient_assurance_type_user
@@ -7285,12 +7285,12 @@ msgstr "Tipo de Usuario"
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_patient_assurance_code_assurance
 msgid "Code Assurance"
-msgstr "Codigo de Aseguradora"
+msgstr "Código de Aseguradora"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_res_partner_number_identification
 msgid "Number Identification"
-msgstr "Numero de Identificacion"
+msgstr "Número de Identificación"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_res_company_bussines_name

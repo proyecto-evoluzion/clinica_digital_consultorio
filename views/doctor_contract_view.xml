@@ -61,7 +61,7 @@
             <field name="res_model">doctor.contracts</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="doctor_contracts_form"/>
+            <field name="view_id" ref="doctor_contracts_tree"/>
           
     </record>
 

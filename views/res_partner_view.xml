@@ -52,7 +52,7 @@
           <field name="doctype" position="before">
             
           <field name="tdoc_rips"/>
-           <field name="number_identification"/>
+           <field name="number_identification" attrs="{'invisible':[('is_company','=',True)]}"/>
 
           </field>
 
@@ -63,11 +63,15 @@
 
           </field>
 
-
-
           <field name="xidentification" position="attributes">
 
-            <attribute name="invisible">1</attribute>
+        <!--    <attribute name="invisible">1</attribute>-->
+
+          </field>
+
+        <field name="l10n_co_document_type" position="attributes">
+
+         <attribute name="invisible">1</attribute>
 
           </field>
 

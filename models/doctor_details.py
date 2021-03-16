@@ -307,6 +307,7 @@ class DoctorAdministrativeData(models.Model):
 #    add_insure_info = fields.Boolean(string="Add insure")
     policy_number = fields.Char(string="Policy number")
 #    default_insure = fields.Boolean(string="Default")
+    default_particular = fields.Boolean(string="Is default particular?", default=True)
   
 
 #     father_name = fields.Char(string="Father's Name")

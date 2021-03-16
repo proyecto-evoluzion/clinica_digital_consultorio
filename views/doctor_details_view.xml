@@ -408,7 +408,10 @@
                         </group>
                      </group>
 
-                     <group name='group_insurer_info_eps' string="Insures Details" col="4">
+                     <group name='group_insurer_info_eps' string="Insures Details" col="2">
+
+                      <field name="default_particular"/>
+                          
                             
                            <!-- <field name="add_insure_info" string="Add insure" />-->
                           <!-- <field name="policy_number" string="Policy number"/> -->      
@@ -423,8 +426,8 @@
                         <field name="insurer_ids" string="Assurance">
                               <tree editable="bottom">
                                 <field name="insurer_id" string="Assurance Company"/>
-                                 <field name="plan"/>
-                                <field name="default_isure"/>
+                                <field name="plan"/>
+                                <field name="default_isure"/>                               
                                 <field name="type_user" readonly="1"/>
                                 <field name="code_assurance" readonly="1"/>
                                 <field name="number_policy"/>

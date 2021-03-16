@@ -47,5 +47,8 @@ class PatientAssurance(models.Model):
 	plan = fields.Many2one('doctor.insurer.plan', string="Plans")
 	number_policy = fields.Char(string="Number policy")
 
-	
-		
+	@api.onchange('insurer_id')
+	def onchange_insurer_id(self):
+		if self.insurer_id:
+			domain = [('insurer_id', '=', self.insurer_id.id)]
+			return {'domain': {'plan': domain}}

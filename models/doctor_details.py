@@ -269,28 +269,17 @@ class DoctorAdministrativeData(models.Model):
                                          compute='_compute_age_meassure_unit')
     birth_country_id = fields.Many2one('res.country', string='Country of Birth', required=True, default=lambda self: self.env.ref('base.co'))
     provenance_country_id = fields.Many2one('res.country', string='Provenance', required=True, default=lambda self: self.env.ref('base.co'))
-#    birth_city_id = fields.Many2one('res.country.state.city', string='Location/City/Town of Birth')
-#     birth_district = fields.Char(string='Districts/localties/areas of Birth Place')
-#     birth_neighborhood = fields.Char(string='Neighborhood of Birth Place')
-#     birth_address = fields.Text(string="Address of Birth Place")
     residence_country_id = fields.Many2one('res.country', string='Residence Country', required=True, default=lambda self: self.env.ref('base.co'))
     residence_department_id = fields.Many2one('res.country.state', string='Residence Department/City', required=True, default=lambda self: self.env.ref('base.state_co_03'))
     residence_city_id = fields.Many2one('res.country.state.city', string='Residence Location/City/Town', required=True, default=lambda self: self.env.ref('clinica_digital_consultorio.res_country_state_city_co_03001'))
     residence_area_id = fields.Selection([('U','Urban'), ('R','Rural')], string='Residence Area', required=True)
-#    residence_district = fields.Char(string='Residence Districts/localties/areas', required=True)
-#     residence_neighborhood = fields.Char(string='Residence Neighborhood')
     residence_address = fields.Text(string="Residence Address")
     civil_state = fields.Selection([('separated','Separada/o'),('single','Soltera/o'),('married','Casada/o'),
                                    ('free_union','Unión libre'),('widow','Viuda/o')], string='Civil Status')
-
-#     beliefs = fields.Text(string="Beliefs")
     occupation =  fields.Char("Occupation")
-#     profession_id = fields.Char(string='Profession')
     email = fields.Char(string='Email')
     phone = fields.Char(string='Phone Number')
-
     link_type = fields.Selection([('contributor','Contributor'),('beneficiary','Beneficiary')], string="Link Type")
-#     mobile = fields.Char('Mobile Number')
     accompany_name = fields.Char("Name of the companion")
     accompany_relationship = fields.Selection([('mother','Mother'),('father','Father'),('grand_father','Grand Father'),
                                  ('grand_mother','Grand Mother'),('uncle','Uncle'),('aunt','Aunt'),
@@ -304,32 +293,11 @@ class DoctorAdministrativeData(models.Model):
     other_responsible_relationship = fields.Char(string="Other Responsible Person's Relationship")
     responsible_phone = fields.Char("Responsible Person's Phone Number")
     copy_responsible_info = fields.Boolean(string="Is Also Responsible")
-#    add_insure_info = fields.Boolean(string="Add insure")
     policy_number = fields.Char(string="Policy number")
-#    default_insure = fields.Boolean(string="Default")
-  
-
-#     father_name = fields.Char(string="Father's Name")
-#     father_occupation = fields.Char(string="Father's Occupation")
-#     father_address = fields.Text(string="Father's Address")
-#     father_phone = fields.Char(string="Father's Phone Number")
-#     mother_name = fields.Char(string="Mother's Name")
-#     mother_occupation = fields.Char(string="Mother's Occupation")
-#     mother_address = fields.Text(string="Mother's Address")
-#     mother_phone = fields.Char(string="Mother's Phone Number")
     user_type =  fields.Selection([('contributory','Contributory'),('subsidized','Subsidized'),('linked','Linked'),('particular','Particular'),('other','Other'),('victim_contributive','Victim - Contributive'),('victim_subsidized','Victim - Subsidized'),('victim_linked','Victim - Linked')], string="User Type", default='particular')
-   
-#     primary_payer =  fields.Selection([('private_user','Usuario Particular'),('eps','EPS'),
-#                                        ('another_insurer','Otra Aseguradora'),('mixed','Pago Mixto')], string="Primary Payer")
     insurer_id = fields.Many2one('res.partner',string='Assurance Company',domain=[('is_assurance', '=', True)])
     insurer_ids = fields.One2many('patient.assurance','patient_insurer_id', string="Assurance")
-    
     plan = fields.Many2one('doctor.insurer.plan', string='Plan')
-  
-
-#     assurance_plan_id = fields.Many2one('assurance.plan', string='Assurer Plans')
-#     other_assurance_partner_id = fields.Many2one('res.partner',string='Other Assurance Company')
-#     other_assurance_plan_id = fields.Many2one('assurance.plan', string='Other Assurer Plans')
     doctor_id = fields.Many2one('doctor.professional', ondelete='restrict', string='Treating Doctor')
     partner_id = fields.Many2one('res.partner', copy=False, ondelete='restrict', string='Related Partner', 
                                     help='Partner-related data of administrative data ')

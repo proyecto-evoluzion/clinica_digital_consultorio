@@ -476,6 +476,13 @@ class DoctorWaitingRoom(models.Model):
             self.document_type = self.patient_id.tdoc_rips
             self.numberid = self.patient_id.name
             self.numberid_integer = self.patient_id.ref
+            insures = self.patient_id.insurer_ids
+            for insurer_ids in insures:
+                if insurer_ids.default_isure:
+                    insurer_id = insurer_ids.insurer_id.id
+                    plan_id = insurer_ids.plan.id
+            self.insurer_id = insurer_id
+            self.assurance_plan_id = plan_id
             
     @api.onchange('schedule_id')
     def onchange_schedule_id(self):

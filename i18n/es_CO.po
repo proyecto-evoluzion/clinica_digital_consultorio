@@ -7204,12 +7204,12 @@ msgstr "Planes"
 #. module: clinica_digital_consultorio
 #: model:ir.actions.act_window,name:clinica_digital_consultorio.action_doctor_contracts
 msgid "Contracts"
-msgstr "Contrato"
+msgstr "Contratos"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.menu,name:clinica_digital_consultorio.menu_doctor_contracts
 msgid "Contract"
-msgstr "Contrato"
+msgstr "Contratos"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_insurer_plan_code
@@ -7276,6 +7276,11 @@ msgstr "Planes"
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_patient_assurance_default_isure
 msgid "Is default?"
 msgstr "Predeterminado"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_default_particular
+msgid "Is default particular?"
+msgstr "Predeterminado Particular"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_patient_assurance_type_user

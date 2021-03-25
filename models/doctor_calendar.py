@@ -392,6 +392,7 @@ class DoctorWaitingRoom(models.Model):
     appointment_type_id = fields.Many2one('clinica.appointment.type', string='Appointment Type')
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')
     assurance_plan_id = fields.Many2one('doctor.insurer.plan', string='Assurer Plan')
+    number_policy = fields.Char(string="N° Poliza")
     schedule_allocation_id = fields.Many2one('doctor.schedule.time.allocation', string='Schedule Time Allocation')
     attention_format_ids = fields.Many2many('att.format', 
                                    string="Attention Formats", copy=False)
@@ -477,12 +478,17 @@ class DoctorWaitingRoom(models.Model):
             self.numberid = self.patient_id.name
             self.numberid_integer = self.patient_id.ref
             insures = self.patient_id.insurer_ids
+            insurer_id = 0
+            plan_id = 0
+            policy = ''
             for insurer_ids in insures:
                 if insurer_ids.default_isure:
                     insurer_id = insurer_ids.insurer_id.id
                     plan_id = insurer_ids.plan.id
+                    policy = insurer_ids.number_policy
             self.insurer_id = insurer_id
             self.assurance_plan_id = plan_id
+            self.number_policy = policy
             
     @api.onchange('schedule_id')
     def onchange_schedule_id(self):

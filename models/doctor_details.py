@@ -294,7 +294,7 @@ class DoctorAdministrativeData(models.Model):
     responsible_phone = fields.Char("Responsible Person's Phone Number")
     copy_responsible_info = fields.Boolean(string="Is Also Responsible")
     policy_number = fields.Char(string="Policy number")
-    default_particular = fields.Boolean(string="Is default particular?", default=True)
+    default_particular = fields.Boolean(string="Is default particular?",  default=True)
     user_type =  fields.Selection([('contributory','Contributory'),('subsidized','Subsidized'),('linked','Linked'),('particular','Particular'),('other','Other'),('victim_contributive','Victim - Contributive'),('victim_subsidized','Victim - Subsidized'),('victim_linked','Victim - Linked')], string="User Type", default='particular')
     insurer_id = fields.Many2one('res.partner',string='Assurance Company',domain=[('is_assurance', '=', True)])
     insurer_ids = fields.One2many('patient.assurance','patient_insurer_id', string="Assurance")
@@ -435,6 +435,7 @@ class DoctorAdministrativeData(models.Model):
                         'message': warn_msg,
                     }
                 return {'warning': warning}
+
             
     @api.onchange('copy_responsible_info')
     def onchange_copy_responsible_info(self):
@@ -600,6 +601,11 @@ class DoctorAdministrativeData(models.Model):
         tools.image_resize_images(vals)
         vals.update({'patient_name': "%s %s %s %s" % (vals['lastname'], vals['surname'] or '', vals['firstname'], vals['middlename'] or '')})
         res = super(DoctorAdministrativeData, self).create(vals)
+        if res.insurer_ids:
+    	    for insures in res.insurer_ids:
+               insures.patient_insurer_id = res.id
+               
+               
         res._check_tdocs()
         partner_vals = res._get_related_partner_vals(vals)
         partner_vals.update({'doctype': 1})

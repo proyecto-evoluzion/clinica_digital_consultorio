@@ -46,27 +46,29 @@ class PatientAssurance(models.Model):
 	patient_insurer_id = fields.Many2one('doctor.patient', string="Assurance Patient")
 	plan = fields.Many2one('doctor.insurer.plan', string="Plans")
 	number_policy = fields.Char(string="Number policy")
-	
-	
-
-	
-
 
 	@api.onchange('insurer_id')
 	def onchange_insurer_id(self):
 		if self.insurer_id:
 			domain = [('insurer_id', '=', self.insurer_id.id)]
 			return {'domain': {'plan': domain}}
-	
+
+	# @api.onchange('default_isure')
+	# def onchange_default_isure(self):
+	# 	if self.default_isure:
+	# 		patient_assurance_obj = self.env['patient.assurance'].search([('patient_insurer_id.name','=', self.patient_insurer_id.name)])
+	# 		for patient_assurance_records in patient_assurance_obj:
+	# 			if patient_assurance_records.id != self._origin.id:
+	# 				print('ID que se convertira en FALSE')
+	# 				print(patient_assurance_records)
+	# 				print(patient_assurance_records.id)
+	# 				print(patient_assurance_records.default_isure)
+	# 				patient_assurance_records.update({'number_policy': '000'})
 
 
-   # @api.onchange('default_isure')
-   # def onchange_default_isure(self):
-   #	if self.default_isure:
-    		
-    		
-    		
-
-	
-
-	
+	# @api.onchange('default_isure')
+	# def _isdone(self):
+	# 	for record in self:
+	# 		if record.default_isure:
+	# 			if record.id != self._origin.id:
+	# 				record.default_isure = False

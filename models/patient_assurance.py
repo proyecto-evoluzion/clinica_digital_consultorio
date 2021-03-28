@@ -66,9 +66,17 @@ class PatientAssurance(models.Model):
 	# 				patient_assurance_records.update({'number_policy': '000'})
 
 
-	# @api.onchange('default_isure')
-	# def _isdone(self):
-	# 	for record in self:
-	# 		if record.default_isure:
-	# 			if record.id != self._origin.id:
-	# 				record.default_isure = False
+	#@api.onchange('default_isure')
+	#def _isdone(self):
+    		#for record in self:
+    			#	if record.default_isure:
+    			#			if record.id != self._origin.id:
+    			#S					record.default_isure = False
+	 
+
+	#@api.multi
+	#def do_clear_done(self):
+    #domain = [('is_done', '=', True), '|', ('user_id', '=', self.env.uid), #('user_id', '=', False)]
+    #done_recs = self.search(domain)
+    #done_recs.write({'active': False})
+    #return True

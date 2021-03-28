@@ -46,3 +46,10 @@ class DoctorCupsCode(models.Model):
                                         ('3', 'Diagnostic Image'), ('4', 'Clinical laboratory'),
                                         ('5', 'Therapeutic Procedure'), ('6', 'Hospitalization'),
                                         ('7', 'Odontological'), ('8', 'Other')], 'Procedure Type', related="product_id.procedure_type")
+    price = fields.Float(string='Price')
+
+    @api.onchange('product_id')
+    def onchange_product_id(self):
+        if self.product_id:
+            for product in self:
+                product.price = product.product_id.lst_price

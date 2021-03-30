@@ -878,7 +878,8 @@ class DoctorWaitingRoom(models.Model):
     def _set_clinica_form_default_values(self):
         vals = {
             'default_patient_id': self.patient_id and self.patient_id.id or False,
-            'default_room_id' : self.id
+            'default_room_id' : self.id,
+            'default_doctor_id' : self.surgeon_id.id
         }
         return vals
 

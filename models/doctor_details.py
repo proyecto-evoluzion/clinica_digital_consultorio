@@ -124,6 +124,7 @@ class Doctor(models.Model):
                                    string="Attention Formats", copy=False)
     medical_record = fields.Char(string='Medical record', required=True)
     multiple_format = fields.Boolean(string='Multiple Formats?', default=_default_config_value)
+    doctor_provider_code = fields.Char(string='Codigo prestador de servicio')
 
     @api.onchange('medical_record')
     def onchange_medical_record(self):

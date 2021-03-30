@@ -40,7 +40,7 @@ class AssurancePlan(models.Model):
     name = fields.Char(string='Plan')
     code = fields.Char(string='Plan Code')
     insurer_id = fields.Many2one('res.partner',string='Assurance Company', domain=[('is_assurance', '=', True)])
-    cups_ids = fields.Many2many('product.product', string='Procedures')
+    cups_ids = fields.Many2many('doctor.cups.code', string='Procedures')
     
 # class DoctorPatientOccupation(models.Model):
 #     _name = "doctor.patient.occupation"

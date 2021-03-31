@@ -26,13 +26,15 @@
             		</group>
             		<group name="attention_details">
                         <group>
-                			<field name='patient_id' required="1" string="Paciente" attrs="{'readonly':[('state','=','closed')]}"/>
+                            <field name='patient_id' required="1" style="width:40%;" attrs="{'readonly':[('state','=','closed')]}"/>
                             <field name="gender" invisible="1" />
+                            <field name='consultation_purpose' attrs="{'readonly':[('state','=','closed')]}"/>
                         </group>
                         <group>
                             <field name='doctor_id' string="Doctor" attrs="{'readonly':[('state','=','closed')]}"/>
+                            <field name='external_cause' attrs="{'readonly':[('state','=','closed')]}"/>
                         </group>
-            		</group>
+                    </group>
             		<group name="consultation_reason" colspan="2" col='1'>
                          <label for="this_consultation_reason" string="Motivo de Consulta"/>
                          <field name="consultation_reason" invisible="1"/>

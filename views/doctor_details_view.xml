@@ -149,7 +149,7 @@
 	                        <field name="email"/>
 	                        <field name="phone" string="Teléfono"/>
                             <field name="medical_record" string="Registro Médico"/>
-                            <field name="doctor_provider_code"/>
+                            <field name="doctor_provider_code" required="1"/>
                     	</group>
                     	<group>
 	                        <field name="lastname"  required="1" string="Primer Apellido"/> 

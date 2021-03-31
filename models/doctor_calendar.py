@@ -393,6 +393,7 @@ class DoctorWaitingRoom(models.Model):
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')
     assurance_plan_id = fields.Many2one('doctor.insurer.plan', string='Assurer Plan')
     number_policy = fields.Char(string="N° Poliza")
+    authorizacion_number = fields.Char(string="N° Autorización")
     schedule_allocation_id = fields.Many2one('doctor.schedule.time.allocation', string='Schedule Time Allocation')
     attention_format_ids = fields.Many2many('att.format', 
                                    string="Attention Formats", copy=False)

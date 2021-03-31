@@ -42,6 +42,7 @@ class DoctorCupsCode(models.Model):
     
     code = fields.Char(related='product_id.procedure_code', string='Code', size=16, store=True)
     product_id = fields.Many2one('product.product', string='Health Procedure', ondelete='restrict')
+    plan_id = fields.Many2one('doctor.insurer.plan', string='Planes')
     procedure_type = fields.Selection([('1', 'Consultation'), ('2', 'Surgical Procedure'),
                                         ('3', 'Diagnostic Image'), ('4', 'Clinical laboratory'),
                                         ('5', 'Therapeutic Procedure'), ('6', 'Hospitalization'),

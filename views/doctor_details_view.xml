@@ -19,7 +19,6 @@
                             <tree editable="bottom">
                                 <field name='product_id'/>
                                 <field name='price'/>
-                                
                             </tree>
                         </field>
                     </group>

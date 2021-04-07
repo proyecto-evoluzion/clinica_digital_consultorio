@@ -34,6 +34,14 @@
                         <group>
                 			<field name='patient_id' required="1" style="width:40%;" attrs="{'readonly':[('state','=','closed')]}"/>
                             <field name="gender" invisible="1" />
+                            <field name="birth_date" invisible="1" />
+                            <label for="age" string="Age"/>
+                            <div>
+                                <div>
+                                    <field name="age" nolabel="1" class="oe_inline" readonly="1"/>
+                                    <field name="age_meassure_unit" nolabel="1" class="oe_inline"/>
+                                </div>
+                            </div>
                             <field name='consultation_purpose' attrs="{'readonly':[('state','=','closed')]}"/>
                         </group>
                         <group>

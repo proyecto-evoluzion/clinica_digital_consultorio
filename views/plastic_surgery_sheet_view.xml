@@ -29,7 +29,7 @@
                             <field name='patient_id' required="1" style="width:40%;" attrs="{'readonly':[('state','=','closed')]}"/>
                             <field name="gender" invisible="1" />
                             <field name="birth_date" invisible="1" />
-                            <label for="age" string="Age"/>
+                            <label for="age" string="Edad"/>
                             <div>
                                 <div>
                                     <field name="age" nolabel="1" class="oe_inline" readonly="1"/>

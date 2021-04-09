@@ -34,6 +34,33 @@ class HealthProcedures(models.Model):
                                         ('3', 'Diagnostic Image'), ('4', 'Clinical laboratory'),
                                         ('5', 'Therapeutic Procedure'), ('6', 'Hospitalization'),
                                         ('7', 'Odontological'), ('8', 'Other')], 'Procedure Type')
+
+    @api.model
+    def create(self, vals):
+        res = super(HealthProcedures, self).create(vals)
+        values = {}
+
+        if res.procedure_code:
+        	values['code'] = res.procedure_code
+        if res.procedure_type:
+        	values['procedure_type'] = res.procedure_type
+
+        values['product_id'] = res.id
+
+        self.env['doctor.cups.code'].create(values)
+
+        return res
+
+    @api.multi
+    def write(self, vals):
+        res = super(HealthProcedures, self).write(vals)
+        values = {}
+        if vals.get('procedure_code', False):
+            values['code'] = vals['procedure_code']
+        if vals.get('procedure_type', False):
+            values['procedure_type'] = vals['procedure_type']
+
+        return res
     
 
 class DoctorCupsCode(models.Model):

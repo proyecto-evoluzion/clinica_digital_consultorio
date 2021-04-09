@@ -401,6 +401,7 @@ class DoctorWaitingRoom(models.Model):
     multiple_format = fields.Boolean(string='Multiple Formats?', default=_default_config_value)
     is_simple_format = fields.Boolean(string='Is Simple Format?')
     is_complete_format = fields.Boolean(string='Is Complete Format?')
+    expired_contract = fields.Boolean(string='Contrato vencido?')
     copago = fields.Float(string='Copago')
     
     
@@ -487,6 +488,7 @@ class DoctorWaitingRoom(models.Model):
                     insurer_id = insurer_ids.insurer_id.id
                     plan_id = insurer_ids.plan.id
                     policy = insurer_ids.number_policy
+                    break
             self.insurer_id = insurer_id
             self.assurance_plan_id = plan_id
             self.number_policy = policy
@@ -515,6 +517,13 @@ class DoctorWaitingRoom(models.Model):
                 duration = 4
             procedure_date = datetime.strptime(self.procedure_date, DEFAULT_SERVER_DATETIME_FORMAT)
             self.procedure_end_date = procedure_date + timedelta(hours=duration)
+
+    @api.onchange('insurer_id')
+    def onchange_insurer_id(self):
+        if self.insurer_id:
+            contract_obj = self.env['doctor.contracts'].search([('insurer_id','=',self.insurer_id.id),('end_date','>',fields.Date.today())])
+            if not contract_obj:
+                self.expired_contract = True
     
     def _check_assign_numberid(self, numberid_integer):
         if numberid_integer == 0:
@@ -830,6 +839,25 @@ class DoctorWaitingRoom(models.Model):
                     'product_uom_qty': procedure.quantity,
                     'order_id': sale_order.id,
                     }
+                #rferrer: Se valida que exista el procedimiento en el plan actual de aseguradora.
+                if self.insurer_id:
+                    contract_obj = self.env['doctor.contracts'].search([('insurer_id','=',self.insurer_id.id),('end_date','>',fields.Date.today())])
+                    if contract_obj:
+                        count = 0
+                        for contracts in contract_obj:
+                            if self.assurance_plan_id.id in contracts.plan_ids.ids:
+                                count += 1
+                                break
+                        if count != 0:
+                            procedure_price = 0.00
+                            for procedure_plan in self.assurance_plan_id.cups_ids:
+                                for procedure_id in self.procedure_ids:
+                                    if procedure_plan.product_id.id == procedure_id.product_id.id:
+                                        procedure_price = procedure_plan.price
+                                        break
+                        if procedure_price != 0.00:
+                            so_line_vals['price_unit'] = procedure_price
+
                 self.env['sale.order.line'].create(so_line_vals)
         return sale_order
     

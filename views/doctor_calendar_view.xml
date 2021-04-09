@@ -242,6 +242,9 @@
 							</div>
 						</div>
 						<field name='insurer_id' attrs="{'readonly':[('state','!=','new')]}" domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
+						<span attrs="{'invisible':[('expired_contract','==',False)]}" style="color:red;">
+							<strong>No existe un contrato vigente con esta aseguradora.</strong>
+						</span>
 						<field name='assurance_plan_id' attrs="{'readonly':[('state','!=','new')]}" domain="[('insurer_id','=',insurer_id)]"/>
 						<field name="number_policy" attrs="{'readonly':[('state','!=','new')]}" force_save="1"/>
 						<field name="copago" attrs="{'readonly':[('state','!=','new')]}"/>
@@ -263,6 +266,7 @@
 						<field name="attention_format_ids" options="{'no_create': True}" widget="many2many_tags" invisible="1"/>
 						<field name="is_simple_format" invisible="1"/>
 						<field name="is_complete_format" invisible="1"/>
+						<field name="expired_contract" invisible="1"/>
 					</group>
 					<group name="profession_details_sub2" >
 						<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]"  

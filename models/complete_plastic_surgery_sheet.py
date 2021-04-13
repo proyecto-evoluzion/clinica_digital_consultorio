@@ -209,6 +209,8 @@ class PlasticSurgerySheet(models.Model):
     										('13', 'Enfermedad general'),('14', 'Enfermedad laboral'),
     										('15', 'Otra')], string='Causa Externa')
 
+    background_type_ids = fields.One2many('background.center', 'complete_format_id', string="Antecedentes")
+
 
     @api.multi
     def _set_prescription_form_default_values(self):

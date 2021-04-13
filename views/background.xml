@@ -2,29 +2,47 @@
 <odoo>
 
     <!--Tree View-->
-	<record id="config_clinica_patient_background_view_tree" model="ir.ui.view">
-        <field name="name">config.clinica.patient.background.view.tree</field>
-        <field name="model">config.clinica.patient.background</field>
+	<record id="background_type_view_tree" model="ir.ui.view">
+        <field name="name">background.type.view.tree</field>
+        <field name="model">background.type</field>
         <field name="arch" type="xml">
             <tree string="Patient Background" editable="top">
-                <field name="background_type"/>
-                <field name="background"/>
+                <field name="type_background"/>
+                <field name="value_background"/>
             </tree>
         </field>
     </record>
+
+    <!--Form View-->
+    <record id="background_type_view_form" model="ir.ui.view">
+        <field name="name">background.type.view.form</field>
+        <field name="model">background.type</field>
+        <field name="arch" type="xml">
+            <form string="Patient Background">
+                <sheet>
+                    <group>
+                        <field name="type_background"/>
+                    </group>
+                    <group>
+                        <field name="value_background"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
     
-    <record id="config_clinica_patient_background_action" model="ir.actions.act_window">
-        <field name="name">Patient Background</field>
-        <field name="res_model">config.clinica.patient.background</field>
+    <record id="background_type_action" model="ir.actions.act_window">
+        <field name="name">Antecedentes</field>
+        <field name="res_model">background.type</field>
         <field name="view_type">form</field>
         <field name='view_mode'>tree</field>
-        <field name="view_id" ref="config_clinica_patient_background_view_tree"/>
+        <field name="view_id" ref="background_type_view_tree"/>
     </record>
 
     <menuitem
         id="config_clinica_patient_background_menu"
-        name="Patient Background"
-        action="config_clinica_patient_background_action"
+        name="Antecedentes"
+        action="background_type_action"
         parent="menu_doctor_config_details"
         groups="base.group_system"
         sequence="12"/>

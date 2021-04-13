@@ -86,7 +86,7 @@
                                     </group>
                                 </page>
                                 <page name="patient_background" string="Patient Background">
-                                    <group>
+                                    <group invisible="1">
                                         <field name="background_ids" nolabel="1" context="{'default_patient_id': patient_id}" attrs="{'readonly':[('state','=','closed')]}">
                                             <tree editable="bottom">
                                                 <field name="patient_id" invisible="1"/>
@@ -94,6 +94,9 @@
                                                 <field name="background"/>      
                                             </tree>
                                         </field>
+                                    </group>
+                                    <group>
+                                        <field name="background_type_ids" nolabel="1" context="{'default_patient_id': patient_id}" attrs="{'readonly':[('state','=','closed')]}"/>
                                     </group>
                                     <group>
                                         <label for="background_notes"/>

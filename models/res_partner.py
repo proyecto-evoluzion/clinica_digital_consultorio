@@ -35,9 +35,12 @@ class Partner(models.Model):
     	                        ('4','4-Particular'),('5','5-Otro'),('6','6-Víctima con afiliación al Régimen Contributivo'),
     	                        ('7','7-Víctima con afiliación al Régimen subsidiado'),('8','8-Víctima no asegurado (Vinculado)')]
     	                        ,string="Type User")
-    tdoc_rips = fields.Selection([('NI','NI - Numero de identificacion tributaria NIT'),('CC','CC - Cedula de ciudadania'),
-    								('CE','CE - Aliens Certificate'),('PA','PA - Passport'),('CD','CD - Diplomatic card'),
-    								('PE','PE - Special Permit of Permanence')], string='Type of Document')
+    tdoc_rips = fields.Selection([('CC','CC - Cedula de ciudadania'),('CE','CE - Cedula de extranjeria'),
+                                      ('PA','PA - Pasaporte'),('RC','RC - Registro civil'),('TI','TI - Tarjeta de identidad'),
+                                      ('AS','AS - Adulto sin identificar'),('MS','MS - Menor sin identificar'),
+                                      ('CD','CD - Carnet diplomatico'),('SC','SC - Salvaconducto'),
+                                      ('PE','PE - Permiso de permanencia'),
+                                      ('CN','CN - Certificado de nacido vivo')], string='Type of Document')
     number_identification = fields.Char(string="Number Identification")
    
 

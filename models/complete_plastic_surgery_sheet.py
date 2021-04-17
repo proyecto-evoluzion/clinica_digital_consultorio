@@ -54,12 +54,12 @@ class PlasticSurgerySheet(models.Model):
     def _default_system_review(self):
         system_rev_list = []
         system_rev_vals = {}
-        system_review_obj = self.env['config.clinica.system.review'].search([])
+        system_review_obj = self.env['system.review.type'].search([])
         if system_review_obj:
             for system_rev in system_review_obj:
                 system_rev_vals = {
                     'type_review': system_rev.type_review,
-                    'system_review': system_rev.system_review
+                    'value_review': system_rev.value_review
                 }
                 rec = self.env['clinica.system.review'].create(system_rev_vals)
                 system_rev_list.append(rec.id)
@@ -100,6 +100,7 @@ class PlasticSurgerySheet(models.Model):
     blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')
     
     consultation_reason = fields.Text(string="Reason for Consultation", related="patient_id.consultation_reason")
+    current_illness = fields.Text(string="Current illness")
     pathological = fields.Text(string="Pathological", related='patient_id.pathological')
     surgical = fields.Text(string="Surgical", related='patient_id.surgical')
     toxic = fields.Text(string="Toxic")
@@ -210,6 +211,7 @@ class PlasticSurgerySheet(models.Model):
     										('15', 'Otra')], string='Causa Externa')
 
     background_type_ids = fields.One2many('background.center', 'complete_format_id', string="Antecedentes")
+    system_review_type_ids = fields.One2many('system.review.center','complete_format_id', string="Revision por sistemas")
 
 
     @api.multi
@@ -455,11 +457,34 @@ class SystemsReviews(models.Model):
     type_review = fields.Char(string="Type Review")
     system_review = fields.Char(string="System Review")
 
-class ConfigSystemsReviews(models.Model):
-    _name = "config.clinica.system.review"
+class SystemsReviewType(models.Model):
+    _name = "system.review.type"
+    _rec_name ="type_review"
 
-    type_review = fields.Char(string="Type Review")
-    system_review = fields.Char(string="System Review")
+    type_review = fields.Char(string="Tipo de Revision")
+    value_review = fields.Char(string="Valor")
+
+class SystemReviewCenter(models.Model):
+    _name = "system.review.center"
+    _rec_name = "patient_id"
+
+    patient_id = fields.Many2one('doctor.patient',string="Paciente")
+    complete_format_id = fields.Many2one('complete.clinica.plastic.surgery',string="Atencion Clinica")
+    system_review_ids = fields.Many2many('system.review.type',string="Revision por sistemas") 
+
+    @api.multi
+    @api.onchange('patient_id')
+    def onchange_patient_id(self):
+        system_review_center_rec = self.env['system.review.center'].search([('patient_id', '=', self.patient_id.id)])
+        list_system = []
+        if system_review_center_rec:
+            list_system = system_review_center_rec.system_review_ids.ids
+            self.system_review_ids = [(6,0,list_system)]
+        else:
+            system_review_center_rec = self.env['system.review.type'].search([])
+            list_system = system_review_center_rec.ids
+            self.system_review_ids = [(6,0,list_system)]
+
 
 # class PhysicalExaminationType(models.Model):
 #     _name = "clinica.physical.item"

@@ -2,29 +2,47 @@
 <odoo>
 
     <!--Tree View-->
-	<record id="config_clinica_system_review_view_tree" model="ir.ui.view">
-        <field name="name">config.clinica.system.review.view.tree</field>
-        <field name="model">config.clinica.system.review</field>
+	<record id="system_review_type_view_tree" model="ir.ui.view">
+        <field name="name">system.review.type.tree</field>
+        <field name="model">system.review.type</field>
         <field name="arch" type="xml">
             <tree string="Revisión por sistemas" editable="top">
                 <field name="type_review"/>
-                <field name="system_review"/>
+                <field name="value_review"/>
             </tree>
         </field>
     </record>
+
+    <!--Form View-->
+    <record id="system_review_type_view_form" model="ir.ui.view">
+        <field name="name">system.review.type.form</field>
+        <field name="model">system.review.type</field>
+        <field name="arch" type="xml">
+            <form string="Patient System Review">
+                <sheet>
+                    <group>
+                        <field name="type_review"/>
+                    </group>
+                    <group>
+                        <field name="value_review"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
     
-    <record id="config_clinica_system_review_action" model="ir.actions.act_window">
+    <record id="system_review_type_action" model="ir.actions.act_window">
         <field name="name">Revisión por sistemas</field>
-        <field name="res_model">config.clinica.system.review</field>
+        <field name="res_model">system.review.type</field>
         <field name="view_type">form</field>
         <field name='view_mode'>tree</field>
-        <field name="view_id" ref="config_clinica_system_review_view_tree"/>
+        <field name="view_id" ref="system_review_type_view_tree"/>
     </record>
 
     <menuitem
-        id="config_clinica_system_review_menu"
+        id="system_review_type_menu"
         name="Revisión por sistemas"
-        action="config_clinica_system_review_action"
+        action="system_review_type_action"
         parent="menu_doctor_config_details"
         groups="base.group_system"
         sequence="12"/>

@@ -145,11 +145,14 @@ class Doctor(models.Model):
         ## administrative data will not get updated with partner changes
         for data in self:
             partner_vals = {}
-            if 'firstname' in vals or 'lastname' in vals or 'middlename' in vals or 'surname' in vals:
+            if 'firstname' in vals or 'lastname' in vals or 'middlename' in vals or 'surname' in vals or 'tdoc_rips' in vals or 'ref' in vals:
                 firstname = data.firstname or ''
                 lastname = data.lastname or ''
                 middlename = data.middlename or ''
                 surname = data.surname or ''
+                tdoc_rips = data.tdoc_rips or ''
+                ref = data.ref or ''
+               
                 if 'firstname' in vals:
                     firstname = vals.get('firstname', False) or ''
                     partner_vals.update({'x_name1': firstname})
@@ -162,6 +165,13 @@ class Doctor(models.Model):
                 if 'surname' in vals:
                     surname = vals.get('surname', False) or ''
                     partner_vals.update({'x_lastname2': surname})
+                if 'tdoc_rips' in vals:
+                    tdoc_rips = vals.get('tdoc_rips', False) or ''
+                    partner_vals.update({'tdoc_rips': tdoc_rips})
+                if 'ref' in vals:
+                    ref = vals.get('ref', False) or ''
+                    partner_vals.update({'number_identification': ref})
+                
                 # nameList = [
                 #     firstname.strip(),
                 #     lastname.strip(),
@@ -534,11 +544,13 @@ class DoctorAdministrativeData(models.Model):
         ## administrative data will not get updated with partner changes
         for data in self:
             partner_vals = {}
-            if 'firstname' in vals or 'lastname' in vals or 'middlename' in vals or 'surname' in vals:
+            if 'firstname' in vals or 'lastname' in vals or 'middlename' in vals or 'surname' in vals or 'tdoc_rips' in vals or 'ref' in vals:
                 firstname = data.firstname or ''
                 lastname = data.lastname or ''
                 middlename = data.middlename or ''
                 surname = data.surname or ''
+                ref = data.ref or ''
+              
                 if 'firstname' in vals:
                     firstname = vals.get('firstname', False) or ''
                     partner_vals.update({'x_name1': firstname})
@@ -551,6 +563,13 @@ class DoctorAdministrativeData(models.Model):
                 if 'surname' in vals:
                     surname = vals.get('surname', False) or ''
                     partner_vals.update({'x_lastname2': surname})
+                if 'tdoc_rips' in vals:
+                    tdoc_rips = vals.get('tdoc_rips', False) or ''
+                    partner_vals.update({'tdoc_rips': tdoc_rips})
+                if 'ref' in vals:
+                    ref = vals.get('ref', False) or ''
+                    partner_vals.update({'number_identification': ref})
+                                    
                 # nameList = [
                 #     firstname.strip(),
                 #     lastname.strip(),
@@ -563,7 +582,7 @@ class DoctorAdministrativeData(models.Model):
                 #     if item is not '':
                 #         formatedList.append(item)
                 #     name = ' ' .join(formatedList).title()
-                name = lastname + ' ' + surname + ' ' + firstname + ' ' + middlename
+                name = lastname + ' ' + surname + ' ' + firstname + ' ' + middlename + ' ' + tdoc_rips 
                 partner_vals.update({'name': name})
             if 'birth_date' in vals:
                 partner_vals.update({'xbirthday': vals.get('birth_date', False)})

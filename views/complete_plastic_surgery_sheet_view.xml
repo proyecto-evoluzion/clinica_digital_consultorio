@@ -62,6 +62,13 @@
                                         <label for="consultation_reason" string="Reason for Consultation"/>
                                         <field name="consultation_reason" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                                     </group>
+                                  
+                                    <group name="current_illness" colspan="2" col='1'>
+                                        <label for="current_illness" string="Current illness"/>
+                                        <field name="current_illness" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                    </group>
+
+                                   
                                     <group name="confidential_notes" colspan="2" col='1'>
                                         <label for="confidential_notes" string="Confidential Notes"/>
                                         <field name="confidential_notes" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
@@ -72,13 +79,17 @@
                                     </group>
                                 </page>
                                 <page name="system_review" string="Systems Reviews">
-                                    <group name="system_review">
+                                    <group invisible="1" name="system_review">
                                         <field name="system_review_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
                                             <tree editable="bottom">
                                                 <field name="type_review"/>
-                                                <field name="system_review"/>      
+                                                    
                                             </tree>
                                         </field>
+                                    </group>
+                                    <group>
+                                        <field name="system_review_type_ids" nolabel="1" context="{'default_patient_id': patient_id}" attrs="{'readonly':[('state','=','closed')]}"/>
+                                       
                                     </group>
                                     <group>
                                         <label for="system_review_notes"/>

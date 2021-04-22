@@ -544,12 +544,13 @@ class DoctorAdministrativeData(models.Model):
         ## administrative data will not get updated with partner changes
         for data in self:
             partner_vals = {}
-            if 'firstname' in vals or 'lastname' in vals or 'middlename' in vals or 'surname' in vals or 'tdoc_rips' in vals or 'ref' in vals:
+            if 'firstname' in vals or 'lastname' in vals or 'middlename' in vals or 'surname' in vals or 'tdoc_rips' in vals or 'name' in vals:
                 firstname = data.firstname or ''
                 lastname = data.lastname or ''
                 middlename = data.middlename or ''
                 surname = data.surname or ''
-                ref = data.ref or ''
+                tdoc_rips = data.tdoc_rips or ''
+                name = data.name or ''
               
                 if 'firstname' in vals:
                     firstname = vals.get('firstname', False) or ''
@@ -566,9 +567,9 @@ class DoctorAdministrativeData(models.Model):
                 if 'tdoc_rips' in vals:
                     tdoc_rips = vals.get('tdoc_rips', False) or ''
                     partner_vals.update({'tdoc_rips': tdoc_rips})
-                if 'ref' in vals:
-                    ref = vals.get('ref', False) or ''
-                    partner_vals.update({'number_identification': ref})
+                if 'name' in vals:
+                    ref = vals.get('name', False) or ''
+                    partner_vals.update({'number_identification': name})
                                     
                 # nameList = [
                 #     firstname.strip(),
@@ -577,13 +578,13 @@ class DoctorAdministrativeData(models.Model):
                 #     surname.strip()
                 #     ]
                 # formatedList = []
-                name = ''
+                name1 = ''
                 # for item in nameList:
                 #     if item is not '':
                 #         formatedList.append(item)
                 #     name = ' ' .join(formatedList).title()
-                name = lastname + ' ' + surname + ' ' + firstname + ' ' + middlename + ' ' + tdoc_rips 
-                partner_vals.update({'name': name})
+                name1 = lastname + ' ' + surname + ' ' + firstname + ' ' + middlename + ' ' + tdoc_rips
+                partner_vals.update({'name': name1})
             if 'birth_date' in vals:
                 partner_vals.update({'xbirthday': vals.get('birth_date', False)})
             if 'email' in vals:
@@ -624,6 +625,9 @@ class DoctorAdministrativeData(models.Model):
         if res.insurer_ids:
     	    for insures in res.insurer_ids:
                insures.patient_insurer_id = res.id
+       
+       
+        
                
                
         res._check_tdocs()
@@ -660,13 +664,18 @@ class DoctorAdministrativeData(models.Model):
         self._check_tdocs()
         if 'firstname' in vals or 'lastname' in vals or 'middlename' in vals or 'surname' in vals\
                  or 'birth_date' in vals or 'email' in vals or 'phone' in vals or 'mobile' in vals or 'image' in vals \
-                 or 'residence_district' in vals or 'residence_department_id' in vals or 'residence_country_id' in vals or 'residence_address' in vals:
+                 or 'residence_district' in vals or 'residence_department_id' in vals or 'residence_country_id' in vals or 'residence_address' in vals or 'name' in vals or 'tdoc_rips' in vals:
             for data in self:
                 firstname = data.firstname or ''
                 lastname = data.lastname or ''
                 middlename = data.middlename or ''
                 surname = data.surname or ''
-                data.patient_name = lastname + ' ' + surname + ' ' + firstname + ' ' +  middlename
+                name = data.name or ''
+                tdoc_rips = data.tdoc_rips or ''
+
+               
+                data.patient_name = lastname + ' ' + surname + ' ' + firstname + ' ' +  middlename + ' ' + tdoc_rips
+        
                 if data.partner_id:
                     partner_vals = data._get_related_partner_vals(vals)
                     data.partner_id.write(partner_vals)

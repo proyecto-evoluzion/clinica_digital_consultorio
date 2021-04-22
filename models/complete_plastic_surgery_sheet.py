@@ -210,11 +210,9 @@ class PlasticSurgerySheet(models.Model):
     										('13', 'Enfermedad general'),('14', 'Enfermedad laboral'),
     										('15', 'Otra')], string='Causa Externa')
 
-
-=======
     background_type_ids = fields.Many2many('copy.background.type', string="Antecedentes")
     #system_review_type_ids = fields.One2many('system.review.center','complete_format_id', string="Revision por sistemas")
->>>>>>> 2bf9268b3511f8ae758636dcbd3b57e7d689f9d9
+
 
 
     @api.multi

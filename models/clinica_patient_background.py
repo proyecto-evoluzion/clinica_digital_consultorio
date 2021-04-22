@@ -58,25 +58,18 @@ class BackgroundType(models.Model):
 
 
     type_background = fields.Char(string="Tipo")
-    value_background = fields.Char(string="Valor")
+
+class CopyBackgroundType(models.Model):
+    _name ="copy.background.type"
+    _rec_name = 'type_background'
+
+
+    type_background = fields.Many2one('background.type',string="Tipo")
+    value_background = fields.Text(string="Descripción")
 
 class BackgroundCenter(models.Model):
     _name ="background.center"
     _rec_name = 'patient_id'
 
     patient_id = fields.Many2one('doctor.patient',string="Paciente")
-    complete_format_id = fields.Many2one('complete.clinica.plastic.surgery',string="Atencion Clinica")
-    background_ids = fields.Many2many('background.type',string="Antecedentes")
-
-    @api.multi
-    @api.onchange('patient_id')
-    def onchange_patient_id(self):
-        background_center_rec = self.env['background.center'].search([('patient_id','=',self.patient_id.id)])
-        list_background = []
-        if background_center_rec:
-            list_background = background_center_rec.background_ids.ids
-            self.background_ids = [(6,0,list_background)]
-        else:
-            background_center_rec = self.env['background.type'].search([])
-            list_background = background_center_rec.ids
-            self.background_ids = [(6,0,list_background)]
+    background_ids = fields.Many2many('copy.background.type',string="Antecedentes")

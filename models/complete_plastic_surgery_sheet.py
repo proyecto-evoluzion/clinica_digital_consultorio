@@ -210,8 +210,11 @@ class PlasticSurgerySheet(models.Model):
     										('13', 'Enfermedad general'),('14', 'Enfermedad laboral'),
     										('15', 'Otra')], string='Causa Externa')
 
-    background_type_ids = fields.One2many('background.center', 'complete_format_id', string="Antecedentes")
+
+=======
+    background_type_ids = fields.Many2many('copy.background.type', string="Antecedentes")
     #system_review_type_ids = fields.One2many('system.review.center','complete_format_id', string="Revision por sistemas")
+>>>>>>> 2bf9268b3511f8ae758636dcbd3b57e7d689f9d9
 
 
     @api.multi
@@ -219,7 +222,7 @@ class PlasticSurgerySheet(models.Model):
         vals = {
             'default_patient_id': self.patient_id and self.patient_id.id or False,
             'default_complete_format_id' : self.id,
-            # 'default_name' : self.number
+            'default_doctor_id' : self.doctor_id.id
         }
         return vals
     
@@ -265,29 +268,16 @@ class PlasticSurgerySheet(models.Model):
     def onchange_consultation_reason(self):
         if self.patient_id:
             self.consultation_reason = self.patient_id.consultation_reason
-            patient_background_obj = self.env['clinica.patient.background'].search([('patient_id','=',self.patient_id.id)])
+            patient_background_obj = self.env['background.center'].search([('patient_id','=',self.patient_id.id)], limit=1)
             if patient_background_obj:
-                patient_background_upd = []
-                for patient_bk in patient_background_obj:
-                    patient_background_upd.append({'patient_id': patient_bk.patient_id.id,
-                                            'background_type': patient_bk.background_type,
-                                            'background': patient_bk.background})
-                if patient_background_upd:
-                    self.update({'background_ids': [(6,0,[])]})
-                    self.update({'background_ids': patient_background_upd})
+                self.background_type_ids = [(6,0,patient_background_obj.background_ids.ids)]
             else:
-                background_list = []
-                background_vals = {}
-                background_obj = self.env['config.clinica.patient.background'].search([])
-                if background_obj:
-                    for background in background_obj:
-                        background_vals = {
-                            'background_type': background.background_type,
-                            'background': background.background
-                        }
-                    rec = self.env['clinica.patient.background'].create(background_vals)
-                    background_list.append(rec.id)
-                self.update({'background_ids': [(6,0,background_list)]})
+                create_list = []
+                background_obj = self.env['background.type'].search([])
+                for rec in background_obj:
+                    copy_obj = self.env['copy.background.type'].create({'type_background': rec.id})
+                    create_list.append(copy_obj.id)
+                self.background_type_ids = [(6,0,create_list)]
 
     @api.multi
     @api.depends('birth_date')
@@ -401,12 +391,26 @@ class PlasticSurgerySheet(models.Model):
             res.prescription_id.name = res.number
             res.prescription_id.complete_format_id = res.id
 
+        if res.background_type_ids:
+            bks_list =[]
+            for bks in res.background_type_ids:
+                bks_list.append(bks.id)
+            bk_center_obj = self.env['background.center'].search([('patient_id','=',res.patient_id.id)],limit=1)
+            if bk_center_obj:
+                bk_center_obj.update({'background_ids': [(6,0,bks_list)]})
+            else:
+                self.env['background.center'].create({
+                    'patient_id': res.patient_id.id,
+                    'background_ids': [(6,0,bks_list)]
+                    })
+
         res._check_document_types()
         return res
     
     
     @api.multi
     def write(self, vals):
+        aux = 0
         if vals.get('document_type', False) or 'numberid_integer' in  vals:
             if vals.get('document_type', False):
                 document_type = vals['document_type']
@@ -423,9 +427,21 @@ class PlasticSurgerySheet(models.Model):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
                 raise ValidationError(warn_msg)
+
+        if vals.get('background_type_ids', False):
+            aux += 1
         
         res = super(PlasticSurgerySheet, self).write(vals)
         self._check_document_types()
+
+        if aux != 0:
+            bks_list =[]
+            for bks in self.background_type_ids:
+                bks_list.append(bks.id)
+
+            bk_center_obj = self.env['background.center'].search([('patient_id','=',self.patient_id.id)],limit=1)
+            bk_center_obj.update({'background_ids': [(6,0,bks_list)]})
+
         return res
     
     @api.multi

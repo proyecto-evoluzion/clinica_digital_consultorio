@@ -8,7 +8,6 @@
         <field name="arch" type="xml">
             <tree string="Patient Background" editable="top">
                 <field name="type_background"/>
-                <field name="value_background"/>
             </tree>
         </field>
     </record>
@@ -22,9 +21,6 @@
                 <sheet>
                     <group>
                         <field name="type_background"/>
-                    </group>
-                    <group>
-                        <field name="value_background"/>
                     </group>
                 </sheet>
             </form>
@@ -46,5 +42,55 @@
         parent="menu_doctor_config_details"
         groups="base.group_system"
         sequence="12"/>
+
+    <!--center Tree View-->
+    <record id="background_center_view_tree" model="ir.ui.view">
+        <field name="name">background.center.view.tree</field>
+        <field name="model">background.center</field>
+        <field name="arch" type="xml">
+            <tree string="Antecedentes">
+                <field name="patient_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--center Form View-->
+    <record id="background_center_view_form" model="ir.ui.view">
+        <field name="name">background.center.view.form</field>
+        <field name="model">background.center</field>
+        <field name="arch" type="xml">
+            <form string="Antecedentes">
+                <sheet>
+                    <group>
+                        <field name="patient_id"/>
+                    </group>
+                    <group>
+                        <field name="background_ids" widget="one2many">
+                            <tree editable="bottom">
+                                <field name="type_background" readonly="1"/>
+                                <field name="value_background" />
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="background_center_action" model="ir.actions.act_window">
+        <field name="name">Antecedentes</field>
+        <field name="res_model">background.center</field>
+        <field name="view_type">form</field>
+        <field name='view_mode'>tree,form</field>
+        <field name="view_id" ref="background_center_view_tree"/>
+    </record>
+
+    <menuitem
+        id="patient_background_menu"
+        name="Antecedentes por pacientes"
+        action="background_center_action"
+        parent="menu_doctor_config_details"
+        groups="base.group_no_one"
+        sequence="13"/>
     
 </odoo>

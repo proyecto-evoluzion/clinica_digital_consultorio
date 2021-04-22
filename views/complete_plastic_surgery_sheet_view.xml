@@ -79,18 +79,19 @@
                                     </group>
                                 </page>
                                 <page name="system_review" string="Systems Reviews">
-                                    <group invisible="1" name="system_review">
+                                    <group name="system_review">
                                         <field name="system_review_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
                                             <tree editable="bottom">
                                                 <field name="type_review"/>
+                                                <field name="system_review"/>
                                                     
                                             </tree>
                                         </field>
                                     </group>
-                                    <group>
+                                <!--   <group>
                                         <field name="system_review_type_ids" nolabel="1" context="{'default_patient_id': patient_id}" attrs="{'readonly':[('state','=','closed')]}"/>
                                        
-                                    </group>
+                                    </group>--> 
                                     <group>
                                         <label for="system_review_notes"/>
                                         <field name="system_review_notes" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>

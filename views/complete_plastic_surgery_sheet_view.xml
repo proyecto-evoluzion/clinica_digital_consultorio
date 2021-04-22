@@ -107,7 +107,13 @@
                                         </field>
                                     </group>
                                     <group>
-                                        <field name="background_type_ids" nolabel="1" context="{'default_patient_id': patient_id}" attrs="{'readonly':[('state','=','closed')]}"/>
+                                        <!-- <field name="background_type_ids" nolabel="1" context="{'default_patient_id': patient_id}" attrs="{'readonly':[('state','=','closed')]}"/> -->
+                                        <field name="background_type_ids" widget="one2many">
+                                            <tree editable="bottom">
+                                                <field name="type_background" readonly="0"/>
+                                                <field name="value_background" />
+                                            </tree>
+                                        </field>
                                     </group>
                                     <group>
                                         <label for="background_notes"/>

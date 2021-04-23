@@ -1919,7 +1919,7 @@ msgstr "Antecedente"
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_type_exam
 msgid "Type Physical Exam"
-msgstr "Tipo"
+msgstr "Examen Físico"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_exam
@@ -4432,6 +4432,11 @@ msgstr "Motivo de consulta"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
 msgid "Confidential Notes"
 msgstr "Notas confidenciales"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Current illness"
+msgstr "Enfermedad actual"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
@@ -7306,5 +7311,10 @@ msgstr "Razon Social"
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_res_company_service_provider
 msgid "Service Provider"
 msgstr "Código del prestador de servicios de salud"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_physical_examination_type_exam
+msgid "Type Physical Exam"
+msgstr "Examen Físico"
 
 

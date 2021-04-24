@@ -544,13 +544,15 @@ class DoctorAdministrativeData(models.Model):
         ## administrative data will not get updated with partner changes
         for data in self:
             partner_vals = {}
-            if 'firstname' in vals or 'lastname' in vals or 'middlename' in vals or 'surname' in vals or 'tdoc_rips' in vals or 'name' in vals:
+            if 'tdoc_rips' in vals:
+            	tdoc_rips = data.tdoc_rips or ''
+            if 'name' in vals:
+            	name = data.name or ''
+            if 'firstname' in vals or 'lastname' in vals or 'middlename' in vals or 'surname' in vals:
                 firstname = data.firstname or ''
                 lastname = data.lastname or ''
                 middlename = data.middlename or ''
                 surname = data.surname or ''
-                tdoc_rips = data.tdoc_rips or ''
-                name = data.name or ''
               
                 if 'firstname' in vals:
                     firstname = vals.get('firstname', False) or ''

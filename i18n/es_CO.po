@@ -7342,4 +7342,20 @@ msgstr "Exámen Físico"
 msgid "Type Physical Exam"
 msgstr "Exámen Físico"
 
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_dead
+msgid "Dead"
+msgstr "Fallecido"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_dead_date
+msgid "Dead Date"
+msgstr "Fecha de Defunción"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_health_professional
+msgid "Health profesional"
+msgstr " Es profesional de la salud?"
+
+
 

@@ -6,7 +6,7 @@
         <field name="name">config.physical.examination.view.tree</field>
         <field name="model">config.physical.examination</field>
         <field name="arch" type="xml">
-            <tree string="Exámen Físico" editable="top">
+            <tree string="Exámen Físico" editable="bottom">
                 <field name="type_exam"/>
                 <field name="exam"/>
             </tree>

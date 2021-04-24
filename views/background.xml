@@ -6,7 +6,7 @@
         <field name="name">background.type.view.tree</field>
         <field name="model">background.type</field>
         <field name="arch" type="xml">
-            <tree string="Patient Background" editable="top">
+            <tree string="Patient Background" editable="bottom">
                 <field name="type_background"/>
             </tree>
         </field>

@@ -434,7 +434,7 @@
                                 <field name="default_isure" />                            
                                 <field name="code_assurance" readonly="1"/>
                                 <field name="number_policy"/>
-                                <field name="patient_insurer_id" invisible="0" />
+                                <field name="patient_insurer_id" invisible="1" />
                               </tree>  
                             </field>
                         

@@ -4455,6 +4455,16 @@ msgstr "Exámen físico"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Type Physical Exam"
+msgstr "Tipo de Exámen físico"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
+msgid "Exam"
+msgstr "Exámen físico"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
 msgid "Size and weight"
 msgstr "Talla y peso"
@@ -7315,6 +7325,21 @@ msgstr "Código del prestador de servicios de salud"
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_physical_examination_type_exam
 msgid "Type Physical Exam"
-msgstr "Examen Físico"
+msgstr "Exámen Físico"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_physical_examination_exam
+msgid "Exam"
+msgstr "Exámen Físico"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_config_physical_examination_exam
+msgid "Exam"
+msgstr "Exámen Físico"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_config_physical_examination_type_exam
+msgid "Type Physical Exam"
+msgstr "Exámen Físico"
 
 

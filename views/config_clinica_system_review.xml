@@ -6,7 +6,7 @@
         <field name="name">config.clinica.system.review.view.tree</field>
         <field name="model">config.clinica.system.review</field>
         <field name="arch" type="xml">
-            <tree string="Revisión por sistemas" editable="top">
+            <tree string="Revisión por sistemas" editable="bottom">
                 <field name="type_review"/>
                 <field name="system_review"/>
             </tree>

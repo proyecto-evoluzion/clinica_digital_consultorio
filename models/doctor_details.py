@@ -290,7 +290,7 @@ class DoctorAdministrativeData(models.Model):
     occupation =  fields.Char("Occupation")
     email = fields.Char(string='Email')
     phone = fields.Char(string='Phone Number')
-    link_type = fields.Selection([('contributor','Contributor'),('beneficiary','Beneficiary')], string="Link Type")
+    link_type = fields.Selection([('contributor','Cotizante'),('beneficiary','Beneficiary'),('add','Adicional')], string="Link Type")
     accompany_name = fields.Char("Name of the companion")
     accompany_relationship = fields.Selection([('mother','Mother'),('father','Father'),('grand_father','Grand Father'),
                                  ('grand_mother','Grand Mother'),('uncle','Uncle'),('aunt','Aunt'),

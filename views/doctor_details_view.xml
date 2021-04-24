@@ -324,19 +324,9 @@
                     </group>
 
                     <group>
-                    <group name='group_insurer_info_sub1'>
-                            <field name="user_type" string="Tipo de Usuario"/>
-<!--                            <field name="primary_payer"/> -->
-                            <field name="phone" string="Teléfono"/>
-                            <field name="link_type" string="Tipo Vinculación"/>
-                        </group>
                         <group name='group_insurer_info_sub2'>
-                          <field name="insurer_id"
-                                domain="['&amp;',('is_company','=',True), ('is_assurance', '=', True)]" options="{'no_create_edit': True}" string="Aseguradora" invisible="1"/>
-
-                           
-
-
+                          <!-- <field name="insurer_id"
+                                domain="['&amp;',('is_company','=',True), ('is_assurance', '=', True)]" options="{'no_create_edit': True}" string="Aseguradora" invisible="1"/> -->
                             <field name="email"/>
                             <field name="residence_address" string="Address" placeholder="Address"/>
                         </group>
@@ -409,21 +399,17 @@
                         </group>
                      </group>
 
-                     <group name='insurer_ids' string="Insures Details" col="2">
-
-                
-
-                     <field name="default_particular"/>
-                    
-                          
-                            
-                           <!-- <field name="add_insure_info" string="Add insure" />-->
-                          <!-- <field name="policy_number" string="Policy number"/> -->      
-                          <!--  <field name="default_insure" string="Default"/>-->
-                           <!-- <field name="insurer_id" string="Assurance Company"/>-->
-                          <!--<field name="plan" string="Plan"/>-->
-
-                      </group>
+                    <group name='insurer_ids' string="Insures Details" col="2">
+                        <group>
+                            <field name="default_particular"/>
+                        </group>
+                        <group name='group_insurer_info_sub1'>
+                            <field name="user_type" string="Tipo de Usuario"/>
+<!--                            <field name="primary_payer"/> -->
+                            <field name="phone" string="Teléfono"/>
+                            <field name="link_type" string="Tipo Vinculación"/>
+                        </group>
+                    </group>
 
                     <group>
 

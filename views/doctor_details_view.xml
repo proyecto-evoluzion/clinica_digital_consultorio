@@ -361,7 +361,11 @@
                     <group name='group_other_personal_info' string="Other Personal Information" col="4">
                         <!-- <group name='group_other_personal_info_sub1'  > -->
                             <field name="civil_state" string="Estado Civil"/>
-                            <field name="occupation" string="Ocupación"/> <!--options="{'no_create_edit': True}"-->
+                            <field name="occupation" string="Ocupación"/> 
+                            <field name="dead" string="Dead" />
+                            <field name="dead_date" string="Dead Date" attrs="{'invisible':[('dead','!=',True)]}"/>
+                            <field name="health_professional" string="Health profesional"/>
+                            <!--options="{'no_create_edit': True}"-->
                         <!-- </group> -->
                         <!-- <group name='group_other_personal_info_sub2'>
                             <field name="beliefs"/>

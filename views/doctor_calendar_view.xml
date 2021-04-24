@@ -268,7 +268,7 @@
 						<field name="is_complete_format" invisible="1"/>
 						<field name="expired_contract" invisible="1"/>
 					</group>
-					<group name="profession_details_sub2" >
+					<group name="profession_details_sub2" invisible="1">
 						<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]"  
 							attrs="{'readonly':[('state','!=','new'),('state','!=','confirmed')]}"/>
 						<field name='anesthesia_type'  attrs="{'readonly':[('state','!=','new'),('state','!=','confirmed')]}"/>
@@ -389,12 +389,9 @@
               decoration-warning="patient_state in ['not_attended','retired']" 
               decoration-info="patient_state == 'in_room'"
               default_order="procedure_date">
-				<!--<field name="schedule_id"/>-->
 				<field name="patient_id" string="Paciente"/>
-				<field name="surgeon_id" string="Profesional"/>
-				<!--<field name="anesthesiologist_id"/>-->
+				<field name="surgeon_id" string="Profesional de la salud"/>
 				<field name="procedure_date" string="Hora Inicio"/>
-				<!--<field name="procedure_end_date"/>-->
 				<field name="patient_state"/>
 			</tree>
 		</field>
@@ -473,13 +470,10 @@
 		<field name="model">doctor.waiting.room</field>
 		<field name="arch" type="xml">
 			<tree string="Surgery Room Tree">
-				<field name="surgery_room_id"/>
-				<field name="schedule_id"/>
-				<field name='patient_id'/>
-				<field name="surgeon_id"/>
-				<field name="anesthesiologist_id"/>
-				<field name="procedure_date"/>
-				<field name="procedure_end_date"/>
+				<field name="patient_id" string="Paciente"/>
+				<field name="surgeon_id" string="Profesional de la salud"/>
+				<field name="procedure_date" string="Hora Inicio"/>
+				<field name="patient_state"/>
 			</tree>
 		</field>
 	</record>

@@ -170,7 +170,7 @@ msgid ""
 "       \t\t\t\t\t\t\tSurgery Room:"
 msgstr ""
 "<br/>\n"
-"       \t\t\t\t\t\t\tSala de cirugía:"
+"       \t\t\t\t\t\t\tNo. Consultorio:"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.nurse_sheet_visualizer_template
@@ -2509,7 +2509,7 @@ msgstr "Hora Final:"
 #: code:addons/clinica_digital_consultorio/models/doctor_calendar.py:353
 #, python-format
 msgid "End date should be greater than start date!"
-msgstr "La fecha de finalización del procedimiento debe ser mayor de la fecha del procedimiento."
+msgstr "La fecha de finalización del procedimiento debe ser mayor de la Desde."
 
 #. module: clinica_digital_consultorio
 #: selection:clinica.quirurgical.check.list,patient_out_with:0
@@ -4961,7 +4961,7 @@ msgstr "Procedimiento Quirúrgico"
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_quirurgic_sheet_procedure_date
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_waiting_room_procedure_date
 msgid "Procedure Date"
-msgstr "Fecha del procedimiento"
+msgstr "Desde"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_nurse_sheet_surgery_start_time
@@ -4995,12 +4995,12 @@ msgstr "Fecha/Hora Procedimiento"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.quirurgic_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.room_visualizer_template
 msgid "Procedure Date:"
-msgstr "Fecha del procedimiento:"
+msgstr "Desde:"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_waiting_room_procedure_end_date
 msgid "Procedure End Date"
-msgstr "Fecha de finalización del procedimiento"
+msgstr "Hasta"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_product_template_procedure_type
@@ -5833,7 +5833,7 @@ msgstr "Hora Fin Cirugía"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_surgery_room_procedures_filter
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.view_surgery_room_procedures_calendar
 msgid "Surgery Room"
-msgstr "Sala de Cirugía"
+msgstr "No. Consultorio"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.nurse_sheet_visualizer_template

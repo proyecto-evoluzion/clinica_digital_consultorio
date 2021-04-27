@@ -28,6 +28,10 @@ class DoctorAtc(models.Model):
     
     name = fields.Char('Medicamento')
     code = fields.Char('Código')
+    atc_use_id = fields.Many2one('doctor.atc_use', string='Forma farmaceutica')
+    atc_route_id = fields.Many2one('doctor.atc_route', string='Vía de administración')
+    concentration = fields.Char('Concentración') 
+    
 
 
 class DoctorAtcRoute(models.Model):
@@ -55,8 +59,8 @@ class DoctorAtc(models.Model):
     
     name = fields.Char(string='name',default="Medicinas")
     atc_id = fields.Many2one('doctor.atc', string='Medicamento')
-    atc_route_id = fields.Many2one('doctor.atc_route', string='Vía de administración')
-    atc_use_id = fields.Many2one('doctor.atc_use', string='Forma farmaceutica')
+    atc_route_id = fields.Many2one('doctor.atc_route', string='Vía de administración', related="atc_id.atc_route_id")
+    atc_use_id = fields.Many2one('doctor.atc_use', string='Forma farmaceutica' ,related="atc_id.atc_use_id")
     total_to_use = fields.Integer(string="Cantidad total")
     every_use = fields.Integer(string="Frecuencia: Cada")
     deadline_use = fields.Integer(string="Durante")
@@ -68,4 +72,5 @@ class DoctorAtc(models.Model):
 										('every','Indefinidamente')], 
 										string='-')
     indications = fields.Text(string="Indicaciones")
-    prescription_id = fields.Many2one('doctor.prescription', 'Prescription ATC')    
+    prescription_id = fields.Many2one('doctor.prescription', 'Prescription ATC')
+    concentration = fields.Char(string='Concentración', related="atc_id.concentration")    

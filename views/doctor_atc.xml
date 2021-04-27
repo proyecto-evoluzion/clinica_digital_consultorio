@@ -9,6 +9,11 @@
             <tree string="Medicamento" editable="top">
                 <field name="code"/>
                 <field name="name"/>
+                <field name="atc_use_id"/>
+                <field name="atc_route_id"/>
+                <field name="concentration"/>
+
+               
             </tree>
         </field>
     </record>
@@ -23,7 +28,7 @@
 
     <menuitem
         id="doctor_atc_menu"
-        name="Medicamento"
+        name="Medicamentos"
         action="doctor_atc_action"
         parent="menu_doctor_config_details"
         groups="base.group_system"
@@ -94,25 +99,36 @@
         <field name="arch" type="xml">
             <form string="Medicamento">
                 <group col="4">
-                    <field name="atc_id"/>                    
-                    <field name="name" invisible="1"/>
+                    <field name="atc_id"/> 
+                    <field name="concentration"/>                   
+                    
                 </group>
                 <group col="4">
-                  <field name="total_to_use"/>
                   <field name="atc_route_id"/>
+                  <field name="name" invisible="1"/>                      
                 </group>
+
                 <group col="4">
-                  <field name="atc_use_id"/>
+                  <field name="atc_use_id" />
                   <field name="atc_use_id" invisible="1"/>
                 </group>
+
+                <group col="4">
+                 <field name="total_to_use"/>
+                 <field name="total_to_use" invisible="1"/>
+                </group>           
+              
                 <group col="4">
                   <field name="every_use"/>
                   <field name="frequency_type1"/>
                 </group>
+
                 <group col="4">
                   <field name="deadline_use"/>
                   <field name="frequency_type2"/>
                 </group>
+               
+               
                 <label for="indications"/>
                 <field name="indications"/>
             </form>

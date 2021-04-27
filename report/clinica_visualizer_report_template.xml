@@ -1387,13 +1387,17 @@
               <table class="table table-bordered" style=" width:100%;">
                 <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
                 <tr>
-                  <td style="width:50%; "><t t-if="prescription.patientname"># Historia Clínica: <span style="padding-left:2px;" t-field="prescription.patient_id.ref"/></t></td>
+                  <td style="width:50%; "><t t-if="prescription.patientname"> Historia Clínica: <span style="padding-left:2px;" t-field="prescription.patient_id.ref"/></t><br/>
+				  <t t-if="prescription.patient_id.insurer_id and flag == 0"> Insurer: <span style="padding-left:2px;" t-field="prescription.patient_id.insurer_id.name"/><br/>
+				  </t>
+				  <t t-if="prescription.patient_id.plan and flag == 0">
+				  Plan: <span style="padding-left:2px;" t-field="prescription.patient_id.plan.name"/><br/>
+				  </t>
+				  </td>
                   <td style="width:50%; ">
                     Patient Name: <span style="padding-left:2px;" t-field="prescription.patient_id.firstname"/> <span style="padding-left:2px;" t-field="prescription.patient_id.lastname"/><br/>
                     <t t-if="prescription.patient_id.age">Age: <span style="padding-left:2px;" t-field="prescription.patient_id.age"/><br/></t>
-                    <t t-if="prescription.patient_id.insurer_id and flag == 0">
-                      Insurer: <span style="padding-left:2px;" t-field="prescription.patient_id.insurer_id.name"/><br/>
-                    </t>
+					 <t t-if="prescription.patient_id.user_type">Tipo de usuario: <span style="padding-left:2px;" t-field="prescription.patient_id.user_type"/><br/></t>
                   </td>
                 </tr>
                 <t t-if="prescription.order_type == 'informs'">
@@ -1413,12 +1417,14 @@
                   </tr>
                   <t t-foreach="prescription.atc_ids" t-as="atc">
                     <tr >
-                      <td colspan="2"><strong><span t-field="atc.atc_id.name"/></strong></td>
+                      <td colspan="2"><strong><span t-field="atc.atc_id.name"/></strong><br/>
+					  <t>Cantidad total: <span style="padding-left:2px;" t-field="atc.total_to_use"/><br/></t> 
+					  </td> 
                     </tr>
                     <tr>
-                      <td style="width:100%; ">
-                        <t>Forma de uso: <span style="padding-left:2px;" t-field="atc.total_to_use"/><br/></t>
+                      <td style="width:100%; ">		
                         <t>Vía de administración: <span style="padding-left:2px;" t-field="atc.atc_route_id"/><br/></t>
+						<t>Concentración: <span style="padding-left:2px;" t-field="atc.concentration"/><br/></t>
                         <t>Forma de uso: <span style="padding-left:2px;" t-field="atc.atc_use_id"/><br/></t>
                       </td>
                     </tr>
@@ -1443,6 +1449,8 @@
                     </tr>
                   </t>
                 </t>
+
+
                 <t t-if="prescription.order_type == 'exam'">
                   <tr>
                     <td colspan="2" style="text-align:center;"><strong>EXÁMEN, IMANGEN - PROCEDIMIENTO DIAGNÓSTICO O TERAPÉUTICO (CUPS)</strong></td>

@@ -865,7 +865,7 @@
    					<tr t-if="plastic_surgery.physical_exam or plastic_surgery.physical_examination_ids">
        					<td colspan="2" style="width:50%; ">
                   <t style="border-bottom: 1px solid gray;" t-foreach="plastic_surgery.physical_examination_ids" t-as="pe">
-       						<span style="padding-left:2px;" t-field="pe.type_exam"/>: <span style="padding-left:2px;" t-field="pe.exam"/><br/>
+       						<span style="padding-left:2px;" t-field="pe.element"/>: <span style="padding-left:2px;" t-field="pe.physical_examination"/><br/>
                   </t>
                   <span style="padding-left:2px;" t-field="plastic_surgery.physical_exam"/>
        					</td>

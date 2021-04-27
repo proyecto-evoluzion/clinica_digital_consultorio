@@ -242,9 +242,9 @@
 							</div>
 						</div>
 						<field name='insurer_id' attrs="{'readonly':[('state','!=','new')]}" domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
-						<span attrs="{'invisible':[('expired_contract','==',False)]}" style="color:red;">
+						<!-- <span attrs="{'invisible':[('expired_contract','==',False)]}" style="color:red;">
 							<strong>No existe un contrato vigente con esta aseguradora.</strong>
-						</span>
+						</span> -->
 						<field name='assurance_plan_id' attrs="{'readonly':[('state','!=','new')]}" domain="[('insurer_id','=',insurer_id)]"/>
 						<field name="number_policy" attrs="{'readonly':[('state','!=','new')]}" force_save="1"/>
 						<field name="copago" attrs="{'readonly':[('state','!=','new')]}"/>

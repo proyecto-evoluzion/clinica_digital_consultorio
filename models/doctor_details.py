@@ -283,7 +283,7 @@ class DoctorAdministrativeData(models.Model):
     residence_city_id = fields.Many2one('res.country.state.city', string='Residence Location/City/Town', required=True, default=lambda self: self.env.ref('clinica_digital_consultorio.res_country_state_city_co_03001'))
     residence_area_id = fields.Selection([('U','Urban'), ('R','Rural')], string='Residence Area', required=True)
     residence_address = fields.Text(string="Residence Address")
-    civil_state = fields.Selection([('separated','Separada/o'),('single','Soltera/o'),('married','Casada/o'),
+    civil_state = fields.Selection([('separated','Separada/o'),('single','Soltera/o'),('married','Casada/o'),('divorce','Divorciada/o'),
                                    ('free_union','Unión libre'),('widow','Viuda/o')], string='Civil Status')
     occupation =  fields.Char("Occupation")
     email = fields.Char(string='Email')
@@ -354,6 +354,16 @@ class DoctorAdministrativeData(models.Model):
     medical_evolution_ids = fields.One2many('clinica.medical.evolution', 'patient_id', string="Medical Orders and Evolution", copy=False)
     epicrisis_ids = fields.One2many('doctor.epicrisis', 'patient_id', string="Epicrisis", copy=False)
     active = fields.Boolean(string="Active", default=True)
+    disability = fields.Boolean(string="Disability", default=False)
+    cognitive_disability = fields.Selection([('AU','Autismo'), ('SD','Síndrome de Down'), ('SA','Síndrome de Asperger'),('RM','Retraso mental'),('OT','Otros')], string="Cognitivas")
+    pysical_disability = fields.Selection([('LM','Lesión medular'),('EM','Esclerosis Múltiple'),('PC','Parálisis Cerebral'),('MP','Mal de Parkinson'),('EB','Espina Bifida'),('A','Acondroplasia'),('A','Albinismo'),('O','Otros')],string="Físicas")
+    sensory_disability = fields.Selection([('DV','Discapacidad Visual'),('DA','Discapacidad Auditiva'),('OT','Otros')],string="Sensorial")
+    learning_problems = fields.Selection([('Dislexia','Dislexia'),('Disgrafia','Disgrafia'),('Discalcudia','Discalcudia'),('Otros','Otros')],string="Problemas de aprendizaje") 
+    special_population = fields.Boolean(string="Special Population", default=False)
+    etnia = fields.Selection([('indigena','Indígena'),('rom','Rom'),('afrodescendiente','Afrodescendiente'),('raizal','Raizal'),('palenqueros','Palenqueros'),('Otros','Otros')],string="Etnia")
+    displaced = fields.Char(string="Displaced")
+    desmobiliced = fields.Char(string="Desmobilized")
+    victim_conflict = fields.Char(string="Victim Conflict")
 
     @api.multi
     def setting_names(self):

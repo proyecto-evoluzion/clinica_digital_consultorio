@@ -172,7 +172,7 @@
 						attrs="{'invisible':[('patient_state','!=','dated')]}">
 					</button>
 					<button name="action_not_attended" type="object" class="oe_stat_button" icon="fa-calendar-check-o" 
-						string="No asistió"
+						string="No asistió / Canceló"
 						attrs="{'invisible':[('patient_state','!=','dated')]}">
 					</button>
 					<button name="action_retired" type="object" class="oe_stat_button" icon="fa-calendar-minus-o" 
@@ -556,12 +556,12 @@
 	   groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.pharmacist,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.otorhino" sequence="3"/>
 	   
   <!-- Surgery room menu -->
-   <menuitem id="menu_clinica_surgery_room_procedures"
+   <!-- <menuitem id="menu_clinica_surgery_room_procedures"
 	   name="Agenda"
 	   parent="menu_doctor_process"
 	   action="clinica_digital_consultorio.action_clinica_surgery_room_procedures"
-	   groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.pharmacist,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management,clinica_digital_consultorio.accounting_assistant"
-	   sequence="2"/>
+	   groups="base.group_no_one"
+	   sequence="2"/> -->
 	
 	
 	<!-- Schedule menu -->
@@ -572,9 +572,9 @@
 		sequence="4"
 		groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.anesthesiologist"/> -->
 		
-   <menuitem id="menu_clinica_surgery_room"
+   <!-- <menuitem id="menu_clinica_surgery_room"
 			name="Surgery Rooms"
 			parent="menu_doctor_config_details"
 			action="action_clinica_surgery_room"
-			sequence="2"/>
+			sequence="2"/> -->
 </odoo>

@@ -171,7 +171,7 @@
           name="Clinica Record Visualizer"
           parent="menu_doctor_process"
           action="clinica_digital_consultorio.action_clinica_record_list_visualizer"
-	  groups="base.group_system,clinica_digital_consultorio.surgeon"
+	  groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.administrative_assistant,clinica_digital_consultorio.programmer_assistant"
           sequence="20"/>
 
 </odoo>

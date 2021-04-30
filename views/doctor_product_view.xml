@@ -90,13 +90,15 @@
             name="Health Procedures"
             parent="menu_doctor_config_details"
             action="action_doctor_health_procedures"
-            sequence="4"/>
+            sequence="4"
+            groups="base.group_system"/>
             
     <menuitem id="menu_doctor_cups_code"
             name="CUPS Code"
             parent="menu_doctor_config_details"
             action="action_doctor_cups_code"
-            sequence="5"/>
+            sequence="5"
+            groups="base.group_system"/>
         
         
 </odoo>

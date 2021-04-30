@@ -683,13 +683,13 @@
         <menuitem id="menu_doctor_process"
             name="Doctor Process"
             parent="menu_doctor_details"
-            groups="base.group_system,clinica_digital_consultorio.management,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief"
+            groups="base.group_system,clinica_digital_consultorio.management,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant"
             sequence="1"/>
 
         <menuitem id="menu_doctor_config_details"
             name="Doctor Configuration"
             parent="menu_doctor_details"
-            groups="base.group_system,clinica_digital_consultorio.management,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief"
+            groups="base.group_system,clinica_digital_consultorio.management,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.accounting_assistant,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.surgical_technologist,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.administrative_assistant"
             sequence="5"/>
             
         
@@ -730,13 +730,15 @@
             name="Appointment Type"
             parent="menu_doctor_config_details"
             action="action_appointment_type"
-            sequence="4"/>
+            sequence="4"
+            groups="base.group_system"/>
 
         <menuitem id="menu_attention_format"
             name="Attentions Formats"
             parent="menu_doctor_config_details"
             action="action_attention_format"
-            sequence="5"/>
+            sequence="5"
+            groups="base.group_system"/>
             
  </odoo>
 

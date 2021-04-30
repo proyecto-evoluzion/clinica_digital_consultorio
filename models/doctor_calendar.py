@@ -841,6 +841,7 @@ class DoctorWaitingRoom(models.Model):
                     }
                 #rferrer: Se valida que exista el procedimiento en el plan actual de aseguradora.
                 if self.insurer_id:
+                    procedure_price = 0.00
                     contract_obj = self.env['doctor.contracts'].search([('insurer_id','=',self.insurer_id.id),('end_date','>',fields.Date.today())])
                     if contract_obj:
                         count = 0

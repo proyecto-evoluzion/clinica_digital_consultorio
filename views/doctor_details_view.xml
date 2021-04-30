@@ -327,6 +327,7 @@
                         <group name='group_insurer_info_sub2'>
                           <!-- <field name="insurer_id"
                                 domain="['&amp;',('is_company','=',True), ('is_assurance', '=', True)]" options="{'no_create_edit': True}" string="Aseguradora" invisible="1"/> -->
+                            <field name="phone" string="Teléfono"/>
                             <field name="email"/>
                             <field name="residence_address" string="Address" placeholder="Address"/>
                         </group>
@@ -372,7 +373,34 @@
                         </group> -->
                     </group>
 
+                 
 
+                  <!--Group Disability and special population-->
+
+                    <group name='group_disability_special_info' string="Disability and Special Population" >
+
+                            <field name="disability" string="Disability"/>
+                            <field name="special_population" string="Special Population"/>
+                    </group>
+
+                    <group name="group_info_2_disability" col="2">
+                      <group name='group_disability_info ' string="Disability" attrs="{'invisible':[('disability','!=',True)]}" >
+                                    <field name="cognitive_disability" string="Cognitivas"/>
+                                    <field name="pysical_disability" string="Físicas"/>
+                                    <field name="sensory_disability" string="Sensorial"/>
+                                    <field name="learning_problems" string="Problemas de aprendizaje"/>
+                            </group>
+                            <group name='group_special_population_info' string="Special Population" attrs="{'invisible':[('special_population','!=',True)]}">
+                            <field name="etnia" string="Etnia"/> 
+                            <field name="displaced" string="Displaced"/>
+                            <field name="desmobiliced" string="Desmobilized"/>
+                            <field name="victim_conflict" string="Victim Conflict"/>
+                           </group>
+                    
+                    
+                    </group>
+                    
+                            
 
                     <group name='group_accompany_responsible_personal_info' >
                         <group name='group_accompany_personal_info' string="Accompany Person's Details">
@@ -385,8 +413,9 @@
                                         placeholder="Other Relationship" attrs="{'invisible':[('accompany_relationship','!=','other')]}"/>
                                 </div>
                             </div>
-                            <field name="accompany_phone" string="Número de Teléfono de la Persona Acompañante"/>
+                            
                             <field name="copy_responsible_info" string="Es Responsable"/>
+                            <field name="accompany_phone" string="Número de Teléfono de la Persona Acompañante"/>
                             
                         </group>
                         <group name='group_responsible_personal_info' string="Responsible Person's Details">
@@ -410,7 +439,7 @@
                         <group name='group_insurer_info_sub1'>
                             <field name="user_type" string="Tipo de Usuario"/>
 <!--                            <field name="primary_payer"/> -->
-                            <field name="phone" string="Teléfono"/>
+                            
                             <field name="link_type" string="Tipo Vinculación"/>
                         </group>
                     </group>

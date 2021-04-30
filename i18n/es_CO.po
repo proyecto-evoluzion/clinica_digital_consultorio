@@ -7357,5 +7357,47 @@ msgstr "Fecha de Defunción"
 msgid "Health profesional"
 msgstr " Es profesional de la salud?"
 
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.doctor_administrative_data_form
+msgid "Disability and Special Population"
+msgstr "Discapacidades y Población Especial"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.doctor_administrative_data_form
+msgid "Disability"
+msgstr "Discapacidades"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.doctor_administrative_data_form
+msgid "Special Population"
+msgstr "Población Especial"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_disability
+msgid "Disability"
+msgstr "Discapacidades"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_special_population
+msgid "Special Population"
+msgstr "Población Especial"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_displaced
+msgid "Displaced"
+msgstr "Desplazado"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_desmobiliced
+msgid "Desmobilized"
+msgstr "Desmovilizado"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_victim_conflict
+msgid "Victim Conflict"
+msgstr "Víctima del conflicto"
+
+
+
 
 

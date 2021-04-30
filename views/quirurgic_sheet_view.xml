@@ -99,10 +99,10 @@
        <field name="search_view_id" ref="clinica_quirurgic_sheet_filter"/>
    </record> 
    
-   <menuitem id="menu_clinica_quirurgic_sheet"
+   <!-- <menuitem id="menu_clinica_quirurgic_sheet"
        name="Quirurgic Sheet"
        parent="menu_doctor_process"
        action="clinica_digital_consultorio.action_clinica_quirurgic_sheet"
-       sequence="8"/>
+       sequence="8"/> -->
 
 </odoo>

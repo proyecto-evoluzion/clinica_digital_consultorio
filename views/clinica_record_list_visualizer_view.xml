@@ -34,7 +34,7 @@
    						<field name="procedure_date"/>
    					</tree>
    				</field>
-   				<separator string="Quirurgic Sheets"  attrs="{'invisible':[('view_model','not in',['quirurgic_sheet','all'])]}"/>
+   				<!-- <separator string="Quirurgic Sheets"  attrs="{'invisible':[('view_model','not in',['quirurgic_sheet','all'])]}"/>
    				<field name="quirurgic_sheet_ids" nolabel="1" force_save="1" readonly="1"
    					attrs="{'invisible':[('view_model','not in',['quirurgic_sheet','all'])]}">
    					<tree string="Quirurgic Sheets">
@@ -58,7 +58,7 @@
 		 				<field name="procedure_date"/>
 		 				<field name="procedure_end_date"/>
    					</tree>
-   				</field>
+   				</field> -->
    				<separator string="Waiting Rooms"  attrs="{'invisible':[('view_model','not in',['waiting_room','all'])]}"/>
    				<field name="waiting_room_ids" nolabel="1" force_save="1" readonly="1"
    					 attrs="{'invisible':[('view_model','not in',['waiting_room','all'])]}">
@@ -72,7 +72,7 @@
 						<field name="procedure_end_date"/>
  					</tree>
    				</field>
-   				<separator string="Pre-surgical Records"  attrs="{'invisible':[('view_model','not in',['presurgical','all'])]}"/>
+   				<!-- <separator string="Pre-surgical Records"  attrs="{'invisible':[('view_model','not in',['presurgical','all'])]}"/>
    				<field name="presurgical_record_ids" nolabel="1" force_save="1" readonly="1"
    					attrs="{'invisible':[('view_model','not in',['presurgical','all'])]}">
    					<tree string="Pre-surgical Records">
@@ -94,8 +94,8 @@
 		  				<field name="document_type"/>
 		  				<field name="numberid"/>
    					</tree>
-   				</field>
-   				<separator string="Plastic Surgery Sheet" attrs="{'invisible':[('view_model','not in',['plastic_surgery','all'])]}"/>
+   				</field> -->
+   				<!-- <separator string="Plastic Surgery Sheet" attrs="{'invisible':[('view_model','not in',['plastic_surgery','all'])]}"/>
    				<field name="plastic_surgery_ids" nolabel="1" force_save="1" readonly="1"
    					attrs="{'invisible':[('view_model','not in',['plastic_surgery','all'])]}">
    					<tree string="Plastic Surgery Sheet">
@@ -106,7 +106,7 @@
 	    				<field name="document_type"/>
 	    				<field name="numberid"/>
    					</tree>
-   				</field>
+   				</field> -->
    				<separator string="Medical Orders and Evolution" attrs="{'invisible':[('view_model','not in',['medical_evolution','all'])]}"/>
    				<field name="medical_evolution_ids" nolabel="1" force_save="1" readonly="1"
    					attrs="{'invisible':[('view_model','not in',['medical_evolution','all'])]}">
@@ -118,7 +118,7 @@
 		  				<field name="numberid"/>
    					</tree>
    				</field>
-   				<separator string="Epicrisis" attrs="{'invisible':[('view_model','not in',['epicrisis','all'])]}"/>
+   				<!-- <separator string="Epicrisis" attrs="{'invisible':[('view_model','not in',['epicrisis','all'])]}"/>
    				<field name="epicrisis_ids" nolabel="1" force_save="1" readonly="1" 
    					attrs="{'invisible':[('view_model','not in',['epicrisis','all'])]}">
    					<tree string="Epicrisis">
@@ -129,7 +129,7 @@
 		 				<field name="tdoc_rips"/>
 		 				<field name="numberid"/>
    					</tree>
-   				</field>
+   				</field> -->
           <separator string="Prescription" attrs="{'invisible':[('view_model','not in',['epicrisis','all'])]}"/>
           <label for="one_record" attrs="{'invisible':[('view_model','not in',['prescription','all'])]}"/>
           <field name="one_record" attrs="{'invisible':[('view_model','not in',['prescription','all'])]}"/>
@@ -146,7 +146,7 @@
             <field name="doctor_id"/>
             </tree>
           </field>
-          <separator string="Complete Plastic Surgery Sheet" attrs="{'invisible':[('view_model','not in',['complete_plastic_surgery','all'])]}"/>
+          <separator string="Formato Clínico Completo" attrs="{'invisible':[('view_model','not in',['complete_plastic_surgery','all'])]}"/>
           <field name="complete_plastic_surgery_ids" nolabel="1" force_save="1" readonly="1"
             attrs="{'invisible':[('view_model','not in',['complete_plastic_surgery','all'])]}">
             <tree string="Complete Plastic Surgery Sheet">

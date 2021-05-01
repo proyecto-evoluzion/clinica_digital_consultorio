@@ -230,7 +230,7 @@ class ClinicaRecordVisualizer(models.Model):
         prescription_search_domain = []
         prescription_search_domain.extend(search_domain)
         if doctor:
-            medical_evolution_search_domain.append(('doctor_id','=',doctor.id))
+            prescription_search_domain.append(('doctor_id','=',doctor.id))
         if start_period:
             prescription_search_domain.append(('prescription_date','=',start_period))
             # prescription_search_domain.append(('patient_out_date','>=',start_period))

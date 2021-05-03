@@ -1417,15 +1417,18 @@
                   </tr>
                   <t t-foreach="prescription.atc_ids" t-as="atc">
                     <tr >
-                      <td colspan="2"><strong><span t-field="atc.atc_id.name"/></strong><br/>
-					  <t>Cantidad total: <span style="padding-left:2px;" t-field="atc.total_to_use"/><br/></t> 
-					  </td> 
+                      <td style="width:50%;" colspan="2"><strong><span t-field="atc.atc_id.name"/></strong><br/>
+					  <t>Concentración: <span style="padding-left:2px;" t-field="atc.concentration"/><br/></t>
+					  <t>Forma de farmacéutica: <span style="padding-left:2px;" t-field="atc.atc_use_id"/><br/></t>
+				      </td>
+					  
+					  
                     </tr>
+
                     <tr>
                       <td style="width:100%; ">		
                         <t>Vía de administración: <span style="padding-left:2px;" t-field="atc.atc_route_id"/><br/></t>
-						<t>Concentración: <span style="padding-left:2px;" t-field="atc.concentration"/><br/></t>
-                        <t>Forma de uso: <span style="padding-left:2px;" t-field="atc.atc_use_id"/><br/></t>
+						
                       </td>
                     </tr>
                     <tr>
@@ -1447,8 +1450,20 @@
                     <tr>
                       <td colspan="2" style="text-align:center;"><span t-field="atc.indications"/></td>
                     </tr>
+					<tr>
+					<div style="border-top: 1px solid black;">
+					<div t-if="prescription.doctor_id.medical_record" style="width:100%; text-align: center;">
+                    Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="prescription.doctor_id.digital_sign"/> - 
+                    Profesional de la salud registrado bajo el N° 
+                    <span style="padding-left:1px; " t-field="prescription.doctor_id.medical_record"/>
+                   </div>
+                   </div>
+					
+					</tr>
+					
                   </t>
-                </t>
+				
+             </t>
 
 
                 <t t-if="prescription.order_type == 'exam'">
@@ -1468,6 +1483,7 @@
                       </td>
                     </tr>
                   </t>
+
                 </t>
                 <t t-if="prescription.complete_format_id">
                   <tr><td colspan="2" style="text-align:center; "><strong>IMPRESIÓN DIAGNÓSTICA</strong></td></tr>

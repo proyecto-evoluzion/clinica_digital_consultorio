@@ -1388,11 +1388,21 @@
                 <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
                 <tr>
                   <td style="width:50%; "><t t-if="prescription.patientname"> Historia Clínica: <span style="padding-left:2px;" t-field="prescription.patient_id.ref"/></t><br/>
-				  <t t-if="prescription.patient_id.insurer_id and flag == 0"> Insurer: <span style="padding-left:2px;" t-field="prescription.patient_id.insurer_id.name"/><br/>
-				  </t>
-				  <t t-if="prescription.patient_id.plan and flag == 0">
-				  Plan: <span style="padding-left:2px;" t-field="prescription.patient_id.plan.name"/><br/>
-				  </t>
+	                <t t-foreach="prescription.patient_id.insurer_ids" t-as="insurers">
+	                  <tr>
+	                    <td style="width:100%; text-align:right;">
+	                      Aseguradora: <span style="padding-left:2px;" t-field="insurers.insurer_id.name"/>
+	                    </td>
+	                    <td style="width:100%;">
+	                      Plan: <span style="padding-left:2px;" t-field="insurers.plan"/>
+	                    </td>
+	                  </tr>
+	                </t>
+					  <!-- <t t-if="prescription.patient_id.insurer_id"> Insurer: <span style="padding-left:2px;" t-field="prescription.patient_id.insurer_id.name"/><br/>
+					  </t>
+					  <t t-if="prescription.patient_id.plan">
+					  Plan: <span style="padding-left:2px;" t-field="prescription.patient_id.plan.name"/><br/>
+					  </t> -->
 				  </td>
                   <td style="width:50%; ">
                     Patient Name: <span style="padding-left:2px;" t-field="prescription.patient_id.firstname"/> <span style="padding-left:2px;" t-field="prescription.patient_id.lastname"/><br/>
@@ -1417,18 +1427,15 @@
                   </tr>
                   <t t-foreach="prescription.atc_ids" t-as="atc">
                     <tr >
-                      <td style="width:50%;" colspan="2"><strong><span t-field="atc.atc_id.name"/></strong><br/>
-					  <t>Concentración: <span style="padding-left:2px;" t-field="atc.concentration"/><br/></t>
-					  <t>Forma de farmacéutica: <span style="padding-left:2px;" t-field="atc.atc_use_id"/><br/></t>
+                      <td style="width:50%;" colspan="2"><strong><span t-field="atc.atc_id.name"/></strong>
+                      	<t>Forma de farmacéutica: <span style="padding-left:2px;" t-field="atc.atc_use_id"/></t>
+						<t>Concentración: <span style="padding-left:2px;" t-field="atc.concentration"/></t>
 				      </td>
-					  
-					  
                     </tr>
 
                     <tr>
                       <td style="width:100%; ">		
                         <t>Vía de administración: <span style="padding-left:2px;" t-field="atc.atc_route_id"/><br/></t>
-						
                       </td>
                     </tr>
                     <tr>
@@ -1450,20 +1457,8 @@
                     <tr>
                       <td colspan="2" style="text-align:center;"><span t-field="atc.indications"/></td>
                     </tr>
-					<tr>
-					<div style="border-top: 1px solid black;">
-					<div t-if="prescription.doctor_id.medical_record" style="width:100%; text-align: center;">
-                    Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="prescription.doctor_id.digital_sign"/> - 
-                    Profesional de la salud registrado bajo el N° 
-                    <span style="padding-left:1px; " t-field="prescription.doctor_id.medical_record"/>
-                   </div>
-                   </div>
-					
-					</tr>
-					
                   </t>
-				
-             </t>
+             	</t>
 
 
                 <t t-if="prescription.order_type == 'exam'">

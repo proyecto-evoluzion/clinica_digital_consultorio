@@ -57,11 +57,11 @@
           <field name="view_id" ref="doctor_surgical_technologist_tree"/>
       </record> 
       
-      <menuitem id="menu_doctor_surgical_technologist"
+      <!-- <menuitem id="menu_doctor_surgical_technologist"
           name="Surgical Tech."
           parent="menu_doctor_process"
           action="clinica_digital_consultorio.action_doctor_surgical_technologist"
           groups="base.group_system,clinica_digital_consultorio.surgical_technologist"
-          sequence="15"/>
+          sequence="15"/> -->
 
 </odoo>

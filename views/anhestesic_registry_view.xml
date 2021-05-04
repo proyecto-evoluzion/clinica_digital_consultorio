@@ -455,12 +455,12 @@
           <field name="search_view_id" ref="clinica_anhestesic_registry_filter"/>
       </record> 
       
-      <menuitem id="menu_clinica_anhestesic_registry"
+      <!-- <menuitem id="menu_clinica_anhestesic_registry"
           name="Anhestesic Registry"
           parent="menu_doctor_process"
           action="clinica_digital_consultorio.action_clinica_anhestesic_registry"
           groups="base.group_system,clinica_digital_consultorio.anesthesiologist,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.clinical_auditor,clinica_digital_consultorio.management"
-          sequence="7"/>
+          sequence="7"/> -->
 
 </odoo>
 

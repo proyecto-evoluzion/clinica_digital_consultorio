@@ -154,11 +154,11 @@
     </record> 
     
     
-    <menuitem id="menu_clinica_post_anhestesic_care"
+    <!-- <menuitem id="menu_clinica_post_anhestesic_care"
             name="Cuidado Post-Anestésico"
             parent="menu_doctor_process"
             action="action_clinica_post_anhestesic_care"
-            sequence="8"/>
+            sequence="8"/> -->
            
         
 </odoo>         

@@ -23,7 +23,7 @@
             </group>
             <group col="4">
               <span col="2">
-                <field name="doctor_id" nolabel="1" style="width:25%" readonly="1" force_save="1"/>
+                <field name="doctor_id" nolabel="1" style="width:25%" readonly="0" force_save="1"/>
                 <field name="profession_type" nolabel="1" style="width:25%" readonly="1" force_save="1"/>,
                 ordena: 
                 <field name="name" nolabel="1" style="width:25%"/>

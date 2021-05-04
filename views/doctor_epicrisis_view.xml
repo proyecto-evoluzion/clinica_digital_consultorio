@@ -107,11 +107,11 @@
           <field name="search_view_id" ref="clinica_doctor_epicrisis_filter"/>
       </record> 
       
-      <menuitem id="menu_clinica_doctor_epicrisis"
+      <!-- <menuitem id="menu_clinica_doctor_epicrisis"
           name="Epicrisis"
           parent="menu_doctor_process"
           action="clinica_digital_consultorio.action_clinica_doctor_epicrisis"
           groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.otorhino"
-          sequence="11"/>
+          sequence="11"/> -->
 
 </odoo>

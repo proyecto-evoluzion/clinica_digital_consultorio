@@ -1499,8 +1499,7 @@
                 </div>
               </div>
             </t>
-            <!-- <t t-if="prescription.order_type == 'inability'"> -->
-            <t t-else="">
+            <t t-if="prescription.order_type == 'inability'">
               <table style="width:100%;">
                 <tr>
                   <td style="width:25%; padding-left:10px; text-align:center; font-size: 22px;"><strong>Fecha: <span t-field="prescription.prescription_date" style="padding-left:2px;"/></strong></td>
@@ -1552,7 +1551,7 @@
                 <tr><td colspan="4" style="text-align:center; "><strong>DATOS DEL PROFESIONAL</strong></td></tr>
                 <tr>
                   <td style="width:50%;" colspan="2">
-                    <t t-if="prescription.doctor_id">Nombre: <span style="padding-left:2px;" t-field="prescription.doctor_id.name"/></t><br/>
+                    <t t-if="prescription.doctor_id">Nombre: <span style="padding-left:2px;" t-field="prescription.doctor_id.digital_sign"/></t><br/>
                     <t t-if="prescription.doctor_id">Especialidad: <span style="padding-left:2px;" t-field="prescription.doctor_id.profession_type"/></t><br/>
                     <t t-if="prescription.doctor_id.digital_sign">Firma: <span style="padding-left:2px;" t-field="prescription.doctor_id.digital_sign"/></t><br/>
                   </td>

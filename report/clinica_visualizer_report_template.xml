@@ -1388,26 +1388,21 @@
                 <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
                 <tr>
                   <td style="width:50%; "><t t-if="prescription.patientname"> Historia Clínica: <span style="padding-left:2px;" t-field="prescription.patient_id.ref"/></t><br/>
-	                <t t-foreach="prescription.patient_id.insurer_ids" t-as="insurers">
-	                  <tr>
-	                    <td style="width:100%; text-align:right;">
-	                      Aseguradora: <span style="padding-left:2px;" t-field="insurers.insurer_id.name"/>
-	                    </td>
-	                    <td style="width:100%;">
-	                      Plan: <span style="padding-left:2px;" t-field="insurers.plan"/>
-	                    </td>
-	                  </tr>
-	                </t>
-					  <!-- <t t-if="prescription.patient_id.insurer_id"> Insurer: <span style="padding-left:2px;" t-field="prescription.patient_id.insurer_id.name"/><br/>
-					  </t>
-					  <t t-if="prescription.patient_id.plan">
-					  Plan: <span style="padding-left:2px;" t-field="prescription.patient_id.plan.name"/><br/>
-					  </t> -->
-				  </td>
+  	                <t t-foreach="prescription.patient_id.insurer_ids" t-as="insurers">
+  	                  <tr>
+  	                    <td style="width:100%; text-align:right;">
+  	                      Aseguradora: <span style="padding-left:2px;" t-field="insurers.insurer_id.name"/>
+  	                    </td>
+  	                    <td style="width:100%;">
+  	                      Plan: <span style="padding-left:2px;" t-field="insurers.plan"/>
+  	                    </td>
+  	                  </tr>
+  	                </t>
+                  </td>
                   <td style="width:50%; ">
-                    Patient Name: <span style="padding-left:2px;" t-field="prescription.patient_id.firstname"/> <span style="padding-left:2px;" t-field="prescription.patient_id.lastname"/><br/>
-                    <t t-if="prescription.patient_id.age">Age: <span style="padding-left:2px;" t-field="prescription.patient_id.age"/><br/></t>
-					 <t t-if="prescription.patient_id.user_type">Tipo de usuario: <span style="padding-left:2px;" t-field="prescription.patient_id.user_type"/><br/></t>
+                      Patient Name: <span style="padding-left:2px;" t-field="prescription.patient_id.firstname"/> <span style="padding-left:2px;" t-field="prescription.patient_id.lastname"/><br/>
+                      <t t-if="prescription.patient_id.age">Age: <span style="padding-left:2px;" t-field="prescription.patient_id.age"/><br/></t>
+					            <t t-if="prescription.patient_id.user_type">Tipo de usuario: <span style="padding-left:2px;" t-field="prescription.patient_id.user_type"/><br/></t>
                   </td>
                 </tr>
                 <t t-if="prescription.order_type == 'informs'">
@@ -1504,6 +1499,7 @@
                 </div>
               </div>
             </t>
+            <!-- <t t-if="prescription.order_type == 'inability'"> -->
             <t t-else="">
               <table style="width:100%;">
                 <tr>

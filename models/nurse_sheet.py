@@ -62,6 +62,8 @@ class ClinicaNurseSheet(models.Model):
     vital_sign_ids = fields.One2many('nurse.sheet.vital.signs', 'nurse_sheet_id', string='Vital signs', copy=False)
     
     pathological = fields.Text(string="Pathological", related='patient_id.pathological')
+    anesthesia_type = fields.Selection([('general','General'),('sedation','Sedación'),('local','Local')], 
+                                        string='Tipo de anestesia')
     surgical = fields.Text(string="Surgical", related='patient_id.surgical')
     smoke = fields.Boolean(string="Smoke", related='patient_id.smoke')
     cigarate_daily = fields.Integer(string="Cigarettes / Day", related='patient_id.cigarate_daily')

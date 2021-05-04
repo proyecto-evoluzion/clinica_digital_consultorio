@@ -14,12 +14,13 @@
             <sheet>
             <group name='main_group'>
             	<group name='sub_group1'>
-	                <field name="room_id" required="1"/>
+	                <field name="room_id" required="1" invisible="1"/>
 	                <field name="patient_id" required="1"/>
             	</group>
             	<group name='sub_group2'>
 	                <field name="procedure_date" required="1" />
-	                <field name="anhestesic_registry_id"/>
+	                <field name="anhestesic_registry_id" invisible="1"/>
+					<field name="anesthesia_type"/>
 	                <field name="updated_stock" invisible="1" />
             	</group>
             </group>

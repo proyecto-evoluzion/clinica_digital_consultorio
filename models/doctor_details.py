@@ -73,6 +73,8 @@ class DoctorDiseases(models.Model):
                              ('recurrent','Recurrente')],default='diagnostic_impression', string='State Diagnosis')
     complete_format_id = fields.Many2one('complete.clinica.plastic.surgery', string='FCC')
     diseases_id = fields.Many2one('doctor.diseases', string='Code')
+    code_diseases_id = fields.Many2one('doctor.diseases', string='Code')
+
 
     _sql_constraints = [('code_uniq', 'unique (code)', 'The Medical Diseases code must be unique')]
 

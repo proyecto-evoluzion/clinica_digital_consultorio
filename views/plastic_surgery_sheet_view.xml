@@ -48,6 +48,11 @@
                          <field name="consultation_reason" invisible="1"/>
                          <field name="this_consultation_reason" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                      </group>
+
+                     <group name="current_illness" colspan="2" col='1'>
+                                        <label for="current_illness" string="Current illness"/>
+                                        <field name="current_illness" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                    </group>
             				
             		<notebook>
             			<page name="background" string="Patient Background">

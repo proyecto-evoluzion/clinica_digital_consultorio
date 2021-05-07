@@ -170,6 +170,7 @@ class PlasticSurgerySheet(models.Model):
                                             ('11', 'Sospecha de violencia sexual'),('12', 'Sospecha de maltrato emocional'),
                                             ('13', 'Enfermedad general'),('14', 'Enfermedad laboral'),
                                             ('15', 'Otra')], string='Causa Externa')
+    current_illness = fields.Text(string="Current illness")
 
     @api.onchange('diagnosis_ids')
     def onchange_diagnosis_ids(self):

@@ -153,6 +153,8 @@ class PlasticSurgerySheet(models.Model):
     physical_exam = fields.Text(string="Physical Exam Observations")
     
     disease_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
+    code_diseases_id = fields.Many2one('doctor.diseases', string='Code')
+ 
     disease2_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
     disease3_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
     disease_type = fields.Selection([('principal', 'Principal'),('related', 'Relacionado')], string='Kind')

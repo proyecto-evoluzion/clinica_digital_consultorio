@@ -4456,12 +4456,12 @@ msgstr "Exámen físico"
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
 msgid "Type Physical Exam"
-msgstr "Tipo de Exámen físico"
+msgstr "Examen físico"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
 msgid "Exam"
-msgstr "Exámen físico"
+msgstr "Examen físico"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.complete_clinica_plastic_surgery_form
@@ -6608,7 +6608,7 @@ msgstr "Peso"
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_plastic_surgery_heart_rate
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
 msgid "Heart rate"
-msgstr "Ritmo cardiaco"
+msgstr "Frecuencia cardiaca"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_complete_clinica_plastic_surgery_breathing_frequency
@@ -7396,6 +7396,11 @@ msgstr "Desmovilizado"
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_victim_conflict
 msgid "Victim Conflict"
 msgstr "Víctima del conflicto"
+
+#. module: clinica_digital_consultorio
+#: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
+msgid "Current illness"
+msgstr "Enfermedad actual"
 
 
 

@@ -558,9 +558,11 @@ class DoctorAdministrativeData(models.Model):
         for data in self:
             partner_vals = {}
             if 'tdoc_rips' in vals:
-            	tdoc_rips = data.tdoc_rips or ''
+                tdoc_rips = str(data.tdoc_rips) or ''
+                partner_vals.update({'tdoc_rips': tdoc_rips})
             if 'name' in vals:
-            	name = data.name or ''
+                name = data.name or ''
+                partner_vals.update({'number_identification': name})
             if 'firstname' in vals or 'lastname' in vals or 'middlename' in vals or 'surname' in vals:
                 firstname = data.firstname or ''
                 lastname = data.lastname or ''
@@ -579,26 +581,15 @@ class DoctorAdministrativeData(models.Model):
                 if 'surname' in vals:
                     surname = vals.get('surname', False) or ''
                     partner_vals.update({'x_lastname2': surname})
-                if 'tdoc_rips' in vals:
-                    tdoc_rips = vals.get('tdoc_rips', False) or ''
-                    partner_vals.update({'tdoc_rips': tdoc_rips})
-                if 'name' in vals:
-                    ref = vals.get('name', False) or ''
-                    partner_vals.update({'number_identification': name})
-                                    
-                # nameList = [
-                #     firstname.strip(),
-                #     lastname.strip(),
-                #     middlename.strip(),
-                #     surname.strip()
-                #     ]
-                # formatedList = []
+                # if 'tdoc_rips' in vals:
+                #     tdoc_rips = vals.get('tdoc_rips', False) or ''
+                #     partner_vals.update({'tdoc_rips': tdoc_rips})
+                # if 'name' in vals:
+                #     ref = vals.get('name', False) or ''
+                #     partner_vals.update({'number_identification': name})
                 name1 = ''
-                # for item in nameList:
-                #     if item is not '':
-                #         formatedList.append(item)
-                #     name = ' ' .join(formatedList).title()
-                name1 = lastname + ' ' + surname + ' ' + firstname + ' ' + middlename + ' ' + tdoc_rips
+
+                name1 = lastname + ' ' + surname + ' ' + firstname + ' ' + middlename
                 partner_vals.update({'name': name1})
             if 'birth_date' in vals:
                 partner_vals.update({'xbirthday': vals.get('birth_date', False)})
@@ -689,7 +680,7 @@ class DoctorAdministrativeData(models.Model):
                 tdoc_rips = data.tdoc_rips or ''
 
                
-                data.patient_name = lastname + ' ' + surname + ' ' + firstname + ' ' +  middlename + ' ' + tdoc_rips
+                data.patient_name = lastname + ' ' + surname + ' ' + firstname + ' ' +  middlename
         
                 if data.partner_id:
                     partner_vals = data._get_related_partner_vals(vals)

@@ -116,6 +116,7 @@
                                             </tree>
                                         </field>
                                     </group>
+                                    
                                     <group>
                                         <label for="background_notes"/>
                                         <field name="background_notes" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
@@ -124,7 +125,28 @@
                                         <label for="gyneco_obst"/>
                                         <field name="gyneco_obst" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                                     </group>
-                                    <group name="patient_female_backgorund_main" attrs="{'invisible':[('gender','=','male')]}">
+                                    <group>
+                                     
+                                        <field name="background_gynecology_ids"
+                                        string="Antecedentes Ginecologicos" attrs="{'invisible':[('gender','=','male')]}">
+                                            <tree editable="bottom">
+                                            <field name="backgroud_gynecology_date"/>
+                                            <field name="g"/>
+                                            <field name="p"/>
+                                            <field name="c"/>
+                                            <field name="a"/>
+                                            <field name="fur"/>
+                                            <field name="fup"/>
+                                            <field name="mpf"/>
+                                            <field name="backgroun_patient_id" invisible="1"/>
+                                            
+                                             
+                                             </tree>
+                                        </field>
+                                    </group>
+                                    
+                                    
+                                    <group name="patient_female_backgorund_main" attrs="{'invisible':[('gender','=','male')]}" invisible="1">
                                 
                                         <div>
                                             <label for="gestations" string="G"/>

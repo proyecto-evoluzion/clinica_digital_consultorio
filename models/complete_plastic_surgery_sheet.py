@@ -213,6 +213,7 @@ class PlasticSurgerySheet(models.Model):
     										('15', 'Otra')], string='Causa Externa')
 
     background_type_ids = fields.Many2many('copy.background.type', string="Antecedentes")
+    background_gynecology_ids = fields.One2many('background.gynecology','gynecology_id', string="Antecedente Ginecologico")
     #system_review_type_ids = fields.One2many('system.review.center','complete_format_id', string="Revision por sistemas")
 
 

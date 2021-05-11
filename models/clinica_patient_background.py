@@ -73,3 +73,27 @@ class BackgroundCenter(models.Model):
 
     patient_id = fields.Many2one('doctor.patient',string="Paciente")
     background_ids = fields.Many2many('copy.background.type',string="Antecedentes")
+
+# Modelo para antecedentes ginecologicos
+
+class BackgroundGynecology(models.Model):
+    _name ="background.gynecology"
+
+
+    g = fields.Char(string="G")
+    p = fields.Char(string="P")
+    c = fields.Char(string="C")
+    a = fields.Char(string="A")
+    fur = fields.Date(string="FUR")
+    fup = fields.Date(string="FUP")
+    mpf = fields.Char(string="MPF")
+    backgroud_gynecology_date = fields.Datetime(string="Fecha de Antecedentes")
+    gynecology_id = fields.Many2one('complete.clinica.plastic.surgery', string="Ginecology")
+    backgroun_patient_id = fields.Many2one('doctor.patient', string="Paciente")
+
+    
+
+   
+  
+
+

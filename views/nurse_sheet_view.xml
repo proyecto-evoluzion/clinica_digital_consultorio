@@ -20,7 +20,7 @@
             	<group name='sub_group2'>
 	                <field name="procedure_date" required="1" />
 	                <field name="anhestesic_registry_id" invisible="1"/>
-					<field name="anesthesia_type"/>
+					<field name="anesthesia_type" invisible="1"/>
 	                <field name="updated_stock" invisible="1" />
             	</group>
             </group>
@@ -56,14 +56,14 @@
             </group>
             <group name='various_procedures_main'>
             	<group name='various_procedures_sub1'>
-            		<field name="various_procedures"/>
+            		<field name="various_procedures" invisible="1"/>
             	</group>
             	<group name='various_procedures_sub2'>
             	</group>
             </group>
             
             <notebook>
-      			<page name="procedures" string="Hoja de Gastos">
+      			<page name="procedures" string="Hoja de Gastos" invisible="1">
       				 <group>
                			<div class="oe_button_box" name="button_box">
                				<button name="action_update_stock" string='Update Stock'
@@ -160,7 +160,7 @@
        				</group>
       			</page>
       			
-      			<page name="invoice_procedures" string="Order and Time of Procedures" attrs="{'invisible':[('various_procedures','=',False)]}">
+      			<page name="invoice_procedures" string="Order and Time of Procedures" attrs="{'invisible':[('various_procedures','=',False)]}" invisible="1">
       				 <field name="invoice_procedure_ids" colspan="4" nolabel="1" >
       				 	<tree editable="bottom"  limit="10000" create="true">
        				 		<field name="sequence" widget="handle"/>

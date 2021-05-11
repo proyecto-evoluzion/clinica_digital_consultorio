@@ -49,10 +49,6 @@
                             <field name='external_cause' attrs="{'readonly':[('state','=','closed')]}"/>
                         </group>
             		</group>
-            		<!-- <group name="consultation_reason" colspan="2" col='1'>
-                         <label for="consultation_reason" string="Reason for Consultation"/>
-                         <field name="consultation_reason" nolabel="1"/>
-                     </group> -->
             		<h2>Clinical Registry</h2>
             		<notebook>
             			<page name="anamnesis" string="Anamnesis">
@@ -74,6 +70,9 @@
                                         <field name="confidential_notes" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                                     </group>
                                     <group name="paraclinical" colspan="2" col='1'>
+                                        <!-- <div class="oe_button_box" name="button_box">
+                                            <button name="clear_paraclinical" string="Limpiar Paraclínicos" type="object" icon="fa-undo" attrs="{'invisible':[('state','=','closed')]}"/>
+                                        </div> -->
                                         <label for="paraclinical" string="Paraclinical"/>
                                         <field name="paraclinical" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                                     </group>

@@ -50,7 +50,9 @@ class ClinicaPatientBackgroundType(models.Model):
 
 	name = fields.Char(string="Name backgroud")
 	code = fields.Char(string="code background")
-#############################################################################################3
+#############################################################################################
+
+# Modelo para antecedentes generales
 
 class BackgroundType(models.Model):
     _name ="background.type"
@@ -92,7 +94,17 @@ class BackgroundGynecology(models.Model):
     backgroun_patient_id = fields.Many2one('doctor.patient', string="Paciente")
 
     
+# Modelo para antecedentes Paraclinicos
 
+class BackgroundParaclinical(models.Model):
+    _name ="background.paraclinical"
+
+
+    attention_id = fields.Many2one('complete.clinica.plastic.surgery',string="Atencion Clinica")
+    paraclinical = fields.Text(string="Paraclínicos")
+    date = fields.Date(string="Fecha de registro")
+    active = fields.Boolean(string="Active", default=True)
+    patient_id = fields.Many2one('doctor.patient', string="Paciente")
    
   
 

@@ -466,13 +466,13 @@
                         <field name="consultation_reason" nolabel="1"/>
                     </group>
                     <group name='paraclinical' string="Paraclínicos" >
-                        <field name="paraclinical" nolabel="1" invisible="0"/>
+                        <field name="paraclinical" nolabel="1" invisible="1"/>
                     </group>
                     <group name='analysis' string="Análisis" >
-                        <field name="analysis" nolabel="1" invisible="0"/>
+                        <field name="analysis" nolabel="1" invisible="1"/>
                     </group>
                     <group name='treatment' string="Tratamiento" >
-                        <field name="treatment" nolabel="1" invisible="0"/>
+                        <field name="treatment" nolabel="1" invisible="1"/>
                     </group>
                     <group name='group_doctor' string="Doctor Details" >
                         <group name='group_doctor_info_sub1'>

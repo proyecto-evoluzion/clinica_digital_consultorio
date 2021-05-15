@@ -473,35 +473,17 @@
                             </field>
                         
                     </group>  
-
-                     
-                
-
-<!--                    <group name='group_parent_info' > -->
-<!--                        <group name='group_father_info' string="Father's Details"> -->
-<!--                            <field name="father_name"/> -->
-<!--                            <field name="father_occupation" string="Occupation"/> -->
-<!--                            <field name="father_address" string="Address"/> -->
-<!--                            <field name="father_phone" string="Phone"/> -->
-<!--                        </group> -->
-<!--                        <group name='group_mother_info' string="Mother's Details"> -->
-<!--                            <field name="mother_name"/> -->
-<!--                            <field name="mother_occupation" string="Occupation"/> -->
-<!--                            <field name="mother_address" string="Address"/> -->
-<!--                            <field name="mother_phone" string="Phone"/> -->
-<!--                        </group> -->
-<!--                    </group> -->
- <!--                    <group name='group_insurer_info' string="Assurance Details" >
-                        <group name='group_insurer_info_sub1'>
-                            <field name="user_type"/>
-                        </group>
-                        <group name='group_insurer_info_sub2'>
-                            <field name="insurer_id"
-                                domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
-                        </group>
-                    </group> -->
                     <group name='reason_consultation' string="Reason For Consultation" >
-                            <field name="consultation_reason" nolabel="1"/>
+                        <field name="consultation_reason" nolabel="1"/>
+                    </group>
+                    <group name='paraclinical' string="Paraclínicos" >
+                        <field name="paraclinical" nolabel="1" invisible="1"/>
+                    </group>
+                    <group name='analysis' string="Análisis" >
+                        <field name="analysis" nolabel="1" invisible="1"/>
+                    </group>
+                    <group name='treatment' string="Tratamiento" >
+                        <field name="treatment" nolabel="1" invisible="1"/>
                     </group>
                     <group name='group_doctor' string="Doctor Details" >
                         <group name='group_doctor_info_sub1'>

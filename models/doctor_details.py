@@ -332,6 +332,9 @@ class DoctorAdministrativeData(models.Model):
     partner_id = fields.Many2one('res.partner', copy=False, ondelete='restrict', string='Related Partner', 
                                     help='Partner-related data of administrative data ')
     consultation_reason = fields.Text(string="Reason for Consultation")
+    paraclinical = fields.Text(string="Paraclínicos")
+    analysis = fields.Text(string="Análisis")
+    treatment = fields.Text(string="Tratamiento")
     pathological = fields.Text(string="Pathological")
     surgical = fields.Text(string="Surgical")
     smoke = fields.Boolean(string="Smoke")

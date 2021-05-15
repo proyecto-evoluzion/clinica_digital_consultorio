@@ -99,7 +99,7 @@ class PlasticSurgerySheet(models.Model):
     blood_type = fields.Selection([('a','A'),('b','B'),('ab','AB'),('o','O')], string='Blood Type')
     blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')
     
-    consultation_reason = fields.Text(string="Reason for Consultation", related="patient_id.consultation_reason")
+    consultation_reason = fields.Text(string="Reason for Consultation")
     current_illness = fields.Text(string="Current illness")
     pathological = fields.Text(string="Pathological", related='patient_id.pathological')
     surgical = fields.Text(string="Surgical", related='patient_id.surgical')
@@ -168,7 +168,7 @@ class PlasticSurgerySheet(models.Model):
                                        ('new_confirmed', 'Confirmado Nuevo'),
                                        ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status')
     process_id = fields.Many2one('product.product', string='Process', ondelete='restrict')
-    treatment = fields.Text(string="Treatment")
+    treatment = fields.Text(string="Paraclinical")
     confidential_notes = fields.Text(string="Confidential Notes")
     medical_recipe = fields.Text(string="Medical Orders and Recipe")
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
@@ -188,7 +188,7 @@ class PlasticSurgerySheet(models.Model):
     size = fields.Float(string="Size")
     weight = fields.Float(string="Weight")
     imc = fields.Float(string="IMC", compute=_comp_imc)
-    analysis = fields.Text(string="Analysis")
+    analysis = fields.Text(string="Paraclinical")
     template_id = fields.Many2one('attention.quick.template', string='Template')
     prescription_id = fields.Many2one('doctor.prescription', string='Prescription')
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
@@ -269,6 +269,9 @@ class PlasticSurgerySheet(models.Model):
     def onchange_consultation_reason(self):
         if self.patient_id:
             self.consultation_reason = self.patient_id.consultation_reason
+            self.paraclinical = self.patient_id.paraclinical
+            self.analysis = self.patient_id.analysis
+            self.treatment = self.patient_id.treatment
             patient_background_obj = self.env['background.center'].search([('patient_id','=',self.patient_id.id)], limit=1)
             if patient_background_obj:
                 self.background_type_ids = [(6,0,patient_background_obj.background_ids.ids)]
@@ -392,6 +395,28 @@ class PlasticSurgerySheet(models.Model):
             res.prescription_id.name = res.number
             res.prescription_id.complete_format_id = res.id
 
+        if res.consultation_reason:
+            res.patient_id.consultation_reason = res.consultation_reason
+        if res.analysis:
+            res.patient_id.analysis = res.analysis
+        if res.treatment:
+            res.patient_id.treatment = res.treatment
+        if res.paraclinical:
+            paraclinical_vals = {
+                'attention_id': res.id,
+                'paraclinical': res.paraclinical,
+                'date': res.date_attention,
+                'patient_id': res.patient_id.id
+            }
+            res.env['background.paraclinical'].create(paraclinical_vals)
+            paraclinical_obj = self.env['background.paraclinical'].search([('patient_id','=',res.patient_id.id)], order='id desc', limit=3)
+            notes = ''
+            for paraclinical_rec in paraclinical_obj:
+                notes = notes + paraclinical_rec.date + '\r\n'
+                notes = notes + paraclinical_rec.paraclinical + '\r\n'
+            res.patient_id.paraclinical = notes
+            
+
         if res.background_type_ids:
             bks_list =[]
             for bks in res.background_type_ids:
@@ -434,6 +459,29 @@ class PlasticSurgerySheet(models.Model):
         
         res = super(PlasticSurgerySheet, self).write(vals)
         self._check_document_types()
+
+        if self.consultation_reason:
+            self.patient_id.consultation_reason = self.consultation_reason
+        if self.analysis:
+            self.patient_id.analysis = self.analysis
+        if self.treatment:
+            self.patient_id.treatment = self.treatment
+        if self.paraclinical:
+            paraclinical_vals = {
+                'attention_id': self.id,
+                'paraclinical': self.paraclinical,
+                'date': self.date_attention,
+                'patient_id': self.patient_id.id
+            }
+            paraclinical_obj = self.env['background.paraclinical'].search([('attention_id','=',self.id)])
+            if paraclinical_obj:
+                paraclinical_obj.write(paraclinical_vals)
+            paraclinical_obj = self.env['background.paraclinical'].search([('patient_id','=',self.patient_id.id)], order='id desc', limit=3)
+            notes = ''
+            for paraclinical_rec in paraclinical_obj:
+                notes = notes + paraclinical_rec.date + '\r\n'
+                notes = notes + paraclinical_rec.paraclinical + '\r\n'
+            self.patient_id.paraclinical = notes
 
         if aux != 0:
             bks_list =[]

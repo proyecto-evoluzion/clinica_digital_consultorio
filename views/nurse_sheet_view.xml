@@ -14,7 +14,7 @@
             <sheet>
             <group name='main_group'>
             	<group name='sub_group1'>
-	                <field name="room_id" required="1" invisible="1"/>
+	                <field name="room_id" required="0" invisible="1"/>
 	                <field name="patient_id" required="1"/>
             	</group>
             	<group name='sub_group2'>

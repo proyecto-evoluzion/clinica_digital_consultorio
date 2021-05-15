@@ -27,7 +27,7 @@
    					attrs="{'invisible':[('view_model','not in',['nurse_sheet','all'])]}">
    					<tree string="Nurse Sheets">
    						<field name="name"/>
-   						<field name="room_id" />
+   						<field name="room_id" invisible="1" />
    						<field name="patient_id"/>
    						<field name="document_type"/>
    						<field name="numberid"/>

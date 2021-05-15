@@ -103,7 +103,14 @@ class Doctor(models.Model):
                                       ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
                                       ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
 
-     
+    tdoc_rips = fields.Selection([('CC','CC - ID Document'),('CE','CE - Aliens Certificate'),
+                                      ('PA','PA - Passport'),('RC','RC - Civil Registry'),('TI','TI - Identity Card'),
+                                      ('AS','AS - Unidentified Adult'),('MS','MS - Unidentified Minor'),
+                                      ('CD','CD - Diplomatic card'),('SC','SC - safe passage'),
+                                      ('PE','PE - Special Permit of Permanence'),
+                                      ('CN','CN - Birth certificate')], string='Type of Document')
+    name = fields.Char(string='Number identification')
+    ref = fields.Integer(string='Number ID for TI or CC')
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
     middlename = fields.Char(string='Second Name')
@@ -147,6 +154,18 @@ class Doctor(models.Model):
         ## administrative data will not get updated with partner changes
         for data in self:
             partner_vals = {}
+            if 'name' in vals:
+                name = data.name or ''
+                partner_vals.update({'number_identification': name})
+            if 'tdoc_rips' in vals:
+                tdoc_rips = data.tdoc_rips or ''
+                partner_vals.update({'tdoc_rips': tdoc_rips})
+            if 'ref' in vals:
+                ref = data.ref or ''
+                partner_vals.update({'number_identification': ref})
+            
+
+            
             if 'firstname' in vals or 'lastname' in vals or 'middlename' in vals or 'surname' in vals:
                 firstname = data.firstname or ''
                 lastname = data.lastname or ''
@@ -165,12 +184,7 @@ class Doctor(models.Model):
                 if 'surname' in vals:
                     surname = vals.get('surname', False) or ''
                     partner_vals.update({'x_lastname2': surname})
-                if 'tdoc_rips' in vals:
-                    tdoc_rips = vals.get('tdoc_rips', False) or ''
-                    partner_vals.update({'tdoc_rips': tdoc_rips})
-                if 'ref' in vals:
-                    ref = vals.get('ref', False) or ''
-                    partner_vals.update({'number_identification': ref})
+              
                 
                 # nameList = [
                 #     firstname.strip(),
@@ -179,13 +193,13 @@ class Doctor(models.Model):
                 #     surname.strip()
                 #     ]
                 # formatedList = []
-                name = ''
+                name1 = ''
                 # for item in nameList:
                 #     if item is not '':
                 #         formatedList.append(item)
                 #     name = ' ' .join(formatedList).title()
-                name = lastname + ' ' + surname + ' ' + firstname + ' ' + middlename
-                partner_vals.update({'name': name})
+                name1 = lastname + ' ' + surname + ' ' + firstname + ' ' + middlename
+                partner_vals.update({'name': name1})
             if 'email' in vals:
                 partner_vals.update({'email': vals.get('email', False)})
             if 'phone' in vals:
@@ -201,6 +215,7 @@ class Doctor(models.Model):
         if not res.partner_id:
             partner_vals = res._get_related_partner_vals(vals)
             partner_vals.update({'doctype': 1})
+         
             partner = self.env['res.partner'].create(partner_vals)
             res.partner_id = partner.id
         if not res.res_user_id:

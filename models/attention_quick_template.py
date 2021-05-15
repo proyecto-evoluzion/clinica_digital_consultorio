@@ -34,12 +34,21 @@ class AttentionQuickTemplate(models.Model):
     
     name = fields.Char(string='Template Name')
     template_text = fields.Text(string='Template Text')
-    type = fields.Selection([('recomendation','Recomendation'),
-                             ('certificates','Inform and certificates'),
-                             ('prescription','Prescription'),
-                             ('symptom','Symptom'),
-                             ('background','Background'),
-                             ('analysis','Analysis')], string='Template Type')
+    type = fields.Selection([('recomendation','Recomendacion'),
+                             ('certificates','Informe de Certificado'),
+                             ('prescription','Prescripcion'),
+                             ('symptom','Sintomas'),
+                             ('background','Antecedentes'),
+                             ('analysis','Analisis'),
+                             ('exam','Examen Fisisco'),
+                             ('conduct','Conducta'),
+                             ('nursing assistant','Auxiliar de Enfermería'),
+                             ('finding pysical','Hallazgos positivos de examen fisico'),
+                             ('description pysical','Descripción física'),('behaivor in consultation','Comportamiento en consulta'),
+                             ('assessment strategies ','Estrategias de evaluacion'),
+                             ('intervetion plan','Plan de intervención'),
+                             ('prescription other ','Otras prescripciones')
+                             ], string='Template Type')
     active = fields.Boolean(string="active", default=True)
     
             

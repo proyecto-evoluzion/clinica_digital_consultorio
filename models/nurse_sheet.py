@@ -38,9 +38,13 @@ class ClinicaNurseSheet(models.Model):
     
     name = fields.Char(string='Name', copy=False)
     procedure_date = fields.Date(string='Procedure Date', default=fields.Date.context_today)
-    document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
-                                      ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
-                                      ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
+    document_type = fields.Selection([('CC','CC - ID Document'),('CE','CE - Aliens Certificate'),
+                                      ('PA','PA - Passport'),('RC','RC - Civil Registry'),('TI','TI - Identity Card'),
+                                      ('AS','AS - Unidentified Adult'),('MS','MS - Unidentified Minor'),
+                                      ('CD','CD - Diplomatic card'),('SC','SC - safe passage'),
+                                      ('PE','PE - Special Permit of Permanence'),
+                                      ('CN','CN - Birth certificate')], string='Type of Document')
+    
     numberid = fields.Char(string='Number ID')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
@@ -93,6 +97,7 @@ class ClinicaNurseSheet(models.Model):
     various_procedures = fields.Boolean(string="Various Procedures", copy=False)
     invoice_procedure_ids = fields.One2many('nurse.sheet.invoice.procedures', 'nurse_sheet_id', string='Health Procedures for Invoice', copy=False)
     anhestesic_registry_id = fields.Many2one('clinica.anhestesic.registry', 'Anhestesic Registry')
+   
     
     @api.multi
     @api.depends('birth_date')

@@ -171,6 +171,7 @@ class PlasticSurgerySheet(models.Model):
                                             ('13', 'Enfermedad general'),('14', 'Enfermedad laboral'),
                                             ('15', 'Otra')], string='Causa Externa')
     current_illness = fields.Text(string="Current illness")
+    template_id = fields.Many2one('attention.quick.template',string='Plantilla')
 
     @api.onchange('diagnosis_ids')
     def onchange_diagnosis_ids(self):

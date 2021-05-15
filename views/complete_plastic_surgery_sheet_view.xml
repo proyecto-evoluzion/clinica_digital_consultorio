@@ -72,6 +72,7 @@
                                     <group name="confidential_notes" colspan="2" col='1'>
                                         <label for="confidential_notes" string="Confidential Notes"/>
                                         <field name="confidential_notes" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                       
                                     </group>
                                     <group name="paraclinical" colspan="2" col='1'>
                                         <label for="paraclinical" string="Paraclinical"/>
@@ -79,7 +80,7 @@
                                     </group>
                                 </page>
                                 <page name="system_review" string="Systems Reviews">
-                                    <group name="system_review">
+                                    <group name="system_review" string="Revisión por sistemas" >
                                         <field name="system_review_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
                                             <tree editable="bottom">
                                                 <field name="type_review"/>
@@ -95,6 +96,8 @@
                                     <group>
                                         <label for="system_review_notes"/>
                                         <field name="system_review_notes" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                         <label for="template_id" string="Template" style="width: 25%"/>
+                                        <field name="template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
                                     </group>
                                 </page>
                                 <page name="patient_background" string="Patient Background">
@@ -107,9 +110,9 @@
                                             </tree>
                                         </field>
                                     </group>
-                                    <group>
+                                    <group string="Antecedentes">
                                         <!-- <field name="background_type_ids" nolabel="1" context="{'default_patient_id': patient_id}" attrs="{'readonly':[('state','=','closed')]}"/> -->
-                                        <field name="background_type_ids" widget="one2many">
+                                        <field name="background_type_ids" widget="one2many" >
                                             <tree editable="bottom">
                                                 <field name="type_background" readonly="0"/>
                                                 <field name="value_background" />
@@ -120,21 +123,23 @@
                                     <group>
                                         <label for="background_notes"/>
                                         <field name="background_notes" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                         <label for="template_id" string="Template" style="width: 25%"/>
+                                         <field name="template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
                                     </group>
-                                    <group name="gyneco_obst" colspan="2" col="1" attrs="{'invisible':[('gender','=','male')]}">
+                                     <group name="gyneco_obst" colspan="2" col="1" attrs="{'invisible':[('gender','=','male')]}">
                                         <label for="gyneco_obst"/>
                                         <field name="gyneco_obst" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
-                                    </group>
+                                     </group>
                                     <group>
                                      
                                         <field name="background_gynecology_ids"
                                         string="Antecedentes Ginecologicos" attrs="{'invisible':[('gender','=','male')]}">
                                             <tree editable="bottom">
                                             <field name="backgroud_gynecology_date"/>
-                                            <field name="g"/>
+                                            <field name="g" />
                                             <field name="p"/>
-                                            <field name="c"/>
-                                            <field name="a"/>
+                                            <field name="c" />
+                                            <field name="a" />
                                             <field name="fur"/>
                                             <field name="fup"/>
                                             <field name="mpf"/>
@@ -214,7 +219,7 @@
                                     </div>
                                 </page>
                                 <page name="fisical_exam" string="Fisical Exam">
-                                    <group>
+                                    <group string="Examen Físico">
                                         <field name="physical_examination_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
                                             <tree editable="bottom">
                                                 <field name="type_exam"/>
@@ -229,8 +234,11 @@
                                     <group>
                                         <label for="physical_examination_notes"/>
                                         <field name="physical_examination_notes" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                        <label for="template_id" string="Template" style="width: 25%"/>  <field name="template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
                                     </group>
                                 </page>
+
+
                             </notebook>
                         </page>
                         <page name="dx_treatment" string="Dx and Treatment">

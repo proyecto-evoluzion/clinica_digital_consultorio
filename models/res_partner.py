@@ -42,6 +42,7 @@ class Partner(models.Model):
                                       ('PE','PE - Permiso de permanencia'),
                                       ('CN','CN - Certificado de nacido vivo')], string='Type of Document')
     number_identification = fields.Char(string="Number Identification")
+    domain_enterprise =  fields.Char(string="Domain Enterprise")
    
 
     

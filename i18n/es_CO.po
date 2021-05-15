@@ -2269,7 +2269,7 @@ msgstr "Profesional de la Salud"
 #. module: clinica_digital_consultorio
 #: model:ir.ui.menu,name:clinica_digital_consultorio.menu_doctor_details
 msgid "Doctor"
-msgstr "Gestión Clínica"
+msgstr "Clínica Digital"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_waiting_room_assigned_professional_ids
@@ -6098,7 +6098,7 @@ msgstr "Plantilla"
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_text_template_form
 msgid "Template Form"
-msgstr "Template Form"
+msgstr "Fomulario plantilla"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_text_template_name
@@ -6106,19 +6106,19 @@ msgid "Template Name"
 msgstr "Nombre de plantilla"
 
 #. module: clinica_digital_consultorio
-#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_text_template_template_text
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_text_template_text
 msgid "Template Text"
-msgstr "Template Text"
+msgstr "Recomendación Texto"
 
 #. module: clinica_digital_consultorio
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_text_template_tree
 msgid "Template Tree"
-msgstr "Template Tree"
+msgstr "Vista plantilla"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_text_template_type
 msgid "Template Type"
-msgstr "Template Type"
+msgstr "Tipo de plantilla"
 
 #. module: clinica_digital_consultorio
 #: selection:doctor.quirurgic.sheet,procedure_purpose:0
@@ -6291,6 +6291,7 @@ msgstr "Tipo de anestesia:"
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_quirurgical_check_list_document_type
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_epicrisis_tdoc_rips
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_patient_tdoc_rips
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_professional_tdoc_rips
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_presurgical_record_document_type
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_professional_tdoc_rips
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_quirurgic_sheet_document_type
@@ -7401,6 +7402,18 @@ msgstr "Víctima del conflicto"
 #: model:ir.ui.view,arch_db:clinica_digital_consultorio.clinica_plastic_surgery_form
 msgid "Current illness"
 msgstr "Enfermedad actual"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_professional_name
+msgid "Number Identification"
+msgstr "Número de Identificación"
+
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_doctor_professional_ref
+msgid "Number ID"
+msgstr "Número de Identificación"
+
+
 
 
 

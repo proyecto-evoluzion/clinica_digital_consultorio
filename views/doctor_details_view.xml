@@ -156,6 +156,17 @@
 	                        <field name="surname" string="Segundo Apellido"/>
                             <field name="firstname" required="1" string="Primer Nombre"/>
                             <field name="middlename" string="Segundo Nombre"/>
+                           
+                            <field name="tdoc_rips" placeholder="Type of Document" required="1"/>
+
+                            <field name="name" attrs="{'invisible':[('tdoc_rips','in',['CC','TI'])]}"/>
+
+                            <field name="ref" attrs="{'invisible':[('tdoc_rips','not in',['CC','TI'])]}"/>
+                        
+                          
+                      
+                        
+
                     	</group>
                     </group>
                     <h3>Nombre personalizado - Firma Digital</h3>

@@ -186,11 +186,20 @@
                         <group name="treatment" colspan="2" col='1'>
                             <label for="treatment" string="Treatment"/>
                             <field name="treatment" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                            
+                           
                         </group>
-                        <group name="template">
+
+                        <group>
+                           <label for="template_id" string="Plantilla" style="width: 25%"/>
+                           <field name="template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
+                        </group>
+                        <group name="template" invisible="1">
 		         			<group name="template_sub1">
 		         				<field name='medical_recipe_template_id' options="{'no_create_edit': True}"
+                                 invisible="1"
 		         					domain="[('user_id','=',uid),('type','=','medical_recipe')]" string="Plantilla" attrs="{'readonly':[('state','=','closed')]}"/>
+                                    
 		         			</group>
 		         			<group></group>
 		         		</group>
@@ -218,8 +227,10 @@
             	    <!-- <field name='attention_code_id'/> -->
        				<field name="date_attention"/>
        				<field name="patient_id"/>
+                    <field name="state"/>
        				<field name="document_type"/>
        				<field name="numberid"/>
+                  
                 </tree>
             </field>
         </record>

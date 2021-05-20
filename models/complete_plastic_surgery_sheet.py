@@ -216,7 +216,7 @@ class PlasticSurgerySheet(models.Model):
     background_gynecology_ids = fields.One2many('background.gynecology','gynecology_id', string="Antecedente Ginecologico")
     #system_review_type_ids = fields.One2many('system.review.center','complete_format_id', string="Revision por sistemas")
 
-
+    print("age")
 
     @api.multi
     def _set_prescription_form_default_values(self):

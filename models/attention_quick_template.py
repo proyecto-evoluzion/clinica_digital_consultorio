@@ -50,6 +50,7 @@ class AttentionQuickTemplate(models.Model):
                              ('prescription other ','Otras prescripciones')
                              ], string='Template Type')
     active = fields.Boolean(string="active", default=True)
+    user_id = fields.Many2one('res.users', string="User")
     
             
     

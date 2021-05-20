@@ -146,7 +146,7 @@
                     	<group>
                     		<field name="profession_type" required="1" string="Profesión"/>
                             <field name="multiple_format" invisible="0"/>
-	                        <field name="email"/>
+	                        <field name="email" required="1"/>
 	                        <field name="phone" string="Teléfono"/>
                             <field name="medical_record" string="Registro Médico"/>
                             <field name="doctor_provider_code" required="1"/>

@@ -72,6 +72,7 @@
         'views/config_clinica_system_review.xml',
         'views/config_physical_examination.xml',
         'views/background.xml',
+        'views/clinica_text_template_attention.xml',
         'views/inherit_crm_view.xml',
         'views/doctor_contract_view.xml',
         'views/res_company_view.xml',

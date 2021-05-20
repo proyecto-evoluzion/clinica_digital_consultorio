@@ -132,7 +132,8 @@
                                     <group>
                                      
                                         <field name="background_gynecology_ids"
-                                        string="Antecedentes Ginecologicos" attrs="{'invisible':[('gender','=','male')]}">
+                                        string="Antecedentes Ginecologicos" attrs="{'invisible':['$&amp;',('gender','=','male'),('age', '&lt;=', '13')]}">
+                                        
                                             <tree editable="bottom">
                                             <field name="backgroud_gynecology_date"/>
                                             <field name="g" />

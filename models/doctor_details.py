@@ -157,6 +157,7 @@ class Doctor(models.Model):
             if 'name' in vals:
                 name = data.name or ''
                 partner_vals.update({'number_identification': name})
+              
             if 'tdoc_rips' in vals:
                 tdoc_rips = data.tdoc_rips or ''
                 partner_vals.update({'tdoc_rips': tdoc_rips})
@@ -200,6 +201,7 @@ class Doctor(models.Model):
                 #     name = ' ' .join(formatedList).title()
                 name1 = lastname + ' ' + surname + ' ' + firstname + ' ' + middlename
                 partner_vals.update({'name': name1})
+                print(vals)
             if 'email' in vals:
                 partner_vals.update({'email': vals.get('email', False)})
             if 'phone' in vals:

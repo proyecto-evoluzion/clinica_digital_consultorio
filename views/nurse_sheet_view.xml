@@ -223,7 +223,7 @@
             name="Nurse Sheet"
             parent="menu_doctor_process"
             action="action_clinica_nurse_sheet"
-            groups="base.group_system,clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.clinical_auditor"
+            groups="base.group_system,clinica_digital_consultorio.nursery_chief"
             sequence="5"/>
            
         

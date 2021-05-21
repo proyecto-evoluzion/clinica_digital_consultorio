@@ -1,52 +1,12 @@
 <odoo>
     <data noupdate="0">
 
-        <record id="anesthesiologist" model="res.groups">
-            <field name="name">Doctor / F. Anesthesiologist</field>
-        </record>
-
-         <record id="surgeon" model="res.groups">
+    	<record id="surgeon" model="res.groups">
             <field name="name">Doctor / Surgeon</field>
-        </record>
-
-        <record id="otorhino" model="res.groups">
-            <field name="name">Doctor / Otorhinolaryngologist</field>
-        </record>
-
-        <record id="nursing_assistant" model="res.groups">
-            <field name="name">Doctor / Nursing Assistant</field>
-        </record>
-
-        <record id="pharmacist" model="res.groups">
-            <field name="name">Doctor / Pharmacist</field>
-        </record>
-
-        <record id="nursery_chief" model="res.groups">
-            <field name="name">Doctor / Nursery chief</field>
-        </record>
-
-        <record id="administrative_assistant" model="res.groups">
-            <field name="name">Doctor / Administrative Assistant</field>
-        </record>
-
-        <record id="accounting_assistant" model="res.groups">
-            <field name="name">Doctor / Accounting Assistant</field>
         </record>
 
         <record id="programmer_assistant" model="res.groups">
             <field name="name">Doctor / Programmer Assistant</field>
-        </record>
-
-        <record id="clinical_auditor" model="res.groups">
-            <field name="name">Doctor / Clinical Auditor</field>
-        </record>
-
-        <record id="management" model="res.groups">
-            <field name="name">Doctor / Management</field>
-        </record>
-
-        <record id="surgical_technologist" model="res.groups">
-            <field name="name">Doctor / Surgical Technologist</field>
         </record>
 
         <record id="simple_format" model="res.groups">
@@ -56,6 +16,46 @@
         <record id="complete_format" model="res.groups">
             <field name="name">Doctor / Formato Clínico Completo</field>
         </record>
+
+        <record id="nursery_chief" model="res.groups">
+            <field name="name">Doctor / Nursery chief</field>
+        </record>
+
+        <!-- <record id="anesthesiologist" model="res.groups">
+            <field name="name">Doctor / F. Anesthesiologist</field>
+        </record> -->
+
+        <!-- <record id="otorhino" model="res.groups">
+            <field name="name">Doctor / Otorhinolaryngologist</field>
+        </record>
+
+        <record id="nursing_assistant" model="res.groups">
+            <field name="name">Doctor / Nursing Assistant</field>
+        </record>
+
+        <record id="pharmacist" model="res.groups">
+            <field name="name">Doctor / Pharmacist</field>
+        </record> -->
+
+        <!-- <record id="administrative_assistant" model="res.groups">
+            <field name="name">Doctor / Administrative Assistant</field>
+        </record>
+
+        <record id="accounting_assistant" model="res.groups">
+            <field name="name">Doctor / Accounting Assistant</field>
+        </record> -->
+
+        <!-- <record id="clinical_auditor" model="res.groups">
+            <field name="name">Doctor / Clinical Auditor</field>
+        </record>
+
+        <record id="management" model="res.groups">
+            <field name="name">Doctor / Management</field>
+        </record>
+
+        <record id="surgical_technologist" model="res.groups">
+            <field name="name">Doctor / Surgical Technologist</field>
+        </record> -->
+
     </data>
-        
 </odoo>

@@ -520,14 +520,14 @@ class SystemsReviews(models.Model):
 
     plastic_surgery_id = fields.Many2one('complete.clinica.plastic.surgery', string='FCC')
     type_review = fields.Char(string="Type Review")
-    system_review = fields.Char(string="System Review")
+    system_review = fields.Text(string="System Review")
 
 class ConfigSystemsReviews(models.Model):
     _name = "config.clinica.system.review"
     _rec_name ="type_review"
 
     type_review = fields.Char(string="Type Review")
-    system_review = fields.Char(string="System Review")
+    system_review = fields.Text(string="System Review")
 
 #class SystemReviewCenter(models.Model):
 #    _name = "system.review.center"

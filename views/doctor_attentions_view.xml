@@ -357,7 +357,7 @@
             name="Pre-surgical Records"
             parent="menu_doctor_process"
             action="clinica_digital_consultorio.action_clinica_presurgical_record"
-            groups="base.group_system,clinica_digital_consultorio.anesthesiologist"
+            groups="base.group_system"
             sequence="6"/>
         
  </odoo>

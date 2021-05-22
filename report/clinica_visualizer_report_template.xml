@@ -1070,12 +1070,14 @@
                   <span style="padding-left:2px;" t-field="complete_plastic_surgery.current_illness"/>
                 </td>
               </tr>
-              <tr t-if="complete_plastic_surgery.confidential_notes"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>NOTAS CONFIDENCIALES</strong></td></tr>
+              <!--<tr t-if="complete_plastic_surgery.confidential_notes">
+			  <td colspan="2" style="text-align:center; font-size: 14px;">
+			  <strong>NOTAS CONFIDENCIALES</strong></td></tr>
               <tr t-if="complete_plastic_surgery.confidential_notes">
                 <td colspan="2" style="width:50%; ">
                   <span style="padding-left:2px;" t-field="complete_plastic_surgery.confidential_notes"/>
                 </td>
-              </tr>
+              </tr>-->
               <tr t-if="complete_plastic_surgery.paraclinical" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>PARACLÍNICOS</strong></td></tr>
               <tr t-if="complete_plastic_surgery.paraclinical" >
                 <td colspan="2" style="width:50%; ">

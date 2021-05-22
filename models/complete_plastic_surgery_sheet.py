@@ -239,7 +239,7 @@ class PlasticSurgerySheet(models.Model):
     def onchange_background_template_id(self):
         if self.background_template_id:
             self.background_type_ids = [(6,0,self.background_template_id.background_ids.ids)]
-            self.background_notes = self.sys_review_template_id.template_text
+            self.background_notes = self.background_template_id.template_text
     
 
     @api.onchange('diagnosis_ids')

@@ -7413,6 +7413,11 @@ msgstr "Número de Identificación"
 msgid "Number ID"
 msgstr "Número de Identificación"
 
+#. module: clinica_digital_consultorio
+#: model:ir.model.fields,field_description:clinica_digital_consultorio.field_res_partner_domain_enterprise
+msgid "Domain Enterprise"
+msgstr "Dominio Clinica Digital"
+
 
 
 

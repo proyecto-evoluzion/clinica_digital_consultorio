@@ -32,9 +32,12 @@
                     </tree>
                 </field>
             </group>
+            <group name="recomendation" string="Recomendaciones" attrs="{'invisible':[('type','!=','1')]}">
+                <field name="images" nolabel="1"/>
+            </group>
          		
          		<group name="text">
-         			<field name='template_text' string="Texto predeterminado"/>
+         			<field name='template_text' string="Texto predeterminado" attrs="{'invisible':[('type','==','1')]}"/>
          		</group>
          		
          	</sheet>

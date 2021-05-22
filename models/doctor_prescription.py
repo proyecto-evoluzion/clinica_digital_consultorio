@@ -89,8 +89,15 @@ class DoctorPrescription(models.Model):
   atc_ids = fields.One2many('doctor.atc_medicine','prescription_id', string="ATC")
   load_register = fields.Boolean(string='-', default=False)
   company_id = fields.Many2one('res.company',string='Company', default=_default_company)
+  recomendation_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','1')])
 
-  
+  #Onchages para plantillas
+  @api.onchange('recomendation_template_id')
+  def onchange_recomendation_template_id(self):
+    if self.recomendation_template_id:
+      self.images = self.recomendation_template_id.images
+
+  #Hasta aqui funcionalidad de plantillas
 
   @api.onchange('template_id')
   def onchange_template_id(self):

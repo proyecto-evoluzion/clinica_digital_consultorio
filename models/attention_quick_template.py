@@ -54,6 +54,7 @@ class AttentionQuickTemplate(models.Model):
     user_id = fields.Many2one('res.users', string="User")
     system_review_ids = fields.One2many('clinica.system.review', 'template_id', string="Revisiones por sistema")
     background_ids = fields.Many2many('copy.background.type', string="Antecedentes")
+    images = fields.Html(string='Imagenes')
     
             
     

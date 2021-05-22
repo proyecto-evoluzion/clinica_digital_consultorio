@@ -229,6 +229,7 @@ class PlasticSurgerySheet(models.Model):
         }
         return vals
 
+    #Onchages para plantillas
     @api.onchange('sys_review_template_id')
     def onchange_sys_review_template_id(self):
         if self.sys_review_template_id:
@@ -240,6 +241,8 @@ class PlasticSurgerySheet(models.Model):
         if self.background_template_id:
             self.background_type_ids = [(6,0,self.background_template_id.background_ids.ids)]
             self.background_notes = self.background_template_id.template_text
+
+    #Hasta aqui funcionalidad de plantillas
     
 
     @api.onchange('diagnosis_ids')

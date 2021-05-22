@@ -35,7 +35,7 @@
             </group>
             <group col="4" attrs="{'invisible':[('order_type','!=','informs')]}">
               <field name="template_id" invisible="1"/>
-              <field name="template_id"/>
+              <field name="recomendation_template_id"/>
             </group>
             <group attrs="{'invisible':[('order_type','!=','informs')]}">
               <field name="images" nolabel="1"/>

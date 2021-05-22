@@ -234,7 +234,7 @@
                                     <group>
                                         <label for="physical_examination_notes"/>
                                         <field name="physical_examination_notes" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
-                                        <label for="template_id" string="Template" style="width: 25%"/>  <field name="template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                        <label for="physical_template_id" string="Template" style="width: 25%"/>  <field name="physical_template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
                                     </group>
                                 </page>
 

@@ -192,6 +192,7 @@ class PlasticSurgerySheet(models.Model):
     template_id = fields.Many2one('attention.quick.template', string='Template')
     sys_review_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','15')])
     background_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','5')])
+    physical_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','7')])
     prescription_id = fields.Many2one('doctor.prescription', string='Prescription')
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
     load_register = fields.Boolean(string='-', default=False)
@@ -241,6 +242,14 @@ class PlasticSurgerySheet(models.Model):
         if self.background_template_id:
             self.background_type_ids = [(6,0,self.background_template_id.background_ids.ids)]
             self.background_notes = self.background_template_id.template_text
+
+    @api.onchange('physical_template_id')
+    def onchange_physical_template_id(self):
+        if self.physical_template_id:
+            self.physical_examination_ids = [(6,0,self.physical_template_id.pysical_exam_ids.ids)]
+            self.physical_examination_notes = self.physical_template_id.template_text
+
+    
 
     #Hasta aqui funcionalidad de plantillas
     
@@ -582,9 +591,10 @@ class PhysicalExamination(models.Model):
     plastic_surgery_id = fields.Many2one('complete.clinica.plastic.surgery', string='FCC')
     type_exam = fields.Char(string="Type Physical Exam")
     exam = fields.Char(string="Exam")
+    template_id = fields.Many2one('attention.quick.template', string='Template')
 
 class ConfigPhysicalExamination(models.Model):
     _name = "config.physical.examination"
-
+   
     type_exam = fields.Char(string="Type Physical Exam")
     exam = fields.Char(string="Exam")

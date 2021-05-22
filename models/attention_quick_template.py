@@ -40,7 +40,7 @@ class AttentionQuickTemplate(models.Model):
                              ('4','Sintomas'),
                              ('5','Antecedentes'),
                              ('6','Análisis'),
-                             ('7','Exámen Físisco'),
+                             ('7','Exámen Físico'),
                              ('8','Conducta'),
                              ('9','Auxiliar de Enfermería'),
                              ('10','Hallazgos positivos de exámen físico'),
@@ -55,6 +55,10 @@ class AttentionQuickTemplate(models.Model):
     system_review_ids = fields.One2many('clinica.system.review', 'template_id', string="Revisiones por sistema")
     background_ids = fields.Many2many('copy.background.type', string="Antecedentes")
     images = fields.Html(string='Imagenes')
+    pysical_exam_ids = fields.One2many('physical.examination', 'template_id', string="Examen Fisico")
+
+
+
     
             
     

@@ -35,6 +35,15 @@
             <group name="recomendation" string="Recomendaciones" attrs="{'invisible':[('type','!=','1')]}">
                 <field name="images" nolabel="1"/>
             </group>
+
+             <group name="physical_exam" string="Examen Físico" attrs="{'invisible':[('type','!=','7')]}">
+                <field name="pysical_exam_ids" nolabel="1">
+                    <tree editable="bottom">
+                        <field name="type_exam"/>
+                        <field name="exam"/>
+                    </tree>
+                </field>
+                </group>
          		
          		<group name="text">
          			<field name='template_text' string="Texto predeterminado" attrs="{'invisible':[('type','==','1')]}"/>

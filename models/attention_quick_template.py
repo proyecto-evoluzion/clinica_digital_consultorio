@@ -34,23 +34,26 @@ class AttentionQuickTemplate(models.Model):
     
     name = fields.Char(string='Template Name')
     template_text = fields.Text(string='Template Text')
-    type = fields.Selection([('recomendation','Recomendacion'),
-                             ('certificates','Informe de Certificado'),
-                             ('prescription','Prescripcion'),
-                             ('symptom','Sintomas'),
-                             ('background','Antecedentes'),
-                             ('analysis','Analisis'),
-                             ('exam','Examen Fisisco'),
-                             ('conduct','Conducta'),
-                             ('nursing assistant','Auxiliar de Enfermería'),
-                             ('finding pysical','Hallazgos positivos de examen fisico'),
-                             ('description pysical','Descripción física'),('behaivor in consultation','Comportamiento en consulta'),
-                             ('assessment strategies ','Estrategias de evaluacion'),
-                             ('intervetion plan','Plan de intervención'),
-                             ('prescription other ','Otras prescripciones')
+    type = fields.Selection([('1','Recomendación'),
+                             ('2','Informe de Certificado'),
+                             ('3','Prescripción'),
+                             ('4','Sintomas'),
+                             ('5','Antecedentes'),
+                             ('6','Análisis'),
+                             ('7','Exámen Físisco'),
+                             ('8','Conducta'),
+                             ('9','Auxiliar de Enfermería'),
+                             ('10','Hallazgos positivos de exámen físico'),
+                             ('11','Descripción física'),('behaivor in consultation','Comportamiento en consulta'),
+                             ('12 ','Estrategias de evaluacion'),
+                             ('13','Plan de intervención'),
+                             ('14','Otras prescripciones'),
+                             ('15','Revisiones por sistema')
                              ], string='Template Type')
     active = fields.Boolean(string="active", default=True)
     user_id = fields.Many2one('res.users', string="User")
+    system_review_ids = fields.One2many('clinica.system.review', 'template_id', string="Revisiones por sistema")
+    background_ids = fields.Many2many('copy.background.type', string="Antecedentes")
     
             
     

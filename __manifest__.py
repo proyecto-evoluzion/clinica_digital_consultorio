@@ -46,7 +46,7 @@
         'report/clinica_prescription_report.xml',
         'views/doctor_details_view.xml',
         'views/res_config_settings_view.xml',
-        'views/clinica_text_template_view.xml',
+        # 'views/clinica_text_template_view.xml',
         'views/res_partner_view.xml',
         'views/doctor_product_view.xml',
         'views/doctor_attentions_view.xml',

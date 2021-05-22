@@ -190,6 +190,8 @@ class PlasticSurgerySheet(models.Model):
     imc = fields.Float(string="IMC", compute=_comp_imc)
     analysis = fields.Text(string="Paraclinical")
     template_id = fields.Many2one('attention.quick.template', string='Template')
+    sys_review_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','15')])
+    background_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','5')])
     prescription_id = fields.Many2one('doctor.prescription', string='Prescription')
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
     load_register = fields.Boolean(string='-', default=False)
@@ -226,6 +228,18 @@ class PlasticSurgerySheet(models.Model):
             'default_doctor_id' : self.doctor_id.id
         }
         return vals
+
+    @api.onchange('sys_review_template_id')
+    def onchange_sys_review_template_id(self):
+        if self.sys_review_template_id:
+            self.system_review_ids = [(6,0,self.sys_review_template_id.system_review_ids.ids)]
+            self.system_review_notes = self.sys_review_template_id.template_text
+
+    @api.onchange('background_template_id')
+    def onchange_background_template_id(self):
+        if self.background_template_id:
+            self.background_type_ids = [(6,0,self.background_template_id.background_ids.ids)]
+            self.background_notes = self.sys_review_template_id.template_text
     
 
     @api.onchange('diagnosis_ids')
@@ -519,6 +533,7 @@ class SystemsReviews(models.Model):
     _name = "clinica.system.review"
 
     plastic_surgery_id = fields.Many2one('complete.clinica.plastic.surgery', string='FCC')
+    template_id = fields.Many2one('attention.quick.template', string='Template')
     type_review = fields.Char(string="Type Review")
     system_review = fields.Text(string="System Review")
 

@@ -10,15 +10,31 @@
          		<group name='main_group'>
 	         		<group name='sub_group1'>
 	         			<field name="name" required="1"/>
-	         			<field name="type" required="1"/>
+	         			<field name="type" required="1" string="Tipo"/>
 	         		</group>
 	         		<group name='sub_group2'>
-	         		<field name="user_id" required="1"/>
+	         		<field name="user_id" required="0" string="Usuario"/>
 	         		</group>
-         		</group>
+         		</group>background_ids
+            <group name="system_review" string="Revisión por sistemas" attrs="{'invisible':[('type','!=','15')]}">
+                <field name="system_review_ids" nolabel="1">
+                    <tree editable="bottom">
+                        <field name="type_review"/>
+                        <field name="system_review"/>
+                    </tree>
+                </field>
+            </group>
+            <group name="background" string="Antecedentes" attrs="{'invisible':[('type','!=','5')]}">
+                <field name="background_ids" nolabel="1">
+                    <tree editable="bottom">
+                        <field name="type_background"/>
+                        <field name="value_background"/>
+                    </tree>
+                </field>
+            </group>
          		
          		<group name="text">
-         			<field name='template_text' string="Template Text"/>
+         			<field name='template_text' string="Texto predeterminado"/>
          		</group>
          		
          	</sheet>

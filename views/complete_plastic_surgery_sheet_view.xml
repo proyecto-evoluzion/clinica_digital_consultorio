@@ -95,8 +95,8 @@
                                     <group>
                                         <label for="system_review_notes"/>
                                         <field name="system_review_notes" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
-                                         <label for="template_id" string="Template" style="width: 25%"/>
-                                        <field name="template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                         <label for="sys_review_template_id" string="Template" style="width: 25%"/>
+                                        <field name="sys_review_template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
                                     </group>
                                 </page>
                                 <page name="patient_background" string="Patient Background">
@@ -122,8 +122,8 @@
                                     <group>
                                         <label for="background_notes"/>
                                         <field name="background_notes" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
-                                         <label for="template_id" string="Template" style="width: 25%"/>
-                                         <field name="template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                         <label for="background_template_id" string="Template" style="width: 25%"/>
+                                         <field name="background_template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
                                     </group>
                                      <group name="gyneco_obst" colspan="2" col="1" attrs="{'invisible':[('gender','=','male')]}">
                                         <label for="gyneco_obst"/>

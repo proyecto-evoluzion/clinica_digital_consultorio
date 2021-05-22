@@ -15,7 +15,7 @@
 	         		<group name='sub_group2'>
 	         		<field name="user_id" required="0" string="Usuario"/>
 	         		</group>
-         		</group>background_ids
+         		</group>
             <group name="system_review" string="Revisión por sistemas" attrs="{'invisible':[('type','!=','15')]}">
                 <field name="system_review_ids" nolabel="1">
                     <tree editable="bottom">

@@ -265,7 +265,7 @@
                                 <label for="treatment" string="Treatment"/>
                                 <field name="treatment" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                                  <label for="treatment_template_id" string="Template" style="width: 25%"/>
-                                <field name="treatment_template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                <field name="treatment_template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}" />
                             </group>
                             <group name="prescription" colspan="2" col='1' invisible="1">
                                 <label for="prescription_id" string="Prescription"/>

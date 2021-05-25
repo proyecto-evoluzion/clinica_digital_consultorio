@@ -245,8 +245,8 @@
                             <group name="analysis" colspan="2" col='1'>
                                 <label for="analysis" string="Analysis"/>
                                 <field name="analysis" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
-                                <label for="template_id" string="Template" style="width: 25%"/>
-                                <field name="template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                <label for="analysis_template_id" string="Template" style="width: 25%"/>
+                                <field name="analysis_template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
                             <group name="disease_details" string="Diagnostico">
                                 <field name="diagnosis_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
@@ -264,6 +264,8 @@
                             <group name="treatment" colspan="2" col='1'>
                                 <label for="treatment" string="Treatment"/>
                                 <field name="treatment" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                 <label for="treatment_template_id" string="Template" style="width: 25%"/>
+                                <field name="treatment_template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
                             <group name="prescription" colspan="2" col='1' invisible="1">
                                 <label for="prescription_id" string="Prescription"/>

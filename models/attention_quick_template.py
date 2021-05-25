@@ -56,6 +56,9 @@ class AttentionQuickTemplate(models.Model):
     background_ids = fields.Many2many('copy.background.type', string="Antecedentes")
     images = fields.Html(string='Imagenes')
     pysical_exam_ids = fields.One2many('physical.examination', 'template_id', string="Examen Fisico")
+    analisys = fields.Text(string= 'Análisis')
+    treatment = fields.Text(string='Tratamiento')
+
 
 
 

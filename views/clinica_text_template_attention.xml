@@ -44,6 +44,14 @@
                     </tree>
                 </field>
                 </group>
+
+                <group name="analysis">
+         			<field name='analisys' string="Análisis" attrs="{'invisible':[('type','!=','6')]}"/>
+         		</group>
+
+                <group name="treatment">
+         			<field name='treatment' string="Tratamiento" attrs="{'invisible':[('type','!=','8')]}"/>
+         		</group>
          		
          		<group name="text">
          			<field name='template_text' string="Texto predeterminado" attrs="{'invisible':[('type','==','1')]}"/>

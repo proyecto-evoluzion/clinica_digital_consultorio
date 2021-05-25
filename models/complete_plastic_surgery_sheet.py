@@ -193,6 +193,8 @@ class PlasticSurgerySheet(models.Model):
     sys_review_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','15')])
     background_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','5')])
     physical_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','7')])
+    analysis_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','6')])
+    treatment_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','8')])
     prescription_id = fields.Many2one('doctor.prescription', string='Prescription')
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
     load_register = fields.Boolean(string='-', default=False)
@@ -248,6 +250,17 @@ class PlasticSurgerySheet(models.Model):
         if self.physical_template_id:
             self.physical_examination_ids = [(6,0,self.physical_template_id.pysical_exam_ids.ids)]
             self.physical_examination_notes = self.physical_template_id.template_text
+    
+    @api.onchange('analysis_template_id')
+    def onchange_analysis_id(self):
+        if self.analysis_template_id:
+            self.analysis = self.analysis_template_id.analisys
+
+    @api.onchange('treatment_template_id')
+    def onchange_treatment_id(self):
+        if self.treatment_template_id:
+            self.treatment  = self.treatment_template_id.treatment
+        
 
     
 

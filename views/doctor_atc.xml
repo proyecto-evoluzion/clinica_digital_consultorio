@@ -105,12 +105,12 @@
                 </group>
                 <group col="4">
                   <field name="atc_route_id"/>
-                  <field name="name" invisible="1"/>                      
+                  <field name="control_medication"/>                      
                 </group>
 
                 <group col="4">
                   <field name="atc_use_id" />
-                  <field name="atc_use_id" invisible="1"/>
+                  <field name="name" invisible="1"/>
                 </group>
 
                 <group col="4">

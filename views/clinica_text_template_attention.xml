@@ -45,7 +45,7 @@
                 </field>
                 </group>
 
-                <group name="analysis">
+              <group name="analysis">
          			<field name='analisys' string="Análisis" attrs="{'invisible':[('type','!=','6')]}"/>
          		</group>
 
@@ -54,8 +54,10 @@
          		</group>
          		
          		<group name="text">
-         			<field name='template_text' string="Texto predeterminado" attrs="{'invisible':[('type','==','1')]}"/>
+         			<field name='template_text' string="Texto predeterminado" attrs="{'invisible':[('type','in',['1','8','6'])]}"/>
          		</group>
+
+            
          		
          	</sheet>
          </form>

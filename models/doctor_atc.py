@@ -73,4 +73,5 @@ class DoctorAtc(models.Model):
 										string='-')
     indications = fields.Text(string="Indicaciones")
     prescription_id = fields.Many2one('doctor.prescription', 'Prescription ATC')
-    concentration = fields.Char(string='Concentración', related="atc_id.concentration")    
+    concentration = fields.Char(string='Concentración', related="atc_id.concentration")
+    control_medication = fields.Boolean(string="Control Medication" ,default=False)  

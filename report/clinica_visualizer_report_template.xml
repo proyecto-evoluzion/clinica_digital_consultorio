@@ -1516,6 +1516,7 @@
                       <td style="width:50%;" colspan="2"><strong><span t-field="atc.atc_id.name"/></strong>
                       	<t>Forma de farmacéutica: <span style="padding-left:2px;" t-field="atc.atc_use_id"/></t>
 						<t>Concentración: <span style="padding-left:2px;" t-field="atc.concentration"/></t>
+						<t t-if="prescription.order_type == 'medicines' and atc.control_medication == True">Medicamento controlado: <span style="padding-left:2px;"/>Si</t>
 				      </td>
                     </tr>
 

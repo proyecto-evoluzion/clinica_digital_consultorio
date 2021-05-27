@@ -1242,13 +1242,13 @@
               <td colspan="2" style="text-align:center; font-size: 14px;"><strong>ANÁLISIS</strong></td>
             </tr>
             <tr t-if="complete_plastic_surgery.analysis">
-              <td colspan="2" style="text-align:center; font-size: 14px;"><span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.analysis"/></td>
+              <td colspan="2" style="font-size: 14px;"><span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.analysis"/></td>
             </tr>
             <tr t-if="complete_plastic_surgery.treatment">
               <td colspan="2" style="text-align:center; font-size: 14px;"><strong>TRATAMIENTO</strong></td>
             </tr>
             <tr t-if="complete_plastic_surgery.treatment">
-              <td colspan="2" style="text-align:center; font-size: 14px;"><span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.treatment"/></td>
+              <td colspan="2" style="font-size: 14px;"><span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.treatment"/></td>
             </tr>
             <!-- <tr t-if="complete_plastic_surgery.prescription_id"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>ORDENES MÉDICAS</strong></td></tr> -->
             <!-- <t t-if="complete_plastic_surgery.prescription_id">

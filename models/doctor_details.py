@@ -897,6 +897,28 @@ class DoctorAdministrativeData(models.Model):
             result['views'] = [(res and res.id or False, 'form')]
             result['res_id'] = plastic_surgery_ids.id
         return result
+
+    @api.multi
+    def action_view_complete_clinica_plastic_sugery(self):
+        action = self.env.ref('clinica_digital_consultorio.complete_action_clinica_plastic_surgery')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = self._set_clinica_form_default_values()
+        complete_plastic_sugery_ids = self.env['complete.clinica.plastic.surgery'].search([('patient_id','=',self.id)])
+     
+
+      #choose the view_mode accordingly
+        if len(complete_plastic_sugery_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(complete_plastic_sugery_ids.ids) + ")]"
+        elif len(complete_plastic_sugery_ids) == 1:
+            res = self.env.ref('complete.clinica.plastic.surgery.form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = complete_plastic_sugery_ids.id
+        return result
+
+
+
+
     
     @api.multi
     def action_view_medical_evolution(self):

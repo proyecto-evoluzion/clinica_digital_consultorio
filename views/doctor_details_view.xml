@@ -286,6 +286,11 @@
                             string="Asistió"
                             groups="base.group_system,clinica_digital_consultorio.programmer_assistant,clinica_digital_consultorio.nursery_chief">
                         </button>
+                         <button name="action_view_complete_clinica_plastic_sugery" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+                            string="Atención clínica"
+                           	groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant">
+                        </button>
+
                 	</div>
                 	
                 	

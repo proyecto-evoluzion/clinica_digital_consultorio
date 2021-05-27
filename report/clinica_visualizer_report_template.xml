@@ -1108,8 +1108,8 @@
               </tr>
               <t>
                 <t t-set="aux0" t-value="'0'"/>
-                <t t-foreach="complete_plastic_surgery.background_type_ids" t-as="pvalue">
-                  <t t-if="pvalue.value_background">
+                <t t-foreach="complete_plastic_surgery.background_type_ids" t-as="pvalue0">
+                  <t t-if="pvalue0.value_background">
                     <t t-set="aux0" t-value="'1'"/>
                   </t>
                 </t>
@@ -1122,9 +1122,9 @@
                         <th style="width:50%;">Antecedente</th>
                       </thead>
                       <tbody>
-                        <tr t-foreach="complete_plastic_surgery.background_type_ids" t-as="pvalue">
-                          <td style="width:50%;"><span t-field="pvalue.type_background"/></td>
-                          <td style="width:50%;"><span t-field="pvalue.value_background"/></td>
+                        <tr t-foreach="complete_plastic_surgery.background_type_ids" t-as="pvalue0">
+                          <td style="width:50%;"><span t-field="pvalue0.type_background"/></td>
+                          <td style="width:50%;"><span t-field="pvalue0.value_background"/></td>
                         </tr>
                       </tbody>
                     </table>
@@ -1151,15 +1151,15 @@
                       <th style="width:50%;">MPF</th>
                     </thead>
                     <tbody>
-                      <tr t-foreach="complete_plastic_surgery.background_gynecology_ids" t-as="pvalue">
-                        <td style="width:50%;"><span t-field="pvalue.backgroud_gynecology_date"/></td>
-                        <td style="width:50%;"><span t-field="pvalue.g"/></td>
-                        <td style="width:50%;"><span t-field="pvalue.p"/></td>
-                        <td style="width:50%;"><span t-field="pvalue.c"/></td>
-                        <td style="width:50%;"><span t-field="pvalue.a"/></td>
-                        <td style="width:50%;"><span t-field="pvalue.fur"/></td>
-                        <td style="width:50%;"><span t-field="pvalue.fup"/></td>
-                        <td style="width:50%;"><span t-field="pvalue.mpf"/></td>
+                      <tr t-foreach="complete_plastic_surgery.background_gynecology_ids" t-as="pvalue1">
+                        <td style="width:50%;"><span t-field="pvalue1.backgroud_gynecology_date"/></td>
+                        <td style="width:50%;"><span t-field="pvalue1.g"/></td>
+                        <td style="width:50%;"><span t-field="pvalue1.p"/></td>
+                        <td style="width:50%;"><span t-field="pvalue1.c"/></td>
+                        <td style="width:50%;"><span t-field="pvalue1.a"/></td>
+                        <td style="width:50%;"><span t-field="pvalue1.fur"/></td>
+                        <td style="width:50%;"><span t-field="pvalue1.fup"/></td>
+                        <td style="width:50%;"><span t-field="pvalue1.mpf"/></td>
                       </tr>
                     </tbody>
                   </table>
@@ -1185,8 +1185,8 @@
             </tr>
             <t>
               <t t-set="aux" t-value="'0'"/>
-              <t t-foreach="complete_plastic_surgery.physical_examination_ids" t-as="pvalue">
-                <t t-if="pvalue.exam">
+              <t t-foreach="complete_plastic_surgery.physical_examination_ids" t-as="pvalue2">
+                <t t-if="pvalue2.exam">
                   <t t-set="aux" t-value="'1'"/>
                 </t>
               </t>
@@ -1199,9 +1199,9 @@
                       <th style="width:50%;">Detalles</th>
                     </thead>
                     <tbody>
-                      <tr t-foreach="complete_plastic_surgery.physical_examination_ids" t-as="pvalue">
-                        <td style="width:50%;"><span t-field="pvalue.type_exam"/></td>
-                        <td style="width:50%;"><span t-field="pvalue.exam"/></td>
+                      <tr t-foreach="complete_plastic_surgery.physical_examination_ids" t-as="pvalue2">
+                        <td style="width:50%;"><span t-field="pvalue2.type_exam"/></td>
+                        <td style="width:50%;"><span t-field="pvalue2.exam"/></td>
                       </tr>
                     </tbody>
                   </table>
@@ -1228,11 +1228,11 @@
                     <th style="width:30%;">Estado Diagnóstico</th>
                   </thead>
                   <tbody>
-                    <tr t-foreach="complete_plastic_surgery.diagnosis_ids" t-as="pvalue">
-                      <td style="width:10%;"><span t-field="pvalue.code"/></td>
-                      <td style="width:30%;"><span t-field="pvalue.diseases_id"/></td>
-                      <td style="width:30%;"><span t-field="pvalue.diseases_id"/></td>
-                      <td style="width:30%;"><span t-field="pvalue.state_diagnosis"/></td>
+                    <tr t-foreach="complete_plastic_surgery.diagnosis_ids" t-as="pvalue3">
+                      <td style="width:10%;"><span t-field="pvalue3.code"/></td>
+                      <td style="width:30%;"><span t-field="pvalue3.diseases_id"/></td>
+                      <td style="width:30%;"><span t-field="pvalue3.diseases_id"/></td>
+                      <td style="width:30%;"><span t-field="pvalue3.state_diagnosis"/></td>
                     </tr>
                   </tbody>
                 </table>

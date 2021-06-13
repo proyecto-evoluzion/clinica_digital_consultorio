@@ -221,8 +221,6 @@ class PlasticSurgerySheet(models.Model):
     background_gynecology_ids = fields.One2many('background.gynecology','gynecology_id', string="Antecedente Ginecologico")
     #system_review_type_ids = fields.One2many('system.review.center','complete_format_id', string="Revision por sistemas")
 
-    print("age")
-
     @api.multi
     def _set_prescription_form_default_values(self):
         vals = {
@@ -236,19 +234,19 @@ class PlasticSurgerySheet(models.Model):
     @api.onchange('sys_review_template_id')
     def onchange_sys_review_template_id(self):
         if self.sys_review_template_id:
-            self.system_review_ids = [(6,0,self.sys_review_template_id.system_review_ids.ids)]
+            # self.system_review_ids = [(6,0,self.sys_review_template_id.system_review_ids.ids)]
             self.system_review_notes = self.sys_review_template_id.template_text
 
     @api.onchange('background_template_id')
     def onchange_background_template_id(self):
         if self.background_template_id:
-            self.background_type_ids = [(6,0,self.background_template_id.background_ids.ids)]
+            # self.background_type_ids = [(6,0,self.background_template_id.background_ids.ids)]
             self.background_notes = self.background_template_id.template_text
 
     @api.onchange('physical_template_id')
     def onchange_physical_template_id(self):
         if self.physical_template_id:
-            self.physical_examination_ids = [(6,0,self.physical_template_id.pysical_exam_ids.ids)]
+            # self.physical_examination_ids = [(6,0,self.physical_template_id.pysical_exam_ids.ids)]
             self.physical_examination_notes = self.physical_template_id.template_text
     
     @api.onchange('analysis_template_id')
@@ -260,10 +258,7 @@ class PlasticSurgerySheet(models.Model):
     def onchange_treatment_id(self):
         if self.treatment_template_id:
             self.treatment  = self.treatment_template_id.treatment
-        
-
-    
-
+            
     #Hasta aqui funcionalidad de plantillas
     
 

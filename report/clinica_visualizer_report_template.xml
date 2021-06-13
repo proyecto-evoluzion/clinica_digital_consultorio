@@ -1084,7 +1084,7 @@
                   <span style="padding-left:2px;" t-field="complete_plastic_surgery.paraclinical"/>
                 </td>
               </tr>
-              <tr t-if="complete_plastic_surgery.system_review_ids" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>REVISIÓN POR SISTEMAS</strong></td></tr>
+              <tr t-if="complete_plastic_surgery.system_review_ids or complete_plastic_surgery.system_review_notes" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>REVISIÓN POR SISTEMAS</strong></td></tr>
               <tr t-if="complete_plastic_surgery.system_review_ids" style="padding:0px;">
                 <td colspan="2" style=" padding:0px;">
                   <table class="table" style="width:100%;margin:0px;">
@@ -1113,7 +1113,7 @@
                     <t t-set="aux0" t-value="'1'"/>
                   </t>
                 </t>
-                <tr t-if="aux0 == '1'"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>ANTECEDENTES</strong></td></tr>
+                <tr t-if="aux0 == '1' or complete_plastic_surgery.background_notes"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>ANTECEDENTES</strong></td></tr>
                 <tr t-if="aux0 == '1'" style="padding:0px;">
                   <td colspan="2" style=" padding:0px;">
                     <table class="table" style="width:100%;margin:0px;">
@@ -1190,7 +1190,7 @@
                   <t t-set="aux" t-value="'1'"/>
                 </t>
               </t>
-              <tr t-if="aux == '1'"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>EXÁMEN FÍSICO</strong></td></tr>
+              <tr t-if="aux == '1' or complete_plastic_surgery.physical_examination_notes"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>EXÁMEN FÍSICO</strong></td></tr>
               <tr t-if="aux == '1'" style="padding:0px;">
                 <td colspan="2" style=" padding:0px;">
                   <table class="table" style="width:100%;margin:0px;">

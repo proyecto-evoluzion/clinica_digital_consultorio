@@ -98,7 +98,7 @@
    				<separator string="Plastic Surgery Sheet" attrs="{'invisible':[('view_model','not in',['plastic_surgery','all'])]}"/>
    				<field name="plastic_surgery_ids" nolabel="1" force_save="1" readonly="1"
    					attrs="{'invisible':[('view_model','not in',['plastic_surgery','all'])]}">
-   					<tree string="Plastic Surgery Sheet" default_order="number asc">
+   					<tree string="Plastic Surgery Sheet">
    						<field name="number"/>
 		         	    <field name='attention_code_id'/>
 	    				<field name="date_attention"/>
@@ -149,7 +149,7 @@
           <separator string="Formato Clínico Completo" attrs="{'invisible':[('view_model','not in',['complete_plastic_surgery','all'])]}"/>
           <field name="complete_plastic_surgery_ids" nolabel="1" force_save="1" readonly="1"
             attrs="{'invisible':[('view_model','not in',['complete_plastic_surgery','all'])]}">
-            <tree string="Complete Plastic Surgery Sheet"  default_order="date_attention desc">
+            <tree string="Complete Plastic Surgery Sheet">
               <field name="date_attention" />
               <field name="patient_id"/>
             </tree>

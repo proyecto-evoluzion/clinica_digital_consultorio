@@ -9,7 +9,7 @@
     			<span style="width:100%; text-align:left; font-size:30px;"><strong>NURSE SHEETS</strong></span>
     			<br/>
     	    </t> -->
-    	    <t t-foreach="clinica_records['nurse_sheets']" t-as="nurse_sheet">
+    	    <t t-foreach="clinica_records['nurse_sheets'].sorted(key=lambda record: record.procedure_date, reverse=True)" t-as="nurse_sheet">
       			<t t-set="nurse_sheet" t-value="nurse_sheet.with_context({'lang':nurse_sheet.patient_id.partner_id.lang})" />
        			<table style="width:100%;">
        				<tr>
@@ -93,7 +93,7 @@
     			<strong><span style="width:100%; text-align:left; font-size:30px;">QUIRURGIC SHEETS</span></strong>
     			<br/>
     		</t> -->
-    	    <t t-foreach="clinica_records['quirgic_sheets']" t-as="quirgic_sheet">
+    	    <t t-foreach="clinica_records['quirgic_sheets'].sorted(key=lambda record: record.procedure_date, reverse=True)" t-as="quirgic_sheet">
       			<t t-set="quirgic_sheet" t-value="quirgic_sheet.with_context({'lang':quirgic_sheet.patient_id.partner_id.lang})" />
        			<table style="width:100%;">
        				<tr>
@@ -260,7 +260,7 @@
 				<strong><span style="width:100%; text-align:left; font-size:30px;">PRE-SURGICAL RECORDS</span></strong>
     	    	<br/>
     	    </t> -->
-    	    <t t-foreach="clinica_records['presurgical_records']" t-as="presurgical_record">
+    	    <t t-foreach="clinica_records['presurgical_records'].sorted(key=lambda record: record.date_attention, reverse=True)" t-as="presurgical_record">
       			<t t-set="presurgical_record" t-value="presurgical_record.with_context({'lang':presurgical_record.patient_id.partner_id.lang})" />
        			<table style="width:100%;">
        				<tr>
@@ -509,7 +509,7 @@
 	   <template id="clinica_digital_consultorio.anhestesic_registry_visualizer_template">
 	   		<div class="page">
            	<div class="oe_structure"/>
-    	    <t t-foreach="clinica_records['anhestesic_registry']" t-as="anhestesic_registry">
+    	    <t t-foreach="clinica_records['anhestesic_registry'].sorted(key=lambda record: record.intervention_date, reverse=True)" t-as="anhestesic_registry">
       			<t t-set="anhestesic_registry" t-value="anhestesic_registry.with_context({'lang':anhestesic_registry.patient_id.partner_id.lang})" />
        			<table style="width:100%;">
        				<tr>
@@ -656,7 +656,7 @@
        	<template id="clinica_digital_consultorio.plastic_surgery_visualizer_template">
        		<div class="page">
            	<div class="oe_structure"/>
-    	    <t t-foreach="clinica_records['plastic_surgery']" t-as="plastic_surgery">
+    	    <t t-foreach="clinica_records['plastic_surgery'].sorted(key=lambda record: record.date_attention, reverse=True)" t-as="plastic_surgery">
       			<t t-set="plastic_surgery" t-value="plastic_surgery.with_context({'lang':plastic_surgery.patient_id.partner_id.lang})" />
        			<table style="width:100%; ">
        				<tr>
@@ -981,7 +981,8 @@
     <template id="clinica_digital_consultorio.complete_plastic_surgery_visualizer_template">
           <div class="page">
             <div class="oe_structure"/>
-          <t t-foreach="clinica_records['complete_plastic_surgery']" t-as="complete_plastic_surgery">
+          <!-- <t t-foreach="clinica_records['complete_plastic_surgery']" t-as="complete_plastic_surgery"> -->
+          <t t-foreach="clinica_records['complete_plastic_surgery'].sorted(key=lambda record: record.date_attention, reverse=True)" t-as="complete_plastic_surgery">
             <t t-set="complete_plastic_surgery" t-value="complete_plastic_surgery.with_context({'lang':complete_plastic_surgery.patient_id.partner_id.lang})" />
             <table style="width:100%; ">
               <tr>
@@ -1320,7 +1321,7 @@
 				<strong><span style="width:100%; text-align:left; font-size:30px;">MEDICAL ORDERS AND EVOLUTION</span></strong>
     	    	<br/>
     	    </t> -->
-    	    <t t-foreach="clinica_records['medical_evolution']" t-as="medical_evolution">
+    	    <t t-foreach="clinica_records['medical_evolution'].sorted(key=lambda record: record.procedure_date, reverse=True)" t-as="medical_evolution">
       			<t t-set="medical_evolution" t-value="medical_evolution.with_context({'lang':medical_evolution.patient_id.partner_id.lang})" />
        			<table style="width:100%;">
        				<tr>
@@ -1403,7 +1404,7 @@
 				<strong><span style="width:100%; text-align:left; font-size:30px;">EPICRISIS</span></strong>
 				<br/>
 			</t> -->
-    	    <t t-foreach="clinica_records['epicrisis']" t-as="epicrisis">
+    	    <t t-foreach="clinica_records['epicrisis'].sorted(key=lambda record: record.patient_in_date, reverse=True)" t-as="epicrisis">
       			<t t-set="epicrisis" t-value="epicrisis.with_context({'lang':epicrisis.patient_id.partner_id.lang})" />
        			<table style="width:100%;">
        				<tr>
@@ -1464,7 +1465,7 @@
     <template id="clinica_digital_consultorio.prescription_visualizer_template">
       <div class="page">
         <div class="oe_structure"/>
-          <t t-foreach="clinica_records['prescription']" t-as="prescription">
+          <t t-foreach="clinica_records['prescription'].sorted(key=lambda record: record.prescription_date, reverse=True)" t-as="prescription">
             <t t-set="prescription" t-value="prescription.with_context({'lang':prescription.patient_id.partner_id.lang})" />
             <t t-if="prescription.order_type != 'inability'">
               <table style="width:100%;">

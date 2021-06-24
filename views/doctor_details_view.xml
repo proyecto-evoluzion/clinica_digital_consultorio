@@ -248,12 +248,12 @@
 						</button>
 						<button name="action_view_presurgical_record" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 							string="Pre-Surgical Records"
-							groups="clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant">
+							groups="clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief">
 						</button>
 						<button name="action_view_anhestesic_registry" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 							string="Anhestesic Registry"
                             invisible="1"
-							groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant">
+							groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursery_chief">
 						</button>
 						<button name="action_view_quirurgic_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 							string="Quirurgic Sheet"
@@ -264,7 +264,7 @@
 							string="Quirurgical Check List"
                             invisible="1"
 							groups="base.group_system,
-                            clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant">
+                            clinica_digital_consultorio.nursing_assistant,clinica_digital_consultorio.nursery_chief">
 						</button>
 						<button name="action_view_post_anhestesic_care" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 							string="Cuidado Post-Anestésico"
@@ -272,15 +272,15 @@
 						</button>
 						<button name="action_view_plastic_surgery" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 							string="Plastic Surgery Sheet"
-							groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant">
+							groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursery_chief">
 						</button>
 						<button name="action_view_medical_evolution" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 							string="Med. Order and Evolution"
-							groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant">
+							groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursery_chief">
 						</button>
 						<button name="action_view_epicrisis" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 							string="Epicrisis"
-							groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant">
+							groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursery_chief">
 						</button>
                         <button name="action_patient_arrived" type="object" class="oe_stat_button" icon="fa-calendar-check-o" 
                             string="Asistió"
@@ -288,7 +288,7 @@
                         </button>
                          <button name="action_view_complete_clinica_plastic_sugery" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
                             string="Atención clínica"
-                           	groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant">
+                           	groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursery_chief">
                         </button>
 
                 	</div>
@@ -579,6 +579,9 @@
                                         </li>
                                         <li groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant">
                                         	<a name="action_view_plastic_surgery" type="object">Plastic Surgery Sheet</a>
+                                        </li>
+                                           <li groups="base.group_system,clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant">
+                                        	<a name="action_view_complete_clinica_plastic_sugery" type="object">Clinic Atention</a>
                                         </li>
                                         <li groups="clinica_digital_consultorio.surgeon,clinica_digital_consultorio.nursery_chief,clinica_digital_consultorio.programmer_assistant">
                                         	<a name="action_view_medical_evolution" type="object">Med. Order and Evolution</a>

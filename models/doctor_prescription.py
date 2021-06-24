@@ -58,7 +58,7 @@ class DoctorPrescription(models.Model):
   				rec.inability_total_days = minus[1:4]
 
   name= fields.Char(string="Nombre del informe")
-  order_type= fields.Selection([('informs','Informes y otros'),
+  order_type= fields.Selection([('informs','Recomendaciones'),
                 ('medicines','Medicamentos'),
                 ('exam','Laboratorios'),
                 ('inability','Incapacidad')],

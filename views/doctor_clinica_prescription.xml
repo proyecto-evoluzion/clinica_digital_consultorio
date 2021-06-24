@@ -30,7 +30,7 @@
               </span>
             </group>
             <!--order_type 1-->
-            <group string="Informes y otros" attrs="{'invisible':[('order_type','!=','informs')]}">
+            <group string="Recomendaciones" attrs="{'invisible':[('order_type','!=','informs')]}">
               <field name="prescription" nolabel="1" style="width:100%"/>
             </group>
             <group col="4" attrs="{'invisible':[('order_type','!=','informs')]}">

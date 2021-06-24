@@ -125,14 +125,14 @@
                                          <label for="background_template_id" string="Template" style="width: 25%"/>
                                          <field name="background_template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
                                     </group>
-                                     <group name="gyneco_obst" colspan="2" col="1" attrs="{'invisible':[('gender','=','male')]}">
+                                     <group name="gyneco_obst" colspan="2" col="1" attrs="{'invisible':['|',('gender','=','male'),('age', '&lt;=', '13')]}">
                                         <label for="gyneco_obst"/>
                                         <field name="gyneco_obst" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                                      </group>
                                     <group>
                                      
                                         <field name="background_gynecology_ids"
-                                        string="Antecedentes Ginecologicos" attrs="{'invisible':['$&amp;',('gender','=','male'),('age', '&lt;=', '13')]}">
+                                        string="Antecedentes Ginecologicos" attrs="{'invisible':['|',('gender','=','male'),('age', '&lt;=', '13')]}">
                                         
                                             <tree editable="bottom">
                                             <field name="backgroud_gynecology_date"/>
@@ -289,6 +289,7 @@
        				<field name="patient_id"/>
        				<field name="document_type"/>
        				<field name="numberid"/>
+                    <field name="state" widget="statusbar" statusbar_visible="open,closed"/>    
                 </tree>
             </field>
         </record>

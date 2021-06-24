@@ -10,7 +10,7 @@
          		<button name="action_print_clinica_record_history" string="Print Details" class="btn-primary" type="object"/>
          	</header>
          	<sheet>
-         		<group name="main_group">
+         		<group name="main_group ">
          			<group name="main_sub_group1" >
          				<field name='patient_id' required="1"/>
          				<field name='doctor_id' domain="[('profession_type','=','plastic_surgeon')]"/>
@@ -95,10 +95,10 @@
 		  				<field name="numberid"/>
    					</tree>
    				</field> -->
-   				<!-- <separator string="Plastic Surgery Sheet" attrs="{'invisible':[('view_model','not in',['plastic_surgery','all'])]}"/>
+   				<separator string="Plastic Surgery Sheet" attrs="{'invisible':[('view_model','not in',['plastic_surgery','all'])]}"/>
    				<field name="plastic_surgery_ids" nolabel="1" force_save="1" readonly="1"
    					attrs="{'invisible':[('view_model','not in',['plastic_surgery','all'])]}">
-   					<tree string="Plastic Surgery Sheet">
+   					<tree string="Plastic Surgery Sheet" default_order="number asc">
    						<field name="number"/>
 		         	    <field name='attention_code_id'/>
 	    				<field name="date_attention"/>
@@ -106,7 +106,7 @@
 	    				<field name="document_type"/>
 	    				<field name="numberid"/>
    					</tree>
-   				</field> -->
+   				</field> 
    				<separator string="Medical Orders and Evolution" attrs="{'invisible':[('view_model','not in',['medical_evolution','all'])]}"/>
    				<field name="medical_evolution_ids" nolabel="1" force_save="1" readonly="1"
    					attrs="{'invisible':[('view_model','not in',['medical_evolution','all'])]}">
@@ -149,8 +149,8 @@
           <separator string="Formato Clínico Completo" attrs="{'invisible':[('view_model','not in',['complete_plastic_surgery','all'])]}"/>
           <field name="complete_plastic_surgery_ids" nolabel="1" force_save="1" readonly="1"
             attrs="{'invisible':[('view_model','not in',['complete_plastic_surgery','all'])]}">
-            <tree string="Complete Plastic Surgery Sheet">
-              <field name="date_attention"/>
+            <tree string="Complete Plastic Surgery Sheet"  default_order="date_attention desc">
+              <field name="date_attention" />
               <field name="patient_id"/>
             </tree>
           </field>

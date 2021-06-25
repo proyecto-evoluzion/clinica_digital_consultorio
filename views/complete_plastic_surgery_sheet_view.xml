@@ -289,7 +289,7 @@
        				<field name="patient_id"/>
        				<field name="document_type"/>
        				<field name="numberid"/>
-                    <field name="state" widget="statusbar" statusbar_visible="open,closed"/>    
+                    <field name="state"/>    
                 </tree>
             </field>
         </record>

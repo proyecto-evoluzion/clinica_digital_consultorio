@@ -1499,7 +1499,7 @@
                 </tr>
                 <t t-if="prescription.order_type == 'informs'">
                   <tr>
-                    <td colspan="2" style="text-align:center;"><strong>INFORMES Y OTROS</strong></td>
+                    <td colspan="2" style="text-align:center;"><strong>RECOMENDACIONES</strong></td>
                   </tr>
                   <tr >
                     <td colspan="2"><span t-field="prescription.prescription"/></td>

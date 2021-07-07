@@ -358,7 +358,8 @@ class PlasticSurgerySheet(models.Model):
     @api.onchange('birth_date','age_meassure_unit')
     def onchange_birth_date(self):
         if self.age_meassure_unit == '3':
-            self.document_type = 'rc'
+         #self.document_type = 'rc'
+         self.tdoc_rips = 'RC'
         if self.birth_date:
             warn_msg = self._check_birth_date(self.birth_date)
             if warn_msg:
@@ -390,7 +391,7 @@ class PlasticSurgerySheet(models.Model):
     @api.multi
     def _check_document_types(self):
         for record in self:
-            if record.age_meassure_unit == '3' and record.document_type not in ['rc','ms']:
+            if record.age_meassure_unit == '3' and record.document_type not in ['RC','MS']:
                 raise ValidationError(_("You can only choose 'RC' or 'MS' documents, for age less than 1 month."))
             if record.age > 17 and record.age_meassure_unit == '1' and record.document_type in ['rc','ms']:
                 raise ValidationError(_("You cannot choose 'RC' or 'MS' document types for age greater than 17 years."))

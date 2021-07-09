@@ -393,19 +393,19 @@ class PlasticSurgerySheet(models.Model):
         for record in self:
             if record.age_meassure_unit == '3' and record.document_type not in ['RC','MS']:
                 raise ValidationError(_("You can only choose 'RC' or 'MS' documents, for age less than 1 month."))
-            if record.age > 17 and record.age_meassure_unit == '1' and record.document_type in ['rc','ms']:
+            if record.age > 17 and record.age_meassure_unit == '1' and record.document_type in ['RC','MS']:
                 raise ValidationError(_("You cannot choose 'RC' or 'MS' document types for age greater than 17 years."))
-            if record.age_meassure_unit in ['2','3'] and record.document_type in ['cc','as','ti']:
+            if record.age_meassure_unit in ['2','3'] and record.document_type in ['CC','AS','TI']:
                 raise ValidationError(_("You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."))
             if record.document_type == 'MS' and record.age_meassure_unit != '3':
                 raise ValidationError(_("You can only choose 'MS' document for age between 1 to 30 days."))
-            if record.document_type == 'as' and record.age_meassure_unit == '1' and record.age <= 17:
+            if record.document_type == 'AS' and record.age_meassure_unit == '1' and record.age <= 17:
                 raise ValidationError(_("You can choose 'AS' document only if the age is greater than 17 years."))
             
     @api.model
     def create(self, vals):
         vals['number'] = self.env['ir.sequence'].next_by_code('doctor.presurgical.record') or '/'
-        if vals.get('document_type', False) and vals['document_type'] in ['cc','ti']:
+        if vals.get('document_type', False) and vals['document_type'] in ['CC','TI']:
             numberid_integer = 0
             if vals.get('numberid_integer', False):
                 numberid_integer = vals['numberid_integer']
@@ -477,7 +477,7 @@ class PlasticSurgerySheet(models.Model):
                 document_type = vals['document_type']
             else:
                 document_type = self.document_type
-            if document_type in ['cc','ti']:
+            if document_type in ['CC','TI']:
                 if 'numberid_integer' in  vals:
                     numberid_integer = vals['numberid_integer']
                 else:

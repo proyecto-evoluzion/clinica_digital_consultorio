@@ -83,7 +83,7 @@ class PlasticSurgerySheet(models.Model):
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict')
     date_attention = fields.Date('Date of attention', required=True, default=fields.Date.context_today)
     type_id = fields.Selection([('fist_time','First Time'),('control','Control')], string='Consultation Type', default='fist_time')
-    document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document', related="patient_id.tdoc_rips")
+    document_type = fields.Selection([('CC','CC - ID Document'),('CE','CE - Aliens Certificate'),('PA','PA - Passport'),('RC','RC - Civil Registry'),('TI','TI - Identity Card'),('AS','AS - Unidentified Adult'),('MS','MS - Unidentified Minor')], string='Type of Document', related="patient_id.tdoc_rips")
     numberid = fields.Char(string='Number ID', related='patient_id.name')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents', related='patient_id.ref')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
@@ -358,8 +358,8 @@ class PlasticSurgerySheet(models.Model):
     @api.onchange('birth_date','age_meassure_unit')
     def onchange_birth_date(self):
         if self.age_meassure_unit == '3':
-         #self.document_type = 'rc'
-         self.tdoc_rips = 'RC'
+         self.document_type = 'RC'
+         #self.tdoc_rips = 'RC'
         if self.birth_date:
             warn_msg = self._check_birth_date(self.birth_date)
             if warn_msg:
@@ -397,7 +397,7 @@ class PlasticSurgerySheet(models.Model):
                 raise ValidationError(_("You cannot choose 'RC' or 'MS' document types for age greater than 17 years."))
             if record.age_meassure_unit in ['2','3'] and record.document_type in ['cc','as','ti']:
                 raise ValidationError(_("You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."))
-            if record.document_type == 'ms' and record.age_meassure_unit != '3':
+            if record.document_type == 'MS' and record.age_meassure_unit != '3':
                 raise ValidationError(_("You can only choose 'MS' document for age between 1 to 30 days."))
             if record.document_type == 'as' and record.age_meassure_unit == '1' and record.age <= 17:
                 raise ValidationError(_("You can choose 'AS' document only if the age is greater than 17 years."))

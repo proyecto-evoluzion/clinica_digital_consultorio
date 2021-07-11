@@ -373,7 +373,7 @@ class PlasticSurgerySheet(models.Model):
     def onchange_numberid_integer(self):
         if self.numberid_integer:
             self.numberid = str(self.numberid_integer) 
-        if self.document_type and self.document_type in ['cc','ti'] and self.numberid_integer == 0:
+        if self.document_type and self.document_type in ['CC','TI'] and self.numberid_integer == 0:
             self.numberid = str(0)
             
     @api.onchange('medical_recipe_template_id')

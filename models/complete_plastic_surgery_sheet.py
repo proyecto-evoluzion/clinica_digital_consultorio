@@ -93,6 +93,15 @@ class PlasticSurgerySheet(models.Model):
     surname = fields.Char(string='Second Last Name')
     gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender', related="patient_id.sex")
     birth_date = fields.Date(string='Birth Date', related="patient_id.birth_date")
+    user_type =  fields.Selection([('contributory','Contributory'),('subsidized','Subsidized'),('linked','Linked'),
+                                   ('particular','Particular'),('other','Other'),('victim_contributive','Victim - Contributive'),
+                                   ('victim_subsidized','Victim - Subsidized'),('victim_linked','Victim - Linked')], string="User Type", default='particular', related="patient_id.user_type")
+    link_type = fields.Selection([('contributor','Cotizante'),('beneficiary','Beneficiary'),('add','Adicional')], string="Link Type", related="patient_id.link_type")
+    insurer_id = fields.Many2one('res.partner',string='Assurance Company')
+    assurance_plan_id = fields.Many2one('doctor.insurer.plan', string='Assurer Plan')
+    number_policy = fields.Char(string="N° Poliza")
+    copago = fields.Float(string='Copago')
+    authorizacion_number = fields.Char(string="N° Autorización")
     age = fields.Integer(string='Age', compute='_compute_age_meassure_unit')
     age_meassure_unit = fields.Selection([('1','Years'),('2','Months'),('3','Days')], string='Unit of Measure of Age',
                                          compute='_compute_age_meassure_unit')
@@ -219,7 +228,26 @@ class PlasticSurgerySheet(models.Model):
 
     background_type_ids = fields.Many2many('copy.background.type', string="Antecedentes")
     background_gynecology_ids = fields.One2many('background.gynecology','gynecology_id', string="Antecedente Ginecologico")
+    phone = fields.Char(string='Telephone', related="patient_id.phone")
     #system_review_type_ids = fields.One2many('system.review.center','complete_format_id', string="Revision por sistemas")
+
+    @api.onchange('patient_id')
+    def onchange_patient_id(self):
+        if self.patient_id:
+            insures = self.patient_id.insurer_ids
+            insurer_id = 0
+            plan_id = 0
+            policy = ''
+            for insurer_ids in insures:
+                if insurer_ids.default_isure:
+                    insurer_id = insurer_ids.insurer_id.id
+                    plan_id = insurer_ids.plan.id
+                    policy = insurer_ids.number_policy
+                    break
+            self.insurer_id = insurer_id
+            self.assurance_plan_id = plan_id
+            self.number_policy = policy
+
 
     @api.multi
     def _set_prescription_form_default_values(self):

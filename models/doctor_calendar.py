@@ -390,6 +390,7 @@ class DoctorWaitingRoom(models.Model):
                                    ('particular','Particular'),('other','Other'),('victim_contributive','Victim - Contributive'),
                                    ('victim_subsidized','Victim - Subsidized'),('victim_linked','Victim - Linked')], string="User Type", default='particular')
     appointment_type_id = fields.Many2one('clinica.appointment.type', string='Appointment Type')
+    link_type = fields.Selection([('contributor','Cotizante'),('beneficiary','Beneficiary'),('add','Adicional')], string="Link Type")
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')
     assurance_plan_id = fields.Many2one('doctor.insurer.plan', string='Assurer Plan')
     number_policy = fields.Char(string="N° Poliza")
@@ -479,6 +480,8 @@ class DoctorWaitingRoom(models.Model):
             self.document_type = self.patient_id.tdoc_rips
             self.numberid = self.patient_id.name
             self.numberid_integer = self.patient_id.ref
+            self.user_type = self.patient_id.user_type
+            self.link_type = self.patient_id.link_type
             insures = self.patient_id.insurer_ids
             insurer_id = 0
             plan_id = 0

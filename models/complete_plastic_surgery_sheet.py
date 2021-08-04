@@ -95,10 +95,10 @@ class PlasticSurgerySheet(models.Model):
     birth_date = fields.Date(string='Birth Date', related="patient_id.birth_date")
     user_type =  fields.Selection([('contributory','Contributory'),('subsidized','Subsidized'),('linked','Linked'),
                                    ('particular','Particular'),('other','Other'),('victim_contributive','Victim - Contributive'),
-                                   ('victim_subsidized','Victim - Subsidized'),('victim_linked','Victim - Linked')], string="User Type", default='particular', related="patient_id.user_type")
-    link_type = fields.Selection([('contributor','Cotizante'),('beneficiary','Beneficiary'),('add','Adicional')], string="Link Type", related="patient_id.link_type")
-    insurer_id = fields.Many2one('res.partner',string='Assurance Company')
-    assurance_plan_id = fields.Many2one('doctor.insurer.plan', string='Assurer Plan')
+                                   ('victim_subsidized','Victim - Subsidized'),('victim_linked','Victim - Linked')], string="Tipo de Usuario", default='particular', related="patient_id.user_type")
+    link_type = fields.Selection([('contributor','Cotizante'),('beneficiary','Beneficiary'),('add','Adicional')], string="Tipo Vinculación", related="patient_id.link_type")
+    insurer_id = fields.Many2one('res.partner',string='Aseguradora')
+    assurance_plan_id = fields.Many2one('doctor.insurer.plan', string='Plan Aseguradora')
     number_policy = fields.Char(string="N° Poliza")
     copago = fields.Float(string='Copago')
     authorizacion_number = fields.Char(string="N° Autorización")

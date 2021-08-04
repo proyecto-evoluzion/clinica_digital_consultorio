@@ -36,7 +36,7 @@
                             <field name="gender" invisible="0" />
                             <field name="user_type"/>
                             <field name="link_type"/>
-                            <field name="birth_date" invisible="1" />
+                            <field name="birth_date"/>
                             <label for="age" string="Edad"/>
                             <div>
                                 <div>

@@ -66,6 +66,16 @@ class PlasticSurgerySheet(models.Model):
     surname = fields.Char(string='Second Last Name')
     gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender', related="patient_id.sex")
     birth_date = fields.Date(string='Birth Date', related="patient_id.birth_date")
+    user_type =  fields.Selection([('contributory','Contributory'),('subsidized','Subsidized'),('linked','Linked'),
+                                   ('particular','Particular'),('other','Other'),('victim_contributive','Victim - Contributive'),
+                                   ('victim_subsidized','Victim - Subsidized'),('victim_linked','Victim - Linked')], string="Tipo de Usuario", default='particular', related="patient_id.user_type")
+    link_type = fields.Selection([('contributor','Cotizante'),('beneficiary','Beneficiary'),('add','Adicional')], string="Tipo Vinculacion", related="patient_id.link_type")
+    phone = fields.Char(string='Teléfono',related="patient_id.phone")
+    insurer_id = fields.Many2one('res.partner',string='Aseguradora')
+    assurance_plan_id = fields.Many2one('doctor.insurer.plan', string='Plan Aseguradora')
+    number_policy = fields.Char(string="N° Poliza")
+    copago = fields.Float(string='Copago')
+    authorizacion_number = fields.Char(string="N° Autorización")
     age = fields.Integer(string='Age', compute='_compute_age_meassure_unit')
     age_meassure_unit = fields.Selection([('1','Years'),('2','Months'),('3','Days')], string='Unit of Measure of Age',
                                          compute='_compute_age_meassure_unit')
@@ -180,6 +190,23 @@ class PlasticSurgerySheet(models.Model):
             dignosis.update({'name': dignosis.diseases_id.name})
             # dignosis.update({'type_diagnosis': dignosis.diseases_id.type_diagnosis})
             # dignosis.update({'state_diagnosis': dignosis.diseases_id.state_diagnosis})
+
+    @api.onchange('patient_id')
+    def onchange_patient_id(self):
+        if self.patient_id:
+            insures = self.patient_id.insurer_ids
+            insurer_id = 0
+            plan_id = 0
+            policy = ''
+            for insurer_ids in insures:
+                if insurer_ids.default_isure:
+                    insurer_id = insurer_ids.insurer_id.id
+                    plan_id = insurer_ids.plan.id
+                    policy = insurer_ids.number_policy
+                    break
+            self.insurer_id = insurer_id
+            self.assurance_plan_id = plan_id
+            self.number_policy = policy
 
     @api.multi
     def action_set_close(self):

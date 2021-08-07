@@ -13,9 +13,17 @@
 
           </xpath>    
         
-        <field name="partner_id" position="after">
-          <field name="service_provider" />
-        </field>
+          <field name="partner_id" position="after">
+            <field name="service_provider" />
+          </field>
+
+          <notebook position="inside">
+            <page name="cups_code" string="Configuración Procedimientos Institución">
+              <group string="Códigos CUPS">
+                <field name="cups_code_ids" required="1"/>
+              </group>
+            </page>
+          </notebook>
 
 
          </field> 

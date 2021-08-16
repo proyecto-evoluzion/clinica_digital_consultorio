@@ -272,7 +272,7 @@
                                         <field name="code" readonly="1" force_save="1" string="Código" invisible="1"/>
                                         <field name="name" invisible="1"/>
                                         <field name="diseases_id" required="1"/>
-                                        <field name="code" required="1"/>
+                                        <field name="code"/>
                                        
                                         <field name="type_diagnosis" required="1"/>        
                                         <field name="state_diagnosis" required="1"/>        

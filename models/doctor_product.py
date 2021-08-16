@@ -75,6 +75,7 @@ class DoctorCupsCode(models.Model):
                                         ('5', 'Therapeutic Procedure'), ('6', 'Hospitalization'),
                                         ('7', 'Odontological'), ('8', 'Other')], 'Procedure Type', related="product_id.procedure_type")
     price = fields.Float(string='Price')
+    
 
     @api.onchange('product_id')
     def onchange_product_id(self):

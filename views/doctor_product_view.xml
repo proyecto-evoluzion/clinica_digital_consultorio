@@ -58,6 +58,7 @@
                     	/>
                     <field name="code" required="1" />
                     <field name="procedure_type" invisible="1" />
+                    
                 </group>
             </form>
         </field>

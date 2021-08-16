@@ -40,9 +40,13 @@
         	Herencia al reporte generico - Modalidad Background.
 		-->
 
-        <!-- <template id="inherit_report_external_layout_bk" name="inherit_report_external_layout_bk" inherit_id="web.external_layout_background">
-        	
-        </template> -->
+        <template id="inherit_report_external_layout_bk" name="inherit_report_external_layout_bk" inherit_id="web.external_layout_background">
+
+            <img position="attributes">
+                <attribute name="style">max-height:140px; width:250px; height:140px</attribute>
+            </img>
+        	<strong position="replace"></strong>
+        </template>
 
         <!--
         	Herencia al reporte generico - Modalidad Boxed.

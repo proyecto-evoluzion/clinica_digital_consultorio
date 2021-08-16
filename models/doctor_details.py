@@ -89,6 +89,9 @@ class AppointmentType(models.Model):
     
     name = fields.Char(string="Type")
     duration = fields.Float(string='Duration (in hours)')
+    cups_code_id = fields.Many2one('doctor.cups.code', string="Códigos CUPS")
+    company_id = fields.Many2one('res.company', string="Company", default=1)
+    cups_code_ids = fields.Many2many('doctor.cups.code', related="company_id.cups_code_ids")
     
     
 class Doctor(models.Model):

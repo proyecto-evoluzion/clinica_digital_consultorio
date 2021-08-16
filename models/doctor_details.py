@@ -101,6 +101,13 @@ class Doctor(models.Model):
     def _default_config_value(self):
         config_value = self.env['res.config.settings'].sudo().default_get('multiple_format')
         return config_value['multiple_format']
+
+    def _default_products(self):
+        company = self.env['res.company'].search([('id','=',1)])
+        product_list = []
+        for cups in company.cups_code_ids:
+            product_list.append(cups.product_id.id)
+        return [(6,0,product_list)]
     
     tdoc = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                                       ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
@@ -137,6 +144,8 @@ class Doctor(models.Model):
     medical_record = fields.Char(string='Medical record', required=True)
     multiple_format = fields.Boolean(string='Multiple Formats?', default=_default_config_value)
     doctor_provider_code = fields.Char(string='Codigo prestador de servicio')
+    domain_product_ids = fields.Many2many('product.product', default=_default_products)
+
 
     @api.onchange('medical_record')
     def onchange_medical_record(self):

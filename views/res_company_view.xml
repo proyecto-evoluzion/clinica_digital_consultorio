@@ -12,7 +12,9 @@
             <field name="bussines_name" string="Bussines name"/>
 
           </xpath>    
-        
+          <field name="report_footer" position="after">
+            <field name="insurer_id" required="1"/>
+          </field>
           <field name="partner_id" position="after">
             <field name="service_provider" />
           </field>

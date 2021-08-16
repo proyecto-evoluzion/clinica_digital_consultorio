@@ -912,7 +912,8 @@ class DoctorWaitingRoom(models.Model):
         vals = {
             'default_patient_id': self.patient_id and self.patient_id.id or False,
             'default_room_id' : self.id,
-            'default_doctor_id' : self.surgeon_id.id
+            'default_doctor_id' : self.surgeon_id.id,
+            'default_is_appointment' : True
         }
         return vals
 

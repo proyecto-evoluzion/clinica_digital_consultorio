@@ -23,16 +23,18 @@
             		<group name="main_group">
             			<group name="main_sub_group1" >
                             <field name='date_attention' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
-            				<!-- <field name='attention_code_id' required="1"/> -->
-                            <field name='type_id' invisible="1"/>
+                            <field name='doctor_id' string="Doctor" attrs="{'readonly':[('state','=','closed')]}"/>
             			</group>
             			<group name="main_sub_group2" >
             				<field name='number' readonly="1"/>
+                            <field name='professional_appointment_domain' invisible="1"/>
+                            <field name='is_appointment' invisible="1"/>
+                            <field name='appointment_type_id' required="0" invisible="0" attrs="{'readonly':[('state','=','closed')], 'invisible':[('is_appointment','=',True)]}" domain="[('id','in',professional_appointment_domain)]"/>
             			</group>
             		</group>
             		<group name="attention_details">
                         <group>
-                			<field name='patient_id' required="1" style="width:40%;" attrs="{'readonly':[('state','=','closed')]}"/>
+                			<field name='patient_id' required="1" style="width:100%;" attrs="{'readonly':[('state','=','closed')]}"/>
                             <field name="gender" invisible="0" />
                             <field name="user_type"/>
                             <field name="link_type"/>
@@ -45,26 +47,26 @@
                                 </div>
                             </div>
                             <field name='consultation_purpose' attrs="{'readonly':[('state','=','closed')]}"/>
+                            <field name='external_cause' attrs="{'readonly':[('state','=','closed')]}"/>
                         </group>
                         <group>
-                            <field name='doctor_id' string="Doctor" attrs="{'readonly':[('state','=','closed')]}"/>
-                            <field name='external_cause' attrs="{'readonly':[('state','=','closed')]}"/>
                             <field name='document_type' attrs="{'readonly':[('state','=','closed')]}"/>
                             <field name='numberid' 
 							attrs="{'invisible':[('document_type','in',['CC','TI'])],'readonly':[('state','!=','new')]}"/>
 						    <field name='numberid_integer' string="Number ID" 
 							attrs="{'invisible':[('document_type','not in',['CC','TI'])],'readonly':[('state','=','closed')]}"/>
-                            <field name='insurer_id' attrs="{'readonly':[('state','=','closed')]}" domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
                             <field name='phone' attrs="{'readonly':[('state','=','closed')]}"/>
-						<!-- <span attrs="{'invisible':[('expired_contract','==',False)]}" style="color:red;">
-							<strong>No existe un contrato vigente con esta aseguradora.</strong>
-						</span> -->
-						<field name='assurance_plan_id' attrs="{'readonly':[('state','=','closed')]}" domain="[('insurer_id','=',insurer_id)]"/>
-						<field name="number_policy" attrs="{'readonly':[('state','=','closed')]}" force_save="1"/>
-						<field name="copago" attrs="{'readonly':[('state','=','closed')]}"/>
-						<field name="authorizacion_number" attrs="{'readonly':[('state','=','closed')]}"/>
+                            <field name='insurer_id' attrs="{'readonly':[('state','=','closed')],'required': [('user_type','=','particular')]}" domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
+    						<!-- <span attrs="{'invisible':[('expired_contract','==',False)]}" style="color:red;">
+    							<strong>No existe un contrato vigente con esta aseguradora.</strong>
+    						</span> -->
+    						<field name='assurance_plan_id' attrs="{'readonly':[('state','=','closed')],'required': [('user_type','=','particular')]}" domain="[('insurer_id','=',insurer_id)]"/>
+    						<field name="number_policy" attrs="{'readonly':[('state','=','closed')],'required': [('user_type','=','particular')]}" force_save="1"/>
+    						<field name="copago" attrs="{'readonly':[('state','=','closed')]}"/>
+    						<field name="authorizacion_number" attrs="{'readonly':[('state','=','closed')]}"/>
                         </group>
             		</group>
+                    <field name="procedure_id" invisible="1"/>
             		<h2>Clinical Registry</h2>
             		<notebook>
             			<page name="anamnesis" string="Anamnesis">

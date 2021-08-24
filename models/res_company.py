@@ -29,4 +29,5 @@ class Company(models.Model):
 	bussines_name = fields.Char(string="Bussines name")
 	service_provider = fields.Char(string="Service Provider")
 	cups_code_ids = fields.Many2many('doctor.cups.code', string="Código CUPS")
+	insurer_id = fields.Many2one('res.partner',string='Secretaría General',domain=[('is_assurance', '=', True)])
 	

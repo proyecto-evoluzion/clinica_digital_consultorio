@@ -177,7 +177,8 @@
                     <notebook colspan="4">
 	                    <page string="My procedures">
 	                        <field name="product_ids" nolabel="1" 
-	                        	context="{'search_default_health_procedure': 1}"/>
+	                        	context="{'search_default_health_procedure': 1}" domain="[('id','in',domain_product_ids)]"/>
+                            <field name="domain_product_ids" invisible="1"/>
 	                    </page>
                         <page string="My formats attentions" attrs="{'invisible':[('multiple_format','=',False)]}">
                             <field name="attention_format_ids" nolabel="1" options="{'no_create': True}" widget="many2many_tags" style="margin-top:1%;"/>

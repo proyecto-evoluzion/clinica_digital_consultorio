@@ -229,7 +229,29 @@ class PlasticSurgerySheet(models.Model):
     background_type_ids = fields.Many2many('copy.background.type', string="Antecedentes")
     background_gynecology_ids = fields.One2many('background.gynecology','gynecology_id', string="Antecedente Ginecologico")
     phone = fields.Char(string='Telephone', related="patient_id.phone")
-    #system_review_type_ids = fields.One2many('system.review.center','complete_format_id', string="Revision por sistemas")
+    appointment_type_id = fields.Many2one('clinica.appointment.type', string='Tipo de Cita')
+    procedure_id = fields.Many2one('product.product',string='procedure')
+    professional_appointment_domain = fields.Char(string='professional_appointment_domain')
+    is_appointment = fields.Boolean(string='appointment?', default=False)
+
+    @api.onchange('professional_appointment_domain')
+    def onchange_professional_appointment_domain(self):
+        if self.professional_appointment_domain:
+            domain = [('id','in',self.professional_appointment_domain.split(","))]
+            return {'domain': {'appointment_type_id': domain}}
+
+    @api.onchange('doctor_id')
+    def onchange_doctor_id(self):
+        procedures = self.doctor_id.product_ids.ids
+        appointment_types = self.env['clinica.appointment.type'].search([])
+        procedures_list = ''
+        for appointments in appointment_types:
+            if appointments.cups_code_id.product_id.id in procedures:
+                procedures_list += str(appointments.id) + ','
+        if procedures_list != '':
+            aux = len(procedures_list)
+            procedures_list = procedures_list[:aux-1]
+        self.professional_appointment_domain = procedures_list
 
     @api.onchange('patient_id')
     def onchange_patient_id(self):
@@ -326,6 +348,12 @@ class PlasticSurgerySheet(models.Model):
     def onchange_room_id(self):
         if self.room_id:
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
+            self.appointment_type_id = self.room_id.appointment_type_id and self.room_id.appointment_type_id.id or False
+
+    @api.onchange('appointment_type_id')
+    def onchange_appointment_type_id(self):
+        product = self.appointment_type_id.cups_code_id.product_id
+        self.procedure_id = product and product.id or False
     
     @api.onchange('patient_id')
     def onchange_consultation_reason(self):

@@ -79,7 +79,7 @@
 	    
     <!-- Doctor cups code Action -->
     <record id="action_doctor_cups_code" model="ir.actions.act_window">
-        <field name="name">CUPS Code</field>
+        <field name="name">Procedimientos institucionales (CUPS)</field>
         <field name="res_model">doctor.cups.code</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
@@ -95,7 +95,7 @@
             groups="base.group_system"/>
             
     <menuitem id="menu_doctor_cups_code"
-            name="CUPS Code"
+            name="Procedimientos institucionales (CUPS)"
             parent="menu_doctor_config_details"
             action="action_doctor_cups_code"
             sequence="5"

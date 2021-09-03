@@ -1237,7 +1237,7 @@ msgstr "CE - Cédula de Extranjería"
 #: model:ir.actions.act_window,name:clinica_digital_consultorio.action_doctor_cups_code
 #: model:ir.ui.menu,name:clinica_digital_consultorio.menu_doctor_cups_code
 msgid "CUPS Code"
-msgstr "CUPS Code"
+msgstr "Procedimientos institucionales (CUPS)"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_post_anhestesic_care_bed
@@ -4564,7 +4564,7 @@ msgstr "Exámen Físico"
 #: model:ir.actions.act_window,name:clinica_digital_consultorio.action_doctor_cups_code
 #: model:ir.ui.menu,name:clinica_digital_consultorio.menu_doctor_cups_code
 msgid "CUPS Code"
-msgstr "Códigos CUPS"
+msgstr "Procedimientos institucionales (CUPS)"
 
 #. module: clinica_digital_consultorio
 #: model:ir.model.fields,field_description:clinica_digital_consultorio.field_clinica_plastic_surgery_physical_exam

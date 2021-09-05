@@ -30,9 +30,7 @@
     """,
     'author' : 'Proyecto Evoluzion',
     'website' : 'www.clinicadigital.com.co',
-    'depends': [
-        'base','contacts','l10n_co_res_partner','product', 'l10n_co_tax_extension','account','web'
-    ],
+    'depends': ['base','contacts','l10n_co','l10n_co_res_partner','product', 'l10n_co_tax_extension','account','web','crm','sale'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',

@@ -48,7 +48,9 @@
             <group string="Exámen, Imagen o procedimiento diagnostico o terapeútico (CUPS)" attrs="{'invisible':[('order_type','!=','exam')]}">
               <field name="exam_ids" nolabel="1" style="width:100%">
                 <tree editable="bottom">
-                  <field name="cups_id"/>
+                  <!--<field name="cups_id"/>-->
+
+                  <field name="procesure_id"/>
                   <field name="qty"/>
                   <field name="indications"/>
                 </tree>

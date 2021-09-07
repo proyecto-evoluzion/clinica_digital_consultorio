@@ -58,9 +58,9 @@ class DoctorPrescription(models.Model):
   				rec.inability_total_days = minus[1:4]
 
   name= fields.Char(string="Nombre del informe")
-  order_type= fields.Selection([('informs','Recomendaciones'),
+  order_type= fields.Selection([('informs','Informes, recomendaciones, fórmulas'),
                 ('medicines','Medicamentos'),
-                ('exam','Laboratorios'),
+                ('exam','Laboratorios y procedimientos'),
                 ('inability','Incapacidad')],
                 string="Tipo de orden", required="1", default='informs')
   prescription_date = fields.Date(string='Fecha', default=fields.Date.context_today)
@@ -90,6 +90,7 @@ class DoctorPrescription(models.Model):
   load_register = fields.Boolean(string='-', default=False)
   company_id = fields.Many2one('res.company',string='Company', default=_default_company)
   recomendation_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','1')])
+  
 
   #Onchages para plantillas
   @api.onchange('recomendation_template_id')
@@ -129,8 +130,7 @@ class DoctorPrescription(models.Model):
                 'type': 'ir.actions.act_window',
                 'context': context,
                 'target': 'new'
-            }           
-
+            }
 class DoctorPrescriptionTemplate(models.Model):
 	_name = "doctor.prescription.template"
 	_rec_name="name"
@@ -138,12 +138,17 @@ class DoctorPrescriptionTemplate(models.Model):
 	name = fields.Char(string="Name", required="1")
 	description = fields.Text(string="Description", required="1")
 	active = fields.Boolean(string="Active", default=True)
-
 class DoctorPrescriptionExam(models.Model):
-	_name = "doctor.prescription.exam"
-	_rec_name="cups_id"
+  _name = "doctor.prescription.exam"
+  _rec_name = "cups_id"
+  
+  cups_id = fields.Many2one('doctor.cups.code', 'CUPS', ondelete='restrict', domain=[('procedure_type','in',['3','4','5'])])
+  prescription_id = fields.Many2one('doctor.prescription', 'Prescription Exam')
+  qty = fields.Integer(string="Cantidad")
+  indications = fields.Char(string="Indicaciones")
+  procesure_id = fields.Many2one('product.product', string="Procedimiento en salud",domain=[('is_health_procedure','=', True)])
 
-	cups_id = fields.Many2one('doctor.cups.code', 'CUPS', ondelete='restrict', domain=[('procedure_type','in',['3','4','5'])])
-	prescription_id = fields.Many2one('doctor.prescription', 'Prescription Exam')
-	qty = fields.Integer(string="Cantidad")
-	indications = fields.Char(string="Indicaciones")
+
+
+
+  

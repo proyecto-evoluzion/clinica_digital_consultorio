@@ -297,8 +297,6 @@
 
                 	</div>
                 	
-                	
-                    <field name="photo" widget='image' class="oe_avatar" options='{"preview_image":"image_medium"}'/>
                     <div class="oe_title">
                         <div>
                             <div>
@@ -318,6 +316,10 @@
                                 <label  for="ref" string="Number ID"/>
                                 <field name="ref" placeholder="Number ID" attrs="{'required': [('tdoc_rips','in',['CC','TI'])]}"/>
                             </div>
+                        </div>
+			<div>      
+                            <label for="image_patient" string="Foto del Paciente"/>
+                            <field name="image_patient"/>
                         </div>
                     </div>
                     <group name='group_personal_info'>
@@ -597,7 +599,7 @@
                                 </div>
                                 <div class="oe_kanban_content">
                                 	<div class="o_kanban_image">
-		                                    <img t-att-src="kanban_image('doctor.patient', 'image_medium', record.id.raw_value)"/>
+		                                    <img t-att-src="kanban_image('doctor.patient', 'image_patient', record.id.raw_value)"/>
 		                                </div>
                                 	<div class="oe_kanban_details">
                                     <strong class="oe_partner_heading"><field name="patient_name"/></strong>

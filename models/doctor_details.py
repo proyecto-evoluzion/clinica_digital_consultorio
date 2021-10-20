@@ -296,6 +296,9 @@ class DoctorAdministrativeData(models.Model):
         help="Small-sized image of this contact. It is automatically "\
              "resized as a 64x64px image, with aspect ratio preserved. "\
              "Use this field anywhere a small image is required.", copy=False)
+    
+    image_patient = fields.Binary(String="Foto Paciente")
+    
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
     middlename = fields.Char(string='Second Name')

@@ -48,7 +48,9 @@ class AttentionQuickTemplate(models.Model):
                              ('12 ','Estrategias de evaluacion'),
                              ('13','Plan de intervención'),
                              ('14','Otras prescripciones'),
-                             ('15','Revisiones por sistema')
+                             ('15','Revisiones por sistema'),
+                             ('16','Enfermedad actual')
+
                              ], string='Template Type')
     active = fields.Boolean(string="active", default=True)
     user_id = fields.Many2one('res.users', string="User")
@@ -58,6 +60,7 @@ class AttentionQuickTemplate(models.Model):
     pysical_exam_ids = fields.One2many('physical.examination', 'template_id', string="Examen Fisico")
     analisys = fields.Text(string= 'Análisis')
     treatment = fields.Text(string='Tratamiento')
+    current_illness = fields.Text(string='Enfermedad actual')
 
 
 

@@ -178,6 +178,7 @@ class PlasticSurgerySheet(models.Model):
                                        ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status')
     process_id = fields.Many2one('product.product', string='Process', ondelete='restrict')
     treatment = fields.Text(string="Paraclinical")
+    current_illness = fields.Text(string="Paraclinical")
     confidential_notes = fields.Text(string="Confidential Notes")
     medical_recipe = fields.Text(string="Medical Orders and Recipe")
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
@@ -203,6 +204,7 @@ class PlasticSurgerySheet(models.Model):
     background_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','5')])
     physical_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','7')])
     analysis_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','6')])
+    current_illness_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','16')])
     treatment_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','8')])
     prescription_id = fields.Many2one('doctor.prescription', string='Prescription')
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
@@ -303,6 +305,11 @@ class PlasticSurgerySheet(models.Model):
     def onchange_analysis_id(self):
         if self.analysis_template_id:
             self.analysis = self.analysis_template_id.analisys
+
+    @api.onchange('current_illness_template_id')
+    def onchange_current_illness_id(self):
+        if self.current_illness_template_id:
+            self.current_illness = self.current_illness_template_id.current_illness
 
     @api.onchange('treatment_template_id')
     def onchange_treatment_id(self):

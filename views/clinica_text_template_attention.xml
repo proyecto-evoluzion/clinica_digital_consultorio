@@ -52,9 +52,13 @@
                 <group name="treatment">
          			<field name='treatment' string="Tratamiento" attrs="{'invisible':[('type','!=','8')]}"/>
          		</group>
+
+                  <group name="current_illness">
+         			<field name='current_illness' string="Enfermedad actual" attrs="{'invisible':[('type','!=','16')]}"/>
+         		</group>
          		
          		<group name="text">
-         			<field name='template_text' string="Texto predeterminado" attrs="{'invisible':[('type','in',['1','8','6'])]}"/>
+         			<field name='template_text' string="Texto predeterminado" attrs="{'invisible':[('type','in',['1','8','6','16'])]}"/>
          		</group>
 
             

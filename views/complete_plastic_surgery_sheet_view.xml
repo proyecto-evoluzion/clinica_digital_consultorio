@@ -80,6 +80,8 @@
                                     <group name="current_illness" colspan="2" col='1'>
                                         <label for="current_illness" string="Current illness"/>
                                         <field name="current_illness" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                        <label for="current_illness_template_id" string="Template" style="width: 25%"/><field name="current_illness_template_id" nolabel="1" style="width: 25%" attrs="{'readonly':[('state','=','closed')]}"/>
+
                                     </group>
 
                                    

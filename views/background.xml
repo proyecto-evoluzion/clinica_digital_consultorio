@@ -85,12 +85,13 @@
         <field name="view_id" ref="background_center_view_tree"/>
     </record>
 
-    <menuitem
+    <!-- Descomentar este menu en caso de que lo soliciten -->
+    <!-- <menuitem
         id="patient_background_menu"
         name="Antecedentes por pacientes"
         action="background_center_action"
         parent="menu_doctor_config_details"
         groups="base.group_no_one"
-        sequence="13"/>
+        sequence="13"/> -->
     
 </odoo>

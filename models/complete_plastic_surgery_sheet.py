@@ -217,7 +217,7 @@ class PlasticSurgerySheet(models.Model):
     										('03', 'Atención en planificación familiar'),('04', 'Detección de alteraciones de crecimiento y desarrollo del menor de diez años'),
     										('05', 'Detección de alteración del desarrollo joven'),('06', 'Detección de alteraciones del embarazo'),
     										('07', 'Detección de alteraciones del adulto'),('08', 'Detección de alteraciones de agudeza visual'),
-    										('09', 'Detección de enfermedad profesional'),('10', 'No aplica')], string='Finalidad de la consulta')
+    										('09', 'Detección de enfermedad profesional'),('10', 'No aplica')], string='Finalidad de la consulta', default='10')
 
     external_cause = fields.Selection([('01', 'Accidente de trabajo'),('02', 'Accidente de tránsito'),
     										('03', 'Accidente rábico'),('04', 'Accidente ofídico'),
@@ -226,7 +226,7 @@ class PlasticSurgerySheet(models.Model):
     										('09', 'Sospecha de maltrato físico'),('10', 'Sospecha de abuso sexual'),
     										('11', 'Sospecha de violencia sexual'),('12', 'Sospecha de maltrato emocional'),
     										('13', 'Enfermedad general'),('14', 'Enfermedad laboral'),
-    										('15', 'Otra')], string='Causa Externa')
+    										('15', 'Otra')], string='Causa Externa', default='15')
 
     background_type_ids = fields.Many2many('copy.background.type', string="Antecedentes")
     background_gynecology_ids = fields.One2many('background.gynecology','gynecology_id', string="Antecedente Ginecologico")

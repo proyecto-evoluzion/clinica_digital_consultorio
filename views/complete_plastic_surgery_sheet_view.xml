@@ -56,12 +56,15 @@
 						    <field name='numberid_integer' string="Number ID" 
 							attrs="{'invisible':[('document_type','not in',['CC','TI'])],'readonly':[('state','=','closed')]}"/>
                             <field name='phone' attrs="{'readonly':[('state','=','closed')]}"/>
-                            <field name='insurer_id' attrs="{'readonly':[('state','=','closed')],'required': [('user_type','=','particular')]}" domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
+                            <!-- <field name='insurer_id' attrs="{'readonly':[('state','=','closed')],'required': [('user_type','=','particular')]}" domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/> -->
+                            <field name='insurer_id' attrs="{'readonly':[('state','=','closed')]}" domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
     						<!-- <span attrs="{'invisible':[('expired_contract','==',False)]}" style="color:red;">
     							<strong>No existe un contrato vigente con esta aseguradora.</strong>
     						</span> -->
-    						<field name='assurance_plan_id' attrs="{'readonly':[('state','=','closed')],'required': [('user_type','=','particular')]}" domain="[('insurer_id','=',insurer_id)]"/>
-    						<field name="number_policy" attrs="{'readonly':[('state','=','closed')],'required': [('user_type','=','particular')]}" force_save="1"/>
+    						<!-- <field name='assurance_plan_id' attrs="{'readonly':[('state','=','closed')],'required': [('user_type','=','particular')]}" domain="[('insurer_id','=',insurer_id)]"/> -->
+    						<field name='assurance_plan_id' attrs="{'readonly':[('state','=','closed')]}" domain="[('insurer_id','=',insurer_id)]"/>
+    						<!-- <field name="number_policy" attrs="{'readonly':[('state','=','closed')],'required': [('user_type','=','particular')]}" force_save="1"/> -->
+    						<field name="number_policy" attrs="{'readonly':[('state','=','closed')]}" force_save="1"/>
     						<field name="copago" attrs="{'readonly':[('state','=','closed')]}"/>
     						<field name="authorizacion_number" attrs="{'readonly':[('state','=','closed')]}"/>
                         </group>

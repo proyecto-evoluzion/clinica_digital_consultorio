@@ -648,8 +648,8 @@ class DoctorAdministrativeData(models.Model):
     
     @api.model
     def create(self, vals):
-        if vals.get('email', False):
-            self._check_email(vals.get('email'))
+        # if vals.get('email', False):
+        #     self._check_email(vals.get('email'))
         if vals.get('tdoc_rips', False) and vals['tdoc_rips'] in ['CC','TI']:
             ref = 0
             if vals.get('ref', False):
@@ -681,8 +681,8 @@ class DoctorAdministrativeData(models.Model):
         
     @api.multi
     def write(self, vals):
-        if vals.get('email', False):
-            self._check_email(vals.get('email'))
+        # if vals.get('email', False):
+        #     self._check_email(vals.get('email'))
         tools.image_resize_images(vals)
         if vals.get('tdoc_rips', False) or vals.get('ref', False):
             if vals.get('tdoc_rips', False):

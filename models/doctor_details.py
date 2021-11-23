@@ -326,13 +326,13 @@ class DoctorAdministrativeData(models.Model):
     accompany_name = fields.Char("Name of the companion")
     accompany_relationship = fields.Selection([('mother','Mother'),('father','Father'),('grand_father','Grand Father'),
                                  ('grand_mother','Grand Mother'),('uncle','Uncle'),('aunt','Aunt'),
-                                 ('friend','Friend'),('other','Other')], string="Accompany Person's Relationship")
+                                 ('friend','Friend'),('son','Hijo'),('other','Other')], string="Accompany Person's Relationship")
     other_accompany_relationship = fields.Char(string="Other Accompany Person's Relationship")
     accompany_phone = fields.Char("Accompany Person's Phone Number")
     responsible_name = fields.Char("Responsible Person's Name")
     responsible_relationship = fields.Selection([('mother','Mother'),('father','Father'),('grand_father','Grand Father'),
                                      ('grand_mother','Grand Mother'),('uncle','Uncle'),('aunt','Aunt'),
-                                     ('friend','Friend'),('other','Other')], string="Responsible Person's Relationship")
+                                     ('friend','Friend'),('son','Hijo'),('other','Other')], string="Responsible Person's Relationship")
     other_responsible_relationship = fields.Char(string="Other Responsible Person's Relationship")
     responsible_phone = fields.Char("Responsible Person's Phone Number")
     copy_responsible_info = fields.Boolean(string="Is Also Responsible")
@@ -554,11 +554,11 @@ class DoctorAdministrativeData(models.Model):
             self.name = str(0)
         
     
-    def _check_email(self, email):
-        if not tools.single_email_re.match(email):
-            raise ValidationError(_('Invalid Email ! Please enter a valid email address.'))
-        else:
-            return True
+    # def _check_email(self, email):
+    #     if not tools.single_email_re.match(email):
+    #         raise ValidationError(_('Invalid Email ! Please enter a valid email address.'))
+    #     else:
+    #         return True
         
     def _check_assign_numberid(self, ref):
         if ref == 0:

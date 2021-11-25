@@ -61,7 +61,7 @@ class DoctorAtc(models.Model):
     atc_id = fields.Many2one('doctor.atc', string='Medicamento')
     atc_route_id = fields.Many2one('doctor.atc_route', string='Vía de administración', related="atc_id.atc_route_id")
     atc_use_id = fields.Many2one('doctor.atc_use', string='Forma farmacéutica' ,related="atc_id.atc_use_id")
-    total_to_use = fields.Integer(string="Cantidad total")
+    total_to_use = fields.Float(string="Cantidad total del tratamiento", compute='_compute_total_to_use')
     every_use = fields.Integer(string="Frecuencia: Cada")
     deadline_use = fields.Integer(string="Durante")
     frequency_type1 = fields.Selection([('minute','Minutos'),('hour','Horas'),
@@ -74,4 +74,11 @@ class DoctorAtc(models.Model):
     indications = fields.Text(string="Indicaciones")
     prescription_id = fields.Many2one('doctor.prescription', 'Prescription ATC')
     concentration = fields.Char(string='Concentración', related="atc_id.concentration")
-    control_medication = fields.Boolean(string="Medicamento controlado" ,default=False)  
+    control_medication = fields.Boolean(string="Medicamento controlado" ,default=False)
+    dose = fields.Integer(string="Dosis")
+    
+    @api.depends('dose','every_use','deadline_use')
+    def _compute_total_to_use(self):
+        if self.dose != 0:
+            for calc_cant in self:
+                 self.total_to_use = self.dose * self.every_use * self.deadline_use

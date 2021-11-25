@@ -48,7 +48,8 @@
                               </tr>
                               <tr>
                                 <td style="width:100%; ">
-                                  <t>Cantidad total: <span style="padding-left:2px;" t-field="atc.total_to_use"/><br/></t>
+                                  <t>Cantidad total Frecuencia: <span style="padding-left:2px;" t-field="atc.total_to_use"/><br/></t>
+                                  <t>Dosis: <span style="padding-left:2px;" t-field="atc.dose"/><br/></t>
                                   <t>Vía de administración: <span style="padding-left:2px;" t-field="atc.atc_route_id"/><br/></t>
                                   <t>Forma famaceutica: <span style="padding-left:2px;" t-field="atc.atc_use_id"/><br/></t>
                                   <t>Concentración: <span style="padding-left:2px;" t-field="atc.concentration"/><br/></t>

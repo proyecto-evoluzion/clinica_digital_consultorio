@@ -1516,6 +1516,7 @@
                     <tr >
                       <td style="width:50%;" colspan="2"><strong><span t-field="atc.atc_id.name"/></strong>
                       	<t>Forma de farmacéutica: <span style="padding-left:2px;" t-field="atc.atc_use_id"/></t>
+						<t>Dosis: <span style="padding-left:2px;" t-field="atc.dose"/></t>
 						<t>Concentración: <span style="padding-left:2px;" t-field="atc.concentration"/></t>
 						<t t-if="atc.control_medication == True">Medicamento controlado: <span style="padding-left:2px;"/>Si</t>
 				      </td>
@@ -1542,6 +1543,11 @@
                         <t><span style="padding-left:2px;" t-field="atc.frequency_type2"/></t>
                       </td>
                     </tr>
+					<td style="width:50%; ">
+                        <t>Cantidad Total de frecuencia: <span style="padding-left:2px;" t-field="atc.total_to_use"/></t>
+                      </td>
+					
+					
                     <tr>
                       <td colspan="2" style="text-align:center;"><span t-field="atc.indications"/></td>
                     </tr>

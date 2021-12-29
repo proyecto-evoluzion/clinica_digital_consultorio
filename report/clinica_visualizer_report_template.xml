@@ -1481,6 +1481,15 @@
                   <td style="width:50%; "><t t-if="prescription.patientname"> Historia Clínica: <span style="padding-left:2px;" t-field="prescription.patient_id.ref"/></t><br/>
 				     <td style="width:50%; ">
                   Patient Name: <span style="padding-left:2px;" t-field="prescription.patient_id.firstname"/> <span style="padding-left:2px;" t-field="prescription.patient_id.lastname"/><br/>
+				   <t t-if="prescription.patient_id.tdoc_rips">
+                    Tipo Documento: <span style="padding-left:2px;" t-field="prescription.patient_id.tdoc_rips"/><br/>
+                  </t>
+                  <t t-if="prescription.patient_id.ref">
+                    Número Documento: <span style="padding-left:2px;" t-field="prescription.patient_id.ref"/><br/>
+                  </t>
+
+				  <t t-if="prescription.patient_id.age">Genero: <span style="padding-left:2px;" t-field="prescription.patient_id.sex"/><br/></t>
+				  <t t-if="prescription.patient_id.age">Fecha de Prescripcion: <span style="padding-left:2px;" t-field="prescription.prescription_date"/><br/></t>
                   <t t-if="prescription.patient_id.age">Age: <span style="padding-left:2px;" t-field="prescription.patient_id.age"/><br/></t>
 				  <t t-if="prescription.patient_id.user_type">Tipo de usuario: <span style="padding-left:2px;" t-field="prescription.patient_id.user_type"/><br/></t>
                   </td>
@@ -1544,7 +1553,7 @@
                       </td>
                     </tr>
 					<td style="width:50%; ">
-                        <t>Cantidad Total de frecuencia: <span style="padding-left:2px;" t-field="atc.total_to_use"/></t>
+                        <t>Cantidad Total del tratamiento: <span style="padding-left:2px;" t-field="atc.total_to_use"/></t>
                       </td>
 					
 					

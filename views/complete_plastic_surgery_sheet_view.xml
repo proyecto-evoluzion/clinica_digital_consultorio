@@ -305,7 +305,7 @@
             <field name="name">complete.clinica.plastic.surgery.tree</field>
             <field name="model">complete.clinica.plastic.surgery</field>
             <field name="arch" type="xml">
-                <tree string="Presurgical Tree">
+                <tree string="Presurgical Tree" default_order="date_attention desc">
                     <field name="number"/>
             	    <!-- <field name='attention_code_id'/> -->
        				<field name="date_attention"/>

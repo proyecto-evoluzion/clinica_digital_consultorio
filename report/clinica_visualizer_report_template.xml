@@ -158,11 +158,19 @@
        				</tr>           
        			</table>
             <div style="border-top: 1px solid black;">
-              <div t-if="quirgic_sheet.surgeon_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
-                Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="quirgic_sheet.surgeon_id.digital_sign"/> - 
-                Profesional de la salud registrado bajo el N° 
-                <span style="padding-left:1px; " t-field="quirgic_sheet.surgeon_id.medical_record"/>
-              </div>
+				<div t-if="quirgic_sheet.surgeon_id.is_custom_img">
+					<img t-if="quirgic_sheet.surgeon_id.custom_img" 
+					t-att-src="'data:image/png;base64,%s' % to_text(quirgic_sheet.surgeon_id.custom_img)" 
+					class="pull-left"
+					style=""/>
+				</div>
+				<div t-else="">
+					<div t-if="quirgic_sheet.surgeon_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
+						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="quirgic_sheet.surgeon_id.digital_sign"/> - 
+						Profesional de la salud registrado bajo el N° 
+						<span style="padding-left:1px; " t-field="quirgic_sheet.surgeon_id.medical_record"/>
+					</div>
+				</div>
             </div>
    				<p style="page-break-after: always;"/>
    			</t>
@@ -494,13 +502,21 @@
        					</td>
        				</tr>
    				</table>
-          <div style="border-top: 1px solid black;">
-            <div t-if="presurgical_record.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
-              Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="presurgical_record.doctor_id.digital_sign"/> - 
-              Profesional de la salud registrado bajo el N° 
-              <span style="padding-left:1px; " t-field="presurgical_record.doctor_id.medical_record"/>
-            </div>
-          </div>
+			<div style="border-top: 1px solid black;">
+				<div t-if="presurgical_record.doctor_id.is_custom_img">
+					<img t-if="presurgical_record.doctor_id.custom_img" 
+					t-att-src="'data:image/png;base64,%s' % to_text(presurgical_record.doctor_id.custom_img)"
+					style="width:25%; display:block; margin-left:auto; margin-right:auto"
+					class="center"/>
+				</div>
+				<div t-else="">
+					<div t-if="presurgical_record.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
+						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="presurgical_record.doctor_id.digital_sign"/> - 
+						Profesional de la salud registrado bajo el N° 
+						<span style="padding-left:1px; " t-field="presurgical_record.doctor_id.medical_record"/>
+					</div>
+				</div>
+			</div>
    				<p style="page-break-after: always;"/>
 			</t>
 			</div>
@@ -641,13 +657,21 @@
        					</td>
        				</tr>
        			</table>
-            <div style="border-top: 1px solid black;">
-              <div t-if="anhestesic_registry.surgeon_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
-                Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="anhestesic_registry.surgeon_id.digital_sign"/> - 
-                Profesional de la salud registrado bajo el N° 
-                <span style="padding-left:1px; " t-field="anhestesic_registry.surgeon_id.medical_record"/>
-              </div>
-            </div>
+			  <div style="border-top: 1px solid black;">
+				<div t-if="anhestesic_registry.doctor_id.is_custom_img">
+					<img t-if="anhestesic_registry.doctor_id.custom_img" 
+					t-att-src="'data:image/png;base64,%s' % to_text(anhestesic_registry.doctor_id.custom_img)"
+					style="width:25%; display:block; margin-left:auto; margin-right:auto"
+					class="center"/>
+				</div>
+				<div t-else="">
+					<div t-if="anhestesic_registry.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
+						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="anhestesic_registry.doctor_id.digital_sign"/> - 
+						Profesional de la salud registrado bajo el N° 
+						<span style="padding-left:1px; " t-field="anhestesic_registry.doctor_id.medical_record"/>
+					</div>
+				</div>
+			</div>
        			<p style="page-break-after: always;"/>
        		</t>
        		</div>
@@ -966,13 +990,21 @@
 				</t>
               </t>
    				</table>
-          <div style="border-top: 1px solid black;">
-            <div t-if="plastic_surgery.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
-              Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="plastic_surgery.doctor_id.digital_sign"/> - 
-              Profesional de la salud registrado bajo el N° 
-              <span style="padding-left:1px; " t-field="plastic_surgery.doctor_id.medical_record"/>
-            </div>
-          </div>
+		  <div style="border-top: 1px solid black;">
+				<div t-if="plastic_surgery.doctor_id.is_custom_img">
+					<img t-if="plastic_surgery.doctor_id.custom_img" 
+					t-att-src="'data:image/png;base64,%s' % to_text(plastic_surgery.doctor_id.custom_img)"
+					style="width:25%; display:block; margin-left:auto; margin-right:auto"
+					class="center"/>
+				</div>
+				<div t-else="">
+					<div t-if="plastic_surgery.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
+						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="plastic_surgery.doctor_id.digital_sign"/> - 
+						Profesional de la salud registrado bajo el N° 
+						<span style="padding-left:1px; " t-field="plastic_surgery.doctor_id.medical_record"/>
+					</div>
+				</div>
+			</div>
    				<p style="page-break-after: always;"/>
 			</t>
 			</div>
@@ -1302,13 +1334,21 @@
                 </t>
               </t> -->
           </table>
-          <div style="border-top: 1px solid black;">
-            <div t-if="complete_plastic_surgery.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
-              Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="complete_plastic_surgery.doctor_id.digital_sign"/> - 
-              Profesional de la salud registrado bajo el N° 
-              <span style="padding-left:1px; " t-field="complete_plastic_surgery.doctor_id.medical_record"/>
+		  	<div style="border-top: 1px solid black;">
+				<div t-if="complete_plastic_surgery.doctor_id.is_custom_img">
+					<img t-if="complete_plastic_surgery.doctor_id.custom_img" 
+					t-att-src="'data:image/png;base64,%s' % to_text(complete_plastic_surgery.doctor_id.custom_img)"
+					style="width:25%; display:block; margin-left:auto; margin-right:auto"
+					class="center"/>
+				</div>
+				<div t-else="">
+					<div t-if="complete_plastic_surgery.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
+						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="complete_plastic_surgery.doctor_id.digital_sign"/> - 
+						Profesional de la salud registrado bajo el N° 
+						<span style="padding-left:1px; " t-field="complete_plastic_surgery.doctor_id.medical_record"/>
+					</div>
+				</div>
             </div>
-          </div>
           <p style="page-break-after: always;"/>
       </t>
       </div>
@@ -1385,13 +1425,21 @@
         				</td>
        				</tr>
    				</table>
-          <div style="border-top: 1px solid black;">
-            <div t-if="medical_evolution.surgeon_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
-              Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="medical_evolution.surgeon_id.digital_sign"/> - 
-              Profesional de la salud registrado bajo el N° 
-              <span style="padding-left:1px; " t-field="medical_evolution.surgeon_id.medical_record"/>
+			<div style="border-top: 1px solid black;">
+				<div t-if="medical_evolution.doctor_id.is_custom_img">
+					<img t-if="medical_evolution.doctor_id.custom_img" 
+					t-att-src="'data:image/png;base64,%s' % to_text(medical_evolution.doctor_id.custom_img)"
+					style="width:25%; display:block; margin-left:auto; margin-right:auto"
+					class="center"/>
+				</div>
+				<div t-else="">
+					<div t-if="medical_evolution.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
+						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="medical_evolution.doctor_id.digital_sign"/> - 
+						Profesional de la salud registrado bajo el N° 
+						<span style="padding-left:1px; " t-field="medical_evolution.doctor_id.medical_record"/>
+					</div>
+				</div>
             </div>
-          </div>
    				<p style="page-break-after: always;"/>
 			</t>
 			</div>
@@ -1450,12 +1498,20 @@
        					</td>
        				</tr>
        			</table>
-            <div style="border-top: 1px solid black;">
-              <div t-if="epicrisis.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
-                Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="epicrisis.doctor_id.digital_sign"/> - 
-                Profesional de la salud registrado bajo el N° 
-                <span style="padding-left:1px; " t-field="epicrisis.doctor_id.medical_record"/>
-              </div>
+			  <div style="border-top: 1px solid black;">
+				<div t-if="epicrisis.doctor_id.is_custom_img">
+					<img t-if="epicrisis.doctor_id.custom_img" 
+					t-att-src="'data:image/png;base64,%s' % to_text(epicrisis.doctor_id.custom_img)"
+					style="width:25%; display:block; margin-left:auto; margin-right:auto"
+					class="center"/>
+				</div>
+				<div t-else="">
+					<div t-if="epicrisis.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
+						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="epicrisis.doctor_id.digital_sign"/> - 
+						Profesional de la salud registrado bajo el N° 
+						<span style="padding-left:1px; " t-field="epicrisis.doctor_id.medical_record"/>
+					</div>
+				</div>
             </div>
        			<p style="page-break-after: always;"/>
        		</t>
@@ -1599,13 +1655,21 @@
                   </tr>
                 </t>
               </table>
-              <div style="border-top: 1px solid black;">
-                <div t-if="prescription.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
-                  Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="prescription.doctor_id.digital_sign"/> - 
-                  Profesional de la salud registrado bajo el N° 
-                  <span style="padding-left:1px; " t-field="prescription.doctor_id.medical_record"/>
-                </div>
-              </div>
+				<div style="border-top: 1px solid black;">
+					<div t-if="prescription.doctor_id.is_custom_img">
+						<img t-if="prescription.doctor_id.custom_img" 
+						t-att-src="'data:image/png;base64,%s' % to_text(prescription.doctor_id.custom_img)"
+						style="width:25%; display:block; margin-left:auto; margin-right:auto"
+						class="center"/>
+					</div>
+					<div t-else="">
+						<div t-if="prescription.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
+							Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="prescription.doctor_id.digital_sign"/> - 
+							Profesional de la salud registrado bajo el N° 
+							<span style="padding-left:1px; " t-field="prescription.doctor_id.medical_record"/>
+						</div>
+					</div>
+            	</div>
             </t>
             <t t-if="prescription.order_type == 'inability'">
               <table style="width:100%;">

@@ -145,6 +145,8 @@ class Doctor(models.Model):
     multiple_format = fields.Boolean(string='Multiple Formats?', default=_default_config_value)
     doctor_provider_code = fields.Char(string='Codigo prestador de servicio')
     domain_product_ids = fields.Many2many('product.product', default=_default_products)
+    is_custom_img = fields.Boolean(string="Firma Digital en imagen?")
+    custom_img = fields.Binary(String="Foto Firma")
 
 
     @api.onchange('medical_record')
@@ -671,7 +673,7 @@ class DoctorAdministrativeData(models.Model):
         
                
                
-        res._check_tdocs()
+        # res._check_tdocs()
         partner_vals = res._get_related_partner_vals(vals)
         partner_vals.update({'doctype': 1})
         partner_vals.update({'name': vals['patient_name']})        
@@ -702,7 +704,7 @@ class DoctorAdministrativeData(models.Model):
                 raise ValidationError(warn_msg)
         tools.image_resize_images(vals)
         res = super(DoctorAdministrativeData, self).write(vals)
-        self._check_tdocs()
+        # self._check_tdocs()
         if 'firstname' in vals or 'lastname' in vals or 'middlename' in vals or 'surname' in vals\
                  or 'birth_date' in vals or 'email' in vals or 'phone' in vals or 'mobile' in vals or 'image' in vals \
                  or 'residence_district' in vals or 'residence_department_id' in vals or 'residence_country_id' in vals or 'residence_address' in vals or 'name' in vals or 'tdoc_rips' in vals:

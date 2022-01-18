@@ -153,6 +153,14 @@
 	                        <field name="phone" string="Teléfono"/>
                             <field name="medical_record" string="Registro Médico"/>
                             <field name="doctor_provider_code" required="1"/>
+                            <field name="is_custom_img" groups="base.group_system"/>
+                            <field name="custom_img" 
+                                attrs="{'invisible':[('is_custom_img','=',False)]}" 
+                                widget="image" 
+                                class="oe_avatar" 
+                                options="{&quot;size&quot;: [90, 90]}"
+                            />
+                            
                     	</group>
                     	<group>
 	                        <field name="lastname"  required="1" string="Primer Apellido"/> 

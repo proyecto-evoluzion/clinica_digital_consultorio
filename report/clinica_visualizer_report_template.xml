@@ -1426,17 +1426,17 @@
        				</tr>
    				</table>
 			<div style="border-top: 1px solid black;">
-				<div t-if="medical_evolution.doctor_id.is_custom_img">
-					<img t-if="medical_evolution.doctor_id.custom_img" 
-					t-att-src="'data:image/png;base64,%s' % to_text(medical_evolution.doctor_id.custom_img)"
+				<div t-if="medical_evolution.surgeon_id.is_custom_img">
+					<img t-if="medical_evolution.surgeon_id.custom_img" 
+					t-att-src="'data:image/png;base64,%s' % to_text(medical_evolution.surgeon_id.custom_img)"
 					style="width:25%; display:block; margin-left:auto; margin-right:auto"
 					class="center"/>
 				</div>
 				<div t-else="">
-					<div t-if="medical_evolution.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
-						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="medical_evolution.doctor_id.digital_sign"/> - 
+					<div t-if="medical_evolution.surgeon_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
+						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="medical_evolution.surgeon_id.digital_sign"/> - 
 						Profesional de la salud registrado bajo el N° 
-						<span style="padding-left:1px; " t-field="medical_evolution.doctor_id.medical_record"/>
+						<span style="padding-left:1px; " t-field="medical_evolution.surgeon_id.medical_record"/>
 					</div>
 				</div>
             </div>

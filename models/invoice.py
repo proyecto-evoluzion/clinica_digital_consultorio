@@ -26,6 +26,14 @@ class AccountInvoice(models.Model):
     _inherit = "account.invoice"
 
     copago = fields.Monetary(string="Copago")
+    tdoc_rips = fields.Selection([('CC','CC - Cedula de ciudadania'),('CE','CE - Cedula de extranjeria'),
+                                      ('PA','PA - Pasaporte'),('RC','RC - Registro civil'),('TI','TI - Tarjeta de identidad'),
+                                      ('AS','AS - Adulto sin identificar'),('MS','MS - Menor sin identificar'),
+                                      ('CD','CD - Carnet diplomatico'),('SC','SC - Salvaconducto'),
+                                      ('PE','PE - Permiso de permanencia'),
+                                      ('CN','CN - Certificado de nacido vivo')], string='Tipo Documento', related="partner_id.tdoc_rips", 
+                                      readonly=True)
+    number_identification = fields.Char(string="Número de Identificación", related="partner_id.number_identification", readonly=True)
     
     @api.multi
     def action_compute_procedure_time(self):

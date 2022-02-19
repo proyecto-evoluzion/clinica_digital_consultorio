@@ -21,15 +21,71 @@
        			<table class="table table-bordered" style=" width:100%;">
        				<tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
        				<tr>
-       					<td t-if="nurse_sheet.numberid" style="width:50%; ">Number ID: <span style="padding-left:2px;" t-field="nurse_sheet.numberid"/></td>
-       					<td t-if="nurse_sheet.patient_id or nurse_sheet.age" style="width:50%; ">
-       						Patient Name: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id"/><br/>
-       						<t t-if="nurse_sheet.age and flag == 0">Age: <span style="padding-left:2px;" t-field="nurse_sheet.age"/><span style="padding-left:2px;" t-field="nurse_sheet.age_meassure_unit"/><br/></t>
-       						<t t-if="nurse_sheet.patient_id.insurer_id and flag == 0">
-       							Insurer: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.insurer_id"/><br/>
-       						</t>
-       					</td>
-       				</tr>
+						<td colspan="1" style="width:60%;">
+							<strong>Nombre Paciente: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.firstname"/>
+							<span style="padding-left:2px;" t-field="nurse_sheet.patient_id.middlename"/>
+							<span style="padding-left:2px;" t-field="nurse_sheet.patient_id.lastname"/>
+							<span style="padding-left:2px;" t-field="nurse_sheet.patient_id.surname"/><br/>
+							<t t-if="nurse_sheet.patient_id.sex">
+								<strong>Género: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.sex"/><br/>
+							</t>
+							<t t-if="nurse_sheet.patient_id.user_type">
+								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.user_type"/><br/>
+							</t>
+							<t t-if="nurse_sheet.patient_id.insurer_ids">
+								<t t-foreach="nurse_sheet.patient_id.insurer_ids" t-as="insurers">
+									<strong>Aseguradora: </strong><span style="padding-left:2px;" t-field="insurers.insurer_id.name"/><br/>
+									<strong>Plan: </strong><span style="padding-left:2px;" t-field="insurers.plan"/><br/>
+								</t>
+							</t>
+							<t t-if="nurse_sheet.patient_id.birth_country_id">
+								<strong>Lugar Nacimiento: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.birth_country_id.name"/><br/>
+							</t>
+							<t t-if="nurse_sheet.patient_id.phone">
+								<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.phone"/><br/>
+							</t>
+							<t t-if="nurse_sheet.patient_id.email">
+								<strong>Email: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.email"/><br/>
+							</t>
+							<t t-if="nurse_sheet.patient_id.blood_type">
+								<strong>Tipo de Sangre: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.blood_type"/>
+								<span style="padding-left:2px;" t-field="nurse_sheet.patient_id.blood_rh"/><br/>
+							</t>
+						</td>
+						<td colspan="1" style="width:40%;">
+							<t t-if="nurse_sheet.patient_id.tdoc_rips">
+								<strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.tdoc_rips"/><br/>
+							</t>
+							<t t-if="nurse_sheet.patient_id.ref">
+								<strong>Documento: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.ref"/><br/>
+							</t>
+							<t t-if="nurse_sheet.patient_id.birth_date">
+								<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.birth_date"/><br/>
+							</t>
+							<t t-if="nurse_sheet.patient_id.age">
+								<strong>Edad: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.age"/><span style="padding-left:2px;" t-field="nurse_sheet.age_meassure_unit"/><br/>
+							</t>
+							<t t-if="nurse_sheet.patient_id.residence_country_id">
+								<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.residence_country_id.name"/>
+								<t t-if="nurse_sheet.patient_id.residence_department_id">
+									<span> - </span><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.residence_department_id.name"/><br/>
+								</t>
+								<t t-if="nurse_sheet.patient_id.residence_city_id">
+									<span> - </span><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.residence_city_id.name"/><br/>
+								</t>
+							</t>
+							<t t-if="nurse_sheet.patient_id.residence_address">
+								<strong>Dirección: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.residence_address"/><br/>
+							</t>
+							<strong t-if="nurse_sheet.patient_id.accompany_name">Datos acompañante</strong><br/>
+							<t t-if="nurse_sheet.patient_id.accompany_name">
+								<strong>Nombre: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.accompany_name"/><br/>
+							</t>
+							<t t-if="nurse_sheet.patient_id.accompany_phone">
+								<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.accompany_phone"/><br/>
+							</t>
+						</td>
+					</tr>
        				<tr>
        					<td colspan="2" style="text-align:center; ">
        						<t t-if="nurse_sheet.room_id.room_type == 'surgery'"><strong>SURGERY ROOM PROCEDURE DETAILS</strong></t>
@@ -105,15 +161,71 @@
        			<table class="table table-bordered" style=" width:100%;">
        				<tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
        				<tr>
-       					<td style="width:50%; "><t t-if="quirgic_sheet.numberid">Number ID: <span style="padding-left:2px;" t-field="quirgic_sheet.numberid"/></t></td>
-       					<td style="width:50%; ">
-       						Patient Name: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id"/><br/>
-       						<t t-if="quirgic_sheet.age and flag == 0">Age: <span style="padding-left:2px;" t-field="quirgic_sheet.age"/><span style="padding-left:2px;" t-field="quirgic_sheet.age_meassure_unit"/><br/></t>
-       						<t t-if="quirgic_sheet.patient_id.insurer_id and flag == 0">
-       							Insurer: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.insurer_id"/><br/>
-       						</t>
-       					</td>
-       				</tr>
+						<td colspan="1" style="width:60%;">
+							<strong>Nombre Paciente: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.firstname"/>
+							<span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.middlename"/>
+							<span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.lastname"/>
+							<span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.surname"/><br/>
+							<t t-if="quirgic_sheet.patient_id.sex">
+								<strong>Género: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.sex"/><br/>
+							</t>
+							<t t-if="quirgic_sheet.patient_id.user_type">
+								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+							</t>
+							<t t-if="quirgic_sheet.patient_id.insurer_ids">
+								<t t-foreach="quirgic_sheet.patient_id.insurer_ids" t-as="insurers">
+									<strong>Aseguradora: </strong><span style="padding-left:2px;" t-field="insurers.insurer_id.name"/><br/>
+									<strong>Plan: </strong><span style="padding-left:2px;" t-field="insurers.plan"/><br/>
+								</t>
+							</t>
+							<t t-if="quirgic_sheet.patient_id.birth_country_id">
+								<strong>Lugar Nacimiento: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.birth_country_id.name"/><br/>
+							</t>
+							<t t-if="quirgic_sheet.patient_id.phone">
+								<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.phone"/><br/>
+							</t>
+							<t t-if="quirgic_sheet.patient_id.email">
+								<strong>Email: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.email"/><br/>
+							</t>
+							<t t-if="quirgic_sheet.patient_id.blood_type">
+								<strong>Tipo de Sangre: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.blood_type"/>
+								<span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.blood_rh"/><br/>
+							</t>
+						</td>
+						<td colspan="1" style="width:40%;">
+							<t t-if="quirgic_sheet.patient_id.tdoc_rips">
+								<strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.tdoc_rips"/><br/>
+							</t>
+							<t t-if="quirgic_sheet.patient_id.ref">
+								<strong>Documento: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.ref"/><br/>
+							</t>
+							<t t-if="quirgic_sheet.patient_id.birth_date">
+								<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.birth_date"/><br/>
+							</t>
+							<t t-if="quirgic_sheet.patient_id.age">
+								<strong>Edad: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.age"/><span style="padding-left:2px;" t-field="quirgic_sheet.age_meassure_unit"/><br/>
+							</t>
+							<t t-if="quirgic_sheet.patient_id.residence_country_id">
+								<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.residence_country_id.name"/>
+								<t t-if="quirgic_sheet.patient_id.residence_department_id">
+									<span> - </span><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.residence_department_id.name"/><br/>
+								</t>
+								<t t-if="quirgic_sheet.patient_id.residence_city_id">
+									<span> - </span><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.residence_city_id.name"/><br/>
+								</t>
+							</t>
+							<t t-if="quirgic_sheet.patient_id.residence_address">
+								<strong>Dirección: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.residence_address"/><br/>
+							</t>
+							<strong t-if="quirgic_sheet.patient_id.accompany_name">Datos acompañante</strong><br/>
+							<t t-if="quirgic_sheet.patient_id.accompany_name">
+								<strong>Nombre: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.accompany_name"/><br/>
+							</t>
+							<t t-if="quirgic_sheet.patient_id.accompany_phone">
+								<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.accompany_phone"/><br/>
+							</t>
+						</td>
+					</tr>
        				<tr t-if="quirgic_sheet.surgeon_id or quirgic_sheet.anesthesiologist_id or quirgic_sheet.anesthesia_type or quirgic_sheet.technologist_id or quirgic_sheet.helper_id">
        					<td colspan="2" style="text-align:center; "><strong>HEALTH PROFESSIONAL DETAILS</strong></td>
        				</tr>
@@ -157,21 +269,6 @@
        					<td colspan="2" style="width:50%; "><span style="padding-left:2px;" t-field="quirgic_sheet.sign_stamp"/></td>
        				</tr>           
        			</table>
-            <div style="border-top: 1px solid black;">
-				<div t-if="quirgic_sheet.surgeon_id.is_custom_img">
-					<img t-if="quirgic_sheet.surgeon_id.custom_img" 
-					t-att-src="'data:image/png;base64,%s' % to_text(quirgic_sheet.surgeon_id.custom_img)" 
-					class="pull-left"
-					style=""/>
-				</div>
-				<div t-else="">
-					<div t-if="quirgic_sheet.surgeon_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
-						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="quirgic_sheet.surgeon_id.digital_sign"/> - 
-						Profesional de la salud registrado bajo el N° 
-						<span style="padding-left:1px; " t-field="quirgic_sheet.surgeon_id.medical_record"/>
-					</div>
-				</div>
-            </div>
    				<p style="page-break-after: always;"/>
    			</t>
    			</div>
@@ -215,15 +312,71 @@
        			<table class="table table-bordered" style=" width:100%;">
        				<tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
        				<tr>
-       					<td style="width:50%; "><t t-if="room.numberid">Number ID: <span style="padding-left:2px;" t-field="room.numberid"/></t></td>
-       					<td style="width:50%; ">
-       						Patient Name: <span style="padding-left:2px;" t-field="room.patient_id"/><br/>
-       						<t t-if="room.age and flag == 0">Age: <span style="padding-left:2px;" t-field="room.age"/><span style="padding-left:2px;" t-field="room.age_meassure_unit"/><br/></t>
-       						<t t-if="room.patient_id.insurer_id and flag == 0">
-       							Insurer: <span style="padding-left:2px;" t-field="room.patient_id.insurer_id"/><br/>
-       						</t>
-       					</td>
-       				</tr>
+						<td colspan="1" style="width:60%;">
+							<strong>Nombre Paciente: </strong><span style="padding-left:2px;" t-field="room.patient_id.firstname"/>
+							<span style="padding-left:2px;" t-field="room.patient_id.middlename"/>
+							<span style="padding-left:2px;" t-field="room.patient_id.lastname"/>
+							<span style="padding-left:2px;" t-field="room.patient_id.surname"/><br/>
+							<t t-if="room.patient_id.sex">
+								<strong>Género: </strong><span style="padding-left:2px;" t-field="room.patient_id.sex"/><br/>
+							</t>
+							<t t-if="room.patient_id.user_type">
+								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+							</t>
+							<t t-if="room.patient_id.insurer_ids">
+								<t t-foreach="room.patient_id.insurer_ids" t-as="insurers">
+									<strong>Aseguradora: </strong><span style="padding-left:2px;" t-field="insurers.insurer_id.name"/><br/>
+									<strong>Plan: </strong><span style="padding-left:2px;" t-field="insurers.plan"/><br/>
+								</t>
+							</t>
+							<t t-if="room.patient_id.birth_country_id">
+								<strong>Lugar Nacimiento: </strong><span style="padding-left:2px;" t-field="room.patient_id.birth_country_id.name"/><br/>
+							</t>
+							<t t-if="room.patient_id.phone">
+								<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="room.patient_id.phone"/><br/>
+							</t>
+							<t t-if="room.patient_id.email">
+								<strong>Email: </strong><span style="padding-left:2px;" t-field="room.patient_id.email"/><br/>
+							</t>
+							<t t-if="room.patient_id.blood_type">
+								<strong>Tipo de Sangre: </strong><span style="padding-left:2px;" t-field="room.patient_id.blood_type"/>
+								<span style="padding-left:2px;" t-field="room.patient_id.blood_rh"/><br/>
+							</t>
+						</td>
+						<td colspan="1" style="width:40%;">
+							<t t-if="room.patient_id.tdoc_rips">
+								<strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="room.patient_id.tdoc_rips"/><br/>
+							</t>
+							<t t-if="room.patient_id.ref">
+								<strong>Documento: </strong><span style="padding-left:2px;" t-field="room.patient_id.ref"/><br/>
+							</t>
+							<t t-if="room.patient_id.birth_date">
+								<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="room.patient_id.birth_date"/><br/>
+							</t>
+							<t t-if="room.patient_id.age">
+								<strong>Edad: </strong><span style="padding-left:2px;" t-field="room.patient_id.age"/><span style="padding-left:2px;" t-field="room.age_meassure_unit"/><br/>
+							</t>
+							<t t-if="room.patient_id.residence_country_id">
+								<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="room.patient_id.residence_country_id.name"/>
+								<t t-if="room.patient_id.residence_department_id">
+									<span> - </span><span style="padding-left:2px;" t-field="room.patient_id.residence_department_id.name"/><br/>
+								</t>
+								<t t-if="room.patient_id.residence_city_id">
+									<span> - </span><span style="padding-left:2px;" t-field="room.patient_id.residence_city_id.name"/><br/>
+								</t>
+							</t>
+							<t t-if="room.patient_id.residence_address">
+								<strong>Dirección: </strong><span style="padding-left:2px;" t-field="room.patient_id.residence_address"/><br/>
+							</t>
+							<strong t-if="room.patient_id.accompany_name">Datos acompañante</strong><br/>
+							<t t-if="room.patient_id.accompany_name">
+								<strong>Nombre: </strong><span style="padding-left:2px;" t-field="room.patient_id.accompany_name"/><br/>
+							</t>
+							<t t-if="room.patient_id.accompany_phone">
+								<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="room.patient_id.accompany_phone"/><br/>
+							</t>
+						</td>
+					</tr>
        				<tr t-if="room.surgeon_id or room.programmer_id or room.anesthesiologist_id or room.anesthesia_type"><td colspan="2" style="text-align:center; "><strong>HEALTH PROFESSIONAL DETAILS</strong></td></tr>
        				<tr t-if="room.surgeon_id or room.programmer_id or room.anesthesiologist_id or room.anesthesia_type">
        					<td style="width:50%; ">
@@ -280,15 +433,71 @@
        			<table class="table table-bordered" style=" width:100%;">
        				<tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
        				<tr>
-       					<td style="width:50%; "><t t-if="presurgical_record.numberid">Number ID: <span style="padding-left:2px;" t-field="presurgical_record.numberid"/></t></td>
-       					<td style="width:50%; ">
-       						Patient Name: <span style="padding-left:2px;" t-field="presurgical_record.patient_id"/><br/>
-       						<t t-if="presurgical_record.age and flag == 0">Age: <span style="padding-left:2px;" t-field="presurgical_record.age"/><span style="padding-left:2px;" t-field="presurgical_record.age_meassure_unit"/><br/></t>
-       						<t t-if="presurgical_record.patient_id.insurer_id and flag == 0">
-       							Insurer: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.insurer_id"/><br/>
-       						</t>
-       					</td>
-       				</tr>
+						<td colspan="1" style="width:60%;">
+							<strong>Nombre Paciente: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.firstname"/>
+							<span style="padding-left:2px;" t-field="presurgical_record.patient_id.middlename"/>
+							<span style="padding-left:2px;" t-field="presurgical_record.patient_id.lastname"/>
+							<span style="padding-left:2px;" t-field="presurgical_record.patient_id.surname"/><br/>
+							<t t-if="presurgical_record.patient_id.sex">
+								<strong>Género: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.sex"/><br/>
+							</t>
+							<t t-if="presurgical_record.patient_id.user_type">
+								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+							</t>
+							<t t-if="presurgical_record.patient_id.insurer_ids">
+								<t t-foreach="presurgical_record.patient_id.insurer_ids" t-as="insurers">
+									<strong>Aseguradora: </strong><span style="padding-left:2px;" t-field="insurers.insurer_id.name"/><br/>
+									<strong>Plan: </strong><span style="padding-left:2px;" t-field="insurers.plan"/><br/>
+								</t>
+							</t>
+							<t t-if="presurgical_record.patient_id.birth_country_id">
+								<strong>Lugar Nacimiento: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.birth_country_id.name"/><br/>
+							</t>
+							<t t-if="presurgical_record.patient_id.phone">
+								<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.phone"/><br/>
+							</t>
+							<t t-if="presurgical_record.patient_id.email">
+								<strong>Email: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.email"/><br/>
+							</t>
+							<t t-if="presurgical_record.patient_id.blood_type">
+								<strong>Tipo de Sangre: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.blood_type"/>
+								<span style="padding-left:2px;" t-field="presurgical_record.patient_id.blood_rh"/><br/>
+							</t>
+						</td>
+						<td colspan="1" style="width:40%;">
+							<t t-if="presurgical_record.patient_id.tdoc_rips">
+								<strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.tdoc_rips"/><br/>
+							</t>
+							<t t-if="presurgical_record.patient_id.ref">
+								<strong>Documento: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.ref"/><br/>
+							</t>
+							<t t-if="presurgical_record.patient_id.birth_date">
+								<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.birth_date"/><br/>
+							</t>
+							<t t-if="presurgical_record.patient_id.age">
+								<strong>Edad: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.age"/><span style="padding-left:2px;" t-field="presurgical_record.age_meassure_unit"/><br/>
+							</t>
+							<t t-if="presurgical_record.patient_id.residence_country_id">
+								<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.residence_country_id.name"/>
+								<t t-if="presurgical_record.patient_id.residence_department_id">
+									<span> - </span><span style="padding-left:2px;" t-field="presurgical_record.patient_id.residence_department_id.name"/><br/>
+								</t>
+								<t t-if="presurgical_record.patient_id.residence_city_id">
+									<span> - </span><span style="padding-left:2px;" t-field="presurgical_record.patient_id.residence_city_id.name"/><br/>
+								</t>
+							</t>
+							<t t-if="presurgical_record.patient_id.residence_address">
+								<strong>Dirección: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.residence_address"/><br/>
+							</t>
+							<strong t-if="presurgical_record.patient_id.accompany_name">Datos acompañante</strong><br/>
+							<t t-if="presurgical_record.patient_id.accompany_name">
+								<strong>Nombre: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.accompany_name"/><br/>
+							</t>
+							<t t-if="presurgical_record.patient_id.accompany_phone">
+								<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.accompany_phone"/><br/>
+							</t>
+						</td>
+					</tr>
        				<tr t-if="presurgical_record.consultation_reason"><td colspan="2" style="text-align:center; "><strong>REASON FOR CONSULTATION</strong></td></tr>
        				<tr t-if="presurgical_record.consultation_reason">
        					<td colspan="2" style="width:50%; ">
@@ -502,21 +711,6 @@
        					</td>
        				</tr>
    				</table>
-			<div style="border-top: 1px solid black;">
-				<div t-if="presurgical_record.doctor_id.is_custom_img">
-					<img t-if="presurgical_record.doctor_id.custom_img" 
-					t-att-src="'data:image/png;base64,%s' % to_text(presurgical_record.doctor_id.custom_img)"
-					style="width:25%; display:block; margin-left:auto; margin-right:auto"
-					class="center"/>
-				</div>
-				<div t-else="">
-					<div t-if="presurgical_record.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
-						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="presurgical_record.doctor_id.digital_sign"/> - 
-						Profesional de la salud registrado bajo el N° 
-						<span style="padding-left:1px; " t-field="presurgical_record.doctor_id.medical_record"/>
-					</div>
-				</div>
-			</div>
    				<p style="page-break-after: always;"/>
 			</t>
 			</div>
@@ -537,15 +731,71 @@
        			<table class="table table-bordered" style=" width:100%;">
        				<tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
        				<tr>
-       					<td style="width:50%; "><t t-if="anhestesic_registry.numberid">Number ID: <span style="padding-left:2px;" t-field="anhestesic_registry.numberid"/></t></td>
-       					<td style="width:50%; ">
-       						Patient Name: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id"/><br/>
-       						<t t-if="anhestesic_registry.age and flag == 0">Age: <span style="padding-left:2px;" t-field="anhestesic_registry.age"/><span style="padding-left:2px;" t-field="anhestesic_registry.age_meassure_unit"/><br/></t>
-       						<t t-if="anhestesic_registry.patient_id.insurer_id and flag == 0">
-       							Insurer: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.insurer_id"/><br/>
-       						</t>
-       					</td>
-       				</tr>
+						<td colspan="1" style="width:60%;">
+							<strong>Nombre Paciente: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.firstname"/>
+							<span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.middlename"/>
+							<span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.lastname"/>
+							<span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.surname"/><br/>
+							<t t-if="anhestesic_registry.patient_id.sex">
+								<strong>Género: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.sex"/><br/>
+							</t>
+							<t t-if="anhestesic_registry.patient_id.user_type">
+								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+							</t>
+							<t t-if="anhestesic_registry.patient_id.insurer_ids">
+								<t t-foreach="anhestesic_registry.patient_id.insurer_ids" t-as="insurers">
+									<strong>Aseguradora: </strong><span style="padding-left:2px;" t-field="insurers.insurer_id.name"/><br/>
+									<strong>Plan: </strong><span style="padding-left:2px;" t-field="insurers.plan"/><br/>
+								</t>
+							</t>
+							<t t-if="anhestesic_registry.patient_id.birth_country_id">
+								<strong>Lugar Nacimiento: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.birth_country_id.name"/><br/>
+							</t>
+							<t t-if="anhestesic_registry.patient_id.phone">
+								<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.phone"/><br/>
+							</t>
+							<t t-if="anhestesic_registry.patient_id.email">
+								<strong>Email: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.email"/><br/>
+							</t>
+							<t t-if="anhestesic_registry.patient_id.blood_type">
+								<strong>Tipo de Sangre: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.blood_type"/>
+								<span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.blood_rh"/><br/>
+							</t>
+						</td>
+						<td colspan="1" style="width:40%;">
+							<t t-if="anhestesic_registry.patient_id.tdoc_rips">
+								<strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.tdoc_rips"/><br/>
+							</t>
+							<t t-if="anhestesic_registry.patient_id.ref">
+								<strong>Documento: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.ref"/><br/>
+							</t>
+							<t t-if="anhestesic_registry.patient_id.birth_date">
+								<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.birth_date"/><br/>
+							</t>
+							<t t-if="anhestesic_registry.patient_id.age">
+								<strong>Edad: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.age"/><span style="padding-left:2px;" t-field="anhestesic_registry.age_meassure_unit"/><br/>
+							</t>
+							<t t-if="anhestesic_registry.patient_id.residence_country_id">
+								<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.residence_country_id.name"/>
+								<t t-if="anhestesic_registry.patient_id.residence_department_id">
+									<span> - </span><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.residence_department_id.name"/><br/>
+								</t>
+								<t t-if="anhestesic_registry.patient_id.residence_city_id">
+									<span> - </span><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.residence_city_id.name"/><br/>
+								</t>
+							</t>
+							<t t-if="anhestesic_registry.patient_id.residence_address">
+								<strong>Dirección: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.residence_address"/><br/>
+							</t>
+							<strong t-if="anhestesic_registry.patient_id.accompany_name">Datos acompañante</strong><br/>
+							<t t-if="anhestesic_registry.patient_id.accompany_name">
+								<strong>Nombre: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.accompany_name"/><br/>
+							</t>
+							<t t-if="anhestesic_registry.patient_id.accompany_phone">
+								<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.accompany_phone"/><br/>
+							</t>
+						</td>
+					</tr>
        				<tr t-if="anhestesic_registry.product_id or anhestesic_registry.surgeon_id or anhestesic_registry.anesthesiologist_id or anhestesic_registry.anesthesia_type or anhestesic_registry.start_time or anhestesic_registry.end_time or anhestesic_registry.preoperative_note">
        					<td colspan="2" style="text-align:center; "><strong>HEALTH PROFESSIONAL DETAILS</strong></td></tr>
        				<tr t-if="anhestesic_registry.product_id or anhestesic_registry.surgeon_id or anhestesic_registry.anesthesiologist_id or anhestesic_registry.anesthesia_type or anhestesic_registry.start_time or anhestesic_registry.end_time or anhestesic_registry.preoperative_note">
@@ -657,21 +907,23 @@
        					</td>
        				</tr>
        			</table>
-			  <div style="border-top: 1px solid black;">
-				<div t-if="anhestesic_registry.doctor_id.is_custom_img">
-					<img t-if="anhestesic_registry.doctor_id.custom_img" 
-					t-att-src="'data:image/png;base64,%s' % to_text(anhestesic_registry.doctor_id.custom_img)"
-					style="width:25%; display:block; margin-left:auto; margin-right:auto"
-					class="center"/>
-				</div>
-				<div t-else="">
-					<div t-if="anhestesic_registry.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
-						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="anhestesic_registry.doctor_id.digital_sign"/> - 
-						Profesional de la salud registrado bajo el N° 
-						<span style="padding-left:1px; " t-field="anhestesic_registry.doctor_id.medical_record"/>
+			  	<div style="border-top: 1px solid black;">
+					<t t-if="anhestesic_registry.surgeon_id.is_custom_img">
+						<div>
+							<img t-if="anhestesic_registry.surgeon_id.custom_img" 
+							t-att-src="'data:image/png;base64,%s' % to_text(anhestesic_registry.surgeon_id.custom_img)"
+							style="width:25%; display:block; margin-left:auto; margin-right:auto"
+							class="center"/>
+						</div>
+					</t>
+					<div t-if="anhestesic_registry.surgeon_id.medical_record">
+						<div style="width:100%; text-align: center; font-size: 12px;">
+							Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="anhestesic_registry.surgeon_id.digital_sign"/> - 
+							Profesional de la salud registrado bajo el N° 
+							<span style="padding-left:1px; " t-field="anhestesic_registry.surgeon_id.medical_record"/>
+						</div>
 					</div>
 				</div>
-			</div>
        			<p style="page-break-after: always;"/>
        		</t>
        		</div>
@@ -692,57 +944,77 @@
        			<table class="table " style="width:100%;">
        				<tr><td colspan="2" style="text-align:center; font-size: 14px;"><strong>PATIENT DATA</strong></td></tr>
        				<tr>
-                <td colspan="1" style="width:60%; ">
-                  <t t-if="plastic_surgery.patient_id.tdoc_rips">
-                    <strong>Doc. type: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.tdoc_rips"/><br/>
-                  </t>
-                  <t t-if="plastic_surgery.patient_id.ref">
-                    <strong>Number ID: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.ref"/><br/>
-                  </t>
-                  <strong>Patient Name: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.firstname"/>
-                  <span style="padding-left:2px;" t-field="plastic_surgery.patient_id.middlename"/>
-                  <span style="padding-left:2px;" t-field="plastic_surgery.patient_id.lastname"/>
-                  <span style="padding-left:2px;" t-field="plastic_surgery.patient_id.surname"/><br/>
-                  <t t-if="plastic_surgery.patient_id.blood_type">
-                    <strong>Blood type: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.blood_type"/>
-                    <span style="padding-left:2px;" t-field="plastic_surgery.patient_id.blood_rh"/><br/>
-                  </t>
-                  <t t-if="plastic_surgery.patient_id.sex">
-                    <strong>Gender: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.sex"/><br/>
-                  </t>
-                  <strong>Relatives Data</strong><br/>
-                  <t t-if="plastic_surgery.patient_id.accompany_name">
-                    <strong>Name: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.accompany_name"/><br/>
-                  </t>
-                  <t t-if="plastic_surgery.patient_id.accompany_phone">
-                    <strong>Phone: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.user_type"/><br/>
-                  </t>
-                </td>
-                <td colspan="1" style="width:40%; ">
-                  <t t-if="plastic_surgery.patient_id.birth_date">
-                    <strong>Date of birth: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.birth_date"/><br/>
-                  </t>
-                  <t t-if="plastic_surgery.patient_id.age">
-                    <strong>Age: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.age"/><span style="padding-left:2px;" t-field="plastic_surgery.age_meassure_unit"/><br/>
-                  </t>
-                  <t t-if="plastic_surgery.patient_id.user_type">
-                    <strong>User type: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.user_type"/><br/>
-                  </t>
-                  <t t-if="plastic_surgery.patient_id.phone">
-                    <strong>Phone: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.phone"/><br/>
-                  </t>
-                  <t t-if="plastic_surgery.patient_id.email">
-                    <strong>Email: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.email"/><br/>
-                  </t>
-                  <t t-if="plastic_surgery.patient_id.insurer_id">
-                    <strong>Insurer: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.insurer_id.name"/><br/>
-                  </t>
-                  <t t-if="plastic_surgery.patient_id.residence_address">
-                    <strong>Dirección: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.residence_address"/><br/>
-                  </t>
-                </td>
-              </tr>
-              
+						<td colspan="1" style="width:60%;">
+							<strong>Nombre Paciente: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.firstname"/>
+							<span style="padding-left:2px;" t-field="plastic_surgery.patient_id.middlename"/>
+							<span style="padding-left:2px;" t-field="plastic_surgery.patient_id.lastname"/>
+							<span style="padding-left:2px;" t-field="plastic_surgery.patient_id.surname"/><br/>
+							<t t-if="plastic_surgery.patient_id.sex">
+								<strong>Género: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.sex"/><br/>
+							</t>
+							<t t-if="plastic_surgery.patient_id.user_type">
+								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+							</t>
+							<t t-if="plastic_surgery.patient_id.insurer_ids">
+								<t t-foreach="plastic_surgery.patient_id.insurer_ids" t-as="insurers">
+									<strong>Aseguradora: </strong><span style="padding-left:2px;" t-field="insurers.insurer_id.name"/><br/>
+									<strong>Plan: </strong><span style="padding-left:2px;" t-field="insurers.plan"/><br/>
+								</t>
+							</t>
+							<t t-if="plastic_surgery.patient_id.birth_country_id">
+								<strong>Lugar Nacimiento: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.birth_country_id.name"/><br/>
+							</t>
+							<t t-if="plastic_surgery.patient_id.phone">
+								<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.phone"/><br/>
+							</t>
+							<t t-if="plastic_surgery.patient_id.email">
+								<strong>Email: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.email"/><br/>
+							</t>
+							<t t-if="plastic_surgery.patient_id.blood_type">
+								<strong>Tipo de Sangre: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.blood_type"/>
+								<span style="padding-left:2px;" t-field="plastic_surgery.patient_id.blood_rh"/><br/>
+							</t>
+							<t t-if="plastic_surgery.diagnosis_ids">
+								<strong>Diagnósticos: </strong>
+								<t t-foreach="plastic_surgery.diagnosis_ids" t-as="dx">
+									<span style="padding-left:2px;" t-field="dx.code"/><span> - </span>
+								</t>
+							</t>
+						</td>
+						<td colspan="1" style="width:40%;">
+							<t t-if="plastic_surgery.patient_id.tdoc_rips">
+								<strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.tdoc_rips"/><br/>
+							</t>
+							<t t-if="plastic_surgery.patient_id.ref">
+								<strong>Documento: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.ref"/><br/>
+							</t>
+							<t t-if="plastic_surgery.patient_id.birth_date">
+								<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.birth_date"/><br/>
+							</t>
+							<t t-if="plastic_surgery.patient_id.age">
+								<strong>Edad: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.age"/><span style="padding-left:2px;" t-field="plastic_surgery.age_meassure_unit"/><br/>
+							</t>
+							<t t-if="plastic_surgery.patient_id.residence_country_id">
+								<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.residence_country_id.name"/>
+								<t t-if="plastic_surgery.patient_id.residence_department_id">
+									<span> - </span><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.residence_department_id.name"/><br/>
+								</t>
+								<t t-if="plastic_surgery.patient_id.residence_city_id">
+									<span> - </span><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.residence_city_id.name"/><br/>
+								</t>
+							</t>
+							<t t-if="plastic_surgery.patient_id.residence_address">
+								<strong>Dirección: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.residence_address"/><br/>
+							</t>
+							<strong t-if="plastic_surgery.patient_id.accompany_name">Datos acompañante</strong><br/>
+							<t t-if="plastic_surgery.patient_id.accompany_name">
+								<strong>Nombre: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.accompany_name"/><br/>
+							</t>
+							<t t-if="plastic_surgery.patient_id.accompany_phone">
+								<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.accompany_phone"/><br/>
+							</t>
+						</td>
+					</tr>
        				<tr t-if="plastic_surgery.this_consultation_reason"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>REASON FOR CONSULTATION</strong></td></tr>
    					<tr t-if="plastic_surgery.this_consultation_reason">
        					<td colspan="2" style="width:50%; ">
@@ -990,21 +1262,23 @@
 				</t>
               </t>
    				</table>
-		  <div style="border-top: 1px solid black;">
-				<div t-if="plastic_surgery.doctor_id.is_custom_img">
-					<img t-if="plastic_surgery.doctor_id.custom_img" 
-					t-att-src="'data:image/png;base64,%s' % to_text(plastic_surgery.doctor_id.custom_img)"
-					style="width:25%; display:block; margin-left:auto; margin-right:auto"
-					class="center"/>
-				</div>
-				<div t-else="">
-					<div t-if="plastic_surgery.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
-						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="plastic_surgery.doctor_id.digital_sign"/> - 
-						Profesional de la salud registrado bajo el N° 
-						<span style="padding-left:1px; " t-field="plastic_surgery.doctor_id.medical_record"/>
+		  		<div style="border-top: 1px solid black;">
+					<t t-if="plastic_surgery.doctor_id.is_custom_img">
+						<div>
+							<img t-if="plastic_surgery.doctor_id.custom_img" 
+							t-att-src="'data:image/png;base64,%s' % to_text(plastic_surgery.doctor_id.custom_img)"
+							style="width:25%; display:block; margin-left:auto; margin-right:auto"
+							class="center"/>
+						</div>
+					</t>
+					<div t-if="plastic_surgery.doctor_id.medical_record">
+						<div style="width:100%; text-align: center; font-size: 12px;">
+							Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="plastic_surgery.doctor_id.digital_sign"/> - 
+							Profesional de la salud registrado bajo el N° 
+							<span style="padding-left:1px; " t-field="plastic_surgery.doctor_id.medical_record"/>
+						</div>
 					</div>
 				</div>
-			</div>
    				<p style="page-break-after: always;"/>
 			</t>
 			</div>
@@ -1034,56 +1308,74 @@
               <tr><td colspan="2" style="text-align:center; font-size: 14px;"><strong>DATOS DEL PACIENTE</strong></td></tr>
               <tr>
                 <td colspan="1" style="width:60%;">
-                  <t t-if="complete_plastic_surgery.patient_id.tdoc_rips">
-                    <strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.tdoc_rips"/><br/>
-                  </t>
-                  <t t-if="complete_plastic_surgery.patient_id.ref">
-                    <strong>Número Documento: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.ref"/><br/>
-                  </t>
-                  <strong>Nombre Paciente: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.firstname"/>
-                  <span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.middlename"/>
-                  <span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.lastname"/>
-                  <span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.surname"/><br/>
-                  <t t-if="complete_plastic_surgery.patient_id.blood_type">
-                    <strong>Tipo de Sangre: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.blood_type"/>
-                    <span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.blood_rh"/><br/>
-                  </t>
-                  <t t-if="complete_plastic_surgery.patient_id.sex">
-                    <strong>Género: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.sex"/><br/>
-                  </t>
-                  <strong t-if="complete_plastic_surgery.patient_id.accompany_name">Datos acompañante</strong><br/>
-                  <t t-if="complete_plastic_surgery.patient_id.accompany_name">
-                    <strong>Nombre: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.accompany_name"/><br/>
-                  </t>
-                  <t t-if="complete_plastic_surgery.patient_id.accompany_phone">
-                    <strong>Teléfono: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.accompany_phone"/><br/>
-                  </t>
+					<strong>Nombre Paciente: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.firstname"/>
+                  	<span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.middlename"/>
+                  	<span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.lastname"/>
+                  	<span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.surname"/><br/>
+					<t t-if="complete_plastic_surgery.patient_id.sex">
+						<strong>Género: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.sex"/><br/>
+					</t>
+					<t t-if="complete_plastic_surgery.patient_id.user_type">
+						<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.user_type"/><br/>
+					</t>
+					<t t-if="complete_plastic_surgery.patient_id.insurer_ids">
+						<t t-foreach="complete_plastic_surgery.patient_id.insurer_ids" t-as="insurers">
+							<strong>Aseguradora: </strong><span style="padding-left:2px;" t-field="insurers.insurer_id.name"/><br/>
+							<strong>Plan: </strong><span style="padding-left:2px;" t-field="insurers.plan"/><br/>
+						</t>
+					</t>
+					<t t-if="complete_plastic_surgery.patient_id.birth_country_id">
+						<strong>Lugar Nacimiento: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.birth_country_id.name"/><br/>
+					</t>
+					<t t-if="complete_plastic_surgery.patient_id.phone">
+						<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.phone"/><br/>
+					</t>
+					<t t-if="complete_plastic_surgery.patient_id.email">
+						<strong>Email: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.email"/><br/>
+					</t>
+					<t t-if="complete_plastic_surgery.patient_id.blood_type">
+						<strong>Tipo de Sangre: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.blood_type"/>
+						<span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.blood_rh"/><br/>
+					</t>
+					<t t-if="complete_plastic_surgery.diagnosis_ids">
+						<strong>Diagnósticos: </strong>
+						<t t-foreach="complete_plastic_surgery.diagnosis_ids" t-as="dx">
+							<span style="padding-left:2px;" t-field="dx.code"/><span> - </span>
+						</t>
+					</t>
                 </td>
                 <td colspan="1" style="width:40%;">
-                  <t t-if="complete_plastic_surgery.patient_id.birth_date">
-                    <strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.birth_date"/><br/>
-                  </t>
-                  <t t-if="complete_plastic_surgery.patient_id.age">
-                    <strong>Edad: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.age"/><span style="padding-left:2px;" t-field="complete_plastic_surgery.age_meassure_unit"/><br/>
-                  </t>
-                  <t t-if="complete_plastic_surgery.patient_id.user_type">
-                    <strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.user_type"/><br/>
-                  </t>
-                  <t t-if="complete_plastic_surgery.patient_id.phone">
-                    <strong>Teléfono: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.phone"/><br/>
-                  </t>
-                  <t t-if="complete_plastic_surgery.patient_id.email">
-                    <strong>Email: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.email"/><br/>
-                  </t>
-                  <t t-if="complete_plastic_surgery.patient_id.insurer_ids">
-                    <t t-foreach="complete_plastic_surgery.patient_id.insurer_ids" t-as="insurers">
-                      <strong>Aseguradora: </strong><span style="padding-left:2px;" t-field="insurers.insurer_id.name"/><br/>
-                      <strong>Plan: </strong><span style="padding-left:2px;" t-field="insurers.plan"/><br/>
-                    </t>
-                  </t>
-                  <t t-if="complete_plastic_surgery.patient_id.residence_address">
-                    <strong>Dirección: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.residence_address"/><br/>
-                  </t>
+					<t t-if="complete_plastic_surgery.patient_id.tdoc_rips">
+						<strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.tdoc_rips"/><br/>
+					</t>
+					<t t-if="complete_plastic_surgery.patient_id.ref">
+						<strong>Documento: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.ref"/><br/>
+					</t>
+					<t t-if="complete_plastic_surgery.patient_id.birth_date">
+						<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.birth_date"/><br/>
+					</t>
+					<t t-if="complete_plastic_surgery.patient_id.age">
+						<strong>Edad: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.age"/><span style="padding-left:2px;" t-field="complete_plastic_surgery.age_meassure_unit"/><br/>
+					</t>
+					<t t-if="complete_plastic_surgery.patient_id.residence_country_id">
+						<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.residence_country_id.name"/>
+						<t t-if="complete_plastic_surgery.patient_id.residence_department_id">
+							<span> - </span><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.residence_department_id.name"/><br/>
+						</t>
+						<t t-if="complete_plastic_surgery.patient_id.residence_city_id">
+							<span> - </span><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.residence_city_id.name"/><br/>
+						</t>
+					</t>
+					<t t-if="complete_plastic_surgery.patient_id.residence_address">
+						<strong>Dirección: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.residence_address"/><br/>
+					</t>
+					<strong t-if="complete_plastic_surgery.patient_id.accompany_name">Datos acompañante</strong><br/>
+					<t t-if="complete_plastic_surgery.patient_id.accompany_name">
+						<strong>Nombre: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.accompany_name"/><br/>
+					</t>
+					<t t-if="complete_plastic_surgery.patient_id.accompany_phone">
+						<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.accompany_phone"/><br/>
+					</t>
                 </td>
               </tr>
               
@@ -1117,23 +1409,33 @@
                   <span style="padding-left:2px;" t-field="complete_plastic_surgery.paraclinical"/>
                 </td>
               </tr>
-              <tr t-if="complete_plastic_surgery.system_review_ids or complete_plastic_surgery.system_review_notes" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>REVISIÓN POR SISTEMAS</strong></td></tr>
-              <tr t-if="complete_plastic_surgery.system_review_ids" style="padding:0px;">
-                <td colspan="2" style=" padding:0px;">
-                  <table class="table" style="width:100%;margin:0px;">
-                    <thead>
-                      <th style="width:50%;">Tipo Revisión</th>
-                      <th style="width:50%;">Revisión por Sistema</th>
-                    </thead>
-                    <tbody>
-                      <tr t-foreach="complete_plastic_surgery.system_review_ids" t-as="pvalue">
-                        <td style="width:50%;"><span t-field="pvalue.type_review"/></td>
-                        <td style="width:50%;"><span t-field="pvalue.system_review"/></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+			  <t>
+                <t t-set="aux0" t-value="'0'"/>
+                <t t-foreach="complete_plastic_surgery.system_review_ids" t-as="pvalue0">
+                  <t t-if="pvalue0.system_review">
+                    <t t-set="aux0" t-value="'1'"/>
+                  </t>
+                </t>
+				<tr t-if="aux0 == '1' or complete_plastic_surgery.system_review_notes" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>REVISIÓN POR SISTEMAS</strong></td></tr>
+				<tr t-if="aux0 == '1'" style="padding:0px;">
+					<td colspan="2" style=" padding:0px;">
+					<table class="table" style="width:100%;margin:0px;">
+						<thead>
+						<th style="width:50%;">Tipo Revisión</th>
+						<th style="width:50%;">Revisión por Sistema</th>
+						</thead>
+						<tbody>
+						<tr t-foreach="complete_plastic_surgery.system_review_ids" t-as="pvalue">
+							<t t-if="pvalue.system_review">
+								<td style="width:50%;"><span t-field="pvalue.type_review"/></td>
+								<td style="width:50%;"><span t-field="pvalue.system_review"/></td>
+							</t>
+						</tr>
+						</tbody>
+					</table>
+					</td>
+				</tr>
+			  </t>
               <tr t-if="complete_plastic_surgery.system_review_notes">
                 <td colspan="2" style="width:50%; ">
                   <strong>Otros: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.system_review_notes"/>
@@ -1156,8 +1458,10 @@
                       </thead>
                       <tbody>
                         <tr t-foreach="complete_plastic_surgery.background_type_ids" t-as="pvalue0">
-                          <td style="width:50%;"><span t-field="pvalue0.type_background"/></td>
-                          <td style="width:50%;"><span t-field="pvalue0.value_background"/></td>
+							<t t-if="pvalue0.value_background">
+								<td style="width:50%;"><span t-field="pvalue0.type_background"/></td>
+								<td style="width:50%;"><span t-field="pvalue0.value_background"/></td>
+							</t>
                         </tr>
                       </tbody>
                     </table>
@@ -1335,14 +1639,16 @@
               </t> -->
           </table>
 		  	<div style="border-top: 1px solid black;">
-				<div t-if="complete_plastic_surgery.doctor_id.is_custom_img">
-					<img t-if="complete_plastic_surgery.doctor_id.custom_img" 
-					t-att-src="'data:image/png;base64,%s' % to_text(complete_plastic_surgery.doctor_id.custom_img)"
-					style="width:25%; display:block; margin-left:auto; margin-right:auto"
-					class="center"/>
-				</div>
-				<div t-else="">
-					<div t-if="complete_plastic_surgery.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
+				<t t-if="complete_plastic_surgery.doctor_id.is_custom_img">
+					<div>
+						<img t-if="complete_plastic_surgery.doctor_id.custom_img" 
+						t-att-src="'data:image/png;base64,%s' % to_text(complete_plastic_surgery.doctor_id.custom_img)"
+						style="width:25%; display:block; margin-left:auto; margin-right:auto"
+						class="center"/>
+					</div>
+				</t>
+				<div t-if="complete_plastic_surgery.doctor_id.medical_record">
+					<div style="width:100%; text-align: center; font-size: 12px;">
 						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="complete_plastic_surgery.doctor_id.digital_sign"/> - 
 						Profesional de la salud registrado bajo el N° 
 						<span style="padding-left:1px; " t-field="complete_plastic_surgery.doctor_id.medical_record"/>
@@ -1373,15 +1679,71 @@
        			<table class="table table-bordered" style=" width:100%;">
        				<tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
        				<tr>
-       					<td style="width:50%; "><t t-if="medical_evolution.numberid">Number ID: <span style="padding-left:2px;" t-field="medical_evolution.numberid"/></t></td>
-       					<td style="width:50%; ">
-       						Patient Name: <span style="padding-left:2px;" t-field="medical_evolution.patient_id"/><br/>
-       						<t t-if="medical_evolution.age and flag == 0">Age: <span style="padding-left:2px;" t-field="medical_evolution.age"/><span style="padding-left:2px;" t-field="medical_evolution.age_meassure_unit"/><br/></t>
-       						<t t-if="medical_evolution.patient_id.insurer_id and flag == 0">
-       							Insurer: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.insurer_id"/><br/>
-       						</t>
-       					</td>
-       				</tr>
+						<td colspan="1" style="width:60%;">
+							<strong>Nombre Paciente: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.firstname"/>
+							<span style="padding-left:2px;" t-field="medical_evolution.patient_id.middlename"/>
+							<span style="padding-left:2px;" t-field="medical_evolution.patient_id.lastname"/>
+							<span style="padding-left:2px;" t-field="medical_evolution.patient_id.surname"/><br/>
+							<t t-if="medical_evolution.patient_id.sex">
+								<strong>Género: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.sex"/><br/>
+							</t>
+							<t t-if="medical_evolution.patient_id.user_type">
+								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+							</t>
+							<t t-if="medical_evolution.patient_id.insurer_ids">
+								<t t-foreach="medical_evolution.patient_id.insurer_ids" t-as="insurers">
+									<strong>Aseguradora: </strong><span style="padding-left:2px;" t-field="insurers.insurer_id.name"/><br/>
+									<strong>Plan: </strong><span style="padding-left:2px;" t-field="insurers.plan"/><br/>
+								</t>
+							</t>
+							<t t-if="medical_evolution.patient_id.birth_country_id">
+								<strong>Lugar Nacimiento: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.birth_country_id.name"/><br/>
+							</t>
+							<t t-if="medical_evolution.patient_id.phone">
+								<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.phone"/><br/>
+							</t>
+							<t t-if="medical_evolution.patient_id.email">
+								<strong>Email: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.email"/><br/>
+							</t>
+							<t t-if="medical_evolution.patient_id.blood_type">
+								<strong>Tipo de Sangre: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.blood_type"/>
+								<span style="padding-left:2px;" t-field="medical_evolution.patient_id.blood_rh"/><br/>
+							</t>
+						</td>
+						<td colspan="1" style="width:40%;">
+							<t t-if="medical_evolution.patient_id.tdoc_rips">
+								<strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.tdoc_rips"/><br/>
+							</t>
+							<t t-if="medical_evolution.patient_id.ref">
+								<strong>Documento: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.ref"/><br/>
+							</t>
+							<t t-if="medical_evolution.patient_id.birth_date">
+								<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.birth_date"/><br/>
+							</t>
+							<t t-if="medical_evolution.patient_id.age">
+								<strong>Edad: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.age"/><span style="padding-left:2px;" t-field="medical_evolution.age_meassure_unit"/><br/>
+							</t>
+							<t t-if="medical_evolution.patient_id.residence_country_id">
+								<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.residence_country_id.name"/>
+								<t t-if="medical_evolution.patient_id.residence_department_id">
+									<span> - </span><span style="padding-left:2px;" t-field="medical_evolution.patient_id.residence_department_id.name"/><br/>
+								</t>
+								<t t-if="medical_evolution.patient_id.residence_city_id">
+									<span> - </span><span style="padding-left:2px;" t-field="medical_evolution.patient_id.residence_city_id.name"/><br/>
+								</t>
+							</t>
+							<t t-if="medical_evolution.patient_id.residence_address">
+								<strong>Dirección: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.residence_address"/><br/>
+							</t>
+							<strong t-if="medical_evolution.patient_id.accompany_name">Datos acompañante</strong><br/>
+							<t t-if="medical_evolution.patient_id.accompany_name">
+								<strong>Nombre: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.accompany_name"/><br/>
+							</t>
+							<t t-if="medical_evolution.patient_id.accompany_phone">
+								<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.accompany_phone"/><br/>
+							</t>
+						</td>
+					</tr>
        				<tr t-if="medical_evolution.surgeon_id or medical_evolution.anesthesiologist_id or medical_evolution.anesthesia_type or medical_evolution.user_id">
        					<td colspan="2" style="text-align:center; "><strong>HEALTH PROFESSIONAL DETAILS</strong></td>
        				</tr>
@@ -1425,21 +1787,6 @@
         				</td>
        				</tr>
    				</table>
-			<div style="border-top: 1px solid black;">
-				<div t-if="medical_evolution.surgeon_id.is_custom_img">
-					<img t-if="medical_evolution.surgeon_id.custom_img" 
-					t-att-src="'data:image/png;base64,%s' % to_text(medical_evolution.surgeon_id.custom_img)"
-					style="width:25%; display:block; margin-left:auto; margin-right:auto"
-					class="center"/>
-				</div>
-				<div t-else="">
-					<div t-if="medical_evolution.surgeon_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
-						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="medical_evolution.surgeon_id.digital_sign"/> - 
-						Profesional de la salud registrado bajo el N° 
-						<span style="padding-left:1px; " t-field="medical_evolution.surgeon_id.medical_record"/>
-					</div>
-				</div>
-            </div>
    				<p style="page-break-after: always;"/>
 			</t>
 			</div>
@@ -1464,15 +1811,71 @@
        			<table class="table table-bordered" style=" width:100%;">
        				<tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
        				<tr>
-       					<td style="width:50%; "><t t-if="epicrisis.numberid">Number ID: <span style="padding-left:2px;" t-field="epicrisis.numberid"/></t></td>
-       					<td style="width:50%; ">
-       						Patient Name: <span style="padding-left:2px;" t-field="epicrisis.patient_id"/><br/>
-       						<t t-if="epicrisis.age">Age: <span style="padding-left:2px;" t-field="epicrisis.age"/><span style="padding-left:2px;" t-field="epicrisis.age_meassure_unit"/><br/></t>
-       						<t t-if="epicrisis.patient_id.insurer_id and flag == 0">
-       							Insurer: <span style="padding-left:2px;" t-field="epicrisis.patient_id.insurer_id"/><br/>
-       						</t>
-       					</td>
-       				</tr>
+						<td colspan="1" style="width:60%;">
+							<strong>Nombre Paciente: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.firstname"/>
+							<span style="padding-left:2px;" t-field="epicrisis.patient_id.middlename"/>
+							<span style="padding-left:2px;" t-field="epicrisis.patient_id.lastname"/>
+							<span style="padding-left:2px;" t-field="epicrisis.patient_id.surname"/><br/>
+							<t t-if="epicrisis.patient_id.sex">
+								<strong>Género: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.sex"/><br/>
+							</t>
+							<t t-if="epicrisis.patient_id.user_type">
+								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+							</t>
+							<t t-if="epicrisis.patient_id.insurer_ids">
+								<t t-foreach="epicrisis.patient_id.insurer_ids" t-as="insurers">
+									<strong>Aseguradora: </strong><span style="padding-left:2px;" t-field="insurers.insurer_id.name"/><br/>
+									<strong>Plan: </strong><span style="padding-left:2px;" t-field="insurers.plan"/><br/>
+								</t>
+							</t>
+							<t t-if="epicrisis.patient_id.birth_country_id">
+								<strong>Lugar Nacimiento: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.birth_country_id.name"/><br/>
+							</t>
+							<t t-if="epicrisis.patient_id.phone">
+								<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.phone"/><br/>
+							</t>
+							<t t-if="epicrisis.patient_id.email">
+								<strong>Email: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.email"/><br/>
+							</t>
+							<t t-if="epicrisis.patient_id.blood_type">
+								<strong>Tipo de Sangre: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.blood_type"/>
+								<span style="padding-left:2px;" t-field="epicrisis.patient_id.blood_rh"/><br/>
+							</t>
+						</td>
+						<td colspan="1" style="width:40%;">
+							<t t-if="epicrisis.patient_id.tdoc_rips">
+								<strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.tdoc_rips"/><br/>
+							</t>
+							<t t-if="epicrisis.patient_id.ref">
+								<strong>Documento: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.ref"/><br/>
+							</t>
+							<t t-if="epicrisis.patient_id.birth_date">
+								<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.birth_date"/><br/>
+							</t>
+							<t t-if="epicrisis.patient_id.age">
+								<strong>Edad: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.age"/><span style="padding-left:2px;" t-field="epicrisis.age_meassure_unit"/><br/>
+							</t>
+							<t t-if="epicrisis.patient_id.residence_country_id">
+								<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.residence_country_id.name"/>
+								<t t-if="epicrisis.patient_id.residence_department_id">
+									<span> - </span><span style="padding-left:2px;" t-field="epicrisis.patient_id.residence_department_id.name"/><br/>
+								</t>
+								<t t-if="epicrisis.patient_id.residence_city_id">
+									<span> - </span><span style="padding-left:2px;" t-field="epicrisis.patient_id.residence_city_id.name"/><br/>
+								</t>
+							</t>
+							<t t-if="epicrisis.patient_id.residence_address">
+								<strong>Dirección: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.residence_address"/><br/>
+							</t>
+							<strong t-if="epicrisis.patient_id.accompany_name">Datos acompañante</strong><br/>
+							<t t-if="epicrisis.patient_id.accompany_name">
+								<strong>Nombre: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.accompany_name"/><br/>
+							</t>
+							<t t-if="epicrisis.patient_id.accompany_phone">
+								<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.accompany_phone"/><br/>
+							</t>
+						</td>
+					</tr>
        				<tr t-if="epicrisis.disease_id or epicrisis.procedure_id or epicrisis.user_id">
        					<td colspan="2" style="text-align:center; "><strong>OTHER DETAILS</strong></td>
        				</tr>
@@ -1498,21 +1901,6 @@
        					</td>
        				</tr>
        			</table>
-			  <div style="border-top: 1px solid black;">
-				<div t-if="epicrisis.doctor_id.is_custom_img">
-					<img t-if="epicrisis.doctor_id.custom_img" 
-					t-att-src="'data:image/png;base64,%s' % to_text(epicrisis.doctor_id.custom_img)"
-					style="width:25%; display:block; margin-left:auto; margin-right:auto"
-					class="center"/>
-				</div>
-				<div t-else="">
-					<div t-if="epicrisis.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
-						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="epicrisis.doctor_id.digital_sign"/> - 
-						Profesional de la salud registrado bajo el N° 
-						<span style="padding-left:1px; " t-field="epicrisis.doctor_id.medical_record"/>
-					</div>
-				</div>
-            </div>
        			<p style="page-break-after: always;"/>
        		</t>
        		</div>
@@ -1534,34 +1922,71 @@
               <table class="table table-bordered" style=" width:100%;">
                 <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
                 <tr>
-                  <td style="width:50%; "><t t-if="prescription.patientname"> Historia Clínica: <span style="padding-left:2px;" t-field="prescription.patient_id.ref"/></t><br/>
-				     <td style="width:50%; ">
-                  Patient Name: <span style="padding-left:2px;" t-field="prescription.patient_id.firstname"/> <span style="padding-left:2px;" t-field="prescription.patient_id.lastname"/><br/>
-				   <t t-if="prescription.patient_id.tdoc_rips">
-                    Tipo Documento: <span style="padding-left:2px;" t-field="prescription.patient_id.tdoc_rips"/><br/>
-                  </t>
-                  <t t-if="prescription.patient_id.ref">
-                    Número Documento: <span style="padding-left:2px;" t-field="prescription.patient_id.ref"/><br/>
-                  </t>
-
-				  <t t-if="prescription.patient_id.age">Genero: <span style="padding-left:2px;" t-field="prescription.patient_id.sex"/><br/></t>
-				  <t t-if="prescription.patient_id.age">Fecha de Prescripcion: <span style="padding-left:2px;" t-field="prescription.prescription_date"/><br/></t>
-                  <t t-if="prescription.patient_id.age">Age: <span style="padding-left:2px;" t-field="prescription.patient_id.age"/><br/></t>
-				  <t t-if="prescription.patient_id.user_type">Tipo de usuario: <span style="padding-left:2px;" t-field="prescription.patient_id.user_type"/><br/></t>
-                  </td>
-  	                <t t-foreach="prescription.patient_id.insurer_ids" t-as="insurers">
-  	                  <tr>
-  	                    <td style="width:100%; text-align:right;">
-  	                      Aseguradora: <span style="padding-left:2px;" t-field="insurers.insurer_id.name"/>
-  	                    </td>
-  	                    <td style="width:100%;">
-  	                      Plan: <span style="padding-left:2px;" t-field="insurers.plan"/>
-  	                    </td>
-  	                  </tr>
-  	                </t>
-                  </td>
-               
-                </tr>
+					<td colspan="1" style="width:60%;">
+						<strong>Nombre Paciente: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.firstname"/>
+						<span style="padding-left:2px;" t-field="prescription.patient_id.middlename"/>
+						<span style="padding-left:2px;" t-field="prescription.patient_id.lastname"/>
+						<span style="padding-left:2px;" t-field="prescription.patient_id.surname"/><br/>
+						<t t-if="prescription.patient_id.sex">
+							<strong>Género: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.sex"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.user_type">
+							<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.insurer_ids">
+							<t t-foreach="prescription.patient_id.insurer_ids" t-as="insurers">
+								<strong>Aseguradora: </strong><span style="padding-left:2px;" t-field="insurers.insurer_id.name"/><br/>
+								<strong>Plan: </strong><span style="padding-left:2px;" t-field="insurers.plan"/><br/>
+							</t>
+						</t>
+						<t t-if="prescription.patient_id.birth_country_id">
+							<strong>Lugar Nacimiento: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.birth_country_id.name"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.phone">
+							<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.phone"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.email">
+							<strong>Email: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.email"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.blood_type">
+							<strong>Tipo de Sangre: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.blood_type"/>
+							<span style="padding-left:2px;" t-field="prescription.patient_id.blood_rh"/><br/>
+						</t>
+					</td>
+					<td colspan="1" style="width:40%;">
+						<t t-if="prescription.patient_id.tdoc_rips">
+							<strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.tdoc_rips"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.ref">
+							<strong>Documento: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.ref"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.birth_date">
+							<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.birth_date"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.age">
+							<strong>Edad: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.age"/><span style="padding-left:2px;" t-field="prescription.age_meassure_unit"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.residence_country_id">
+							<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.residence_country_id.name"/>
+							<t t-if="prescription.patient_id.residence_department_id">
+								<span> - </span><span style="padding-left:2px;" t-field="prescription.patient_id.residence_department_id.name"/><br/>
+							</t>
+							<t t-if="prescription.patient_id.residence_city_id">
+								<span> - </span><span style="padding-left:2px;" t-field="prescription.patient_id.residence_city_id.name"/><br/>
+							</t>
+						</t>
+						<t t-if="prescription.patient_id.residence_address">
+							<strong>Dirección: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.residence_address"/><br/>
+						</t>
+						<strong t-if="prescription.patient_id.accompany_name">Datos acompañante</strong><br/>
+						<t t-if="prescription.patient_id.accompany_name">
+							<strong>Nombre: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.accompany_name"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.accompany_phone">
+							<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.accompany_phone"/><br/>
+						</t>
+					</td>
+				</tr>
                 <t t-if="prescription.order_type == 'informs'">
                   <tr>
                     <td colspan="2" style="text-align:center;"><strong>RECOMENDACIONES</strong></td>
@@ -1656,20 +2081,22 @@
                 </t>
               </table>
 				<div style="border-top: 1px solid black;">
-					<div t-if="prescription.doctor_id.is_custom_img">
-						<img t-if="prescription.doctor_id.custom_img" 
-						t-att-src="'data:image/png;base64,%s' % to_text(prescription.doctor_id.custom_img)"
-						style="width:25%; display:block; margin-left:auto; margin-right:auto"
-						class="center"/>
-					</div>
-					<div t-else="">
-						<div t-if="prescription.doctor_id.medical_record" style="width:100%; text-align: center; font-size: 12px;">
+					<t t-if="prescription.doctor_id.is_custom_img">
+						<div>
+							<img t-if="prescription.doctor_id.custom_img" 
+							t-att-src="'data:image/png;base64,%s' % to_text(prescription.doctor_id.custom_img)"
+							style="width:25%; display:block; margin-left:auto; margin-right:auto"
+							class="center"/>
+						</div>
+					</t>
+					<div t-if="prescription.doctor_id.medical_record">
+						<div style="width:100%; text-align: center; font-size: 12px;">
 							Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="prescription.doctor_id.digital_sign"/> - 
 							Profesional de la salud registrado bajo el N° 
 							<span style="padding-left:1px; " t-field="prescription.doctor_id.medical_record"/>
 						</div>
 					</div>
-            	</div>
+				</div>
             </t>
             <t t-if="prescription.order_type == 'inability'">
               <table style="width:100%;">
@@ -1682,20 +2109,71 @@
               <table class="table table-bordered" style=" width:100%;">
                 <tr><td colspan="4" style="text-align:center; "><strong>DATOS DEL PACIENTE</strong></td></tr>
                 <tr>
-                  <td style="width:50%;" colspan="2">
-                    <t t-if="prescription.patientname">Nombre: <span style="padding-left:2px;" t-field="prescription.patientname"/></t><br/>
-                    <t t-if="prescription.sex">Género: <span style="padding-left:2px;" t-field="prescription.sex"/></t><br/>
-                    <t t-if="prescription.user_type">Tipo de usuario: <span style="padding-left:2px;" t-field="prescription.user_type"/></t><br/>
-                    <t t-if="prescription.patient_id.insurer_id">Aseguradora: <span style="padding-left:2px;" t-field="prescription.patient_id.insurer_id"/></t><br/>
-                    <t t-if="prescription.patient_id.birth_country_id or prescription.patient_id.provenance_country_id">Lugar nacimiento: <span style="padding-left:2px;" t-field="prescription.patient_id.birth_country_id.name"/> - <span style="padding-left:2px;" t-field="prescription.patient_id.provenance_country_id.name"/></t><br/>
-                  </td>
-                  <td style="width:50%;" colspan="2">
-                    <t t-if="prescription.numberid">Documento: <span style="padding-left:2px;" t-field="prescription.numberid"/></t><br/>
-                    <t t-if="prescription.patient_id.birth_date">Fecha nacimiento: <span style="padding-left:2px;" t-field="prescription.patient_id.birth_date"/></t><br/>
-                    <t t-if="prescription.patient_id.age">Edad: <span style="padding-left:2px;" t-field="prescription.patient_id.age"/></t><br/>
-                    <t t-if="prescription.patient_id.residence_country_id or prescription.patient_id.residence_department_id or prescription.patient_id.residence_city_id">Lugar residencia: <span style="padding-left:2px;" t-field="prescription.patient_id.residence_country_id.name"/> - <span style="padding-left:2px;" t-field="prescription.patient_id.residence_department_id.name"/> - <span style="padding-left:2px;" t-field="prescription.patient_id.residence_city_id.name"/></t><br/>
-                  </td>
-                </tr>
+					<td colspan="1" style="width:60%;">
+						<strong>Nombre Paciente: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.firstname"/>
+						<span style="padding-left:2px;" t-field="prescription.patient_id.middlename"/>
+						<span style="padding-left:2px;" t-field="prescription.patient_id.lastname"/>
+						<span style="padding-left:2px;" t-field="prescription.patient_id.surname"/><br/>
+						<t t-if="prescription.patient_id.sex">
+							<strong>Género: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.sex"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.user_type">
+							<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.insurer_ids">
+							<t t-foreach="prescription.patient_id.insurer_ids" t-as="insurers">
+								<strong>Aseguradora: </strong><span style="padding-left:2px;" t-field="insurers.insurer_id.name"/><br/>
+								<strong>Plan: </strong><span style="padding-left:2px;" t-field="insurers.plan"/><br/>
+							</t>
+						</t>
+						<t t-if="prescription.patient_id.birth_country_id">
+							<strong>Lugar Nacimiento: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.birth_country_id.name"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.phone">
+							<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.phone"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.email">
+							<strong>Email: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.email"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.blood_type">
+							<strong>Tipo de Sangre: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.blood_type"/>
+							<span style="padding-left:2px;" t-field="prescription.patient_id.blood_rh"/><br/>
+						</t>
+					</td>
+					<td colspan="1" style="width:40%;">
+						<t t-if="prescription.patient_id.tdoc_rips">
+							<strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.tdoc_rips"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.ref">
+							<strong>Documento: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.ref"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.birth_date">
+							<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.birth_date"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.age">
+							<strong>Edad: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.age"/><span style="padding-left:2px;" t-field="prescription.age_meassure_unit"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.residence_country_id">
+							<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.residence_country_id.name"/>
+							<t t-if="prescription.patient_id.residence_department_id">
+								<span> - </span><span style="padding-left:2px;" t-field="prescription.patient_id.residence_department_id.name"/><br/>
+							</t>
+							<t t-if="prescription.patient_id.residence_city_id">
+								<span> - </span><span style="padding-left:2px;" t-field="prescription.patient_id.residence_city_id.name"/><br/>
+							</t>
+						</t>
+						<t t-if="prescription.patient_id.residence_address">
+							<strong>Dirección: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.residence_address"/><br/>
+						</t>
+						<strong t-if="prescription.patient_id.accompany_name">Datos acompañante</strong><br/>
+						<t t-if="prescription.patient_id.accompany_name">
+							<strong>Nombre: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.accompany_name"/><br/>
+						</t>
+						<t t-if="prescription.patient_id.accompany_phone">
+							<strong>Teléfono: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.accompany_phone"/><br/>
+						</t>
+					</td>
+				</tr>
                 <tr>
                   <td style="width:33%; padding-left:10px; text-align:center; font-size: 22px;"><strong>Fecha Inicio</strong></td>
                   <td colspan="2" style="width:33%; padding-left:10px; text-align:center; font-size: 22px;"><strong>Fecha Finalización</strong></td>

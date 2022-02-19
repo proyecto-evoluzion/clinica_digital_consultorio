@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="inherti_report_invoice_document_inherit" name="inherti_report_invoice_document_inherit" inherit_id="l10n_co_tax_extension.report_invoice_document_inherit">
+            <div name="invoice_address" position="replace">
+                <div name="inherit_invoice_address" class="col-xs-5 col-xs-offset-7">
+                    <br></br>
+                    <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')"><strong><h3>Client</h3></strong></span>
+                    <span t-if="o.type == 'in_invoice'"><strong><h3>Provider</h3></strong></span>
+                    <span t-field="o.partner_id.name"/>
+                    <br></br>
+                    <span t-if="o.tdoc_rips and o.number_identification"><span t-field="o.tdoc_rips"/> - <span t-field="o.number_identification"/></span>
+                    <span t-else="">Sin identificación</span>
+				</div>
+            </div>
+        </template>
+    </data>
+</odoo>

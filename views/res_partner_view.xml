@@ -74,11 +74,11 @@
 
           </field>
 
-        <field name="l10n_co_document_type" position="attributes">
+        <!-- <field name="l10n_co_document_type" position="attributes">
 
          <attribute name="invisible">1</attribute>
 
-          </field>
+          </field> -->
 
 
 

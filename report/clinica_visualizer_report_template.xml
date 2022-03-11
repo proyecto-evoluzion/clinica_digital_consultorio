@@ -63,7 +63,7 @@
 								<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.birth_date"/><br/>
 							</t>
 							<t t-if="nurse_sheet.patient_id.age">
-								<strong>Edad: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.age"/><span style="padding-left:2px;" t-field="nurse_sheet.age_meassure_unit"/><br/>
+								<strong>Edad: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.age"/><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.age_unit"/><br/>
 							</t>
 							<t t-if="nurse_sheet.patient_id.residence_country_id">
 								<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.residence_country_id.name"/>
@@ -170,7 +170,7 @@
 								<strong>Género: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.sex"/><br/>
 							</t>
 							<t t-if="quirgic_sheet.patient_id.user_type">
-								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.user_type"/><br/>
 							</t>
 							<t t-if="quirgic_sheet.patient_id.insurer_ids">
 								<t t-foreach="quirgic_sheet.patient_id.insurer_ids" t-as="insurers">
@@ -203,7 +203,7 @@
 								<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.birth_date"/><br/>
 							</t>
 							<t t-if="quirgic_sheet.patient_id.age">
-								<strong>Edad: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.age"/><span style="padding-left:2px;" t-field="quirgic_sheet.age_meassure_unit"/><br/>
+								<strong>Edad: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.age"/><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.age_unit"/><br/>
 							</t>
 							<t t-if="quirgic_sheet.patient_id.residence_country_id">
 								<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.residence_country_id.name"/>
@@ -321,7 +321,7 @@
 								<strong>Género: </strong><span style="padding-left:2px;" t-field="room.patient_id.sex"/><br/>
 							</t>
 							<t t-if="room.patient_id.user_type">
-								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="room.patient_id.user_type"/><br/>
 							</t>
 							<t t-if="room.patient_id.insurer_ids">
 								<t t-foreach="room.patient_id.insurer_ids" t-as="insurers">
@@ -354,7 +354,7 @@
 								<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="room.patient_id.birth_date"/><br/>
 							</t>
 							<t t-if="room.patient_id.age">
-								<strong>Edad: </strong><span style="padding-left:2px;" t-field="room.patient_id.age"/><span style="padding-left:2px;" t-field="room.age_meassure_unit"/><br/>
+								<strong>Edad: </strong><span style="padding-left:2px;" t-field="room.patient_id.age"/><span style="padding-left:2px;" t-field="room.patient_id.age_unit"/><br/>
 							</t>
 							<t t-if="room.patient_id.residence_country_id">
 								<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="room.patient_id.residence_country_id.name"/>
@@ -442,7 +442,7 @@
 								<strong>Género: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.sex"/><br/>
 							</t>
 							<t t-if="presurgical_record.patient_id.user_type">
-								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.user_type"/><br/>
 							</t>
 							<t t-if="presurgical_record.patient_id.insurer_ids">
 								<t t-foreach="presurgical_record.patient_id.insurer_ids" t-as="insurers">
@@ -475,7 +475,7 @@
 								<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.birth_date"/><br/>
 							</t>
 							<t t-if="presurgical_record.patient_id.age">
-								<strong>Edad: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.age"/><span style="padding-left:2px;" t-field="presurgical_record.age_meassure_unit"/><br/>
+								<strong>Edad: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.age"/><span style="padding-left:2px;" t-field="presurgical_record.patient_id.age_unit"/><br/>
 							</t>
 							<t t-if="presurgical_record.patient_id.residence_country_id">
 								<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="presurgical_record.patient_id.residence_country_id.name"/>
@@ -740,7 +740,7 @@
 								<strong>Género: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.sex"/><br/>
 							</t>
 							<t t-if="anhestesic_registry.patient_id.user_type">
-								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.user_type"/><br/>
 							</t>
 							<t t-if="anhestesic_registry.patient_id.insurer_ids">
 								<t t-foreach="anhestesic_registry.patient_id.insurer_ids" t-as="insurers">
@@ -773,7 +773,7 @@
 								<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.birth_date"/><br/>
 							</t>
 							<t t-if="anhestesic_registry.patient_id.age">
-								<strong>Edad: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.age"/><span style="padding-left:2px;" t-field="anhestesic_registry.age_meassure_unit"/><br/>
+								<strong>Edad: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.age"/><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.age_unit"/><br/>
 							</t>
 							<t t-if="anhestesic_registry.patient_id.residence_country_id">
 								<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.residence_country_id.name"/>
@@ -953,7 +953,7 @@
 								<strong>Género: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.sex"/><br/>
 							</t>
 							<t t-if="plastic_surgery.patient_id.user_type">
-								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.user_type"/><br/>
 							</t>
 							<t t-if="plastic_surgery.patient_id.insurer_ids">
 								<t t-foreach="plastic_surgery.patient_id.insurer_ids" t-as="insurers">
@@ -992,7 +992,7 @@
 								<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.birth_date"/><br/>
 							</t>
 							<t t-if="plastic_surgery.patient_id.age">
-								<strong>Edad: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.age"/><span style="padding-left:2px;" t-field="plastic_surgery.age_meassure_unit"/><br/>
+								<strong>Edad: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.age"/><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.age_unit"/><br/>
 							</t>
 							<t t-if="plastic_surgery.patient_id.residence_country_id">
 								<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.residence_country_id.name"/>
@@ -1355,7 +1355,7 @@
 						<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.birth_date"/><br/>
 					</t>
 					<t t-if="complete_plastic_surgery.patient_id.age">
-						<strong>Edad: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.age"/><span style="padding-left:2px;" t-field="complete_plastic_surgery.age_meassure_unit"/><br/>
+						<strong>Edad: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.age"/><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.age_unit"/><br/>
 					</t>
 					<t t-if="complete_plastic_surgery.patient_id.residence_country_id">
 						<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="complete_plastic_surgery.patient_id.residence_country_id.name"/>
@@ -1688,7 +1688,7 @@
 								<strong>Género: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.sex"/><br/>
 							</t>
 							<t t-if="medical_evolution.patient_id.user_type">
-								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.user_type"/><br/>
 							</t>
 							<t t-if="medical_evolution.patient_id.insurer_ids">
 								<t t-foreach="medical_evolution.patient_id.insurer_ids" t-as="insurers">
@@ -1721,7 +1721,7 @@
 								<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.birth_date"/><br/>
 							</t>
 							<t t-if="medical_evolution.patient_id.age">
-								<strong>Edad: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.age"/><span style="padding-left:2px;" t-field="medical_evolution.age_meassure_unit"/><br/>
+								<strong>Edad: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.age"/><span style="padding-left:2px;" t-field="medical_evolution.patient_id.age_unit"/><br/>
 							</t>
 							<t t-if="medical_evolution.patient_id.residence_country_id">
 								<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.residence_country_id.name"/>
@@ -1817,10 +1817,10 @@
 							<span style="padding-left:2px;" t-field="epicrisis.patient_id.lastname"/>
 							<span style="padding-left:2px;" t-field="epicrisis.patient_id.surname"/><br/>
 							<t t-if="epicrisis.patient_id.sex">
-								<strong>Género: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.sex"/><br/>
+								<strong>Género: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.sex"/><br/>
 							</t>
 							<t t-if="epicrisis.patient_id.user_type">
-								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+								<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.user_type"/><br/>
 							</t>
 							<t t-if="epicrisis.patient_id.insurer_ids">
 								<t t-foreach="epicrisis.patient_id.insurer_ids" t-as="insurers">
@@ -1853,7 +1853,7 @@
 								<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.birth_date"/><br/>
 							</t>
 							<t t-if="epicrisis.patient_id.age">
-								<strong>Edad: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.age"/><span style="padding-left:2px;" t-field="epicrisis.age_meassure_unit"/><br/>
+								<strong>Edad: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.age"/><span style="padding-left:2px;" t-field="epicrisis.patient_id.age_unit"/><br/>
 							</t>
 							<t t-if="epicrisis.patient_id.residence_country_id">
 								<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="epicrisis.patient_id.residence_country_id.name"/>
@@ -1928,10 +1928,10 @@
 						<span style="padding-left:2px;" t-field="prescription.patient_id.lastname"/>
 						<span style="padding-left:2px;" t-field="prescription.patient_id.surname"/><br/>
 						<t t-if="prescription.patient_id.sex">
-							<strong>Género: </strong><span style="padding-left:2px;" t-field="medical_evolution.patient_id.sex"/><br/>
+							<strong>Género: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.sex"/><br/>
 						</t>
 						<t t-if="prescription.patient_id.user_type">
-							<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+							<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.user_type"/><br/>
 						</t>
 						<t t-if="prescription.patient_id.insurer_ids">
 							<t t-foreach="prescription.patient_id.insurer_ids" t-as="insurers">
@@ -1964,7 +1964,7 @@
 							<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.birth_date"/><br/>
 						</t>
 						<t t-if="prescription.patient_id.age">
-							<strong>Edad: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.age"/><span style="padding-left:2px;" t-field="prescription.age_meassure_unit"/><br/>
+							<strong>Edad: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.age"/><span style="padding-left:2px;" t-field="prescription.patient_id.age_unit"/><br/>
 						</t>
 						<t t-if="prescription.patient_id.residence_country_id">
 							<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.residence_country_id.name"/>
@@ -2118,7 +2118,7 @@
 							<strong>Género: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.sex"/><br/>
 						</t>
 						<t t-if="prescription.patient_id.user_type">
-							<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="v.patient_id.user_type"/><br/>
+							<strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.user_type"/><br/>
 						</t>
 						<t t-if="prescription.patient_id.insurer_ids">
 							<t t-foreach="prescription.patient_id.insurer_ids" t-as="insurers">
@@ -2151,7 +2151,7 @@
 							<strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.birth_date"/><br/>
 						</t>
 						<t t-if="prescription.patient_id.age">
-							<strong>Edad: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.age"/><span style="padding-left:2px;" t-field="prescription.age_meassure_unit"/><br/>
+							<strong>Edad: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.age"/><span style="padding-left:2px;" t-field="prescription.patient_id.age_unit"/><br/>
 						</t>
 						<t t-if="prescription.patient_id.residence_country_id">
 							<strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.residence_country_id.name"/>

@@ -41,6 +41,7 @@
         'report/clinica_visualizer_report_template.xml',
         'report/clinica_visualizer_report.xml',
         'report/inherit_external_layout.xml',
+        'report/doctorfreddybarrios/freddybarrios_external_layout.xml',
         'report/clinica_prescription_report.xml',
         'report/inherit_invoice_report.xml',
         'views/doctor_details_view.xml',

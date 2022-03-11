@@ -36,9 +36,9 @@
             </xpath>
         </template>
 
-        <!--
-        	Herencia al reporte generico - Modalidad Background.
-		-->
+<!--
+    Herencia al reporte generico - Modalidad Background.
+-->
 
         <template id="inherit_report_external_layout_bk" name="inherit_report_external_layout_bk" inherit_id="web.external_layout_background">
 
@@ -48,17 +48,17 @@
         	<strong position="replace"></strong>
         </template>
 
-        <!--
-        	Herencia al reporte generico - Modalidad Boxed.
-		-->
+<!--
+    Herencia al reporte generico - Modalidad Boxed.
+-->
 
         <!-- <template id="inherit_report_external_layout_boxed" name="inherit_report_external_layout_boxed" inherit_id="web.external_layout_boxed"> 
         	
         </template>-->
 
-        <!--
-        	Herencia al reporte generico - Modalidad Clean.
-		-->
+<!--
+    Herencia al reporte generico - Modalidad Clean.
+-->
 
         <!-- <template id="inherit_report_external_layout_clean" name="inherit_report_external_layout_clean" inherit_id="web.external_layout_clean">
         	

@@ -572,6 +572,8 @@ class DoctorAdministrativeData(models.Model):
     @api.multi
     def _check_tdocs(self):
         for data in self:
+            logger.error('tdoc_rips tdoc_rips tdoc_rips tdoc_rips')
+            logger.error(data.tdoc_rips)
             if data.age_unit == '3' and data.tdoc_rips not in ['RC','MS','CN']:
                 raise ValidationError(_("You can only choose 'RC'-'CN' or 'MS' documents, for age less than 1 month."))
             if data.age > 17 and data.age_unit == '1' and data.tdoc_rips in ['RC','MS','CN']:
@@ -673,7 +675,7 @@ class DoctorAdministrativeData(models.Model):
         
                
                
-        # res._check_tdocs()
+        res._check_tdocs()
         partner_vals = res._get_related_partner_vals(vals)
         partner_vals.update({'doctype': 1})
         partner_vals.update({'name': vals['patient_name']})        
@@ -704,7 +706,7 @@ class DoctorAdministrativeData(models.Model):
                 raise ValidationError(warn_msg)
         tools.image_resize_images(vals)
         res = super(DoctorAdministrativeData, self).write(vals)
-        # self._check_tdocs()
+        self._check_tdocs()
         if 'firstname' in vals or 'lastname' in vals or 'middlename' in vals or 'surname' in vals\
                  or 'birth_date' in vals or 'email' in vals or 'phone' in vals or 'mobile' in vals or 'image' in vals \
                  or 'residence_district' in vals or 'residence_department_id' in vals or 'residence_country_id' in vals or 'residence_address' in vals or 'name' in vals or 'tdoc_rips' in vals:

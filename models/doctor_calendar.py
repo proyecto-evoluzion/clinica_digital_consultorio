@@ -548,6 +548,7 @@ class DoctorWaitingRoom(models.Model):
     
     @api.multi
     def _check_document_types(self):
+        logger.error('doctor_calendar')
         for room in self:
             if room.age_meassure_unit == '3' and room.document_type not in ['RC','MS']:
                 raise ValidationError(_("You can only choose 'RC' or 'MS' documents, for age less than 1 month."))
@@ -737,7 +738,7 @@ class DoctorWaitingRoom(models.Model):
             raise ValidationError(warn_msg)
         
         res = super(DoctorWaitingRoom, self).create(vals)
-        res._check_document_types()
+        # res._check_document_types()
         res._validate_surgeon_room()
         if vals.get('room_type', False) and vals['room_type'] == 'surgery':
             if vals.get('surgery_room_id', False):
@@ -776,7 +777,7 @@ class DoctorWaitingRoom(models.Model):
                 self._reallocate_schedule_time(vals)
                 
         res = super(DoctorWaitingRoom, self).write(vals)
-        self._check_document_types()
+        # self._check_document_types()
         self._validate_surgeon_room()
         if vals.get('room_type', False) and vals['room_type'] == 'surgery':
             if vals.get('surgery_room_id', False):

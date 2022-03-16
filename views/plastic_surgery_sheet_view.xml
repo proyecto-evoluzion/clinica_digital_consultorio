@@ -243,7 +243,7 @@
                     <field name="state"/>
        				<field name="document_type"/>
        				<field name="numberid"/>
-                  
+                    <field name="state"/>
                 </tree>
             </field>
         </record>

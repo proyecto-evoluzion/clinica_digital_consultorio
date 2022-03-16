@@ -269,7 +269,7 @@
             <field name="res_model">clinica.plastic.surgery</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="clinica_presurgical_record_tree"/>
+            <field name="view_id" ref="clinica_plastic_surgery_tree"/>
             <field name="search_view_id" ref="clinica_plastic_surgery_filter"/>
         </record> 
         

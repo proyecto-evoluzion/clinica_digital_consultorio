@@ -313,7 +313,7 @@
        				<field name="document_type"/>
        				<field name="numberid"/>
        				<field name="doctor_id"/>
-                    <field name="state"/>    
+                    <field name="state"/>
                 </tree>
             </field>
         </record>

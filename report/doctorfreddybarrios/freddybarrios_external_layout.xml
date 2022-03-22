@@ -9,9 +9,27 @@
 
         <template id="freddy_barrios_external_layout_bk">
             <div class="header o_background_header" style="text-align: center;">
-                <h2>Consultorio Dr. Freddy Barrios Segura - Médico Especialista en Pediatría</h2><br></br>
-                <span style="font-size: 16px;">Consultorio 408 Clínica de Marly JCG, Avenida Los Zipas, Chía.</span><br></br>
-                <span style="font-size: 16px;">Teléfono 6532000 extensión 8456 (08 AM - 05 PM). </span><span style="color: blue;">barrios.pediatra@gmail.com</span>
+                <h2>
+                    Consultorio Dr. <t t-esc="o.doctor_id.firstname"/> <t t-esc="o.doctor_id.lastname"/> - Médico Especialista en 
+                    <!-- <t t-esc="o.doctor_id.profession_type"/> -->
+                    <t t-if="o.doctor_id.profession_type == 'plastic_surgeon'">
+                        Cirugía
+                    </t>
+                    <t t-if="o.doctor_id.profession_type == 'anesthesiologist'">
+                        Anestesiólogo
+                    </t>
+                    <t t-if="o.doctor_id.profession_type == 'nurse'">
+                        Enfermero
+                    </t>
+                    <t t-if="o.doctor_id.profession_type == 'otorhino'">
+                        Otorrinolaringologo
+                    </t>
+                    <t t-if="o.doctor_id.profession_type == 'pediatrician'">
+                        Pediatría
+                    </t>
+                </h2><br></br>
+                <span style="font-size: 16px;"><t t-esc="company.street"/></span><br></br>
+                <span style="font-size: 16px;">Teléfono <t t-esc="company.phone"/> (08 AM - 05 PM). </span>&amp;nbsp<span style="color: blue;"><t t-esc="o.doctor_id.email"/></span>
             </div>
 
             <div class="article o_report_layout_background">
@@ -21,9 +39,9 @@
             <div class="footer o_background_footer">
                 <div class="text-center">
                     <div class="text-muted">
-                        Page:
+                        Página:
                         <span class="page"/>
-                        of
+                        /
                         <span class="topage"/>
                     </div>
                 </div>

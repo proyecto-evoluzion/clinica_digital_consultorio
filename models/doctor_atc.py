@@ -77,8 +77,9 @@ class DoctorAtc(models.Model):
     control_medication = fields.Boolean(string="Medicamento controlado" ,default=False)
     dose = fields.Integer(string="Dosis")
     
+    @api.multi
     @api.depends('dose','every_use','deadline_use')
     def _compute_total_to_use(self):
-        if self.dose != 0:
-            for calc_cant in self:
-                 self.total_to_use = self.dose * self.every_use * self.deadline_use
+        for calc_cant in self:
+            if calc_cant.dose != 0:
+                calc_cant.total_to_use = calc_cant.dose * calc_cant.every_use * calc_cant.deadline_use

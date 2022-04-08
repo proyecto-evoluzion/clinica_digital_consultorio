@@ -16,18 +16,48 @@
         	<!--header Mod.-->
         	<div class="col-xs-3 mb4" position="replace">
                 <div class="col-xs-12">
-                    <div class="col-xs-6" style="margin-top:15px;">
-                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="max-height: 45px;"/>
-                    </div>
-                    <div class="col-xs-6" style="margin-top:25px;">
-                        <!-- <span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/> -->
-                        <span style="padding-right:2px;" t-field="company.name"/>-
-                        <span t-if="company.street"><span style="padding-left:1px;" t-field="company.street"/></span>
-                        <span t-if="company.state_id"><span style="padding-left:2px;" t-field="company.state_id.name"/></span>
-                        <span t-if="company.zip"><span style="padding-left:2px;" t-field="company.zip"/></span>
-                        <span t-if="company.country_id"><span style="padding-left:2px;" t-field="company.country_id.name"/></span>
-                        <span t-if="company.partner_id.formatedNit" style="border-bottom: 1px solid black; display:inline-block;">NIT / DI: <span t-field="company.partner_id.formatedNit"/></span>
-                    </div>
+                    <t t-if="company.is_primary_logo and not company.is_secondary_logo">
+                        <div class="col-xs-6" style="margin-top:15px;">
+                            <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="max-height: 120px;"/>
+                        </div>
+                        <div class="col-xs-6" style="margin-top:25px;">
+                            <!-- <span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/> -->
+                            <span style="padding-right:2px;" t-field="company.name"/>-
+                            <span t-if="company.street"><span style="padding-left:1px;" t-field="company.street"/></span>
+                            <span t-if="company.state_id"><span style="padding-left:2px;" t-field="company.state_id.name"/></span>
+                            <span t-if="company.zip"><span style="padding-left:2px;" t-field="company.zip"/></span>
+                            <span t-if="company.country_id"><span style="padding-left:2px;" t-field="company.country_id.name"/></span>
+                            <span t-if="company.partner_id.formatedNit" style="border-bottom: 1px solid black; display:inline-block;">NIT / DI: <span t-field="company.partner_id.formatedNit"/></span>
+                        </div>
+                    </t>
+                    <t t-if="company.is_primary_logo and company.is_secondary_logo">
+                        <div class="col-xs-4" style="margin-top:15px;">
+                            <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="max-height: 120px;"/>
+                        </div>
+                        <div class="col-xs-4" style="margin-top:25px;">
+                            <!-- <span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/> -->
+                            <span style="padding-right:2px;" t-field="company.name"/>-
+                            <span t-if="company.street"><span style="padding-left:1px;" t-field="company.street"/></span>
+                            <span t-if="company.state_id"><span style="padding-left:2px;" t-field="company.state_id.name"/></span>
+                            <span t-if="company.zip"><span style="padding-left:2px;" t-field="company.zip"/></span>
+                            <span t-if="company.country_id"><span style="padding-left:2px;" t-field="company.country_id.name"/></span>
+                            <span t-if="company.partner_id.formatedNit" style="border-bottom: 1px solid black; display:inline-block;">NIT / DI: <span t-field="company.partner_id.formatedNit"/></span>
+                        </div>
+                        <div class="col-xs-4" style="margin-top:15px;">
+                            <img t-if="company.logo2" t-att-src="'data:image/png;base64,%s' % to_text(company.logo2)" style="max-height: 120px;"/>
+                        </div>
+                    </t>
+                    <t t-if="not company.is_primary_logo">
+                        <div class="col-xs-12" style="margin-top:25px;">
+                            <!-- <span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/> -->
+                            <span style="padding-right:2px;" t-field="company.name"/>-
+                            <span t-if="company.street"><span style="padding-left:1px;" t-field="company.street"/></span>
+                            <span t-if="company.state_id"><span style="padding-left:2px;" t-field="company.state_id.name"/></span>
+                            <span t-if="company.zip"><span style="padding-left:2px;" t-field="company.zip"/></span>
+                            <span t-if="company.country_id"><span style="padding-left:2px;" t-field="company.country_id.name"/></span>
+                            <span t-if="company.partner_id.formatedNit" style="border-bottom: 1px solid black; display:inline-block;">NIT / DI: <span t-field="company.partner_id.formatedNit"/></span>
+                        </div>
+                    </t>
                 </div>
         	</div>
             <!--footer Mod.-->

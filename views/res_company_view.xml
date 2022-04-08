@@ -17,6 +17,14 @@
           </field>
           <field name="partner_id" position="after">
             <field name="service_provider" />
+            <field name="is_primary_logo"/>
+            <field name="is_secondary_logo" groups="base.group_system" attrs="{'invisible':[('is_primary_logo','=',False)]}"/>
+            <field name="logo2" 
+                attrs="{'invisible':[('is_secondary_logo','=',False)]}" 
+                widget="image" 
+                class="oe_avatar" 
+                options="{&quot;size&quot;: [90, 90]}"
+            />
           </field>
 
           <notebook position="inside">

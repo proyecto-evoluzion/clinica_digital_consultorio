@@ -147,6 +147,7 @@ class Doctor(models.Model):
     domain_product_ids = fields.Many2many('product.product', default=_default_products)
     is_custom_img = fields.Boolean(string="Firma Digital en imagen?")
     custom_img = fields.Binary(String="Foto Firma")
+    doctor_speciality_id = fields.Many2one('doctor.specialty', required=True, string="Especialidad")
 
 
     @api.onchange('medical_record')
@@ -980,8 +981,11 @@ class DoctorAttentionFormat(models.Model):
     name = fields.Char(string="Name")
     type = fields.Selection([('simple','Clinical'),
                              ('complete','Clinical Complete')],default='simple', string='Type')
-    
 
-# vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
+class DoctorSpeciality(models.Model):
+    _name = "doctor.specialty"
+    _description = "Doctor Speciality model"
+    _rec_name = 'name'
 
-
+    code = fields.Char(string="Código")
+    name = fields.Char(string="Especialidad")

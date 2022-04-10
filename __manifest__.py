@@ -43,6 +43,7 @@
         'report/inherit_external_layout.xml',
         'report/doctorfreddybarrios/freddybarrios_external_layout.xml',
         'report/clinica_prescription_report.xml',
+        'report/clinica_attention_report.xml',
         'report/inherit_invoice_report.xml',
         'views/doctor_details_view.xml',
         'views/res_config_settings_view.xml',

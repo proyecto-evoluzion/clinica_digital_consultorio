@@ -37,6 +37,15 @@
             <field name="padding">5</field>
             <field name="sequence_dian_type">invoice_computer_generated</field>
         </record>
+
+		<!-- Sequence type for prescription -->
+		<record id="seq_doctor_prescription" model="ir.sequence">
+            <field name="name">Prescription</field>
+            <field name="code">doctor.prescription.seq</field>
+            <field name="prefix">Orden # </field>
+            <field name="padding">5</field>
+            <field name="sequence_dian_type">invoice_computer_generated</field>
+        </record>
         
 		<!-- Sequence type for Nurse Sheet -->
 		<record id="seq_clinica_nurse_sheet" model="ir.sequence">

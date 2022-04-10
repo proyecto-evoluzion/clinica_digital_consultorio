@@ -5,7 +5,7 @@
             <field name="name">complete.clinica.plastic.surgery.form</field>
             <field name="model">complete.clinica.plastic.surgery</field>
             <field name="arch" type="xml">
-            <form string="Plastic Surgery Form">
+            <form string="Plastic Surgery Form" duplicate="false">
             	<header>
 	                <button name="action_view_clinica_record_history" string="Ver Historia" 
 	                	type="object" class="oe_highlight"/>

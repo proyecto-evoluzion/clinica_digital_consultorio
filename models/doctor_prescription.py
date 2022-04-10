@@ -58,6 +58,7 @@ class DoctorPrescription(models.Model):
   				rec.inability_total_days = minus[1:4]
 
   name= fields.Char(string="Nombre del informe")
+  order_number= fields.Char(string="Número de orden")
   order_type= fields.Selection([('informs','Informes, recomendaciones, fórmulas'),
                 ('medicines','Medicamentos'),
                 ('exam','Laboratorios y procedimientos'),
@@ -91,6 +92,15 @@ class DoctorPrescription(models.Model):
   company_id = fields.Many2one('res.company',string='Company', default=_default_company)
   recomendation_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','1')])
   
+  @api.model
+  def create(self, vals):
+    vals['order_number'] = self.env['ir.sequence'].next_by_code('doctor.prescription.seq') or '/'
+    res = super(DoctorPrescription, self).create(vals)
+    return res
+
+  def auto_set(self):
+    prescription_obj = self.env['doctor.prescription'].search([])
+    prescription_obj.write({'order_number': self.env['ir.sequence'].next_by_code('doctor.prescription.seq') or '/'})
 
   #Onchages para plantillas
   @api.onchange('recomendation_template_id')

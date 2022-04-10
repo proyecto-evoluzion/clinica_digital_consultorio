@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="clinica_digital_consultorio.attention_individual_visualizer_template">
+            <t t-call="web.html_container">
+              <t t-call="web.external_layout">
+                <div class="page">
+                  <div class="oe_structure"/>
+                  <t t-set="complete_plastic_surgery" t-value="o.with_context({'lang':o.patient_id.partner_id.lang})" />
+                  <table style="width:100%; ">
+                    <tr>
+                      <td style="width:50%; padding-left:5px; text-align:left; font-size: 15px;">
+                        <t t-if="o.date_attention">
+                          <strong>Fecha Atención: <span t-field="o.date_attention" style="padding-left:2px;"/></strong>
+                        </t>
+                      </td>
+                      <td style="width:50%; text-align:center; font-size: 15px;">
+                        <t t-if="o.number">
+                          <strong>Atención N°: <span t-field="o.number" style="padding-left:2px;"/></strong>
+                        </t>
+                      </td>
+                    </tr>
+                  </table>
+                  <table class="table " style="width:100%;">
+                    <tr><td colspan="2" style="text-align:center; font-size: 14px;"><strong>DATOS DEL PACIENTE</strong></td></tr>
+                    <tr>
+                      <td colspan="1" style="width:60%;">
+                        <strong>Nombre Paciente: </strong><span style="padding-left:2px;" t-field="o.patient_id.firstname"/>
+                        <span style="padding-left:2px;" t-field="o.patient_id.middlename"/>
+                        <span style="padding-left:2px;" t-field="o.patient_id.lastname"/>
+                        <span style="padding-left:2px;" t-field="o.patient_id.surname"/><br/>
+                        <t t-if="o.patient_id.sex">
+                          <strong>Género: </strong><span style="padding-left:2px;" t-field="o.patient_id.sex"/><br/>
+                        </t>
+                        <t t-if="o.patient_id.user_type">
+                          <strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="o.patient_id.user_type"/><br/>
+                        </t>
+                        <t t-if="o.patient_id.insurer_ids">
+                          <t t-foreach="o.patient_id.insurer_ids" t-as="insurers">
+                            <strong>Aseguradora: </strong><span style="padding-left:2px;" t-field="insurers.insurer_id.name"/><br/>
+                            <strong>Plan: </strong><span style="padding-left:2px;" t-field="insurers.plan"/><br/>
+                          </t>
+                        </t>
+                        <t t-if="o.patient_id.birth_country_id">
+                          <strong>Lugar Nacimiento: </strong><span style="padding-left:2px;" t-field="o.patient_id.birth_country_id.name"/><br/>
+                        </t>
+                        <t t-if="o.patient_id.phone">
+                          <strong>Teléfono: </strong><span style="padding-left:2px;" t-field="o.patient_id.phone"/><br/>
+                        </t>
+                        <t t-if="o.patient_id.email">
+                          <strong>Email: </strong><span style="padding-left:2px;" t-field="o.patient_id.email"/><br/>
+                        </t>
+                        <t t-if="o.patient_id.blood_type">
+                          <strong>Tipo de Sangre: </strong><span style="padding-left:2px;" t-field="o.patient_id.blood_type"/>
+                          <span style="padding-left:2px;" t-field="o.patient_id.blood_rh"/><br/>
+                        </t>
+                        <t t-if="o.diagnosis_ids">
+                          <strong>Diagnósticos: </strong>
+                          <t t-foreach="o.diagnosis_ids" t-as="dx">
+                            <span style="padding-left:2px;" t-field="dx.code"/><span> - </span>
+                          </t>
+                        </t>
+                      </td>
+                      <td colspan="1" style="width:40%;">
+                        <t t-if="o.patient_id.tdoc_rips">
+                          <strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="o.patient_id.tdoc_rips"/><br/>
+                        </t>
+                        <t t-if="o.patient_id.ref">
+                          <strong>Documento: </strong><span style="padding-left:2px;" t-field="o.patient_id.ref"/><br/>
+                        </t>
+                        <t t-if="o.patient_id.birth_date">
+                          <strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="o.patient_id.birth_date"/><br/>
+                        </t>
+                        <t t-if="o.patient_id.age">
+                          <strong>Edad: </strong><span style="padding-left:2px;" t-field="o.patient_id.age"/><span style="padding-left:2px;" t-field="o.patient_id.age_unit"/><br/>
+                        </t>
+                        <t t-if="o.patient_id.residence_country_id">
+                          <strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="o.patient_id.residence_country_id.name"/>
+                          <t t-if="o.patient_id.residence_department_id">
+                            <span> - </span><span style="padding-left:2px;" t-field="o.patient_id.residence_department_id.name"/><br/>
+                          </t>
+                          <t t-if="o.patient_id.residence_city_id">
+                            <span> - </span><span style="padding-left:2px;" t-field="o.patient_id.residence_city_id.name"/><br/>
+                          </t>
+                        </t>
+                        <t t-if="o.patient_id.residence_address">
+                          <strong>Dirección: </strong><span style="padding-left:2px;" t-field="o.patient_id.residence_address"/><br/>
+                        </t>
+                        <strong t-if="o.patient_id.accompany_name">Datos acompañante</strong><br/>
+                        <t t-if="o.patient_id.accompany_name">
+                          <strong>Nombre: </strong><span style="padding-left:2px;" t-field="o.patient_id.accompany_name"/><br/>
+                        </t>
+                        <t t-if="o.patient_id.accompany_phone">
+                          <strong>Teléfono: </strong><span style="padding-left:2px;" t-field="o.patient_id.accompany_phone"/><br/>
+                        </t>
+                      </td>
+                    </tr>
+                    <tr t-if="o.consultation_reason"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>MOTIVO DE CONSULTA</strong></td></tr>
+                    <tr t-if="o.consultation_reason">
+                      <td colspan="2" style="width:50%; ">
+                        <span style="padding-left:2px;" t-field="o.consultation_reason"/>
+                      </td>
+                    </tr>
+                    <tr t-if="o.current_illness"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>ENFERMEDAD ACTUAL</strong></td></tr>
+                    <tr t-if="o.current_illness">
+                      <td colspan="2" style="width:50%; ">
+                        <span style="padding-left:2px;" t-field="o.current_illness"/>
+                      </td>
+                    </tr>
+                    <tr t-if="o.paraclinical" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>PARACLÍNICOS</strong></td></tr>
+                    <tr t-if="o.paraclinical" >
+                      <td colspan="2" style="width:50%; ">
+                        <span style="padding-left:2px;" t-field="o.paraclinical"/>
+                      </td>
+                    </tr>
+                    <t>
+                      <t t-set="aux0" t-value="'0'"/>
+                      <t t-foreach="o.system_review_ids" t-as="pvalue0">
+                        <t t-if="pvalue0.system_review">
+                          <t t-set="aux0" t-value="'1'"/>
+                        </t>
+                      </t>
+                    </t>
+                    <tr t-if="aux0 == '1' or o.system_review_notes" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>REVISIÓN POR SISTEMAS</strong></td></tr>
+                    <tr t-if="aux0 == '1'" style="padding:0px;">
+                      <td colspan="2" style=" padding:0px;">
+                      <table class="table" style="width:100%;margin:0px;">
+                        <thead>
+                        <th style="width:50%;">Tipo Revisión</th>
+                        <th style="width:50%;">Revisión por Sistema</th>
+                        </thead>
+                        <tbody>
+                        <tr t-foreach="o.system_review_ids" t-as="pvalue">
+                          <t t-if="pvalue.system_review">
+                            <td style="width:50%;"><span t-field="pvalue.type_review"/></td>
+                            <td style="width:50%;"><span t-field="pvalue.system_review"/></td>
+                          </t>
+                        </tr>
+                        </tbody>
+                      </table>
+                      </td>
+                    </tr>
+                    <tr t-if="o.system_review_notes">
+                      <td colspan="2" style="width:50%; ">
+                        <strong>Otros: </strong><span style="padding-left:2px;" t-field="o.system_review_notes"/>
+                      </td>
+                    </tr>
+                    <t t-set="aux0" t-value="'0'"/>
+                    <t t-foreach="o.background_type_ids" t-as="pvalue0">
+                      <t t-if="pvalue0.value_background">
+                        <t t-set="aux0" t-value="'1'"/>
+                      </t>
+                    </t>
+                    <tr t-if="aux0 == '1' or o.background_notes"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>ANTECEDENTES</strong></td></tr>
+                    <tr t-if="aux0 == '1'" style="padding:0px;">
+                      <td colspan="2" style=" padding:0px;">
+                        <table class="table" style="width:100%;margin:0px;">
+                          <thead>
+                            <th style="width:50%;">Tipo</th>
+                            <th style="width:50%;">Antecedente</th>
+                          </thead>
+                          <tbody>
+                            <tr t-foreach="o.background_type_ids" t-as="pvalue0">
+                              <t t-if="pvalue0.value_background">
+                                <td style="width:50%;"><span t-field="pvalue0.type_background"/></td>
+                                <td style="width:50%;"><span t-field="pvalue0.value_background"/></td>
+                              </t>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr t-if="o.background_notes">
+                      <td colspan="2" style="width:50%; ">
+                        <strong>Otros: </strong><span style="padding-left:2px;" t-field="o.background_notes"/>
+                      </td>
+                    </tr>
+                    <tr t-if="o.background_gynecology_ids" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>ANTECEDENTES GINECO-OBSTÉTRICOS</strong></td></tr>
+                    <tr t-if="o.background_gynecology_ids" style="padding:0px;">
+                      <td colspan="2" style=" padding:0px;">
+                        <table class="table" style="width:100%;margin:0px;">
+                          <thead>
+                            <th style="width:50%;">Fecha</th>
+                            <th style="width:50%;">G</th>
+                            <th style="width:50%;">P</th>
+                            <th style="width:50%;">C</th>
+                            <th style="width:50%;">A</th>
+                            <th style="width:50%;">FUR</th>
+                            <th style="width:50%;">FUP</th>
+                            <th style="width:50%;">MPF</th>
+                          </thead>
+                          <tbody>
+                            <tr t-foreach="o.background_gynecology_ids" t-as="pvalue1">
+                              <td style="width:50%;"><span t-field="pvalue1.backgroud_gynecology_date"/></td>
+                              <td style="width:50%;"><span t-field="pvalue1.g"/></td>
+                              <td style="width:50%;"><span t-field="pvalue1.p"/></td>
+                              <td style="width:50%;"><span t-field="pvalue1.c"/></td>
+                              <td style="width:50%;"><span t-field="pvalue1.a"/></td>
+                              <td style="width:50%;"><span t-field="pvalue1.fur"/></td>
+                              <td style="width:50%;"><span t-field="pvalue1.fup"/></td>
+                              <td style="width:50%;"><span t-field="pvalue1.mpf"/></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr t-if="o.size or o.weight or o.heart_rate or o.breathing_frequency or o.systolic_blood_pressure or o.diastolic_blood_pressure or o.temp or o.pulse">
+                        <td colspan="2" style="text-align:center; font-size: 14px;"><strong>SIGNOS VITALES</strong></td>
+                    </tr>
+                    <tr t-if="o.size or o.weight or o.heart_rate or o.breathing_frequency or o.systolic_blood_pressure or o.diastolic_blood_pressure or o.temp or o.pulse">
+                        <td style="width:50%; ">
+                          <t t-if="o.weight">Peso: <span style="padding-left:2px;padding-right:4px;" t-field="o.weight"/>Kg <br/> </t>
+                          <t t-if="o.size">Talla: <span style="padding-left:2px;padding-right:4px;" t-field="o.size"/>Cm <br/> </t>
+                          <t t-if="o.temp">Temperatura: <span style="padding-left:2px;padding-right:4px;" t-field="o.temp"/>C° <br/> </t>
+                          <t t-if="o.pulse">SpO2: <span style="padding-left:2px;padding-right:4px;" t-field="o.pulse"/>% <br/> </t>
+                        </td>
+                        <td style="width:50%; ">
+                          <t t-if="o.heart_rate">Ritmo cardiaco: <span style="padding-left:2px;padding-right:4px;" t-field="o.heart_rate"/><br/> </t>
+                          <t t-if="o.breathing_frequency">Frecuencia respiratoria: <span style="padding-left:2px;padding-right:4px;" t-field="o.breathing_frequency"/><br/> </t>
+                          <t t-if="o.systolic_blood_pressure">Presión sanguínea sistólica: <span style="padding-left:2px;padding-right:4px;" t-field="o.systolic_blood_pressure"/><br/></t>
+                          <t t-if="o.diastolic_blood_pressure">Presión sanguínea diastólica: <span style="padding-left:2px;padding-right:4px;" t-field="o.diastolic_blood_pressure"/><br/></t>
+                        </td>
+                    </tr>
+                    <t>
+                      <t t-set="aux" t-value="'0'"/>
+                      <t t-foreach="o.physical_examination_ids" t-as="pvalue2">
+                        <t t-if="pvalue2.exam">
+                          <t t-set="aux" t-value="'1'"/>
+                        </t>
+                      </t>
+                      <tr t-if="aux == '1' or o.physical_examination_notes"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>EXÁMEN FÍSICO</strong></td></tr>
+                      <tr t-if="aux == '1'" style="padding:0px;">
+                        <td colspan="2" style=" padding:0px;">
+                          <table class="table" style="width:100%;margin:0px;">
+                            <thead>
+                              <th style="width:50%;">Examen Físico</th>
+                              <th style="width:50%;">Detalles</th>
+                            </thead>
+                            <tbody>
+                              <tr t-foreach="o.physical_examination_ids" t-as="pvalue2">
+                                <td style="width:50%;"><span t-field="pvalue2.type_exam"/></td>
+                                <td style="width:50%;"><span t-field="pvalue2.exam"/></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </t>
+                    <tr t-if="o.physical_examination_notes">
+                      <td colspan="2" style="width:50%; ">
+                        <strong>Otros: </strong><span style="padding-left:2px;" t-field="o.physical_examination_notes"/>
+                      </td>
+                    </tr>
+                    <tr t-if="o.diagnosis_ids">
+                      <td colspan="2" style="text-align:center; ">
+                        <t><strong>DIAGNÓSTICO CIE10</strong></t>
+                      </td>
+                    </tr>
+                    <tr t-if="o.diagnosis_ids" style="padding:0px;">
+                      <td colspan="2" style=" padding:0px;">
+                        <table class="table" style="width:100%;margin:0px;">
+                          <thead>
+                            <th style="width:10%;">Código</th>
+                            <th style="width:30%;">Diagnóstico</th>
+                            <th style="width:30%;">Tipo Diagnóstico</th>
+                            <th style="width:30%;">Estado Diagnóstico</th>
+                          </thead>
+                          <tbody>
+                            <tr t-foreach="o.diagnosis_ids" t-as="pvalue3">
+                              <td style="width:10%;"><span t-field="pvalue3.code"/></td>
+                              <td style="width:30%;"><span t-field="pvalue3.diseases_id"/></td>
+                              <td style="width:30%;"><span t-field="pvalue3.diseases_id"/></td>
+                              <td style="width:30%;"><span t-field="pvalue3.state_diagnosis"/></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr t-if="o.analysis">
+                      <td colspan="2" style="text-align:center; font-size: 14px;"><strong>ANÁLISIS</strong></td>
+                    </tr>
+                    <tr t-if="o.analysis">
+                      <td colspan="2" style="font-size: 14px;"><span style="padding-left:2px;padding-right:4px;" t-field="o.analysis"/></td>
+                    </tr>
+                    <tr t-if="o.treatment">
+                      <td colspan="2" style="text-align:center; font-size: 14px;"><strong>TRATAMIENTO</strong></td>
+                    </tr>
+                    <tr t-if="o.treatment">
+                      <td colspan="2" style="font-size: 14px;"><span style="padding-left:2px;padding-right:4px;" t-field="o.treatment"/></td>
+                    </tr>
+                  </table>
+                  <div style="border-top: 1px solid black;">
+                    <t t-if="o.doctor_id.is_custom_img">
+                      <div>
+                        <img t-if="o.doctor_id.custom_img" 
+                        t-att-src="'data:image/png;base64,%s' % to_text(o.doctor_id.custom_img)"
+                        style="width:25%; display:block; margin-left:auto; margin-right:auto"
+                        class="center"/>
+                      </div>
+                    </t>
+                  </div>
+                  <div t-if="o.doctor_id.medical_record">
+                    <div style="width:100%; text-align: center; font-size: 12px;">
+                      Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="o.doctor_id.digital_sign"/> - 
+                      Profesional de la salud registrado bajo el N° 
+                      <span style="padding-left:1px; " t-field="o.doctor_id.medical_record"/>
+                    </div>
+                  </div>
+                  <p style="page-break-after: always;"/>
+                </div>
+              </t>
+            </t>
+        </template>
+
+        <template id="visualizer_attention_report">
+          <t t-foreach="docs" t-as="o">
+              <t t-call="clinica_digital_consultorio.attention_individual_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+          </t>
+        </template>
+
+    </data>
+</odoo>

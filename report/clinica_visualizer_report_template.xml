@@ -1287,7 +1287,6 @@
     <template id="clinica_digital_consultorio.complete_plastic_surgery_visualizer_template">
           <div class="page">
             <div class="oe_structure"/>
-          <!-- <t t-foreach="clinica_records['complete_plastic_surgery']" t-as="complete_plastic_surgery"> -->
           <t t-foreach="clinica_records['complete_plastic_surgery'].sorted(key=lambda record: record.date_attention, reverse=True)" t-as="complete_plastic_surgery">
             <t t-set="complete_plastic_surgery" t-value="complete_plastic_surgery.with_context({'lang':complete_plastic_surgery.patient_id.partner_id.lang})" />
             <table style="width:100%; ">
@@ -1378,19 +1377,6 @@
 					</t>
                 </td>
               </tr>
-              
-              <!-- <tr t-if="complete_plastic_surgery.consultation_purpose"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>FINALIDAD DE LA CONSULTA</strong></td></tr>
-              <tr t-if="complete_plastic_surgery.consultation_purpose">
-                <td colspan="2" style="width:50%; ">
-                  <span style="padding-left:2px;" t-field="complete_plastic_surgery.consultation_purpose"/>
-                </td>
-              </tr>
-              <tr t-if="complete_plastic_surgery.external_cause"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>CAUSA EXTERNA</strong></td></tr>
-              <tr t-if="complete_plastic_surgery.external_cause">
-                <td colspan="2" style="width:50%; ">
-                  <span style="padding-left:2px;" t-field="complete_plastic_surgery.external_cause"/>
-                </td>
-              </tr> -->
               <tr t-if="complete_plastic_surgery.consultation_reason"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>MOTIVO DE CONSULTA</strong></td></tr>
               <tr t-if="complete_plastic_surgery.consultation_reason">
                 <td colspan="2" style="width:50%; ">
@@ -1587,56 +1573,6 @@
             <tr t-if="complete_plastic_surgery.treatment">
               <td colspan="2" style="font-size: 14px;"><span style="padding-left:2px;padding-right:4px;" t-field="complete_plastic_surgery.treatment"/></td>
             </tr>
-            <!-- <tr t-if="complete_plastic_surgery.prescription_id"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>ORDENES MÉDICAS</strong></td></tr> -->
-            <!-- <t t-if="complete_plastic_surgery.prescription_id">
-                <tr>
-                  <td style="width:100%; ">
-                  Nombre: <span style="padding-left:2px;" t-field="complete_plastic_surgery.prescription_id.name"/><br/>
-                  Tipo de orden: <span style="padding-left:2px;" t-field="complete_plastic_surgery.prescription_id.order_type"/><br/>
-                  Fecha: <span style="padding-left:2px;" t-field="complete_plastic_surgery.prescription_id.prescription_date"/><br/>
-                  </td>
-                </tr>
-                <t t-if="complete_plastic_surgery.prescription_id.order_type == 'informs'">
-                  <tr>
-                    <td style="width:100%; ">
-                      <span style="padding-left:2px;" t-field="complete_plastic_surgery.prescription_id.prescription"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="width:100%; ">
-                      <span style="padding-left:2px;" t-field="complete_plastic_surgery.prescription_id.images"/>
-                    </td>
-                  </tr>
-                </t>
-                <t t-if="complete_plastic_surgery.prescription_id.order_type == 'medicines'">
-                  <t t-if="complete_plastic_surgery.prescription_id.atc_ids">
-                    <t t-foreach="complete_plastic_surgery.prescription_id.atc_ids" t-as="atc">
-                      <tr>
-                        <td style="width:100%; ">
-                          <span style="padding-left:2px;" t-field="atc.atc_id"/>
-                        </td>
-                      </tr>
-                    </t>
-                  </t>
-                </t>
-                <t t-if="complete_plastic_surgery.prescription_id.order_type == 'exam'">
-                  <t t-if="complete_plastic_surgery.prescription_id.exam_ids">
-                    <t t-foreach="complete_plastic_surgery.prescription_id.exam_ids" t-as="exams">
-                      <tr>
-                        <td style="width:33%;">
-                          CUPS<span style="padding-left:2px;" t-field="exams.cups_id"/>
-                        </td>
-                        <td style="width:33%;">
-                          Cantidad<span style="padding-left:2px;" t-field="exams.qty"/>
-                        </td>
-                        <td style="width:33%;">
-                          Indicaciones<span style="padding-left:2px;" t-field="exams.indications"/>
-                        </td>
-                      </tr>
-                    </t>
-                  </t>
-                </t>
-              </t> -->
           </table>
 		  	<div style="border-top: 1px solid black;">
 				<t t-if="complete_plastic_surgery.doctor_id.is_custom_img">

@@ -11,6 +11,7 @@
           </header>
          	<sheet>
             <!--General Group-->
+            <h2><field name="order_number" nolabel="1" readonly="1" force_save="1"/></h2>
             <group col="4">
               <field name="order_type"/>
               <field name="prescription_date"/>
@@ -75,7 +76,7 @@
           <field name="model">doctor.prescription</field>
           <field name="arch" type="xml">
               <tree string="Doctor Prescription Tree">
-                <field name="name"/>
+                <field name="order_type"/>
                 <field name="patient_id"/>
                 <field name="patientname"/>
                 <field name="prescription_date"/>
@@ -89,7 +90,9 @@
             <field name="model">doctor.prescription</field>
             <field name="arch" type="xml">
                 <search string="Search Anhestesic Registry">
-                    <field name="numberid" />
+                    <field name="patient_id" />
+                    <field name="order_type" />
+                    <field name="order_number" string="Buscar por No de Orden"/>
                 </search>
             </field>
        </record>
@@ -100,6 +103,7 @@
           <field name="view_type">form</field>
           <field name="view_mode">tree,form</field>
           <field name="view_id" ref="doctor_prescription_tree"/>
+          <field name="search_view_id" ref="doctor_prescription_filter"/>
       </record> 
       
       <menuitem id="menu_doctor_prescription"

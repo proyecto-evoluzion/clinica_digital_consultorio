@@ -21,6 +21,17 @@
             name="clinica_digital_consultorio.visualizer_prescription_report" 
             print_report_name="'Prescription Record' "
             menu="True"/>
+
+        <!-- Attention Report -->
+
+        <report id="clinica_digital_consultorio.clinica_attention_report"
+            string="Atención actual"
+            model="complete.clinica.plastic.surgery"
+            report_type="qweb-html"
+            file="clinica_digital_consultorio.visualizer_attention_report" 
+            name="clinica_digital_consultorio.visualizer_attention_report" 
+            print_report_name="'Attention Record' "
+            menu="True"/>
             
      </data>
 </odoo>

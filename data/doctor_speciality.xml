@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record model="doctor.specialty" id="01">
+          <field name="code"></field>
+          <field name="name">Medico (a) Genaral</field>
+        </record>
+        <record model="doctor.specialty" id="02">
+          <field name="code"></field>
+          <field name="name">Odontologo (a)</field>
+        </record>
+        <record model="doctor.specialty" id="03">
+          <field name="code"></field>
+          <field name="name">Radiologo (a)</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="05">
+          <field name="code"></field>
+          <field name="name">NUTRICIÓN Y DIETÉTICA</field>
+        </record>
+        <record model="doctor.specialty" id="06">
+          <field name="code"></field>
+          <field name="name">PSICOLOGÍA</field>
+        </record>
+        <record model="doctor.specialty" id="07">
+          <field name="code"></field>
+          <field name="name">TRABAJO SOCIAL</field>
+        </record>
+        <record model="doctor.specialty" id="08">
+          <field name="code"></field>
+          <field name="name">FONIATRÍA Y FONOAUDIOLOGÍA</field>
+        </record>
+        <record model="doctor.specialty" id="09">
+          <field name="code"></field>
+          <field name="name">FISIOTERAPIA</field>
+        </record>
+        <record model="doctor.specialty" id="10">
+          <field name="code"></field>
+          <field name="name">TERAPIA RESPIRATORIA</field>
+        </record>
+        <record model="doctor.specialty" id="11">
+          <field name="code"></field>
+          <field name="name">TERAPIA OCUPACIONAL</field>
+        </record>
+        <record model="doctor.specialty" id="12">
+          <field name="code"></field>
+          <field name="name">OPTOMETRÍA</field>
+        </record>
+        <record model="doctor.specialty" id="13">
+          <field name="code"></field>
+          <field name="name">TERAPIAS ALTERNATIVAS</field>
+        </record>
+        <record model="doctor.specialty" id="14">
+          <field name="code"></field>
+          <field name="name">CIRUGÍA ORAL</field>
+        </record>
+        <record model="doctor.specialty" id="15">
+          <field name="code"></field>
+          <field name="name">ENDODONCISTA</field>
+        </record>
+        <!-- <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record>
+        <record model="doctor.specialty" id="04">
+          <field name="code"></field>
+          <field name="name">Enfermeria</field>
+        </record> -->
+    </data>
+</odoo>

@@ -10,6 +10,8 @@
 
           <xpath expr="//field[@name='vat']" position="replace">
             <field name="bussines_name" string="Bussines name"/>
+            <field name="title" placeholder="IPS / Consultorio / Clínica"/>
+            <field name="horary"/>
 
           </xpath>    
           <field name="report_footer" position="after">

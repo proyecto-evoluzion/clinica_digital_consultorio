@@ -16,7 +16,7 @@
                         </div>
                         <div class="col-xs-6">
                             <h4>
-                                Consultorio <t t-if="o.doctor_id.sex == 'male'"> Dr.</t><t t-else="">Dra.</t> <t t-esc="o.doctor_id.firstname"/> <t t-esc="o.doctor_id.lastname"/> -  
+                                <t t-if="company.title"><t t-esc="company.title"/></t><t t-if="o.doctor_id.sex == 'male'"> Dr.</t><t t-else="">Dra.</t> <t t-esc="o.doctor_id.firstname"/> <t t-esc="o.doctor_id.lastname"/> -  
                                 <t t-if="o.doctor_id.doctor_speciality_id">
                                     <t t-esc="o.doctor_id.doctor_speciality_id.name"/>
                                 </t>
@@ -25,7 +25,7 @@
                                 <span style="font-size: 16px;"><t t-esc="company.report_header"/></span><br></br>
                             </t>
                             <span style="font-size: 16px;"><t t-esc="company.street"/></span><br></br>
-                            <span style="font-size: 16px;">Teléfono <t t-esc="company.phone"/> (08 AM - 05 PM). </span>&amp;nbsp<span style="color: blue;"><t t-esc="o.doctor_id.email"/></span>
+                            <span style="font-size: 16px;">Teléfono <t t-esc="company.phone"/> <t t-if="company.horary">(<t t-esc="company.horary"/>).</t> </span>&amp;nbsp<span style="color: blue;"><t t-esc="o.doctor_id.email"/></span>
                         </div>
                     </t>
                     <t t-if="company.is_primary_logo and company.is_secondary_logo">
@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-xs-4">
                             <h4>
-                                Consultorio <t t-if="o.doctor_id.sex == 'male'"> Dr.</t><t t-else="">Dra.</t> <t t-esc="o.doctor_id.firstname"/> <t t-esc="o.doctor_id.lastname"/> -  
+                                <t t-if="company.title"><t t-esc="company.title"/> </t><t t-if="o.doctor_id.sex == 'male'"> Dr.</t><t t-else="">Dra.</t> <t t-esc="o.doctor_id.firstname"/> <t t-esc="o.doctor_id.lastname"/> -  
                                 <t t-if="o.doctor_id.doctor_speciality_id">
                                     <t t-esc="o.doctor_id.doctor_speciality_id.name"/>
                                 </t>
@@ -43,7 +43,7 @@
                                 <span style="font-size: 16px;"><t t-esc="company.report_header"/></span><br></br>
                             </t>
                             <span style="font-size: 16px;"><t t-esc="company.street"/></span><br></br>
-                            <span style="font-size: 16px;">Teléfono <t t-esc="company.phone"/> (08 AM - 05 PM). </span>&amp;nbsp<span style="color: blue;"><t t-esc="o.doctor_id.email"/></span>
+                            <span style="font-size: 16px;">Teléfono <t t-esc="company.phone"/> <t t-if="company.horary">(<t t-esc="company.horary"/>).</t> </span>&amp;nbsp<span style="color: blue;"><t t-esc="o.doctor_id.email"/></span>
                         </div>
                         <div class="col-xs-4">
                             <img t-if="company.logo2" t-att-src="'data:image/png;base64,%s' % to_text(company.logo2)" style="max-height: 120px;"/>
@@ -52,7 +52,7 @@
                     <t t-if="not company.is_primary_logo">
                         <div class="col-xs-12">
                             <h4>
-                                Consultorio <t t-if="o.doctor_id.sex == 'male'"> Dr.</t><t t-else="">Dra.</t> <t t-esc="o.doctor_id.firstname"/> <t t-esc="o.doctor_id.lastname"/> -  
+                                <t t-if="company.title"><t t-esc="company.title"/> </t><t t-if="o.doctor_id.sex == 'male'"> Dr.</t><t t-else="">Dra.</t> <t t-esc="o.doctor_id.firstname"/> <t t-esc="o.doctor_id.lastname"/> -  
                                 <t t-if="o.doctor_id.doctor_speciality_id">
                                     <t t-esc="o.doctor_id.doctor_speciality_id.name"/>
                                 </t>
@@ -61,7 +61,7 @@
                                 <span style="font-size: 16px;"><t t-esc="company.report_header"/></span><br></br>
                             </t>
                             <span style="font-size: 16px;"><t t-esc="company.street"/></span><br></br>
-                            <span style="font-size: 16px;">Teléfono <t t-esc="company.phone"/> (08 AM - 05 PM). </span>&amp;nbsp<span style="color: blue;"><t t-esc="o.doctor_id.email"/></span>
+                            <span style="font-size: 16px;">Teléfono <t t-esc="company.phone"/> <t t-if="company.horary">(<t t-esc="company.horary"/>).</t> </span>&amp;nbsp<span style="color: blue;"><t t-esc="o.doctor_id.email"/></span>
                         </div>
                     </t>
                 </div>

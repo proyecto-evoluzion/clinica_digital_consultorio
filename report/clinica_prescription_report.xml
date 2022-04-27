@@ -153,10 +153,21 @@
                           </t>
                         </table>
                         <div style="border-top: 1px solid black;">
-                          <div t-if="o.doctor_id.medical_record" style="width:100%; text-align: center;">
-                            <span style="padding-left:2px; " t-field="o.doctor_id.firstname"/>&amp;nbsp
-                            <span style="padding-left:2px; " t-field="o.doctor_id.lastname"/>&amp;nbsp / 
-                            &amp;nbsp<span style="padding-left:2px; " t-field="o.doctor_id.medical_record"/>
+                          <t t-if="o.doctor_id.is_custom_img">
+                            <div>
+                              <img t-if="o.doctor_id.custom_img" 
+                              t-att-src="'data:image/png;base64,%s' % to_text(o.doctor_id.custom_img)"
+                              style="width:25%; display:block; margin-left:auto; margin-right:auto"
+                              class="center"/>
+                            </div>
+                          </t>
+                          <div t-if="o.doctor_id.medical_record">
+                            <div style="width:100%; text-align: center; font-size: 12px;">
+                              Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="o.doctor_id.digital_sign"/> - 
+                              Profesional de la salud registrado bajo el N° 
+                              <span style="padding-left:1px; " t-field="o.doctor_id.medical_record"/><br/>
+                              Código prestador de servicio <span style="padding-left:1px; " t-field="o.doctor_id.doctor_provider_code"/>
+                            </div>
                           </div>
                         </div>
                         <p style="page-break-after: always;"/>

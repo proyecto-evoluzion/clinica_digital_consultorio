@@ -920,7 +920,8 @@
 						<div style="width:100%; text-align: center; font-size: 12px;">
 							Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="anhestesic_registry.surgeon_id.digital_sign"/> - 
 							Profesional de la salud registrado bajo el N° 
-							<span style="padding-left:1px; " t-field="anhestesic_registry.surgeon_id.medical_record"/>
+							<span style="padding-left:1px; " t-field="anhestesic_registry.surgeon_id.medical_record"/><br/>
+							Código prestador de servicio <span style="padding-left:1px; " t-field="anhestesic_registry.surgeon_id.doctor_provider_code"/>
 						</div>
 					</div>
 				</div>
@@ -1275,7 +1276,8 @@
 						<div style="width:100%; text-align: center; font-size: 12px;">
 							Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="plastic_surgery.doctor_id.digital_sign"/> - 
 							Profesional de la salud registrado bajo el N° 
-							<span style="padding-left:1px; " t-field="plastic_surgery.doctor_id.medical_record"/>
+							<span style="padding-left:1px; " t-field="plastic_surgery.doctor_id.medical_record"/><br/>
+							Código prestador de servicio <span style="padding-left:1px; " t-field="plastic_surgery.doctor_id.doctor_provider_code"/>
 						</div>
 					</div>
 				</div>
@@ -1587,7 +1589,8 @@
 					<div style="width:100%; text-align: center; font-size: 12px;">
 						Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="complete_plastic_surgery.doctor_id.digital_sign"/> - 
 						Profesional de la salud registrado bajo el N° 
-						<span style="padding-left:1px; " t-field="complete_plastic_surgery.doctor_id.medical_record"/>
+						<span style="padding-left:1px; " t-field="complete_plastic_surgery.doctor_id.medical_record"/><br/>
+							Código prestador de servicio <span style="padding-left:1px; " t-field="complete_plastic_surgery.doctor_id.doctor_provider_code"/>
 					</div>
 				</div>
             </div>
@@ -2029,7 +2032,8 @@
 						<div style="width:100%; text-align: center; font-size: 12px;">
 							Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="prescription.doctor_id.digital_sign"/> - 
 							Profesional de la salud registrado bajo el N° 
-							<span style="padding-left:1px; " t-field="prescription.doctor_id.medical_record"/>
+							<span style="padding-left:1px; " t-field="prescription.doctor_id.medical_record"/><br/>
+							Código prestador de servicio <span style="padding-left:1px; " t-field="prescription.doctor_id.doctor_provider_code"/>
 						</div>
 					</div>
 				</div>
@@ -2143,6 +2147,7 @@
                   </td>
                   <td style="width:50%;" colspan="2">
                     <t t-if="prescription.doctor_id.medical_record">Registro N°: <span style="padding-left:2px;" t-field="prescription.doctor_id.medical_record"/></t><br/>
+                    <t t-if="prescription.doctor_id.doctor_provider_code">Codigo prestador de servicio: <span style="padding-left:2px;" t-field="prescription.doctor_id.doctor_provider_code"/></t><br/>
                     <t t-if="prescription.patient_id.birth_date">Sello: </t><br/><br/>
                   </td>
                 </tr>

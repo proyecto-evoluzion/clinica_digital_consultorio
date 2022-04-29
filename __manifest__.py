@@ -37,6 +37,7 @@
         'data/doctor_sequence.xml',
         'data/doctor_surgical_technologist_element.xml',
         'data/localisation_province_data.xml',
+        'data/doctor_speciality.xml',
         'wizard/create_health_professional_view.xml',
         'report/clinica_visualizer_report_template.xml',
         'report/clinica_visualizer_report.xml',

@@ -8,6 +8,7 @@
                     <t t-set="prescription" t-value="o.with_context({'lang':o.patient_id.partner_id.lang})"/>
                     <div class="page">
                         <div class="oe_structure"/>
+                        <t t-if="o.order_type != 'inability'">
                         <table style="width:100%;">
                           <tr>
                             <td style="width:40%; text-align:center; font-size: 15px;" t-if="o.name"><strong>Nombre del informe: <span t-field="o.name" style="padding-left:2px;"/></strong></td>
@@ -170,6 +171,160 @@
                             </div>
                           </div>
                         </div>
+                        </t>
+                        <t t-if="prescription.order_type == 'inability'">
+                          <table style="width:100%;">
+                            <tr>
+                              <td style="width:25%; padding-left:10px; text-align:center; font-size: 22px;"><strong>Fecha: <span t-field="prescription.prescription_date" style="padding-left:2px;"/></strong></td>
+                              <td colspan="4" style="width:25%; padding-left:10px; text-align:center; font-size: 22px;"><strong><span t-field="prescription.company_id.name" style="padding-left:2px;"/></strong></td>
+                              <td style="width:25%; padding-left:10px; text-align:center; font-size: 22px;"><strong>Atención: <span t-field="prescription.complete_format_id.number" style="padding-left:2px;"/></strong></td>
+                            </tr>
+                          </table>
+                          <table class="table table-bordered" style=" width:100%;">
+                            <tr><td colspan="4" style="text-align:center; "><strong>DATOS DEL PACIENTE</strong></td></tr>
+                            <tr>
+                              <td colspan="1" style="width:60%;">
+                                <strong>Nombre Paciente: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.firstname"/>
+                                <span style="padding-left:2px;" t-field="prescription.patient_id.middlename"/>
+                                <span style="padding-left:2px;" t-field="prescription.patient_id.lastname"/>
+                                <span style="padding-left:2px;" t-field="prescription.patient_id.surname"/><br/>
+                                <t t-if="prescription.patient_id.sex">
+                                  <strong>Género: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.sex"/><br/>
+                                </t>
+                                <t t-if="prescription.patient_id.user_type">
+                                  <strong>Tipo Usuario: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.user_type"/><br/>
+                                </t>
+                                <t t-if="prescription.patient_id.insurer_ids">
+                                  <t t-foreach="prescription.patient_id.insurer_ids" t-as="insurers">
+                                    <strong>Aseguradora: </strong><span style="padding-left:2px;" t-field="insurers.insurer_id.name"/><br/>
+                                    <strong>Plan: </strong><span style="padding-left:2px;" t-field="insurers.plan"/><br/>
+                                  </t>
+                                </t>
+                                <t t-if="prescription.patient_id.birth_country_id">
+                                  <strong>Lugar Nacimiento: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.birth_country_id.name"/><br/>
+                                </t>
+                                <t t-if="prescription.patient_id.phone">
+                                  <strong>Teléfono: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.phone"/><br/>
+                                </t>
+                                <t t-if="prescription.patient_id.email">
+                                  <strong>Email: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.email"/><br/>
+                                </t>
+                                <t t-if="prescription.patient_id.blood_type">
+                                  <strong>Tipo de Sangre: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.blood_type"/>
+                                  <span style="padding-left:2px;" t-field="prescription.patient_id.blood_rh"/><br/>
+                                </t>
+                              </td>
+                              <td colspan="1" style="width:40%;">
+                                <t t-if="prescription.patient_id.tdoc_rips">
+                                  <strong>Tipo Documento: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.tdoc_rips"/><br/>
+                                </t>
+                                <t t-if="prescription.patient_id.ref">
+                                  <strong>Documento: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.ref"/><br/>
+                                </t>
+                                <t t-if="prescription.patient_id.birth_date">
+                                  <strong>Fecha Nacimiento: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.birth_date"/><br/>
+                                </t>
+                                <t t-if="prescription.patient_id.age">
+                                  <strong>Edad: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.age"/><span style="padding-left:2px;" t-field="prescription.patient_id.age_unit"/><br/>
+                                </t>
+                                <t t-if="prescription.patient_id.residence_country_id">
+                                  <strong>Lugar Residencia: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.residence_country_id.name"/>
+                                  <t t-if="prescription.patient_id.residence_department_id">
+                                    <span> - </span><span style="padding-left:2px;" t-field="prescription.patient_id.residence_department_id.name"/><br/>
+                                  </t>
+                                  <t t-if="prescription.patient_id.residence_city_id">
+                                    <span> - </span><span style="padding-left:2px;" t-field="prescription.patient_id.residence_city_id.name"/><br/>
+                                  </t>
+                                </t>
+                                <t t-if="prescription.patient_id.residence_address">
+                                  <strong>Dirección: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.residence_address"/><br/>
+                                </t>
+                                <strong t-if="prescription.patient_id.accompany_name">Datos acompañante</strong><br/>
+                                <t t-if="prescription.patient_id.accompany_name">
+                                  <strong>Nombre: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.accompany_name"/><br/>
+                                </t>
+                                <t t-if="prescription.patient_id.accompany_phone">
+                                  <strong>Teléfono: </strong><span style="padding-left:2px;" t-field="prescription.patient_id.accompany_phone"/><br/>
+                                </t>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="width:33%; padding-left:10px; text-align:center; font-size: 22px;"><strong>Fecha Inicio</strong></td>
+                              <td colspan="2" style="width:33%; padding-left:10px; text-align:center; font-size: 22px;"><strong>Fecha Finalización</strong></td>
+                              <td style="width:33%; padding-left:10px; text-align:center; font-size: 22px;"><strong>Duración (en días)</strong></td>
+                            </tr>
+                            <tr>
+                              <td style="width:33%; padding-left:10px; text-align:center; font-size: 22px;"><span t-field="prescription.inability_start_date" style="padding-left:2px;"/></td>
+                              <td colspan="2" style="width:33%; padding-left:10px; text-align:center; font-size: 22px;"><span t-field="prescription.inability_end_date" style="padding-left:2px;"/></td>
+                              <td style="width:33%; padding-left:10px; text-align:center; font-size: 22px;"><span t-field="prescription.inability_total_days" style="padding-left:2px;"/></td>
+                            </tr>
+                            <tr t-if="prescription.diagnosis_ids"><td colspan="4" style="text-align:center; "><strong>DIANÓSTICOS</strong></td></tr>
+                            <tr t-if="prescription.diagnosis_ids" style="padding:0px;">
+                              <td colspan="4" style=" padding:0px;">
+                                <table class="table" style="width:100%;margin:0px;">
+                                  <thead>
+                                    <th style="width:10%;">Código</th>
+                                  </thead>
+                                  <tbody>
+                                    <tr t-foreach="prescription.diagnosis_ids" t-as="pvalue3">
+                                      <td style="width:10%;"><span t-field="pvalue3.code"/></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr t-if="prescription.treatment">
+                              <td colspan="4" style="text-align:center; font-size: 14px;"><strong>MOTIVO DE LA INCAPACIDAD</strong></td>
+                            </tr>
+                            <tr t-if="prescription.treatment">
+                              <td colspan="4" style="font-size: 14px;"><span style="padding-left:2px;padding-right:4px;" t-field="prescription.treatment"/></td>
+                            </tr>
+                            <t t-foreach="prescription.exam_ids" t-as="cups">
+                              <tr >
+                                <td colspan="4"><span t-field="cups.cups_id.product_id.name"/></td>
+                              </tr>
+                              <tr>
+                                <td style="width:50%;" colspan="2">
+                                  <t>Cantidad: <span style="padding-left:2px;" t-field="cups.qty"/></t>
+                                </td>
+                                <td style="width:50%;" colspan="2">
+                                  <t>Indicaciones: <span style="padding-left:2px;" t-field="cups.indications"/></t>
+                                </td>
+                              </tr>
+                            </t>
+                            <tr><td colspan="4" style="text-align:center; "><strong>DATOS DEL PROFESIONAL</strong></td></tr>
+                            <tr>
+                              <td style="width:50%;" colspan="2">
+                                <t t-if="prescription.doctor_id">Nombre: <span style="padding-left:2px;" t-field="prescription.doctor_id.digital_sign"/></t><br/>
+                                <t t-if="prescription.doctor_id">Especialidad: <span style="padding-left:2px;" t-field="prescription.doctor_id.profession_type"/></t><br/>
+                                <t t-if="prescription.doctor_id.digital_sign">Firma: <span style="padding-left:2px;" t-field="prescription.doctor_id.digital_sign"/></t><br/>
+                              </td>
+                              <td style="width:50%;" colspan="2">
+                                <t t-if="prescription.doctor_id.medical_record">Registro N°: <span style="padding-left:2px;" t-field="prescription.doctor_id.medical_record"/></t><br/>
+                                <t t-if="prescription.doctor_id.doctor_provider_code">Codigo prestador de servicio: <span style="padding-left:2px;" t-field="prescription.doctor_id.doctor_provider_code"/></t><br/>
+                                <t t-if="prescription.patient_id.birth_date">Sello: </t><br/><br/>
+                              </td>
+                            </tr>
+                          </table>
+                          <div style="border-top: 1px solid black;">
+                            <t t-if="prescription.doctor_id.is_custom_img">
+                              <div>
+                                <img t-if="prescription.doctor_id.custom_img" 
+                                t-att-src="'data:image/png;base64,%s' % to_text(prescription.doctor_id.custom_img)"
+                                style="width:25%; display:block; margin-left:auto; margin-right:auto"
+                                class="center"/>
+                              </div>
+                            </t>
+                            <div t-if="prescription.doctor_id.medical_record">
+                              <div style="width:100%; text-align: center; font-size: 12px;">
+                                Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="prescription.doctor_id.digital_sign"/> - 
+                                Profesional de la salud registrado bajo el N° 
+                                <span style="padding-left:1px; " t-field="prescription.doctor_id.medical_record"/><br/>
+                                Código prestador de servicio <span style="padding-left:1px; " t-field="prescription.doctor_id.doctor_provider_code"/>
+                              </div>
+                            </div>
+                          </div>
+                        </t>
                         <p style="page-break-after: always;"/>
                     </div>
                 </t>

@@ -1982,8 +1982,6 @@
                     </tr>
                   </t>
              	</t>
-
-
                 <t t-if="prescription.order_type == 'exam'">
                   <tr>
                     <td colspan="2" style="text-align:center;"><strong>EXÁMEN, IMANGEN - PROCEDIMIENTO DIAGNÓSTICO O TERAPÉUTICO (CUPS)</strong></td>
@@ -2124,7 +2122,27 @@
                   <td colspan="2" style="width:33%; padding-left:10px; text-align:center; font-size: 22px;"><span t-field="prescription.inability_end_date" style="padding-left:2px;"/></td>
                   <td style="width:33%; padding-left:10px; text-align:center; font-size: 22px;"><span t-field="prescription.inability_total_days" style="padding-left:2px;"/></td>
                 </tr>
-                <tr><td colspan="4" style="text-align:center; "><strong>DIANÓSTICOS</strong></td></tr>
+                <tr t-if="prescription.diagnosis_ids"><td colspan="4" style="text-align:center; "><strong>DIANÓSTICOS</strong></td></tr>
+				<tr t-if="prescription.diagnosis_ids" style="padding:0px;">
+					<td colspan="4" style=" padding:0px;">
+					<table class="table" style="width:100%;margin:0px;">
+						<thead>
+						<th style="width:10%;">Código</th>
+						</thead>
+						<tbody>
+						<tr t-foreach="prescription.diagnosis_ids" t-as="pvalue3">
+							<td style="width:10%;"><span t-field="pvalue3.code"/></td>
+						</tr>
+						</tbody>
+					</table>
+					</td>
+				</tr>
+				<tr t-if="prescription.treatment">
+					<td colspan="4" style="text-align:center; font-size: 14px;"><strong>MOTIVO DE LA INCAPACIDAD</strong></td>
+				</tr>
+				<tr t-if="prescription.treatment">
+					<td colspan="4" style="font-size: 14px;"><span style="padding-left:2px;padding-right:4px;" t-field="prescription.treatment"/></td>
+				</tr>
                 <t t-foreach="prescription.exam_ids" t-as="cups">
                   <tr >
                     <td colspan="4"><span t-field="cups.cups_id.product_id.name"/></td>
@@ -2152,6 +2170,24 @@
                   </td>
                 </tr>
               </table>
+			  <div style="border-top: 1px solid black;">
+					<t t-if="prescription.doctor_id.is_custom_img">
+						<div>
+							<img t-if="prescription.doctor_id.custom_img" 
+							t-att-src="'data:image/png;base64,%s' % to_text(prescription.doctor_id.custom_img)"
+							style="width:25%; display:block; margin-left:auto; margin-right:auto"
+							class="center"/>
+						</div>
+					</t>
+					<div t-if="prescription.doctor_id.medical_record">
+						<div style="width:100%; text-align: center; font-size: 12px;">
+							Firmado digitalmente por <span style="padding-left:2px; margin-right:4px;" t-field="prescription.doctor_id.digital_sign"/> - 
+							Profesional de la salud registrado bajo el N° 
+							<span style="padding-left:1px; " t-field="prescription.doctor_id.medical_record"/><br/>
+							Código prestador de servicio <span style="padding-left:1px; " t-field="prescription.doctor_id.doctor_provider_code"/>
+						</div>
+					</div>
+				</div>
             </t>
             <p style="page-break-after: always;"/>
           </t>

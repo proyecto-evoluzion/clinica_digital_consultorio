@@ -66,6 +66,22 @@
               <label for="inability_total_days"/>
               <field name="inability_total_days" nolabel="1" style="width:100%; font-weight: bold;"/>
             </group>
+            <group name="disease_details" string="Diagnostico" attrs="{'invisible':[('order_type','!=','inability')]}">
+                <field name="diagnosis_ids" nolabel="1" required="1">
+                  <tree editable="bottom">
+                      <field name="code" readonly="1" force_save="1" string="Código" invisible="1"/>
+                      <field name="name" invisible="1"/>
+                      <field name="diseases_id" required="1"/>
+                      <field name="code"/>
+                      <field name="type_diagnosis" required="1"/>        
+                      <field name="state_diagnosis" required="1"/>        
+                  </tree>
+                </field>
+            </group>
+            <group name="treatment" colspan="2" col='1' attrs="{'invisible':[('order_type','!=','inability')]}">
+              <label for="treatment"/>
+              <field name="treatment" nolabel="1" />
+            </group>
          	</sheet>
          </form>
          </field>

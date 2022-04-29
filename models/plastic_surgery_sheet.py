@@ -412,5 +412,6 @@ class PSDiagnosisTemplateModel(models.Model):
     diseases_id = fields.Many2one('doctor.diseases', string='Diagnóstico')
     ps_format_id = fields.Many2one('clinica.plastic.surgery', string='PS Format')
     complete_format_id = fields.Many2one('complete.clinica.plastic.surgery', string='Complete Format')
+    prescription_id = fields.Many2one('doctor.prescription', string='Prescription')
     
     

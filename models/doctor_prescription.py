@@ -91,12 +91,20 @@ class DoctorPrescription(models.Model):
   load_register = fields.Boolean(string='-', default=False)
   company_id = fields.Many2one('res.company',string='Company', default=_default_company)
   recomendation_template_id = fields.Many2one('attention.quick.template', string='Plantilla', domain=[('type','=','1')])
+  diagnosis_ids = fields.One2many('consultorio.diagnosis.template', 'prescription_id', string="Diagnóstico CIE10")
+  treatment = fields.Text(string="Motivo")
   
   @api.model
   def create(self, vals):
     vals['order_number'] = self.env['ir.sequence'].next_by_code('doctor.prescription.seq') or '/'
     res = super(DoctorPrescription, self).create(vals)
     return res
+
+  @api.onchange('diagnosis_ids')
+  def onchange_diagnosis_ids(self):
+      for dignosis in self.diagnosis_ids:
+          dignosis.update({'code': dignosis.diseases_id.code})
+          dignosis.update({'name': dignosis.diseases_id.name})
 
   def auto_set(self):
     prescription_obj = self.env['doctor.prescription'].search([])
